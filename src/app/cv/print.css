@@ -1,0 +1,167 @@
+/* Print-friendly styles for CV page - ATS optimized */
+@media print {
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Hide non-essential elements */
+  .MuiAppBar-root,
+  .MuiToolbar-root,
+  footer,
+  nav,
+  script,
+  noscript,
+  .no-print,
+  button,
+  .MuiButton-root,
+  .MuiIconButton-root,
+  .MuiTextField-root,
+  .MuiAlert-root,
+  .MuiCollapse-root,
+  svg[data-testid*="Icon"] {
+    display: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Container adjustments */
+  .MuiContainer-root {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .MuiBox-root {
+    padding: 0 !important;
+  }
+
+  /* Paper components - remove styling */
+  .MuiPaper-root {
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin-bottom: 16pt !important;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+    page-break-after: avoid;
+    margin-bottom: 8pt !important;
+  }
+
+  .MuiTypography-h3 {
+    font-size: 18pt !important;
+    font-weight: bold !important;
+  }
+
+  .MuiTypography-h4 {
+    font-size: 14pt !important;
+    font-weight: bold !important;
+    margin-top: 12pt !important;
+  }
+
+  .MuiTypography-h6 {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+  }
+
+  .MuiTypography-body1,
+  .MuiTypography-body2 {
+    font-size: 11pt !important;
+    color: #000 !important;
+  }
+
+  /* Links - make them plain text for ATS */
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  /* Lists */
+  ul {
+    margin-left: 20pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  li {
+    margin-bottom: 4pt !important;
+    page-break-inside: avoid;
+  }
+
+  /* Skills chips - convert to comma-separated list */
+  .MuiChip-root {
+    display: inline !important;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .MuiChip-root::after {
+    content: ", ";
+  }
+
+  .MuiChip-root:last-child::after {
+    content: "";
+  }
+
+  /* Work experience formatting */
+  .MuiBox-root > .MuiBox-root {
+    page-break-inside: avoid;
+  }
+
+  /* Remove any decorative elements */
+  .MuiDivider-root,
+  hr {
+    display: none !important;
+  }
+
+  /* Ensure text contrast */
+  * {
+    color: #000 !important;
+    background: transparent !important;
+  }
+
+  /* Page breaks */
+  .page-break {
+    page-break-before: always;
+  }
+
+  .no-break {
+    page-break-inside: avoid;
+  }
+
+  /* Hide copy buttons and other interactive elements */
+  [class*="IconButton"],
+  [class*="Tooltip"] {
+    display: none !important;
+  }
+
+  /* Ensure proper spacing */
+  p {
+    margin-bottom: 8pt !important;
+  }
+
+  /* Contact info should be on one line */
+  .contact-info {
+    white-space: nowrap;
+  }
+}
