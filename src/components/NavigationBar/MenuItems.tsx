@@ -8,15 +8,15 @@ const MenuItems: React.FC = memo(() => {
     <Box sx={{ display: 'flex', flexGrow: 0 }}>
       {links.map(({ text, href }) => {
         return (
-          <Link key={text} href={href} passHref legacyBehavior>
-            <Button
-              component="a"
-              color="secondary"
-              sx={{ textTransform: 'none' }}
-            >
-              {text}
-            </Button>
-          </Link>
+          <Button
+            key={text}
+            component={Link}
+            href={href}
+            color="secondary"
+            sx={{ textTransform: 'none' }}
+          >
+            {text}
+          </Button>
         );
       })}
     </Box>

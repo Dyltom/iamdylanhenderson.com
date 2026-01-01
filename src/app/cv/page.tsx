@@ -31,12 +31,21 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import AnalyticsIcon from '@mui/icons-material/Analytics'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import PrintIcon from '@mui/icons-material/Print'
-import { generateATSFriendlyDOCX, generateATSFilename } from '../../utils/docxGenerator'
+import PersonIcon from '@mui/icons-material/Person'
+import WorkIcon from '@mui/icons-material/Work'
+import SchoolIcon from '@mui/icons-material/School'
+import CodeIcon from '@mui/icons-material/Code'
+import EmailIcon from '@mui/icons-material/Email'
+import PhoneIcon from '@mui/icons-material/Phone'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LanguageIcon from '@mui/icons-material/Language'
+import { generateATSFriendlyDOCX, generateATSFilename } from '../../utils/docxSimpleGenerator'
 import { CV_DATA } from '../../utils/cvTypes'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
 import { analyzeCVAgainstJob, formatCVForAnalysis } from '../../utils/keywordOptimizer'
-import { downloadPDF } from '../../utils/pdfGenerator'
 
 export default function CVPage() {
   const theme = useTheme()
@@ -64,7 +73,11 @@ export default function CVPage() {
     try {
       setPdfLoading(true)
       const filename = generateATSFilename('Dylan Henderson', jobTitle).replace('.docx', '.pdf')
+
+      // Dynamically import PDF generator to avoid SSR issues
+      const { downloadPDF } = await import('../../utils/pdfGenerator')
       await downloadPDF(CV_DATA, filename)
+
       setDownloadMessage(`Downloaded: ${filename}`)
       setTimeout(() => setDownloadMessage(''), 3000)
     } catch (error) {
@@ -118,30 +131,147 @@ export default function CVPage() {
       <Container maxWidth={false} sx={{ ...pageMargin, ...maxContentWidth }}>
         <Box sx={{ py: 4 }}>
         {/* Header */}
-        <Paper sx={{ p: 4, mb: 4, backgroundColor: theme.palette.primary.dark }}>
-          <Typography variant="h3" sx={{ mb: 2, fontWeight: 'bold' }}>
-            {CV_DATA.personalInfo.name}
-          </Typography>
-          <Typography variant="h6" sx={{ mb: 3, color: theme.palette.secondary.main }}>
-            Senior Software Engineer
-          </Typography>
-
-          {/* Contact Info */}
-          <Box sx={{ mb: 3 }}>
-            <Typography variant="body1">
-              {CV_DATA.personalInfo.phone} | {CV_DATA.personalInfo.email} | {CV_DATA.personalInfo.location}
+        <Paper sx={{
+          p: 6,
+          mb: 4,
+          background: `linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)`,
+          position: 'relative',
+          overflow: 'hidden',
+          border: '1px solid #32CD32',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: '-50%',
+            right: '-10%',
+            width: '300px',
+            height: '300px',
+            background: '#32CD32',
+            opacity: 0.1,
+            borderRadius: '50%',
+          }
+        }}>
+          <Box sx={{ position: 'relative', zIndex: 1 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                mb: 2,
+                fontWeight: 'bold',
+                fontSize: { xs: '2.5rem', md: '3.5rem' },
+                background: `linear-gradient(45deg, #ffffff 30%, #32CD32 90%)`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              {CV_DATA.personalInfo.name}
             </Typography>
-            {CV_DATA.personalInfo.portfolio && (
-              <Typography variant="body2" sx={{ mt: 1 }}>
-                Portfolio: <a href={CV_DATA.personalInfo.portfolio} style={{ color: theme.palette.secondary.main }}>
-                  {CV_DATA.personalInfo.portfolio}
-                </a>
-              </Typography>
-            )}
-          </Box>
+            <Typography
+              variant="h5"
+              sx={{
+                mb: 4,
+                color: '#32CD32',
+                fontWeight: 300,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Senior Software Engineer
+            </Typography>
 
-          {/* Download Controls */}
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-end', flexWrap: 'wrap' }}>
+            {/* Contact Info with Icons */}
+            <Grid container spacing={2} sx={{ mb: 3 }}>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <PhoneIcon sx={{ color: '#32CD32', fontSize: 20 }} />
+                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{CV_DATA.personalInfo.phone}</Typography>
+                </Box>
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <EmailIcon sx={{ color: '#32CD32', fontSize: 20 }} />
+                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{CV_DATA.personalInfo.email}</Typography>
+                </Box>
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <LocationOnIcon sx={{ color: '#32CD32', fontSize: 20 }} />
+                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{CV_DATA.personalInfo.location}</Typography>
+                </Box>
+              </Grid>
+            </Grid>
+
+            {/* Social Links */}
+            <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
+              {CV_DATA.personalInfo.portfolio && (
+                <Chip
+                  icon={<LanguageIcon />}
+                  label="Portfolio"
+                  component="a"
+                  href={CV_DATA.personalInfo.portfolio}
+                  target="_blank"
+                  clickable
+                  sx={{
+                    backgroundColor: 'transparent',
+                    border: `1px solid #32CD32`,
+                    color: '#32CD32',
+                    '&:hover': {
+                      backgroundColor: '#32CD32',
+                      color: '#000000',
+                    }
+                  }}
+                />
+              )}
+              {CV_DATA.personalInfo.linkedin && (
+                <Chip
+                  icon={<LinkedInIcon />}
+                  label="LinkedIn"
+                  component="a"
+                  href={CV_DATA.personalInfo.linkedin}
+                  target="_blank"
+                  clickable
+                  sx={{
+                    backgroundColor: 'transparent',
+                    border: `1px solid #32CD32`,
+                    color: '#32CD32',
+                    '&:hover': {
+                      backgroundColor: '#32CD32',
+                      color: '#000000',
+                    }
+                  }}
+                />
+              )}
+              {CV_DATA.personalInfo.github && (
+                <Chip
+                  icon={<GitHubIcon />}
+                  label="GitHub"
+                  component="a"
+                  href={CV_DATA.personalInfo.github}
+                  target="_blank"
+                  clickable
+                  sx={{
+                    backgroundColor: 'transparent',
+                    border: `1px solid #32CD32`,
+                    color: '#32CD32',
+                    '&:hover': {
+                      backgroundColor: '#32CD32',
+                      color: '#000000',
+                    }
+                  }}
+                />
+              )}
+            </Stack>
+          </Box>
+        </Paper>
+
+        {/* Download Controls */}
+        <Paper sx={{
+          p: 3,
+          mb: 4,
+          backgroundColor: '#1a1a1a',
+          border: `1px solid #32CD32`,
+        }}>
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-end', flexWrap: 'wrap', justifyContent: 'space-between' }}>
             <TextField
               label="Job Title (optional)"
               variant="outlined"
@@ -149,33 +279,78 @@ export default function CVPage() {
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               helperText="For filename optimization"
-              sx={{ minWidth: 250 }}
+              sx={{
+                minWidth: 250,
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: '#32CD32',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#32CD32',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#32CD32',
+                  },
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#ffffff',
+                  '&.Mui-focused': {
+                    color: '#32CD32',
+                  },
+                },
+                '& .MuiInputBase-input': {
+                  color: '#ffffff',
+                },
+                '& .MuiFormHelperText-root': {
+                  color: '#aaaaaa',
+                },
+              }}
             />
             <Button
               variant="contained"
-              color="secondary"
               startIcon={<DescriptionIcon />}
               onClick={handleDOCXDownload}
-              sx={{ height: 40 }}
+              sx={{
+                height: 40,
+                backgroundColor: '#32CD32',
+                color: '#000000',
+                '&:hover': {
+                  backgroundColor: '#28a428',
+                },
+              }}
             >
               Download ATS-Optimized DOCX
             </Button>
             <Button
               variant="outlined"
-              color="secondary"
               startIcon={<PictureAsPdfIcon />}
               onClick={handlePDFDownload}
               disabled={pdfLoading}
-              sx={{ height: 40 }}
+              sx={{
+                height: 40,
+                borderColor: '#32CD32',
+                color: '#32CD32',
+                '&:hover': {
+                  borderColor: '#32CD32',
+                  backgroundColor: 'rgba(50, 205, 50, 0.1)',
+                },
+              }}
             >
               {pdfLoading ? 'Generating PDF...' : 'Download PDF'}
             </Button>
             <Button
               variant="outlined"
-              color="secondary"
               startIcon={<PrintIcon />}
               onClick={() => window.print()}
-              sx={{ height: 40 }}
+              sx={{
+                height: 40,
+                borderColor: '#32CD32',
+                color: '#32CD32',
+                '&:hover': {
+                  borderColor: '#32CD32',
+                  backgroundColor: 'rgba(50, 205, 50, 0.1)',
+                },
+              }}
             >
               Print
             </Button>
@@ -188,14 +363,18 @@ export default function CVPage() {
         </Paper>
 
         {/* Keyword Optimizer */}
-        <Paper sx={{ p: 4, mb: 4 }} className="no-print">
+        <Paper sx={{ p: 4, mb: 4, backgroundColor: '#1a1a1a', border: '1px solid #32CD32' }} className="no-print">
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-            <Typography variant="h5" sx={{ flexGrow: 1 }}>
+            <Typography variant="h5" sx={{ flexGrow: 1, color: '#ffffff' }}>
               ATS Keyword Optimizer
             </Typography>
             <IconButton
               onClick={() => setShowOptimizer(!showOptimizer)}
-              sx={{ transform: showOptimizer ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}
+              sx={{
+                transform: showOptimizer ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.3s',
+                color: '#32CD32'
+              }}
             >
               <ExpandMoreIcon />
             </IconButton>
@@ -212,15 +391,43 @@ export default function CVPage() {
                 placeholder="Paste the full job description here to analyze keyword matches..."
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
-                sx={{ mb: 2 }}
+                sx={{
+                  mb: 2,
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: '#32CD32',
+                    },
+                    '&:hover fieldset': {
+                      borderColor: '#32CD32',
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#32CD32',
+                    },
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: '#ffffff',
+                    '&.Mui-focused': {
+                      color: '#32CD32',
+                    },
+                  },
+                  '& .MuiInputBase-input': {
+                    color: '#ffffff',
+                  },
+                }}
               />
               <Button
                 variant="contained"
-                color="secondary"
                 startIcon={<AnalyticsIcon />}
                 onClick={handleKeywordAnalysis}
                 disabled={!jobDescription.trim()}
-                sx={{ mb: 3 }}
+                sx={{
+                  mb: 3,
+                  backgroundColor: '#32CD32',
+                  color: '#000000',
+                  '&:hover': {
+                    backgroundColor: '#28a428',
+                  },
+                }}
               >
                 Analyze Keywords
               </Button>
@@ -252,7 +459,7 @@ export default function CVPage() {
 
                   <Grid container spacing={3}>
                     {/* Present Keywords */}
-                    <Grid item xs={12} md={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <Typography variant="h6" sx={{ mb: 1, color: theme.palette.success.main }}>
                         ✓ Matching Keywords ({keywordAnalysis.presentKeywords.length})
                       </Typography>
@@ -272,7 +479,7 @@ export default function CVPage() {
                     </Grid>
 
                     {/* Missing Keywords */}
-                    <Grid item xs={12} md={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <Typography variant="h6" sx={{ mb: 1, color: theme.palette.warning.main }}>
                         ⚠ Missing Keywords ({keywordAnalysis.missingKeywords.length})
                       </Typography>
@@ -293,7 +500,7 @@ export default function CVPage() {
 
                     {/* Suggestions */}
                     {keywordAnalysis.suggestions.length > 0 && (
-                      <Grid item xs={12}>
+                      <Grid size={12}>
                         <Typography variant="h6" sx={{ mb: 1 }}>
                           💡 Optimization Suggestions
                         </Typography>
@@ -323,57 +530,153 @@ export default function CVPage() {
         </Paper>
 
         {/* Professional Summary */}
-        <Paper sx={{ p: 4, mb: 4, position: 'relative' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-            <Typography variant="h4" sx={{ color: theme.palette.secondary.main }}>
-              Professional Summary
-            </Typography>
+        <Paper sx={{
+          p: 4,
+          mb: 4,
+          backgroundColor: '#1a1a1a',
+          position: 'relative',
+          borderLeft: `4px solid #32CD32`,
+          transition: 'transform 0.2s ease-in-out',
+          '&:hover': {
+            transform: 'translateX(4px)',
+          }
+        }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <PersonIcon sx={{ color: '#32CD32', fontSize: 32 }} />
+              <Typography
+                variant="h4"
+                sx={{
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    height: '3px',
+                    bottom: '-8px',
+                    left: '0',
+                    width: '60px',
+                    background: '#32CD32',
+                  }
+                }}
+              >
+                Professional Summary
+              </Typography>
+            </Box>
             <Tooltip title={copiedSection === 'summary' ? 'Copied!' : 'Copy section'}>
               <IconButton
                 size="small"
                 onClick={() => handleCopySection('summary', CV_DATA.summary)}
+                sx={{ color: '#32CD32' }}
               >
                 <ContentCopyIcon />
               </IconButton>
             </Tooltip>
           </Box>
-          <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
+          <Typography variant="body1" sx={{ lineHeight: 1.8, color: '#cccccc' }}>
             {CV_DATA.summary}
           </Typography>
         </Paper>
 
         {/* Work Experience */}
-        <Paper sx={{ p: 4, mb: 4 }}>
+        <Paper sx={{
+          p: 4,
+          mb: 4,
+          backgroundColor: '#1a1a1a',
+          borderLeft: `4px solid #32CD32`,
+          transition: 'transform 0.2s ease-in-out',
+          '&:hover': {
+            transform: 'translateX(4px)',
+          }
+        }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-            <Typography variant="h4" sx={{ color: theme.palette.secondary.main }}>
-              Work Experience
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <WorkIcon sx={{ color: '#32CD32', fontSize: 32 }} />
+              <Typography
+                variant="h4"
+                sx={{
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    height: '3px',
+                    bottom: '-8px',
+                    left: '0',
+                    width: '60px',
+                    background: '#32CD32',
+                  }
+                }}
+              >
+                Work Experience
+              </Typography>
+            </Box>
             <Tooltip title={copiedSection === 'experience' ? 'Copied!' : 'Copy section'}>
               <IconButton
                 size="small"
                 onClick={() => handleCopySection('experience', formatExperienceText())}
+                sx={{ color: '#32CD32' }}
               >
                 <ContentCopyIcon />
               </IconButton>
             </Tooltip>
           </Box>
           {CV_DATA.experience.map((exp, index) => (
-            <Box key={index} sx={{ mb: index < CV_DATA.experience.length - 1 ? 4 : 0 }}>
+            <Box
+              key={index}
+              sx={{
+                mb: index < CV_DATA.experience.length - 1 ? 4 : 0,
+                pl: 3,
+                position: 'relative',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  left: 0,
+                  top: 8,
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
+                  backgroundColor: theme.palette.secondary.main,
+                },
+                '&::after': index < CV_DATA.experience.length - 1 ? {
+                  content: '""',
+                  position: 'absolute',
+                  left: 3.5,
+                  top: 16,
+                  width: 1,
+                  height: 'calc(100% + 16px)',
+                  backgroundColor: theme.palette.divider,
+                } : {}
+              }}
+            >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 1 }}>
-                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                  {exp.title} | {exp.company}
-                </Typography>
-                <Typography variant="body2" sx={{ color: theme.palette.text.secondary }}>
-                  {exp.startDate} - {exp.endDate}
-                </Typography>
+                <Box>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#ffffff' }}>
+                    {exp.title}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#32CD32' }}>
+                    {exp.company}
+                  </Typography>
+                </Box>
+                <Chip
+                  label={`${exp.startDate} - ${exp.endDate}`}
+                  size="small"
+                  sx={{
+                    backgroundColor: 'rgba(50, 205, 50, 0.2)',
+                    color: '#32CD32',
+                    fontWeight: 300,
+                  }}
+                />
               </Box>
-              <Typography variant="body2" sx={{ mb: 2, color: theme.palette.text.secondary }}>
+              <Typography variant="body2" sx={{ mb: 2, color: '#aaaaaa', fontStyle: 'italic' }}>
                 {exp.location}
               </Typography>
-              <Box component="ul" sx={{ pl: 2, mt: 0 }}>
+              <Box component="ul" sx={{ pl: 2, mt: 0, '& li': { mb: 1 } }}>
                 {exp.responsibilities.map((resp, idx) => (
                   <li key={idx}>
-                    <Typography variant="body1" sx={{ mb: 0.5 }}>
+                    <Typography variant="body2" sx={{ lineHeight: 1.6, color: '#cccccc' }}>
                       {resp}
                     </Typography>
                   </li>
@@ -384,16 +687,44 @@ export default function CVPage() {
         </Paper>
 
         {/* Education */}
-        <Paper sx={{ p: 4, mb: 4 }}>
-          <Typography variant="h4" sx={{ color: theme.palette.secondary.main, mb: 3 }}>
-            Education
-          </Typography>
+        <Paper sx={{
+          p: 4,
+          mb: 4,
+          backgroundColor: '#1a1a1a',
+          borderLeft: `4px solid #32CD32`,
+          transition: 'transform 0.2s ease-in-out',
+          '&:hover': {
+            transform: 'translateX(4px)',
+          }
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+            <SchoolIcon sx={{ color: '#32CD32', fontSize: 32 }} />
+            <Typography
+              variant="h4"
+              sx={{
+                color: '#ffffff',
+                fontWeight: 600,
+                position: 'relative',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  height: '3px',
+                  bottom: '-8px',
+                  left: '0',
+                  width: '60px',
+                  background: '#32CD32',
+                }
+              }}
+            >
+              Education
+            </Typography>
+          </Box>
           {CV_DATA.education.map((edu, index) => (
             <Box key={index}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#ffffff' }}>
                 {edu.institution}
               </Typography>
-              <Typography variant="body1">
+              <Typography variant="body1" sx={{ color: '#cccccc' }}>
                 {edu.degree} | Completed: {edu.completionDate}
               </Typography>
             </Box>
@@ -401,15 +732,43 @@ export default function CVPage() {
         </Paper>
 
         {/* Technical Skills */}
-        <Paper sx={{ p: 4 }}>
+        <Paper sx={{
+          p: 4,
+          backgroundColor: '#1a1a1a',
+          borderLeft: `4px solid #32CD32`,
+          transition: 'transform 0.2s ease-in-out',
+          '&:hover': {
+            transform: 'translateX(4px)',
+          }
+        }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-            <Typography variant="h4" sx={{ color: theme.palette.secondary.main }}>
-              Technical Skills
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <CodeIcon sx={{ color: '#32CD32', fontSize: 32 }} />
+              <Typography
+                variant="h4"
+                sx={{
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    height: '3px',
+                    bottom: '-8px',
+                    left: '0',
+                    width: '60px',
+                    background: '#32CD32',
+                  }
+                }}
+              >
+                Technical Skills
+              </Typography>
+            </Box>
             <Tooltip title={copiedSection === 'skills' ? 'Copied!' : 'Copy section'}>
               <IconButton
                 size="small"
                 onClick={() => handleCopySection('skills', CV_DATA.skills.join(', '))}
+                sx={{ color: '#32CD32' }}
               >
                 <ContentCopyIcon />
               </IconButton>
@@ -422,9 +781,11 @@ export default function CVPage() {
                 label={skill}
                 sx={{
                   mb: 1,
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: 'transparent',
+                  border: '1px solid #32CD32',
+                  color: '#32CD32',
                   '&:hover': {
-                    backgroundColor: theme.palette.secondary.dark,
+                    backgroundColor: 'rgba(50, 205, 50, 0.2)',
                   },
                 }}
               />
@@ -433,7 +794,14 @@ export default function CVPage() {
         </Paper>
 
         {/* ATS Tips */}
-        <Alert severity="info" sx={{ mt: 4 }}>
+        <Alert severity="info" sx={{
+          mt: 4,
+          backgroundColor: '#1a1a1a',
+          border: '1px solid #32CD32',
+          '& .MuiAlert-icon': {
+            color: '#32CD32',
+          },
+        }}>
           <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>
             ATS Optimization Tips:
           </Typography>

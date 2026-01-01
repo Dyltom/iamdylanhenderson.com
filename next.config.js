@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   modularizeImports: {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',
@@ -21,23 +20,9 @@ const nextConfig = {
     ],
   },
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled for now as it's causing issues
   },
-  webpack: (config, { isServer }) => {
-    // Fix for @react-pdf/renderer
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-        stream: false,
-        util: false,
-        canvas: false,
-      };
-    }
-
-    return config;
-  },
+  turbopack: {},
 };
 
 module.exports = nextConfig;

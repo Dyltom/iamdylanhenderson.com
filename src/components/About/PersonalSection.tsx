@@ -4,7 +4,8 @@ import PrintIcon from '@mui/icons-material/Print';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import SportsRugbyIcon from '@mui/icons-material/SportsRugby';
 import WorkIcon from '@mui/icons-material/Work';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { underLineHeaders } from '../../utils/styles';
 
 type PersonalSectionProps = {

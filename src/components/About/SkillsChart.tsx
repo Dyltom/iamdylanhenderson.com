@@ -1,5 +1,6 @@
 // components/SkillsDisplay.tsx
-import { Box, LinearProgress, Typography, useTheme } from '@mui/material';
+import { Box, LinearProgress, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { getSkills } from '../../fetchers/skill';

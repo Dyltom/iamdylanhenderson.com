@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Grid, SelectChangeEvent, useTheme } from '@mui/material';
+import { Box, Grid, SelectChangeEvent } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import BlogPostCard from '../../components/Blog/BlogPostCard';
 import DateFilterSelect from '../../components/Blog/DateFilterSelect';
@@ -82,7 +83,7 @@ export default function BlogPage() {
       <Grid container spacing={2} sx={{ minHeight: '200px' }}>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
-            <Grid item key={index} xs={12} md={6}>
+            <Grid key={index} size={{ xs: 12, md: 6 }}>
               <BlogPostCard post={post} />
             </Grid>
           ))

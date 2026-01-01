@@ -1,7 +1,8 @@
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Box, Link, Paper, Typography, useTheme } from '@mui/material';
+import { Box, Link, Paper, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { commonDateFormatter } from '../../../utils/date';
 import { formatReadTime } from '../../../utils/dateAndTime';
 import { Article } from '../../../utils/types';

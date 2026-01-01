@@ -127,9 +127,7 @@ const ContactForm: React.FC = () => {
     <Grid container spacing={2}>
       {/* Contact details, replace with your own content */}
       <Grid
-        item
-        xs={12}
-        md={4}
+        size={{ xs: 12, md: 4 }}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -183,7 +181,7 @@ const ContactForm: React.FC = () => {
         </Box>
       </Grid>
       {/* Form section */}
-      <Grid item xs={12} md={8}>
+      <Grid size={{ xs: 12, md: 8 }}>
         <form onSubmit={handleSubmit}>
           <Fields formState={formState} setFormState={setFormState} />
           {renderRecaptcha && (

@@ -56,3 +56,14 @@ export const underLineHeaders = (theme: Theme) => {
     },
   };
 };
+
+export const pageMargin = {
+  margin: '0 auto',
+  marginTop: 16,
+  paddingLeft: 2,
+  paddingRight: 2,
+};
+
+export const maxContentWidth = {
+  maxWidth: { xs: '90vw', md: '70vw' },
+};

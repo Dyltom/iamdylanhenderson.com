@@ -1,5 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, InputAdornment, TextField, useTheme } from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { textFieldSx } from '../../utils/styles';
 
 interface SearchBarProps {

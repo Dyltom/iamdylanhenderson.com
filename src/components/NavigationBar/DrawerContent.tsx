@@ -38,23 +38,15 @@ const DrawerContent: React.FC<DrawerContentProps> = memo(({ toggleDrawer }) => {
             <Fragment key={text}>
               <ListItem disablePadding>
                 <ListItemButton
+                  component={Link}
+                  href={href}
                   sx={{
                     justifyContent: 'flex-start',
                     textTransform: 'none',
+                    color: 'secondary.main',
                   }}
                 >
-                  <Link href={href} passHref legacyBehavior>
-                    <Button
-                      component="a"
-                      color="secondary"
-                      sx={{
-                        textTransform: 'none',
-                        width: '100%',
-                      }}
-                    >
-                      {text}
-                    </Button>
-                  </Link>
+                  {text}
                 </ListItemButton>
               </ListItem>
               {index < array.length - 1 && (
