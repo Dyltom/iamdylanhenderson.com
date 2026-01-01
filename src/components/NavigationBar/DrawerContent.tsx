@@ -8,8 +8,8 @@ import {
   ListItem,
   ListItemButton,
 } from '@mui/material';
-import { useRouter } from 'next/navigation';
-import { Fragment } from 'react';
+import Link from 'next/link';
+import { Fragment, memo } from 'react';
 import { links } from '../../utils/consts';
 import theme from '../ThemeRegistry/theme';
 
@@ -19,8 +19,7 @@ interface DrawerContentProps {
   ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
 }
 
-const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
-  const router = useRouter();
+const DrawerContent: React.FC<DrawerContentProps> = memo(({ toggleDrawer }) => {
 
   return (
     <Box
@@ -44,16 +43,18 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
                     textTransform: 'none',
                   }}
                 >
-                  <Button
-                    color="secondary"
-                    onClick={() => router.push(href)}
-                    sx={{
-                      textTransform: 'none',
-                      width: '100%',
-                    }}
-                  >
-                    {text}
-                  </Button>
+                  <Link href={href} passHref legacyBehavior>
+                    <Button
+                      component="a"
+                      color="secondary"
+                      sx={{
+                        textTransform: 'none',
+                        width: '100%',
+                      }}
+                    >
+                      {text}
+                    </Button>
+                  </Link>
                 </ListItemButton>
               </ListItem>
               {index < array.length - 1 && (
@@ -65,6 +66,8 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
       </List>
     </Box>
   );
-};
+});
+
+DrawerContent.displayName = 'DrawerContent';
 
 export default DrawerContent;

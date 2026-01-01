@@ -6,6 +6,9 @@ const nextConfig = {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',
     },
+    '@mui/material': {
+      transform: '@mui/material/{{member}}',
+    },
   },
   images: {
     remotePatterns: [
@@ -16,6 +19,24 @@ const nextConfig = {
         pathname: '/random',
       },
     ],
+  },
+  experimental: {
+    optimizeCss: true,
+  },
+  webpack: (config, { isServer }) => {
+    // Fix for @react-pdf/renderer
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        stream: false,
+        util: false,
+        canvas: false,
+      };
+    }
+
+    return config;
   },
 };
 

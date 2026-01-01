@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/NavigationBar';
-import ParticleBackground from '../components/Particles';
+import LazyParticles from '../components/Particles/LazyParticles';
 import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
 
 export const metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
               flexDirection: 'column',
             }}
           >
-            <ParticleBackground />
+            <LazyParticles />
             <NavigationBar />
             <Box
               component="main"

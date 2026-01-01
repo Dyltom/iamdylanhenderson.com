@@ -1,26 +1,28 @@
 import { Box, Button } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { memo } from 'react';
 import { links } from '../../utils/consts';
 
-const MenuItems: React.FC = () => {
-  const router = useRouter();
-
+const MenuItems: React.FC = memo(() => {
   return (
     <Box sx={{ display: 'flex', flexGrow: 0 }}>
       {links.map(({ text, href }) => {
         return (
-          <Button
-            key={text}
-            color="secondary"
-            onClick={() => router.push(href)}
-            sx={{ textTransform: 'none' }}
-          >
-            {text}
-          </Button>
+          <Link key={text} href={href} passHref legacyBehavior>
+            <Button
+              component="a"
+              color="secondary"
+              sx={{ textTransform: 'none' }}
+            >
+              {text}
+            </Button>
+          </Link>
         );
       })}
     </Box>
   );
-};
+});
+
+MenuItems.displayName = 'MenuItems';
 
 export default MenuItems;
