@@ -36,6 +36,7 @@ import { CV_DATA } from '../../utils/cvTypes'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
 import { analyzeCVAgainstJob, formatCVForAnalysis } from '../../utils/keywordOptimizer'
+import { downloadPDF } from '../../utils/pdfGenerator'
 
 export default function CVPage() {
   const theme = useTheme()
@@ -45,6 +46,7 @@ export default function CVPage() {
   const [jobDescription, setJobDescription] = useState('')
   const [keywordAnalysis, setKeywordAnalysis] = useState<any>(null)
   const [showOptimizer, setShowOptimizer] = useState(false)
+  const [pdfLoading, setPdfLoading] = useState(false)
 
   const handleDOCXDownload = async () => {
     try {
@@ -55,6 +57,21 @@ export default function CVPage() {
     } catch (error) {
       console.error('Error generating DOCX:', error)
       setDownloadMessage('Error generating document. Please try again.')
+    }
+  }
+
+  const handlePDFDownload = async () => {
+    try {
+      setPdfLoading(true)
+      const filename = generateATSFilename('Dylan Henderson', jobTitle).replace('.docx', '.pdf')
+      await downloadPDF(CV_DATA, filename)
+      setDownloadMessage(`Downloaded: ${filename}`)
+      setTimeout(() => setDownloadMessage(''), 3000)
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+      setDownloadMessage('Error generating PDF. Please try again.')
+    } finally {
+      setPdfLoading(false)
     }
   }
 
@@ -147,10 +164,11 @@ export default function CVPage() {
               variant="outlined"
               color="secondary"
               startIcon={<PictureAsPdfIcon />}
-              disabled
+              onClick={handlePDFDownload}
+              disabled={pdfLoading}
               sx={{ height: 40 }}
             >
-              PDF (Coming Soon)
+              {pdfLoading ? 'Generating PDF...' : 'Download PDF'}
             </Button>
             <Button
               variant="outlined"
