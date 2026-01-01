@@ -2,17 +2,19 @@
 
 import { memo, useCallback, useMemo } from 'react';
 import Particles from 'react-tsparticles';
-import { loadSlim } from 'tsparticles-slim'; // Use slim version for better performance
+import { loadFull } from 'tsparticles';
 import { Engine, ISourceOptions } from 'tsparticles-engine';
 
 const ParticleBackground: React.FC = memo(() => {
   const particlesInit = useCallback(async (engine: Engine) => {
-    // Use loadSlim instead of loadFull for better performance
-    await loadSlim(engine);
+    await loadFull(engine);
   }, []);
 
   const options: ISourceOptions = useMemo(() => ({
-    fullScreen: true,
+    fullScreen: {
+      enable: true,
+      zIndex: -1, // Put particles behind everything
+    },
     fpsLimit: 30, // Reduced from 60 for better performance
     particles: {
       number: {
@@ -64,7 +66,21 @@ const ParticleBackground: React.FC = memo(() => {
     pauseOnOutsideViewport: true, // Pause when not visible
   }), []);
 
-  return <Particles id="tsparticles" init={particlesInit} options={options} />;
+  return (
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      options={options}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+      }}
+    />
+  );
 });
 
 ParticleBackground.displayName = 'ParticleBackground';
