@@ -22,10 +22,17 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
       children: [
         // Header with name
         new Paragraph({
-          text: cvData.personalInfo.name,
           heading: HeadingLevel.HEADING_1,
           alignment: AlignmentType.CENTER,
           spacing: { after: 120 },
+          children: [
+            new TextRun({
+              text: cvData.personalInfo.name,
+              size: 32,
+              bold: true,
+              color: "000000", // Black color
+            }),
+          ],
         }),
 
         // Title
@@ -73,7 +80,6 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
 
         // Professional Summary section
         new Paragraph({
-          text: "PROFESSIONAL SUMMARY",
           heading: HeadingLevel.HEADING_2,
           spacing: { before: 240, after: 120 },
           border: {
@@ -84,6 +90,14 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
               size: 6,
             },
           },
+          children: [
+            new TextRun({
+              text: "PROFESSIONAL SUMMARY",
+              size: 24,
+              bold: true,
+              color: "000000", // Black color
+            }),
+          ],
         }),
 
         new Paragraph({
@@ -94,7 +108,6 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
 
         // Work Experience section
         new Paragraph({
-          text: "WORK EXPERIENCE",
           heading: HeadingLevel.HEADING_2,
           spacing: { before: 240, after: 120 },
           border: {
@@ -105,6 +118,14 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
               size: 6,
             },
           },
+          children: [
+            new TextRun({
+              text: "WORK EXPERIENCE",
+              size: 24,
+              bold: true,
+              color: "000000", // Black color
+            }),
+          ],
         }),
 
         // Add experience entries
@@ -165,7 +186,6 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
 
         // Education section
         new Paragraph({
-          text: "EDUCATION",
           heading: HeadingLevel.HEADING_2,
           spacing: { before: 240, after: 120 },
           border: {
@@ -176,6 +196,14 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
               size: 6,
             },
           },
+          children: [
+            new TextRun({
+              text: "EDUCATION",
+              size: 24,
+              bold: true,
+              color: "000000", // Black color
+            }),
+          ],
         }),
 
         ...cvData.education.flatMap(edu => [
@@ -202,7 +230,6 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
 
         // Technical Skills section
         new Paragraph({
-          text: "TECHNICAL SKILLS",
           heading: HeadingLevel.HEADING_2,
           spacing: { before: 240, after: 120 },
           border: {
@@ -213,6 +240,14 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
               size: 6,
             },
           },
+          children: [
+            new TextRun({
+              text: "TECHNICAL SKILLS",
+              size: 24,
+              bold: true,
+              color: "000000", // Black color
+            }),
+          ],
         }),
 
         // Skills by category
@@ -277,10 +312,12 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
     // Create document
     const doc = new Document({
       sections,
-      creator: "Dylan Henderson CV Generator",
-      description: "Professional Resume",
-      title: `${cvData.personalInfo.name} - Resume`,
-    } as IDocumentOptions)
+      properties: {
+        creator: "Dylan Henderson CV Generator",
+        description: "Professional Resume",
+        title: `${cvData.personalInfo.name} - Resume`,
+      }
+    })
 
     // Generate and save
     const buffer = await Packer.toBuffer(doc)

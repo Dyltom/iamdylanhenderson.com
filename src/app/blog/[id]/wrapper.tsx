@@ -15,13 +15,15 @@ export async function generateMetadata({
     }
 
     // Extract the first 160 characters as excerpt if no excerpt field
-    const excerpt = article.attributes.excerpt ||
-      article.attributes.content.substring(0, 160).replace(/\n/g, ' ').trim() + '...'
+    const excerpt = article.shortDescription ||
+      (article.content && article.content[0]?.children[0]?.text?.substring(0, 160).replace(/\n/g, ' ').trim() + '...') ||
+      'Read more...'
 
     return pageMetadata.blogPost({
-      title: article.attributes.title,
+      title: article.title,
       excerpt,
-      image: article.attributes.featuredImage?.data?.attributes?.url
+      // TODO: Add image support when available
+      image: undefined
     })
   } catch (error) {
     console.error('Error generating metadata for blog post:', error)

@@ -1,19 +1,19 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '../config/metadata'
-import { getArticles } from '../fetchers/articles'
+import { siteConfig } from '@/config/metadata'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url
 
-  // Get all blog posts
-  const articles = await getArticles()
+  // TODO: Get all blog posts from Strapi when available
+  // const articles = await getArticles()
 
-  const blogPosts = articles?.map((article) => ({
-    url: `${baseUrl}/blog/${article.attributes.slug}`,
-    lastModified: new Date(article.attributes.updatedAt || article.attributes.publishedAt),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  })) || []
+  const blogPosts: MetadataRoute.Sitemap = []
+  // const blogPosts = articles?.map((article) => ({
+  //   url: `${baseUrl}/blog/${article.attributes.slug}`,
+  //   lastModified: new Date(article.attributes.updatedAt || article.attributes.publishedAt),
+  //   changeFrequency: 'monthly' as const,
+  //   priority: 0.7,
+  // })) || []
 
   // Static routes
   const routes = [

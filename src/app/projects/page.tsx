@@ -5,7 +5,6 @@ import {
   Box,
   Container,
   Typography,
-  Grid2 as Grid,
   ToggleButton,
   ToggleButtonGroup,
   Fade,
@@ -14,8 +13,8 @@ import { useTheme } from '@mui/material/styles'
 import ViewModuleIcon from '@mui/icons-material/ViewModule'
 import AppsIcon from '@mui/icons-material/Apps'
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive'
-import ProjectCard, { Project } from '../../components/Projects/ProjectCard'
-import { underLineHeaders } from '../../utils/styles'
+import ProjectCard, { Project } from '@/components/Projects/ProjectCard'
+import { underLineHeaders } from '@/utils/styles'
 
 // Mock data - Replace with actual data from Strapi
 const mockProjects: Project[] = [
@@ -135,7 +134,17 @@ export default function ProjectsPage() {
         </ToggleButtonGroup>
       </Box>
 
-      <Grid container spacing={4}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(1, 1fr)',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(3, 1fr)'
+          },
+          gap: 4
+        }}
+      >
         {filteredProjects.map((project, index) => (
           <Fade
             key={project.id}
@@ -143,12 +152,12 @@ export default function ProjectsPage() {
             timeout={300}
             style={{ transitionDelay: `${index * 100}ms` }}
           >
-            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+            <Box>
               <ProjectCard project={project} />
-            </Grid>
+            </Box>
           </Fade>
         ))}
-      </Grid>
+      </Box>
 
       {filteredProjects.length === 0 && (
         <Box
