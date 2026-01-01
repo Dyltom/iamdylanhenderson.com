@@ -36,7 +36,7 @@ export const CV_DATA: CVData = {
     phone: "0426007021",
     email: "dylanthenderson@yahoo.com.au",
     location: "Melbourne, VIC",
-    linkedin: "https://linkedin.com/in/dylanhenderson",
+    linkedin: "https://www.linkedin.com/in/dylan-henderson-07",
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },

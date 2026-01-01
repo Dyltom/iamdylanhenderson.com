@@ -41,7 +41,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LanguageIcon from '@mui/icons-material/Language'
-import { generateATSFriendlyDOCX, generateATSFilename } from '../../utils/docxSimpleGenerator'
+import { generateATSFriendlyDOCX as generateModernDOCX } from '../../utils/docxGenerator'
 import { CV_DATA } from '../../utils/cvTypes'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
@@ -59,8 +59,11 @@ export default function CVPage() {
 
   const handleDOCXDownload = async () => {
     try {
-      const filename = generateATSFilename('Dylan Henderson', jobTitle)
-      await generateATSFriendlyDOCX(CV_DATA, filename)
+      const now = new Date()
+      const dateStr = now.toISOString().split('T')[0] // YYYY-MM-DD
+      const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-') // HH-MM-SS
+      const filename = `Dylan_Henderson_Resume_${dateStr}_${timeStr}.docx`
+      await generateModernDOCX(CV_DATA, filename)
       setDownloadMessage(`Downloaded: ${filename}`)
       setTimeout(() => setDownloadMessage(''), 3000)
     } catch (error) {
@@ -72,10 +75,13 @@ export default function CVPage() {
   const handlePDFDownload = async () => {
     try {
       setPdfLoading(true)
-      const filename = generateATSFilename('Dylan Henderson', jobTitle).replace('.docx', '.pdf')
+      const now = new Date()
+      const dateStr = now.toISOString().split('T')[0] // YYYY-MM-DD
+      const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-') // HH-MM-SS
+      const filename = `Dylan_Henderson_Resume_${dateStr}_${timeStr}.pdf`
 
       // Dynamically import PDF generator to avoid SSR issues
-      const { downloadPDF } = await import('../../utils/pdfGenerator')
+      const { downloadPDF } = await import('../../utils/pdfGeneratorClean')
       await downloadPDF(CV_DATA, filename)
 
       setDownloadMessage(`Downloaded: ${filename}`)
