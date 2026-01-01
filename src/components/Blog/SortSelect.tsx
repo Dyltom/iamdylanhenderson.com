@@ -4,8 +4,8 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
-  useTheme,
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { selectFieldSx } from '../../utils/styles';
 
 interface SortSelectProps {
