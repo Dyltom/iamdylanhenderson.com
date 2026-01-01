@@ -6,8 +6,8 @@ import {
   Tabs,
   Typography,
   useMediaQuery,
-  useTheme,
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
 import { getWorkExperience } from '../../fetchers/workExperience';
 import { commonDateFormatter } from '../../utils/date';
