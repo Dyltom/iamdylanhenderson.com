@@ -6,7 +6,7 @@ const rateLimiter = new RateLimiterMemory({
   duration: 86400, // Per 24 hours by IP
 });
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   try {
     const ip = req.headers.get('x-forwarded-for') || '';
     await rateLimiter.consume(ip);

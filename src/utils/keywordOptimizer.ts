@@ -71,7 +71,7 @@ export const extractKeywords = (text: string): string[] => {
   })
 
   // Remove duplicates and clean up
-  return [...new Set(keywords)]
+  return Array.from(new Set(keywords))
     .filter(k => k.length > 1)
     .map(k => k.trim())
 }
@@ -123,8 +123,8 @@ export const analyzeCVAgainstJob = (cvText: string, jobDescription: string): Key
   const suggestions = generateSuggestions(missingKeywords, cvText)
 
   return {
-    presentKeywords: [...new Set(presentKeywords)],
-    missingKeywords: [...new Set(missingKeywords)],
+    presentKeywords: Array.from(new Set(presentKeywords)),
+    missingKeywords: Array.from(new Set(missingKeywords)),
     suggestions,
     score
   }
@@ -169,7 +169,7 @@ const generateSuggestions = (missingKeywords: string[], cvText: string): string[
     suggestions.push('Include quantifiable results and achievements in your experience')
   }
 
-  return [...new Set(suggestions)]
+  return Array.from(new Set(suggestions))
 }
 
 // Check if a keyword is technical

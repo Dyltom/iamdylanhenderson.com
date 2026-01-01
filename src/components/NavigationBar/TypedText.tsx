@@ -4,7 +4,7 @@ import { memo, useEffect, useRef, useState } from 'react';
 import Typed from 'typed.js';
 
 const TypedText: React.FC = memo(() => {
-  const el = useRef(null);
+  const el = useRef<HTMLSpanElement>(null);
   const pathname = usePathname();
   const [typed, setTyped] = useState<Typed | null>(null);
   const [isFirstRender, setIsFirstRender] = useState(true);
