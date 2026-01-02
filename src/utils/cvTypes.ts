@@ -129,7 +129,7 @@ export const CV_DATA: CVData = {
     {
       institution: "Monash University",
       degree: "Information Technology (Computers, Networks and Security)",
-      completionDate: "12/2020"
+      completionDate: "02/2020"
     }
   ],
   skills: [
