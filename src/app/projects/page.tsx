@@ -13,8 +13,8 @@ import { useTheme } from '@mui/material/styles'
 import ViewModuleIcon from '@mui/icons-material/ViewModule'
 import AppsIcon from '@mui/icons-material/Apps'
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive'
-import ProjectCard, { Project } from '@/components/Projects/ProjectCard'
-import { underLineHeaders } from '@/utils/styles'
+import ProjectCard, { Project } from '../../components/Projects/ProjectCard'
+import { underLineHeaders } from '../../utils/styles'
 
 // Mock data - Replace with actual data from Strapi
 const mockProjects: Project[] = [

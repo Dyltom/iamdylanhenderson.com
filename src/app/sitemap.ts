@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/config/metadata'
+import { siteConfig } from '../config/metadata'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url
