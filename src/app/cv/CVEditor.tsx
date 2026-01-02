@@ -54,7 +54,7 @@ interface AISuggestions {
     reason: string
   }>
   additionalRecommendations: string[]
-  optimizedSummary: string
+  optimisedSummary: string
 }
 
 export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
@@ -90,10 +90,25 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to optimize CV')
+        throw new Error(data.error || 'Failed to optimise CV')
       }
 
-      setSuggestions(data.suggestions)
+      // Filter suggestions to ensure no fake skills
+      const filteredSuggestions = {
+        ...data.suggestions,
+        keywordSuggestions: data.suggestions.keywordSuggestions.filter((keyword: string) =>
+          editingCV.skills.some(skill => skill.toLowerCase().includes(keyword.toLowerCase())) ||
+          editingCV.summary.toLowerCase().includes(keyword.toLowerCase()) ||
+          editingCV.experience.some(exp =>
+            exp.responsibilities.some(resp => resp.toLowerCase().includes(keyword.toLowerCase()))
+          )
+        ),
+        skillsToHighlight: data.suggestions.skillsToHighlight.filter((skill: string) =>
+          editingCV.skills.some(existingSkill => existingSkill.toLowerCase() === skill.toLowerCase())
+        )
+      }
+
+      setSuggestions(filteredSuggestions)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
@@ -144,7 +159,7 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
     <Box>
       <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
         <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Psychology /> AI-Powered CV Optimization
+          <Psychology /> AI-Powered CV Optimisation
         </Typography>
 
         <TextField
@@ -170,7 +185,7 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
               color: 'white',
             }}
           >
-            {loading ? 'Analyzing...' : 'Optimize CV with AI'}
+            {loading ? 'Analysing...' : 'Optimise CV with AI'}
           </Button>
 
           <FormControlLabel
@@ -216,7 +231,7 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
       {suggestions && (
         <Paper elevation={2} sx={{ p: 3 }}>
           <Typography variant="h6" gutterBottom>
-            AI Optimization Suggestions
+            AI Optimisation Suggestions
           </Typography>
 
           <Alert severity="info" sx={{ mb: 2 }}>
@@ -224,7 +239,7 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
           </Alert>
 
           <Stack spacing={2}>
-            {/* Optimized Summary */}
+            {/* Optimised Summary */}
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMore />}>
                 <Typography>Professional Summary Update</Typography>
@@ -242,7 +257,7 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                     Suggested:
                   </Typography>
                   <Typography variant="body2" paragraph>
-                    {suggestions.optimizedSummary}
+                    {suggestions.optimisedSummary}
                   </Typography>
 
                   <Button
@@ -250,8 +265,8 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                     variant="contained"
                     color="success"
                     startIcon={<CheckCircle />}
-                    onClick={() => applySuggestion('summary', suggestions.optimizedSummary)}
-                    disabled={appliedSuggestions.has(`summary-${JSON.stringify(suggestions.optimizedSummary)}`)}
+                    onClick={() => applySuggestion('summary', suggestions.optimisedSummary)}
+                    disabled={appliedSuggestions.has(`summary-${JSON.stringify(suggestions.optimisedSummary)}`)}
                   >
                     Apply
                   </Button>

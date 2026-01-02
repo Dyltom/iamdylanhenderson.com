@@ -7,6 +7,11 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
+// Model configuration - ready for GPT-5 when available
+// TODO: Update to "gpt-5" when OpenAI releases it
+// For now using the most advanced available model
+const AI_MODEL = "gpt-4-turbo-preview"
+
 export async function POST(request: NextRequest) {
   try {
     const { jobDescription, currentCV }: { jobDescription: string; currentCV: CVData } = await request.json()
@@ -18,33 +23,46 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Use GPT-4 for better analysis
+    // Extract existing skills for validation
+    const existingSkills = new Set(currentCV.skills.map(s => s.toLowerCase()))
+
     const completion = await openai.chat.completions.create({
-      model: "gpt-4-turbo-preview", // or "gpt-4" if you prefer
+      model: AI_MODEL,
       messages: [
         {
           role: "system",
-          content: `You are an expert resume consultant. Analyze the job description and the current CV, then provide specific suggestions to optimize the CV for this role. Focus on:
-1. Keywords that should be added to match the job description
-2. Skills that should be emphasized or reordered
-3. Experience bullets that could be rewritten to highlight relevant achievements
-4. Any missing skills or certifications mentioned in the job description
+          content: `You are an expert resume consultant. Analyse the job description and the current CV, then provide specific suggestions to optimise the CV for this role.
+
+CRITICAL RULES:
+1. NEVER suggest skills that don't already exist in the CV. You can only reorder or emphasise existing skills.
+2. NEVER make up experiences or responsibilities. Only suggest rewording existing content.
+3. Keywords must be derived from the candidate's actual experience and skills.
+4. Focus on alignment and presentation, not invention.
+5. ALWAYS use Australian English spelling and terminology (e.g., "optimise" not "optimize", "analyse" not "analyze", "organisation" not "organization", "realise" not "realize", "centre" not "center", "colour" not "color", "programme" for computer programs, "specialise" not "specialize").
+
+Current skills in CV: ${currentCV.skills.join(', ')}
+
+Provide suggestions for:
+1. Which existing keywords from the CV align with the job description
+2. How to reorder existing skills for better alignment
+3. How to rewrite existing experience bullets to emphasise relevant achievements (using only factual information)
+4. How to adjust the professional summary using only existing qualifications
 
 Return your response as a JSON object with this structure:
 {
-  "summary": "Brief overview of main recommendations",
-  "keywordSuggestions": ["keyword1", "keyword2", ...],
-  "skillsToHighlight": ["skill1", "skill2", ...],
+  "summary": "Brief overview of alignment recommendations",
+  "keywordSuggestions": ["only keywords already in CV that match job description"],
+  "skillsToHighlight": ["only skills from existing CV skills list"],
   "experienceUpdates": [
     {
       "company": "company name",
-      "originalBullet": "original text",
-      "suggestedBullet": "improved text",
-      "reason": "why this change helps"
+      "originalBullet": "exact original text",
+      "suggestedBullet": "reworded version emphasising relevant aspects",
+      "reason": "why this rewording helps alignment"
     }
   ],
-  "additionalRecommendations": ["recommendation1", "recommendation2", ...],
-  "optimizedSummary": "A rewritten professional summary tailored for this role"
+  "additionalRecommendations": ["recommendations for presentation/formatting only"],
+  "optimisedSummary": "Rewritten summary using only existing qualifications and experiences"
 }`
         },
         {
@@ -60,9 +78,9 @@ Return your response as a JSON object with this structure:
 
     return NextResponse.json({ suggestions })
   } catch (error) {
-    console.error('Error optimizing CV:', error)
+    console.error('Error optimising CV:', error)
     return NextResponse.json(
-      { error: 'Failed to optimize CV. Please try again.' },
+      { error: 'Failed to optimise CV. Please try again.' },
       { status: 500 }
     )
   }
