@@ -1,4 +1,4 @@
-import { Document, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle, IDocumentOptions } from 'docx'
+import { Document, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } from 'docx'
 import { saveAs } from 'file-saver'
 import { CVData } from './cvTypes'
 
@@ -312,16 +312,16 @@ export const generateDOCX = async (cvData: CVData, fileName: string = 'Dylan_Hen
     // Create document
     const doc = new Document({
       sections,
-      properties: {
-        creator: "Dylan Henderson CV Generator",
-        description: "Professional Resume",
-        title: `${cvData.personalInfo.name} - Resume`,
-      }
+      creator: "Dylan Henderson CV Generator",
+      description: "Professional Resume",
+      title: `${cvData.personalInfo.name} - Resume`,
     })
 
     // Generate and save
     const buffer = await Packer.toBuffer(doc)
-    const blob = new Blob([buffer], {
+    // Convert Buffer to ArrayBuffer for Blob compatibility
+    const arrayBuffer = new Uint8Array(buffer)
+    const blob = new Blob([arrayBuffer], {
       type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     })
     saveAs(blob, fileName)
