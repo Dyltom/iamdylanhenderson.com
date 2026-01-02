@@ -42,13 +42,16 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LanguageIcon from '@mui/icons-material/Language'
 import { generateATSFriendlyDOCX as generateModernDOCX } from '../../utils/docxGenerator'
-import { CV_DATA } from '../../utils/cvTypes'
+import { CV_DATA as INITIAL_CV_DATA, CVData } from '../../utils/cvTypes'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
 import { analyzeCVAgainstJob, formatCVForAnalysis } from '../../utils/keywordOptimizer'
+import CVEditor from './CVEditor'
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh'
 
 export default function CVPage() {
   const theme = useTheme()
+  const [cvData, setCvData] = useState<CVData>(INITIAL_CV_DATA)
   const [jobTitle, setJobTitle] = useState('')
   const [downloadMessage, setDownloadMessage] = useState('')
   const [copiedSection, setCopiedSection] = useState<string | null>(null)
@@ -56,6 +59,7 @@ export default function CVPage() {
   const [keywordAnalysis, setKeywordAnalysis] = useState<any>(null)
   const [showOptimizer, setShowOptimizer] = useState(false)
   const [pdfLoading, setPdfLoading] = useState(false)
+  const [showAIEditor, setShowAIEditor] = useState(false)
 
   const handleDOCXDownload = async () => {
     try {
@@ -63,7 +67,7 @@ export default function CVPage() {
       const dateStr = now.toISOString().split('T')[0] // YYYY-MM-DD
       const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-') // HH-MM-SS
       const filename = `Dylan_Henderson_Resume_${dateStr}_${timeStr}.docx`
-      await generateModernDOCX(CV_DATA, filename)
+      await generateModernDOCX(cvData, filename)
       setDownloadMessage(`Downloaded: ${filename}`)
       setTimeout(() => setDownloadMessage(''), 3000)
     } catch (error) {
@@ -82,7 +86,7 @@ export default function CVPage() {
 
       // Dynamically import PDF generator to avoid SSR issues
       const { downloadPDF } = await import('../../utils/pdfGeneratorClean')
-      await downloadPDF(CV_DATA, filename)
+      await downloadPDF(cvData, filename)
 
       setDownloadMessage(`Downloaded: ${filename}`)
       setTimeout(() => setDownloadMessage(''), 3000)
@@ -101,7 +105,7 @@ export default function CVPage() {
   }
 
   const formatExperienceText = () => {
-    return CV_DATA.experience.map(exp =>
+    return cvData.experience.map(exp =>
       `${exp.title} | ${exp.company} | ${exp.location}\n${exp.startDate} - ${exp.endDate}\n${exp.responsibilities.map(r => `• ${r}`).join('\n')}`
     ).join('\n\n')
   }
@@ -111,7 +115,7 @@ export default function CVPage() {
       setKeywordAnalysis({ error: 'Please enter a job description' })
       return
     }
-    const cvText = formatCVForAnalysis(CV_DATA)
+    const cvText = formatCVForAnalysis(cvData)
     const analysis = analyzeCVAgainstJob(cvText, jobDescription)
     setKeywordAnalysis(analysis)
   }
@@ -123,14 +127,14 @@ export default function CVPage() {
         id="cv-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateCVSchema(CV_DATA))
+          __html: JSON.stringify(generateCVSchema(cvData))
         }}
       />
       <Script
         id="resume-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateResumeSchema(CV_DATA))
+          __html: JSON.stringify(generateResumeSchema(cvData))
         }}
       />
 
@@ -170,7 +174,7 @@ export default function CVPage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              {CV_DATA.personalInfo.name}
+              {cvData.personalInfo.name}
             </Typography>
             <Typography
               variant="h5"
@@ -190,31 +194,31 @@ export default function CVPage() {
               <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <PhoneIcon sx={{ color: '#32CD32', fontSize: 20 }} />
-                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{CV_DATA.personalInfo.phone}</Typography>
+                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{cvData.personalInfo.phone}</Typography>
                 </Box>
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <EmailIcon sx={{ color: '#32CD32', fontSize: 20 }} />
-                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{CV_DATA.personalInfo.email}</Typography>
+                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{cvData.personalInfo.email}</Typography>
                 </Box>
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <LocationOnIcon sx={{ color: '#32CD32', fontSize: 20 }} />
-                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{CV_DATA.personalInfo.location}</Typography>
+                  <Typography variant="body1" sx={{ color: '#ffffff' }}>{cvData.personalInfo.location}</Typography>
                 </Box>
               </Grid>
             </Grid>
 
             {/* Social Links */}
             <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
-              {CV_DATA.personalInfo.portfolio && (
+              {cvData.personalInfo.portfolio && (
                 <Chip
                   icon={<LanguageIcon />}
                   label="Portfolio"
                   component="a"
-                  href={CV_DATA.personalInfo.portfolio}
+                  href={cvData.personalInfo.portfolio}
                   target="_blank"
                   clickable
                   sx={{
@@ -228,12 +232,12 @@ export default function CVPage() {
                   }}
                 />
               )}
-              {CV_DATA.personalInfo.linkedin && (
+              {cvData.personalInfo.linkedin && (
                 <Chip
                   icon={<LinkedInIcon />}
                   label="LinkedIn"
                   component="a"
-                  href={CV_DATA.personalInfo.linkedin}
+                  href={cvData.personalInfo.linkedin}
                   target="_blank"
                   clickable
                   sx={{
@@ -247,12 +251,12 @@ export default function CVPage() {
                   }}
                 />
               )}
-              {CV_DATA.personalInfo.github && (
+              {cvData.personalInfo.github && (
                 <Chip
                   icon={<GitHubIcon />}
                   label="GitHub"
                   component="a"
-                  href={CV_DATA.personalInfo.github}
+                  href={cvData.personalInfo.github}
                   target="_blank"
                   clickable
                   sx={{
@@ -360,12 +364,41 @@ export default function CVPage() {
             >
               Print
             </Button>
+            <Button
+              variant="contained"
+              startIcon={<AutoFixHighIcon />}
+              onClick={() => setShowAIEditor(!showAIEditor)}
+              sx={{
+                height: 40,
+                background: 'linear-gradient(45deg, #32CD32 30%, #228B22 90%)',
+                color: 'white',
+                '&:hover': {
+                  background: 'linear-gradient(45deg, #228B22 30%, #32CD32 90%)',
+                },
+              }}
+            >
+              {showAIEditor ? 'Hide AI Editor' : 'AI CV Optimizer'}
+            </Button>
           </Box>
           {downloadMessage && (
             <Alert severity="success" sx={{ mt: 2 }}>
               {downloadMessage}
             </Alert>
           )}
+
+          {/* AI CV Editor */}
+          <Collapse in={showAIEditor}>
+            <Box sx={{ mt: 3 }}>
+              <CVEditor
+                cvData={cvData}
+                onUpdateCV={(updatedCV) => {
+                  setCvData(updatedCV)
+                  setDownloadMessage('CV updated! Download the new version above.')
+                  setTimeout(() => setDownloadMessage(''), 3000)
+                }}
+              />
+            </Box>
+          </Collapse>
         </Paper>
 
         {/* Keyword Optimizer */}
@@ -573,7 +606,7 @@ export default function CVPage() {
             <Tooltip title={copiedSection === 'summary' ? 'Copied!' : 'Copy section'}>
               <IconButton
                 size="small"
-                onClick={() => handleCopySection('summary', CV_DATA.summary)}
+                onClick={() => handleCopySection('summary', cvData.summary)}
                 sx={{ color: '#32CD32' }}
               >
                 <ContentCopyIcon />
@@ -581,7 +614,7 @@ export default function CVPage() {
             </Tooltip>
           </Box>
           <Typography variant="body1" sx={{ lineHeight: 1.8, color: '#cccccc' }}>
-            {CV_DATA.summary}
+            {cvData.summary}
           </Typography>
         </Paper>
 
@@ -629,11 +662,11 @@ export default function CVPage() {
               </IconButton>
             </Tooltip>
           </Box>
-          {CV_DATA.experience.map((exp, index) => (
+          {cvData.experience.map((exp, index) => (
             <Box
               key={index}
               sx={{
-                mb: index < CV_DATA.experience.length - 1 ? 4 : 0,
+                mb: index < cvData.experience.length - 1 ? 4 : 0,
                 pl: 3,
                 position: 'relative',
                 '&::before': {
@@ -646,7 +679,7 @@ export default function CVPage() {
                   borderRadius: '50%',
                   backgroundColor: theme.palette.secondary.main,
                 },
-                '&::after': index < CV_DATA.experience.length - 1 ? {
+                '&::after': index < cvData.experience.length - 1 ? {
                   content: '""',
                   position: 'absolute',
                   left: 3.5,
@@ -725,7 +758,7 @@ export default function CVPage() {
               Education
             </Typography>
           </Box>
-          {CV_DATA.education.map((edu, index) => (
+          {cvData.education.map((edu, index) => (
             <Box key={index}>
               <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#ffffff' }}>
                 {edu.institution}
@@ -773,7 +806,7 @@ export default function CVPage() {
             <Tooltip title={copiedSection === 'skills' ? 'Copied!' : 'Copy section'}>
               <IconButton
                 size="small"
-                onClick={() => handleCopySection('skills', CV_DATA.skills.join(', '))}
+                onClick={() => handleCopySection('skills', cvData.skills.join(', '))}
                 sx={{ color: '#32CD32' }}
               >
                 <ContentCopyIcon />
@@ -781,7 +814,7 @@ export default function CVPage() {
             </Tooltip>
           </Box>
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-            {CV_DATA.skills.map((skill, index) => (
+            {cvData.skills.map((skill, index) => (
               <Chip
                 key={index}
                 label={skill}
