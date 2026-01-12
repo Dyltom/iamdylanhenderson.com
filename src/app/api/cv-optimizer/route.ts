@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { CVData } from '@/utils/cvTypes'
+import { CVData } from '../../../utils/cvTypes'
 
 // Initialize OpenAI with latest model support
 const openai = new OpenAI({
