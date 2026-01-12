@@ -41,7 +41,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LanguageIcon from '@mui/icons-material/Language'
-import { generateModernDOCX } from '../../utils/docxModernGenerator'
+import { generateStandardDOCX } from '../../utils/docxStandardGenerator'
 import { CV_DATA as INITIAL_CV_DATA, CVData } from '../../utils/cvTypes'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
@@ -67,7 +67,7 @@ export default function CVPage() {
       const dateStr = now.toISOString().split('T')[0] // YYYY-MM-DD
       const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-') // HH-MM-SS
       const filename = `Dylan_Henderson_Resume_${dateStr}_${timeStr}.docx`
-      await generateModernDOCX(cvData, filename)
+      await generateStandardDOCX(cvData, filename)
       setDownloadMessage(`Downloaded: ${filename}`)
       setTimeout(() => setDownloadMessage(''), 3000)
     } catch (error) {
