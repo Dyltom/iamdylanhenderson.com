@@ -22,6 +22,8 @@ import {
   ListItem,
   ListItemText,
   Grid,
+  Switch,
+  FormControlLabel,
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import DownloadIcon from '@mui/icons-material/Download'
@@ -45,6 +47,7 @@ import { generateStandardDOCX } from '../../utils/docxStandardGenerator'
 import { generateCoverLetterDOCX, generateCoverLetterFilename } from '../../utils/coverLetterGeneratorFixed'
 import { EXAMPLE_COVER_LETTER, CoverLetterData } from '../../utils/coverLetterTypes'
 import { CV_DATA as INITIAL_CV_DATA, CVData } from '../../utils/cvTypes'
+import { CV_DATA_CONCISE } from '../../utils/cvDataConcise'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
 import { analyzeCVAgainstJob, formatCVForAnalysis } from '../../utils/keywordOptimizer'
@@ -64,6 +67,12 @@ export default function CVPage() {
   const [showAIEditor, setShowAIEditor] = useState(false)
   const [showCoverLetter, setShowCoverLetter] = useState(false)
   const [coverLetterData, setCoverLetterData] = useState<CoverLetterData>(EXAMPLE_COVER_LETTER)
+  const [useConciseVersion, setUseConciseVersion] = useState(false)
+
+  // Switch between standard and concise CV versions
+  React.useEffect(() => {
+    setCvData(useConciseVersion ? CV_DATA_CONCISE : INITIAL_CV_DATA)
+  }, [useConciseVersion])
 
   const handleDOCXDownload = async () => {
     try {
@@ -301,6 +310,29 @@ export default function CVPage() {
           backgroundColor: '#1a1a1a',
           border: `1px solid #32CD32`,
         }}>
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', mb: 2 }}>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={useConciseVersion}
+                  onChange={(e) => setUseConciseVersion(e.target.checked)}
+                  sx={{
+                    '& .MuiSwitch-switchBase.Mui-checked': {
+                      color: '#32CD32',
+                    },
+                    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                      backgroundColor: '#32CD32',
+                    },
+                  }}
+                />
+              }
+              label="Use Concise Government Version"
+              sx={{ color: '#ffffff' }}
+            />
+            <Typography variant="caption" sx={{ color: '#888888' }}>
+              (Optimised for Cowra regional position)
+            </Typography>
+          </Box>
           <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-end', flexWrap: 'wrap', justifyContent: 'space-between' }}>
             <TextField
               label="Job Title (optional)"
