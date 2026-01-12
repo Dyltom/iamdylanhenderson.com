@@ -52,7 +52,7 @@ export const generateCoverLetterDOCX = async (
         }),
 
         new Paragraph({
-          text: cvData.personalInfo.location,
+          text: "Cowra, NSW", // Using Cowra for the cover letter
           size: 20, // 10pt
           spacing: { after: 240 },
         }),
@@ -149,14 +149,39 @@ export const generateCoverLetterDOCX = async (
         }),
 
         // Body paragraphs
-        ...coverLetterData.bodyParagraphs.map(paragraph =>
-          new Paragraph({
-            text: paragraph,
-            size: 20, // 10pt
-            alignment: AlignmentType.JUSTIFIED,
-            spacing: { after: 240, line: 276 }, // 1.15 line spacing
-          })
-        ),
+        ...coverLetterData.bodyParagraphs.flatMap(paragraph => {
+          // Split by double newlines to handle multi-paragraph sections
+          const parts = paragraph.split('\n\n')
+          return parts.map((part, index) => {
+            // Check if this part contains bullet points
+            if (part.includes('•')) {
+              // Split into lines and process each
+              const lines = part.split('\n')
+              return lines.map((line, lineIndex) =>
+                new Paragraph({
+                  text: line,
+                  size: 20, // 10pt
+                  alignment: line.startsWith('•') ? AlignmentType.LEFT : AlignmentType.JUSTIFIED,
+                  spacing: {
+                    after: lineIndex === lines.length - 1 ? 240 : 120,
+                    line: 276,
+                    left: line.startsWith('•') ? 360 : 0 // Indent bullet points
+                  },
+                })
+              )
+            } else {
+              return new Paragraph({
+                text: part,
+                size: 20, // 10pt
+                alignment: AlignmentType.JUSTIFIED,
+                spacing: {
+                  after: index === parts.length - 1 ? 240 : 120,
+                  line: 276
+                },
+              })
+            }
+          }).flat()
+        }).flat(),
 
         // Closing paragraph
         new Paragraph({
@@ -173,9 +198,27 @@ export const generateCoverLetterDOCX = async (
           spacing: { after: 240 },
         }),
 
-        // Your name
+        // Your name and contact details
         new Paragraph({
           text: cvData.personalInfo.name,
+          size: 20, // 10pt
+          spacing: { after: 60 },
+        }),
+
+        new Paragraph({
+          text: `${cvData.personalInfo.phone}`,
+          size: 20, // 10pt
+          spacing: { after: 60 },
+        }),
+
+        new Paragraph({
+          text: `${cvData.personalInfo.email}`,
+          size: 20, // 10pt
+          spacing: { after: 60 },
+        }),
+
+        new Paragraph({
+          text: "Cowra, NSW",
           size: 20, // 10pt
           spacing: { after: 60 },
         }),
