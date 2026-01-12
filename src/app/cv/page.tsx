@@ -813,23 +813,85 @@ export default function CVPage() {
               </IconButton>
             </Tooltip>
           </Box>
-          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-            {cvData.skills.map((skill, index) => (
-              <Chip
-                key={index}
-                label={skill}
-                sx={{
-                  mb: 1,
-                  backgroundColor: 'transparent',
-                  border: '1px solid #32CD32',
-                  color: '#32CD32',
-                  '&:hover': {
-                    backgroundColor: 'rgba(50, 205, 50, 0.2)',
-                  },
-                }}
-              />
-            ))}
-          </Stack>
+
+          {/* Skills organized by category */}
+          <Grid container spacing={3}>
+            {/* CMS & Web Development */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ color: '#32CD32', fontWeight: 600, mb: 1.5 }}>
+                  CMS & Web Development
+                </Typography>
+                <Box sx={{ pl: 1 }}>
+                  {cvData.skills.filter(skill =>
+                    skill.includes('CMS') || skill.includes('WordPress') || skill.includes('Module/Plugin')
+                  ).map((skill, index) => (
+                    <Typography key={index} variant="body2" sx={{ color: '#cccccc', mb: 0.8, lineHeight: 1.6 }}>
+                      • {skill}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Programming Languages & Frameworks */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ color: '#32CD32', fontWeight: 600, mb: 1.5 }}>
+                  Languages & Frameworks
+                </Typography>
+                <Box sx={{ pl: 1 }}>
+                  {cvData.skills.filter(skill =>
+                    skill.includes('PHP') || skill.includes('JavaScript') || skill.includes('Java') ||
+                    skill.includes('HTML') || skill.includes('CSS')
+                  ).map((skill, index) => (
+                    <Typography key={index} variant="body2" sx={{ color: '#cccccc', mb: 0.8, lineHeight: 1.6 }}>
+                      • {skill}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Infrastructure & DevOps */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ color: '#32CD32', fontWeight: 600, mb: 1.5 }}>
+                  Infrastructure & DevOps
+                </Typography>
+                <Box sx={{ pl: 1 }}>
+                  {cvData.skills.filter(skill =>
+                    skill.includes('MySQL') || skill.includes('Apache') || skill.includes('Git') ||
+                    skill.includes('Testing') || skill.includes('Documentation')
+                  ).map((skill, index) => (
+                    <Typography key={index} variant="body2" sx={{ color: '#cccccc', mb: 0.8, lineHeight: 1.6 }}>
+                      • {skill}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Professional & Other */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ color: '#32CD32', fontWeight: 600, mb: 1.5 }}>
+                  Professional Experience
+                </Typography>
+                <Box sx={{ pl: 1 }}>
+                  {cvData.skills.filter(skill =>
+                    skill.includes('Workflow') || skill.includes('API') || skill.includes('AGSVA') ||
+                    skill.includes('Government') || skill.includes('Development Methodologies') ||
+                    skill.includes('Full-stack')
+                  ).map((skill, index) => (
+                    <Typography key={index} variant="body2" sx={{ color: '#cccccc', mb: 0.8, lineHeight: 1.6 }}>
+                      • {skill}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
         </Paper>
 
         {/* ATS Tips */}

@@ -209,52 +209,107 @@ export const generatePDF = (cvData: CVData): jsPDF => {
 
   y += 8
 
+  // Organize skills by category for better readability
   const skillCategories = [
     {
-      name: 'Languages',
-      skills: cvData.skills.filter(s => ['TypeScript', 'JavaScript', 'PHP'].includes(s))
+      name: 'CMS & Web Development',
+      skills: cvData.skills.filter(s =>
+        s.includes('CMS') || s.includes('WordPress') || s.includes('Module/Plugin')
+      )
     },
     {
-      name: 'Frontend',
-      skills: cvData.skills.filter(s => ['React', 'Next.js', 'React Native'].includes(s))
+      name: 'Languages & Frameworks',
+      skills: cvData.skills.filter(s =>
+        s.includes('PHP') || s.includes('JavaScript') || s.includes('Java') ||
+        s.includes('HTML') || s.includes('CSS')
+      )
     },
     {
-      name: 'Backend',
-      skills: cvData.skills.filter(s => ['Node.js', 'REST APIs', 'Database design', 'NoSQL exposure'].includes(s))
+      name: 'Infrastructure & DevOps',
+      skills: cvData.skills.filter(s =>
+        s.includes('MySQL') || s.includes('Apache') || s.includes('Git') ||
+        s.includes('Testing') || s.includes('Documentation')
+      )
     },
     {
-      name: 'Infrastructure',
-      skills: cvData.skills.filter(s => ['Linux/VPS infrastructure', 'Sentry', 'AI Agents'].includes(s))
+      name: 'Professional Experience',
+      skills: cvData.skills.filter(s =>
+        s.includes('Workflow') || s.includes('API') || s.includes('AGSVA') ||
+        s.includes('Government') || s.includes('Development Methodologies') ||
+        s.includes('Full-stack')
+      )
     }
   ]
 
   doc.setFontSize(10)
-  skillCategories.forEach(category => {
-    if (category.skills.length > 0) {
-      checkPageBreak()
-      doc.setFont('helvetica', 'bold')
-      doc.setTextColor(50, 205, 50) // #32CD32
-      doc.text(`${category.name}: `, leftMargin, y)
 
-      const categoryWidth = doc.getTextWidth(`${category.name}: `)
+  // Use two columns for better space utilization
+  let columnX = leftMargin
+  let columnY = y
+  let maxColumnY = y
+  const columnWidth = (contentWidth - 10) / 2 // 10mm gap between columns
+
+  skillCategories.forEach((category, categoryIndex) => {
+    if (category.skills.length > 0) {
+      // Determine which column to use
+      if (categoryIndex === 2) {
+        // Move to second column
+        columnX = leftMargin + columnWidth + 10
+        columnY = y // Reset to top of skills section
+      }
+
+      // Check if we need a page break
+      if (columnY + (category.skills.length * 5 + 15) > pageHeight - 20) {
+        doc.addPage()
+        columnY = 20
+        if (categoryIndex >= 2) {
+          columnX = leftMargin + columnWidth + 10
+        } else {
+          columnX = leftMargin
+        }
+      }
+
+      // Category header
+      doc.setFont('helvetica', 'bold')
+      doc.setTextColor(50, 205, 50) // Green for categories
+      doc.text(category.name, columnX, columnY)
+      columnY += 6
+
+      // Skills in category
       doc.setFont('helvetica', 'normal')
       doc.setTextColor(40, 40, 40)
 
-      const skillsText = category.skills.join(', ')
-      const skillLines = doc.splitTextToSize(skillsText, contentWidth - categoryWidth)
-
-      skillLines.forEach((line: any, idx: number) => {
-        if (idx === 0) {
-          doc.text(line, leftMargin + categoryWidth, y)
-        } else {
-          y += 5
-          checkPageBreak()
-          doc.text(line, leftMargin + categoryWidth, y)
+      category.skills.forEach(skill => {
+        // Check for page break within skills
+        if (columnY > pageHeight - 20) {
+          doc.addPage()
+          columnY = 20
         }
+
+        // Add bullet point and skill text
+        const bulletX = columnX + 2
+        const textX = columnX + 6
+
+        // Split long skills if needed
+        const skillLines = doc.splitTextToSize(skill, columnWidth - 8)
+
+        skillLines.forEach((line: any, lineIndex: number) => {
+          if (lineIndex === 0) {
+            doc.text('•', bulletX, columnY)
+          }
+          doc.text(line, textX, columnY)
+          columnY += 4.5
+        })
       })
-      y += 6
+
+      // Track the maximum Y position for proper spacing
+      maxColumnY = Math.max(maxColumnY, columnY)
+      columnY += 8 // Space between categories
     }
   })
+
+  // Update y to continue after skills section
+  y = maxColumnY
 
   return doc
 }

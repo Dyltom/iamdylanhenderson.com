@@ -40,7 +40,7 @@ export const CV_DATA: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer at Bonza Clean, leading the architecture and build of the company's core platform from the ground up. I translate real operational problems into scalable systems and ship quickly with strong engineering standards. I work across product engineering, full-stack development, infrastructure, and reliability: SaaS platform development, CRM and customer workflows, automated SMS/email communications, and mobile apps. I've also built practical AI automations for data collection and customer interactions, including voice/chat experiences and phone automation integrated with ElevenLabs. I'm comfortable owning outcomes end-to-end: architecture, delivery, reliability, and continuous improvement. My default mode is rapid prototyping with a clear path to production-grade systems. Core stack: TypeScript, Next.js, React, Node.js, PHP, React Native, Sentry, databases and schema design, Linux/VPS infrastructure, cloud tooling, component-driven UI (shadcn/ui)",
+  summary: "Full-stack developer with 6+ years of experience building web applications and content management systems. Strong background in PHP, JavaScript, Java, HTML/CSS, and modern web frameworks. Experienced in CMS development including WordPress themes, plugins, and custom CMS solutions. Proven track record in government environments with previous AGSVA NV1 clearance (2021-2022). Proficient in full-stack development with expertise in server-side technologies (PHP, Java/Spring, Node.js), databases (MySQL, SQL Server), and modern deployment workflows (Git, CI/CD). Skilled in building RESTful APIs, microservices architecture, and infrastructure management.",
   experience: [
     {
       company: "Bonza Clean",
@@ -49,11 +49,11 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Architected and built core platform capabilities from the ground up, translating operational requirements into scalable product systems",
-        "Delivered customer and internal workflows including CRM-style customer management, job tracking, and automation-heavy operational flows",
-        "Implemented automated customer communications (SMS and email) triggered by workflow events",
-        "Built and integrated AI-assisted automations for data capture and customer interaction, including voice and chat experiences and phone automation (ElevenLabs integration)",
-        "Owned reliability and production quality through monitoring, error tracking (Sentry), and strong engineering standards"
+        "Developed custom CMS features for customer workflows using PHP, JavaScript, HTML/CSS, and React",
+        "Built WordPress-based solutions including custom themes and plugins for business operations",
+        "Implemented RESTful APIs and server-side components using PHP and Node.js",
+        "Managed MySQL database schemas and optimised queries for high-performance content retrieval",
+        "Integrated automated workflows with version control (Git) and CI/CD pipelines"
       ]
     },
     {
@@ -64,8 +64,9 @@ export const CV_DATA: CVData = {
       endDate: "09/2024",
       responsibilities: [
         "Built and maintained full-stack product features across web application and backend services",
-        "Shipped production changes in a fast-moving environment with a focus on maintainability, stability, and delivery velocity",
-        "Contributed to engineering standards and code quality through improved structure, debugging, and collaboration"
+        "Implemented RESTful web services using Express.js/Node.js for e-commerce platform",
+        "Worked with headless CMS architecture for content management and delivery",
+        "Shipped production changes with focus on maintainability and delivery velocity"
       ]
     },
     {
@@ -88,8 +89,10 @@ export const CV_DATA: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Software engineering role contributing to delivery of production systems in a structured enterprise environment",
-        "Worked across development, debugging, and collaboration with broader engineering stakeholders"
+        "Developed backend services for federal government clients with AGSVA NV1 clearance (held 2021-2022)",
+        "Built Java/Spring microservices and RESTful APIs in secure government environments",
+        "Managed infrastructure, deployment pipelines, and database integrations",
+        "Collaborated with cross-functional teams following structured government development methodologies"
       ]
     },
     {
@@ -99,9 +102,10 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Delivered solutions using Nexthink to support enterprise monitoring, ITSM, security, and digital transformation outcomes",
-        "Achieved Nexthink Master's Level Certification (AsiaPac) and applied it across client environments",
-        "Worked directly with stakeholders to translate requirements into practical technical outcomes"
+        "Built custom WordPress themes and plugins using PHP, JavaScript, HTML/CSS for client websites",
+        "Developed content management solutions with focus on user experience and accessibility",
+        "Configured Apache web servers and implemented MySQL database schemas for CMS deployments",
+        "Achieved Nexthink Master's Level Certification while delivering web-based monitoring dashboards"
       ]
     },
     {
@@ -111,7 +115,8 @@ export const CV_DATA: CVData = {
       startDate: "07/2019",
       endDate: "02/2020",
       responsibilities: [
-        "Built and maintained software solutions supporting internal operations and delivery"
+        "Built web applications using CakePHP framework for business operations",
+        "Developed custom PHP CMS features and content management workflows"
       ]
     },
     {
@@ -133,18 +138,18 @@ export const CV_DATA: CVData = {
     }
   ],
   skills: [
-    "REST APIs",
-    "TypeScript",
-    "JavaScript",
-    "PHP",
-    "React",
-    "Next.js",
-    "Node.js",
-    "React Native",
-    "Linux/VPS infrastructure",
-    "Sentry",
-    "Database design",
-    "NoSQL exposure",
-    "AI Agents"
+    "CMS Development (WordPress themes/plugins, Custom PHP CMS, Headless CMS)",
+    "PHP (CakePHP framework, WordPress development, templating)",
+    "Module/Plugin Development (WordPress plugins, CakePHP components)",
+    "JavaScript (ES6+, React, Node.js, AJAX)",
+    "HTML5/CSS3 (Responsive design, theming)",
+    "Java (Spring framework, microservices)",
+    "MySQL/SQL Server (Schema design, query optimisation)",
+    "Git (Advanced workflows, branching strategies, CI/CD)",
+    "Content Workflows (Multi-user systems, approval processes)",
+    "API Integration (RESTful services, third-party integrations)",
+    "Apache/Nginx (Configuration, deployment)",
+    "AGSVA NV1 Clearance (Previously held 2021-2022)",
+    "Government/Enterprise environments"
   ]
 }
