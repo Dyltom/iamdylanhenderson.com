@@ -42,6 +42,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LanguageIcon from '@mui/icons-material/Language'
 import { generateStandardDOCX } from '../../utils/docxStandardGenerator'
+import { generateCoverLetterDOCX, generateCoverLetterFilename } from '../../utils/coverLetterGenerator'
+import { EXAMPLE_COVER_LETTER, CoverLetterData } from '../../utils/coverLetterTypes'
 import { CV_DATA as INITIAL_CV_DATA, CVData } from '../../utils/cvTypes'
 import { maxContentWidth, pageMargin } from '../../utils/styles'
 import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema'
@@ -60,6 +62,8 @@ export default function CVPage() {
   const [showOptimizer, setShowOptimizer] = useState(false)
   const [pdfLoading, setPdfLoading] = useState(false)
   const [showAIEditor, setShowAIEditor] = useState(false)
+  const [showCoverLetter, setShowCoverLetter] = useState(false)
+  const [coverLetterData, setCoverLetterData] = useState<CoverLetterData>(EXAMPLE_COVER_LETTER)
 
   const handleDOCXDownload = async () => {
     try {
@@ -95,6 +99,22 @@ export default function CVPage() {
       setDownloadMessage('Error generating PDF. Please try again.')
     } finally {
       setPdfLoading(false)
+    }
+  }
+
+  const handleCoverLetterDownload = async () => {
+    try {
+      const filename = generateCoverLetterFilename(
+        cvData.personalInfo.name,
+        coverLetterData.companyName,
+        coverLetterData.jobTitle
+      )
+      await generateCoverLetterDOCX(coverLetterData, cvData, filename)
+      setDownloadMessage(`Downloaded: ${filename}`)
+      setTimeout(() => setDownloadMessage(''), 3000)
+    } catch (error) {
+      console.error('Error generating cover letter:', error)
+      setDownloadMessage('Error generating cover letter. Please try again.')
     }
   }
 
@@ -363,6 +383,22 @@ export default function CVPage() {
               }}
             >
               Print
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<DescriptionIcon />}
+              onClick={handleCoverLetterDownload}
+              sx={{
+                height: 40,
+                borderColor: '#32CD32',
+                color: '#32CD32',
+                '&:hover': {
+                  borderColor: '#32CD32',
+                  backgroundColor: 'rgba(50, 205, 50, 0.1)',
+                },
+              }}
+            >
+              Download Cover Letter
             </Button>
             <Button
               variant="contained"
