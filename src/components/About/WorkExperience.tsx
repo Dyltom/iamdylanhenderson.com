@@ -232,17 +232,40 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
                         >
                           Key Achievements:
                         </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            color: theme.palette.primary.contrastText,
-                            fontStyle: 'italic',
-                            lineHeight: 1.6,
-                            fontSize: '0.9rem',
-                          }}
-                        >
-                          {company.attributes.points.slice(2).join(' • ')}
-                        </Typography>
+                        <Box>
+                          {company.attributes.points.slice(2).map((achievement, achievementIdx) => (
+                            <Box
+                              key={achievementIdx}
+                              sx={{
+                                display: 'flex',
+                                alignItems: 'flex-start',
+                                mb: 0.5,
+                              }}
+                            >
+                              <Typography
+                                sx={{
+                                  color: theme.palette.secondary.main,
+                                  mr: 0.5,
+                                  fontSize: '0.8rem',
+                                }}
+                              >
+                                •
+                              </Typography>
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  color: theme.palette.primary.contrastText,
+                                  fontStyle: 'italic',
+                                  lineHeight: 1.5,
+                                  fontSize: '0.9rem',
+                                  flex: 1,
+                                }}
+                              >
+                                {achievement}
+                              </Typography>
+                            </Box>
+                          ))}
+                        </Box>
                       </Box>
                     )}
                   </Box>
