@@ -79,8 +79,8 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
               position: 'relative',
               padding: theme.spacing(3),
               paddingLeft: theme.spacing(4),
-              backgroundColor: theme.palette.primary.main,
-              border: `1px solid ${theme.palette.primary.light}`,
+              backgroundColor: 'rgba(50, 205, 50, 0.05)',
+              border: `1px solid rgba(50, 205, 50, 0.2)`,
               borderLeft: `4px solid ${theme.palette.secondary.main}`,
               borderRadius: '4px',
               fontFamily: 'monospace',
@@ -113,7 +113,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
             >
               {testimonial.attributes.quote}
             </Typography>
-            <Box sx={{ borderTop: `1px solid ${theme.palette.primary.light}`, pt: 2 }}>
+            <Box sx={{ borderTop: `1px solid rgba(50, 205, 50, 0.2)`, pt: 2 }}>
               <Typography
                 variant="body2"
                 sx={{
