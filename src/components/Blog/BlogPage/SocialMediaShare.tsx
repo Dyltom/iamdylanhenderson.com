@@ -3,12 +3,22 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { Box, IconButton, Stack } from '@mui/material';
-import React from 'react';
+import { Box, IconButton, Stack, Tooltip } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 const SocialMediaShare: React.FC = () => {
-  const url = encodeURIComponent(document.location.href);
-  const title = encodeURIComponent(document.title);
+  const theme = useTheme();
+  const [url, setUrl] = useState('');
+  const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    // Only access document in browser
+    if (typeof window !== 'undefined') {
+      setUrl(encodeURIComponent(window.location.href));
+      setTitle(encodeURIComponent(document.title));
+    }
+  }, []);
 
   const handleFacebookShare = () => {
     window.open(
@@ -48,28 +58,86 @@ const SocialMediaShare: React.FC = () => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Stack direction="row" spacing={1}>
-        <IconButton
-          aria-label="Share on Facebook"
-          onClick={handleFacebookShare}
-        >
-          <FacebookIcon sx={{ color: 'secondary.main' }} />
-        </IconButton>
-        <IconButton aria-label="Share on Twitter" onClick={handleTwitterShare}>
-          <TwitterIcon sx={{ color: 'secondary.main' }} />
-        </IconButton>
-        <IconButton
-          aria-label="Share on LinkedIn"
-          onClick={handleLinkedInShare}
-        >
-          <LinkedInIcon sx={{ color: 'secondary.main' }} />
-        </IconButton>
-        <IconButton aria-label="Share on Reddit" onClick={handleRedditShare}>
-          <RedditIcon sx={{ color: 'secondary.main' }} />
-        </IconButton>
-        <IconButton aria-label="Share via Email" onClick={handleEmailShare}>
-          <EmailIcon sx={{ color: 'secondary.main' }} />
-        </IconButton>
+      <Stack direction="row" spacing={0.5}>
+        <Tooltip title="Share on Facebook" arrow>
+          <IconButton
+            size="small"
+            aria-label="Share on Facebook"
+            onClick={handleFacebookShare}
+            sx={{
+              color: theme.palette.secondary.main,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              }
+            }}
+          >
+            <FacebookIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Share on Twitter" arrow>
+          <IconButton
+            size="small"
+            aria-label="Share on Twitter"
+            onClick={handleTwitterShare}
+            sx={{
+              color: theme.palette.secondary.main,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              }
+            }}
+          >
+            <TwitterIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Share on LinkedIn" arrow>
+          <IconButton
+            size="small"
+            aria-label="Share on LinkedIn"
+            onClick={handleLinkedInShare}
+            sx={{
+              color: theme.palette.secondary.main,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              }
+            }}
+          >
+            <LinkedInIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Share on Reddit" arrow>
+          <IconButton
+            size="small"
+            aria-label="Share on Reddit"
+            onClick={handleRedditShare}
+            sx={{
+              color: theme.palette.secondary.main,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              }
+            }}
+          >
+            <RedditIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Share via Email" arrow>
+          <IconButton
+            size="small"
+            aria-label="Share via Email"
+            onClick={handleEmailShare}
+            sx={{
+              color: theme.palette.secondary.main,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              }
+            }}
+          >
+            <EmailIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </Stack>
     </Box>
   );
