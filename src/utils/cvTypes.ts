@@ -50,10 +50,10 @@ export const CV_DATA: CVData = {
       endDate: "Present",
       responsibilities: [
         "Built complete CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
-        "Developed custom WordPress plugins in PHP: API gateway for mobile app, booking extensions, payment processing, and AI integrations",
-        "Created and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
-        "Integrated OpenAI and ElevenLabs APIs for AI services and voice receptionist, achieving measurable business improvements",
-        "Heavily customised Booknetic plugin and built suite of interconnected WordPress plugins for business automation",
+        "Developed Bonza Engine plugin and custom WordPress plugins: API gateway, booking extensions, payment processing, AI integrations",
+        "Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management",
+        "Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
+        "Integrated multiple third-party services: Stripe/PayPal for payments, Xero for accounting, OpenAI/ElevenLabs for AI features",
         "Delivered both technical performance improvements and business metrics through innovative PHP solutions"
       ]
     },
@@ -150,7 +150,7 @@ export const CV_DATA: CVData = {
     "Mobile Development (React Native, iOS/Android Cross-platform Development)",
     "Agile Methodologies (Scrum, Sprint Planning, Daily Standups, Retrospectives)",
     "Full Stack Development (Node.js, Express.js, LAMP Stack)",
-    "System Integration (OpenAI API, ElevenLabs API, Payment Gateways, Business Automation)",
+    "System Integration (Stripe, PayPal, Xero, OpenAI API, ElevenLabs API, Business Automation)",
     "Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering)",
     "Problem Solving (Performance Optimisation, Troubleshooting, Creative Solutions)",
     "Time Management (Multi-project Delivery, Sprint Commitments, Deadline Achievement)"
