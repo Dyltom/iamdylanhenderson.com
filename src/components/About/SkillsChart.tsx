@@ -19,26 +19,39 @@ const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const techStack = `$ npm ls --depth=0
-├── @types/react@18.2.0
-├── typescript@5.3.3
-├── react@18.2.0
-├── next@14.2.0
-├── @mui/material@5.15.0
-├── nodejs@20.11.0
-├── express@4.19.0
-├── postgresql@16.1
-├── mysql@8.0.35
-├── php@8.3.0
-├── laravel@11.0.0
-├── wordpress@6.4.2
-├── docker@24.0.7
-├── kubernetes@1.29.0
-├── aws-cli@2.15.0
-├── git@2.43.0
-├── vim@9.0.0
-├── linux@ubuntu-22.04
-└── bash@5.2.0`;
+  const techStack = `$ cat ~/dev-setup.sh
+#!/bin/bash
+# Dylan's Development Environment
+
+echo "🚀 Loading tech stack..."
+
+# Frontend frameworks
+alias react="npx create-react-app"
+alias next="npx create-next-app"
+alias vue="npm init vue@latest"
+
+# Languages & runtimes
+echo "✓ TypeScript (because any is scary)"
+echo "✓ PHP (WordPress wizardry)"
+echo "✓ Node.js (async all the things)"
+echo "✓ Java (Spring Boot enterprise)"
+
+# Databases
+psql --version  # PostgreSQL for serious data
+mysql --version # MySQL for WordPress sites
+
+# DevOps & Tools
+docker --version
+git config --get user.name  # "Dylan Henderson"
+echo "AWS CLI configured for deployments"
+
+# Currently building with:
+echo "→ React Native (Bonza Clean app)"
+echo "→ WordPress plugins (booking engines)"
+echo "→ n8n workflows (automation magic)"
+echo "→ OpenAI integrations (AI assistants)"
+
+$ echo "Ready to ship 🚢"`;
 
   return (
     <Box sx={{ color: theme.palette.primary.contrastText, padding: '1rem' }}>
