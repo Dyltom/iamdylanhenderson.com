@@ -16,8 +16,11 @@ export default function BackgroundEffects() {
   // Initialize from localStorage to avoid flashing
   const [currentEffect, setCurrentEffect] = useState<BackgroundEffect>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('backgroundEffect') as BackgroundEffect;
-      return saved || 'particles';
+      const saved = localStorage.getItem('backgroundEffect');
+      // Validate that saved value is one of the allowed effects
+      if (saved === 'particles' || saved === 'matrix' || saved === 'none') {
+        return saved;
+      }
     }
     return 'particles';
   });
@@ -29,6 +32,29 @@ export default function BackgroundEffects() {
     }
     return false;
   });
+
+  // Sync with localStorage on mount
+  useEffect(() => {
+    const syncFromStorage = () => {
+      const savedEffect = localStorage.getItem('backgroundEffect');
+      if (savedEffect === 'particles' || savedEffect === 'matrix' || savedEffect === 'none') {
+        setCurrentEffect(savedEffect);
+      }
+
+      const savedCrt = localStorage.getItem('crtEffect');
+      setCrtEnabled(savedCrt === 'true');
+    };
+
+    // Sync on mount
+    syncFromStorage();
+
+    // Listen for storage events from other tabs
+    window.addEventListener('storage', syncFromStorage);
+
+    return () => {
+      window.removeEventListener('storage', syncFromStorage);
+    };
+  }, []);
 
   const handleToggle = () => {
     setCurrentEffect((prevEffect) => {
@@ -83,9 +109,9 @@ export default function BackgroundEffects() {
   return (
     <>
       {/* Background Effects */}
-      {currentEffect === 'particles' && <ParticleBackground />}
-      {currentEffect === 'matrix' && <MatrixRain />}
-      <CRTEffect active={crtEnabled} />
+      {currentEffect === 'particles' && <ParticleBackground key="particles" />}
+      {currentEffect === 'matrix' && <MatrixRain key="matrix" />}
+      <CRTEffect active={crtEnabled} key={`crt-${crtEnabled}`} />
 
       {/* Toggle Buttons */}
       <Box
