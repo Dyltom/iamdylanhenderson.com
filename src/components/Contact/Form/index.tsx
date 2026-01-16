@@ -63,7 +63,8 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!isVerified && renderRecaptcha) {
+    // Skip captcha check if not configured
+    if (renderRecaptcha && !isVerified) {
       setSnackbarSeverity('error');
       setSnackbarMessage('Please complete the captcha verification.');
       setOpenSnackbar(true);
@@ -79,11 +80,11 @@ const ContactForm: React.FC = () => {
         body: JSON.stringify(formState),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send email.');
-      }
-
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || data.message || 'Failed to send email.');
+      }
       setFormState({ name: '', email: '', message: '' });
 
       setSnackbarSeverity('success');
@@ -109,7 +110,9 @@ const ContactForm: React.FC = () => {
     <Grid container spacing={2}>
       {/* Contact details, replace with your own content */}
       <Grid
-        size={{ xs: 12, md: 4 }}
+        item
+        xs={12}
+        md={4}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -160,7 +163,7 @@ const ContactForm: React.FC = () => {
         </Box>
       </Grid>
       {/* Form section */}
-      <Grid size={{ xs: 12, md: 8 }}>
+      <Grid item xs={12} md={8}>
         <form onSubmit={handleSubmit}>
           <Fields formState={formState} setFormState={setFormState} />
           {renderRecaptcha && (

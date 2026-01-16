@@ -1,127 +1,158 @@
+'use client';
+
 import { useState } from 'react';
-import { Swiper as SwiperType } from 'swiper';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
-
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Box, IconButton, Typography, useMediaQuery } from '@mui/material';
-
-import {
-  MAX_BLOG_POSTS_DESKTOP,
-  MAX_BLOG_POSTS_MOBILE,
-} from '../../../utils/consts';
-import { sortPosts } from '../../../utils/sorts';
+import { Box, Container, Typography, useMediaQuery, Button, Grid } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { useRouter } from 'next/navigation';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import TerminalIcon from '@mui/icons-material/Terminal';
 import { Article } from '../../../utils/types';
-import theme from '../../ThemeRegistry/theme';
-import BlogPostCard from '../BlogPostCard';
+import TerminalBlogCard from '../TerminalBlogCard';
 
 type FeaturedBlogPostsType = {
   blogPosts: Article[];
 };
 
 const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
+  const theme = useTheme();
+  const router = useRouter();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+
   if (blogPosts.length === 0) {
     return null;
   }
 
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const itemsPerSlide = isMobile
-    ? MAX_BLOG_POSTS_MOBILE
-    : MAX_BLOG_POSTS_DESKTOP;
-  const [, setActiveIndex] = useState(0);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
-
-  const sortedBlogPosts = blogPosts; // Temporarily skip sorting
-
-  const numberOfDots = blogPosts.length - (itemsPerSlide - 1);
-
-  const handlePrev = () => {
-    if (swiperInstance) {
-      swiperInstance.slidePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (swiperInstance) {
-      swiperInstance.slideNext();
-    }
-  };
+  // Show fewer posts for better spacing
+  const postsToShow = isMobile ? 2 : isTablet ? 3 : 4;
+  const displayPosts = blogPosts.slice(0, postsToShow);
 
   return (
-    <Box sx={{ position: 'relative' }}>
-      <Typography
-        variant="h5"
-        gutterBottom
-        sx={{
-          textAlign: 'center',
-          color: 'primary.contrastText',
-          paddingTop: isMobile ? 4 : 8,
-        }}
-      >
-        Recent Posts
-      </Typography>
-      <Swiper
-        onSwiper={setSwiperInstance}
-        slidesPerView={itemsPerSlide}
-        spaceBetween={30}
-        modules={[Pagination, Navigation, Autoplay]}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-        navigation={false}
-        pagination={false}
-        style={{ paddingTop: 4 }}
-      >
-        {sortedBlogPosts.map((post, index) => (
-          <SwiperSlide key={index}>
-            <BlogPostCard post={post} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          mt: 2,
-          alignItems: 'center',
-        }}
-      >
-        <IconButton onClick={handlePrev} sx={{ color: 'secondary.main' }}>
-          <ArrowBackIosNewIcon />
-        </IconButton>
-        {/* Custom Pagination */}
-        <Box sx={{ display: 'flex' }}>
-          {Array.from({ length: numberOfDots }).map((_, index) => (
-            <Box
-              key={index}
+    <Box
+      sx={{
+        py: isMobile ? 4 : 8,
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '1px',
+          background: `linear-gradient(90deg, transparent, ${theme.palette.secondary.main}40, transparent)`,
+        },
+      }}
+    >
+      <Container maxWidth="lg">
+        {/* Section Header */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            mb: 4,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <TerminalIcon sx={{ color: theme.palette.secondary.main }} />
+            <Typography
+              variant="h5"
               sx={{
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                backgroundColor:
-                  index === swiperInstance?.activeIndex
-                    ? 'secondary.main'
-                    : 'primary.contrastText',
-                mx: 0.5,
+                color: theme.palette.primary.contrastText,
+                fontFamily: 'monospace',
               }}
-              onClick={() => swiperInstance?.slideTo(index)}
-            />
-          ))}
+            >
+              ~/recent_posts
+            </Typography>
+          </Box>
+          <Button
+            onClick={() => router.push('/blog')}
+            endIcon={<ArrowForwardIcon />}
+            sx={{
+              color: theme.palette.secondary.main,
+              fontFamily: 'monospace',
+              '&:hover': {
+                backgroundColor: `${theme.palette.secondary.main}10`,
+              },
+            }}
+          >
+            view all
+          </Button>
         </Box>
-        {isMobile ||
-          (blogPosts.length > MAX_BLOG_POSTS_DESKTOP && (
-            <IconButton onClick={handleNext} sx={{ color: 'secondary.main' }}>
-              <ArrowForwardIosIcon />
-            </IconButton>
+
+        {/* Posts Grid */}
+        <Grid container spacing={isMobile ? 2 : 3}>
+          {displayPosts.map((post, index) => (
+            <Grid item xs={12} sm={6} md={6} lg={3} key={post.id || index}>
+              <Box
+                sx={{
+                  height: '100%',
+                  opacity: 0,
+                  animation: 'fadeInUp 0.6s forwards',
+                  animationDelay: `${index * 0.1}s`,
+                  '@keyframes fadeInUp': {
+                    from: {
+                      opacity: 0,
+                      transform: 'translateY(20px)',
+                    },
+                    to: {
+                      opacity: 1,
+                      transform: 'translateY(0)',
+                    },
+                  },
+                }}
+              >
+                <TerminalBlogCard post={post} index={index} />
+              </Box>
+            </Grid>
           ))}
-      </Box>
+        </Grid>
+
+        {/* Terminal-style status line */}
+        <Box
+          sx={{
+            mt: 4,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: 'monospace',
+              fontSize: '0.85rem',
+              color: theme.palette.primary.contrastText,
+              opacity: 0.6,
+            }}
+          >
+            [{displayPosts.length} of {blogPosts.length} posts loaded]
+          </Typography>
+          <Box
+            sx={{
+              width: '8px',
+              height: '8px',
+              backgroundColor: theme.palette.secondary.main,
+              borderRadius: '50%',
+              animation: 'pulse 2s infinite',
+              '@keyframes pulse': {
+                '0%': {
+                  opacity: 1,
+                  transform: 'scale(1)',
+                },
+                '50%': {
+                  opacity: 0.5,
+                  transform: 'scale(0.8)',
+                },
+                '100%': {
+                  opacity: 1,
+                  transform: 'scale(1)',
+                },
+              },
+            }}
+          />
+        </Box>
+      </Container>
     </Box>
   );
 };

@@ -62,17 +62,6 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
       keywords: ['bio', 'info', 'me'],
     },
     {
-      id: 'projects',
-      title: 'Projects',
-      description: 'View my work',
-      icon: '💻',
-      action: () => {
-        router.push('/projects');
-        onClose();
-      },
-      keywords: ['work', 'portfolio', 'showcase'],
-    },
-    {
       id: 'blog',
       title: 'Blog',
       description: 'Read my articles',

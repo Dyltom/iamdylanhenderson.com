@@ -3,7 +3,7 @@
 import { Box, Grid, SelectChangeEvent } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
-import BlogPostCard from '../../components/Blog/BlogPostCard';
+import TerminalBlogCard from '../../components/Blog/TerminalBlogCard';
 import DateFilterSelect from '../../components/Blog/DateFilterSelect';
 import SearchBar from '../../components/Blog/Searchbar';
 import SortSelect from '../../components/Blog/SortSelect';
@@ -80,8 +80,8 @@ export default function BlogPage() {
       <Grid container spacing={2} sx={{ minHeight: '200px' }}>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
-            <Grid key={index} size={{ xs: 12, md: 6 }}>
-              <BlogPostCard post={post} />
+            <Grid item key={index} xs={12} md={6}>
+              <TerminalBlogCard post={post} index={index} />
             </Grid>
           ))
         ) : (
