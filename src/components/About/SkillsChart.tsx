@@ -1,38 +1,7 @@
-// components/SkillsDisplay.tsx
-import { Box, LinearProgress, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { underLineHeaders } from '../../utils/styles';
-import { Skill } from '../../utils/types';
-import { CV_DATA } from '../../utils/cvTypes';
-
-const SkillBarContainer = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  height: '10px',
-  borderRadius: '5px',
-  overflow: 'hidden',
-  backgroundColor: theme.palette.background.paper, // Container background
-  flex: 1,
-}));
-
-const SkillBarProgress = styled(LinearProgress)(({ theme }) => ({
-  height: '100%',
-  borderRadius: '5px',
-  '& .MuiLinearProgress-bar': {
-    backgroundColor: theme.palette.secondary.main, // Bar color
-    transition: 'width 2s ease',
-  },
-}));
-
-const ExperienceMarker = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  bottom: 0,
-  width: '2px',
-  backgroundColor: theme.palette.primary.contrastText, // Marker color
-  zIndex: 1,
-}));
 
 type SkillsDisplayProps = {
   title: string;
@@ -41,42 +10,35 @@ type SkillsDisplayProps = {
 
 const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
   const theme = useTheme();
-  const [skills, setSkills] = useState<Skill[] | undefined>(undefined);
+  const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
-    // Define static skills based on experience from CV
-    const staticSkills: Skill[] = [
-      { name: 'React', years: 5 },
-      { name: 'TypeScript', years: 4 },
-      { name: 'Node.js', years: 5 },
-      { name: 'PHP', years: 6 },
-      { name: 'WordPress', years: 6 },
-      { name: 'Docker', years: 3 },
-      { name: 'PostgreSQL', years: 4 },
-      { name: 'MySQL', years: 6 },
-      { name: 'Git', years: 6 },
-      { name: 'AWS', years: 2 }
-    ].map((skill, index) => ({
-      id: index.toString(),
-      attributes: {
-        name: skill.name,
-        experience: skill.years,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        publishedAt: new Date().toISOString()
-      }
-    }));
-    setSkills(staticSkills);
+    const interval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+    return () => clearInterval(interval);
   }, []);
 
-  if (!skills || skills.length === 0) {
-    return null;
-  }
-
-  const maxSkillExperience = Math.max(
-    ...skills.map((skill) => skill.attributes.experience)
-  );
-  const maxExperience = Math.ceil(maxSkillExperience);
+  const techStack = `$ npm ls --depth=0
+├── @types/react@18.2.0
+├── typescript@5.3.3
+├── react@18.2.0
+├── next@14.2.0
+├── @mui/material@5.15.0
+├── nodejs@20.11.0
+├── express@4.19.0
+├── postgresql@16.1
+├── mysql@8.0.35
+├── php@8.3.0
+├── laravel@11.0.0
+├── wordpress@6.4.2
+├── docker@24.0.7
+├── kubernetes@1.29.0
+├── aws-cli@2.15.0
+├── git@2.43.0
+├── vim@9.0.0
+├── linux@ubuntu-22.04
+└── bash@5.2.0`;
 
   return (
     <Box sx={{ color: theme.palette.primary.contrastText, padding: '1rem' }}>
@@ -92,39 +54,107 @@ const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
         variant="caption"
         display="block"
         gutterBottom
-        sx={{ fontFamily: 'monospace', textAlign: 'center', marginTop: '1rem' }}
+        sx={{
+          fontFamily: 'monospace',
+          textAlign: 'center',
+          marginTop: '1rem',
+          marginBottom: '2rem',
+          color: theme.palette.secondary.light
+        }}
       >
         {keyText}
       </Typography>
-      {skills.map((skill, index) => (
-        <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Typography
-            variant="subtitle1"
+
+      <Box
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          border: `1px solid ${theme.palette.primary.light}`,
+          borderRadius: '4px',
+          padding: theme.spacing(3),
+          maxWidth: '600px',
+          margin: '0 auto',
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '28px',
+            backgroundColor: theme.palette.primary.dark,
+            borderBottom: `1px solid ${theme.palette.primary.light}`,
+          }
+        }}
+      >
+        {/* Terminal header bar */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '6px',
+            left: '10px',
+            display: 'flex',
+            gap: '8px',
+            zIndex: 1,
+          }}
+        >
+          <Box
             sx={{
-              width: '100px',
-              fontFamily: 'monospace',
-              color: theme.palette.secondary.light,
-              marginRight: '1rem',
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              backgroundColor: '#ff5f56',
             }}
-          >
-            {skill.attributes.name}
-          </Typography>
-          <SkillBarContainer>
-            {Array.from({ length: Math.floor(maxExperience) }).map((_, i) => (
-              <ExperienceMarker
-                key={i}
-                sx={{
-                  left: `${((i + 1) / maxExperience) * 100}%`,
-                }}
-              />
-            ))}
-            <SkillBarProgress
-              variant="determinate"
-              value={(skill.attributes.experience / maxExperience) * 100}
-            />
-          </SkillBarContainer>
+          />
+          <Box
+            sx={{
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              backgroundColor: '#ffbd2e',
+            }}
+          />
+          <Box
+            sx={{
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              backgroundColor: '#27c93f',
+            }}
+          />
         </Box>
-      ))}
+
+        {/* Terminal content */}
+        <Box
+          component="pre"
+          sx={{
+            fontFamily: 'monospace',
+            fontSize: '0.9rem',
+            lineHeight: 1.6,
+            margin: 0,
+            marginTop: '28px',
+            color: theme.palette.secondary.light,
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word',
+            '& span': {
+              color: theme.palette.secondary.main,
+            }
+          }}
+        >
+          {techStack}
+          {showCursor && (
+            <Box
+              component="span"
+              sx={{
+                color: theme.palette.secondary.main,
+                animation: 'none',
+              }}
+            >
+              █
+            </Box>
+          )}
+        </Box>
+      </Box>
     </Box>
   );
 };

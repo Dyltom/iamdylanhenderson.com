@@ -63,8 +63,8 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
         sx={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: theme.spacing(3),
-          maxWidth: '1000px',
+          gap: theme.spacing(4),
+          maxWidth: '1200px',
           margin: '0 auto',
         }}
       >
@@ -72,25 +72,64 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
           <Box
             key={index}
             sx={{
-              padding: theme.spacing(2),
-              borderLeft: `2px solid ${theme.palette.secondary.main}`,
+              position: 'relative',
+              padding: theme.spacing(3),
+              paddingLeft: theme.spacing(4),
               backgroundColor: theme.palette.primary.main,
-              color: theme.palette.primary.contrastText,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderLeft: `4px solid ${theme.palette.secondary.main}`,
+              borderRadius: '4px',
               fontFamily: 'monospace',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: `0 4px 12px ${theme.palette.background.paper}`,
+                borderLeftWidth: '6px',
+              },
+              '&::before': {
+                content: '"\u201C"',
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                fontSize: '3rem',
+                color: theme.palette.secondary.dark,
+                opacity: 0.3,
+                fontFamily: 'serif',
+              }
             }}
           >
             <Typography
               variant="body1"
-              sx={{ mb: 1, color: theme.palette.secondary.light }}
+              sx={{
+                mb: 2,
+                color: theme.palette.secondary.light,
+                lineHeight: 1.6,
+                fontStyle: 'italic'
+              }}
             >
-              "{testimonial.attributes.quote}"
+              {testimonial.attributes.quote}
             </Typography>
-            <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-              {testimonial.attributes.author}
-            </Typography>
-            <Typography variant="caption">
-              {testimonial.attributes.role}
-            </Typography>
+            <Box sx={{ borderTop: `1px solid ${theme.palette.primary.light}`, pt: 2 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 'bold',
+                  color: theme.palette.secondary.main,
+                  mb: 0.5
+                }}
+              >
+                — {testimonial.attributes.author}
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: theme.palette.primary.contrastText,
+                  opacity: 0.8
+                }}
+              >
+                {testimonial.attributes.role}
+              </Typography>
+            </Box>
           </Box>
         ))}
       </Box>
