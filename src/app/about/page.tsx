@@ -10,7 +10,6 @@ import PersonalSection from '../../components/About/PersonalSection';
 import SkillsChart from '../../components/About/SkillsChart';
 import Testimonials from '../../components/About/Testimonials';
 import WorkExperience from '../../components/About/WorkExperience';
-import MatrixRain from '../../components/MatrixRain';
 import TerminalEasterEgg from '../../components/TerminalEasterEgg';
 
 export default function AboutPage() {
@@ -67,7 +66,6 @@ export default function AboutPage() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      <MatrixRain />
       <TerminalEasterEgg />
       <AboutMeSection content={aboutPageContent} />
       <SectionDivider />
