@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <ThemeRegistry>
       <html lang="en">
-        <body>
+        <body suppressHydrationWarning>
           {process.env.NEXT_PUBLIC_GA_ID && (
             <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
           )}
