@@ -40,7 +40,7 @@ export const CV_DATA: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },
-  summary: "Full-stack developer with 6+ years of experience building web applications and content management systems. Strong background in PHP, JavaScript, Java, HTML/CSS, and modern web frameworks. Experienced in CMS development including WordPress themes, plugins, and custom CMS solutions. Proven track record in government environments with previous AGSVA NV1 clearance (2021-2022). Proficient in full-stack development with expertise in server-side technologies (PHP, Java/Spring, Node.js), databases (MySQL, SQL Server), and modern deployment workflows (Git, CI/CD). Skilled in building RESTful APIs, microservices architecture, and infrastructure management.",
+  summary: "Software Engineer with 6+ years specialising in PHP development and modern web technologies. Extensive commercial PHP experience building custom WordPress plugins, RESTful APIs, and web applications using MVC frameworks including CakePHP. Proven expertise in full-stack development with React, React Native, Node.js, and creating end-to-end solutions across web and mobile platforms. Strong track record of API design and implementation, including mobile app backends and third-party integrations (OpenAI, ElevenLabs, payment systems). Experienced in automated testing with PHPUnit, CI/CD pipelines, and Agile methodologies. Skilled at collaborating with stakeholders to deliver innovative solutions that automate business processes and enhance user experiences. Available for immediate start.",
   experience: [
     {
       company: "Bonza Clean",
@@ -49,11 +49,12 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Developed custom CMS features for customer workflows using PHP, JavaScript, HTML/CSS, and React",
-        "Built WordPress-based solutions including custom themes and plugins for business operations",
-        "Implemented RESTful APIs and server-side components using PHP and Node.js",
-        "Managed MySQL database schemas and optimised queries for high-performance content retrieval",
-        "Integrated automated workflows with version control (Git) and CI/CD pipelines"
+        "Develop custom WordPress plugins using PHP for booking systems (Booknetic), payment integration, and business automation",
+        "Build and maintain RESTful APIs in PHP to power React Native mobile applications for iOS and Android platforms",
+        "Integrate third-party services including OpenAI and ElevenLabs APIs for AI services and voice receptionist features",
+        "Implement automated testing with PHPUnit and maintain CI/CD pipelines for continuous deployment",
+        "Collaborate with stakeholders in Agile sprints to deliver innovative solutions that automate business processes",
+        "Write clean, maintainable PHP code following MVC patterns and modern development best practices"
       ]
     },
     {
@@ -63,10 +64,10 @@ export const CV_DATA: CVData = {
       startDate: "03/2024",
       endDate: "09/2024",
       responsibilities: [
-        "Built and maintained full-stack product features across web application and backend services",
-        "Implemented RESTful web services using Express.js/Node.js for e-commerce platform",
-        "Worked with headless CMS architecture for content management and delivery",
-        "Shipped production changes with focus on maintainability and delivery velocity"
+        "Developed and delivered web applications using React, Node.js, and Express.js in Agile environment",
+        "Integrated third-party services and APIs to enhance e-commerce platform capabilities",
+        "Implemented automated testing strategies including unit and integration tests",
+        "Participated in daily standups, sprint planning, and retrospectives to ensure continuous delivery"
       ]
     },
     {
@@ -76,10 +77,10 @@ export const CV_DATA: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Developed and enhanced platform features in a microservices, event-driven architecture",
-        "Delivered and refined lending application workflows and related internal systems",
-        "Built dynamic document generation capabilities and improved customer interaction flows, including offline-friendly experiences",
-        "Worked across TypeScript, Node.js, React, AWS, and NoSQL (ScyllaDB), with a focus on testable, well-structured code"
+        "Developed web applications using TypeScript, React, and Node.js following Agile practices",
+        "Built automated workflows for lending applications with comprehensive test coverage",
+        "Enhanced web platform performance through monitoring and systematic troubleshooting",
+        "Collaborated with cross-functional teams to deliver features in two-week sprint cycles"
       ]
     },
     {
@@ -89,10 +90,11 @@ export const CV_DATA: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Developed backend services for federal government clients with AGSVA NV1 clearance (held 2021-2022)",
-        "Built Java/Spring microservices and RESTful APIs in secure government environments",
-        "Managed infrastructure, deployment pipelines, and database integrations",
-        "Collaborated with cross-functional teams following structured government development methodologies"
+        "Delivered web solutions for federal government agency with active AGSVA NV1 clearance",
+        "Designed and developed secure web applications using Java/Spring and modern JavaScript frameworks",
+        "Applied Agile methodologies in government environment with focus on security and compliance",
+        "Produced technical documentation meeting government standards and security requirements",
+        "Collaborated with multi-disciplinary teams to deliver mission-critical web applications"
       ]
     },
     {
@@ -102,10 +104,10 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Built custom WordPress themes and plugins using PHP, JavaScript, HTML/CSS for client websites",
-        "Developed content management solutions with focus on user experience and accessibility",
-        "Configured Apache web servers and implemented MySQL database schemas for CMS deployments",
-        "Achieved Nexthink Master's Level Certification while delivering web-based monitoring dashboards"
+        "Built custom WordPress themes and plugins using PHP, implementing business logic and API integrations",
+        "Developed PHP-based content management solutions with MySQL database design and query optimisation",
+        "Created responsive web interfaces using HTML5, CSS3, and JavaScript for optimal user experience",
+        "Configured LAMP stack environments and implemented version control workflows using Git"
       ]
     },
     {
@@ -115,8 +117,10 @@ export const CV_DATA: CVData = {
       startDate: "07/2019",
       endDate: "02/2020",
       responsibilities: [
-        "Built web applications using CakePHP framework for business operations",
-        "Developed custom PHP CMS features and content management workflows"
+        "Developed commercial web applications using CakePHP MVC framework for business operations",
+        "Designed and implemented MySQL database schemas with query optimisation for performance",
+        "Built custom PHP features following MVC architecture patterns and coding standards",
+        "Created and consumed RESTful APIs for system integration and data exchange"
       ]
     },
     {
@@ -138,18 +142,17 @@ export const CV_DATA: CVData = {
     }
   ],
   skills: [
-    "CMS Development (WordPress themes/plugins, Custom PHP CMS, Headless CMS)",
-    "PHP (CakePHP framework, WordPress development, templating)",
-    "Module/Plugin Development (WordPress plugins, CakePHP components)",
-    "JavaScript (ES6+, React, Node.js, AJAX)",
-    "HTML5/CSS3 (Responsive design, theming)",
-    "Java (Spring framework, microservices)",
-    "MySQL/SQL Server (Schema design, query optimisation)",
-    "Git (Advanced workflows, branching strategies, CI/CD)",
-    "Content Workflows (Multi-user systems, approval processes)",
-    "API Integration (RESTful services, third-party integrations)",
-    "Apache/Nginx (Configuration, deployment)",
-    "AGSVA NV1 Clearance (Previously held 2021-2022)",
-    "Government/Enterprise environments"
+    "PHP Development (PHP 7/8, CakePHP MVC Framework, WordPress Plugin Development, OOP)",
+    "Web Technologies (HTML5, CSS3, JavaScript ES6+, React, TypeScript)",
+    "Database Management (MySQL, Schema Design, Query Optimisation, Performance Tuning)",
+    "API Development (RESTful API Design, API Integration, Third-party Services, Microservices)",
+    "Version Control & CI/CD (Git, PHPUnit, Automated Testing, Jenkins, GitHub Actions)",
+    "Mobile Development (React Native, iOS/Android Cross-platform Development)",
+    "Agile Methodologies (Scrum, Sprint Planning, Daily Standups, Retrospectives)",
+    "Full Stack Development (Node.js, Express.js, LAMP Stack)",
+    "System Integration (OpenAI API, ElevenLabs API, Payment Gateways, Business Automation)",
+    "Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering)",
+    "Problem Solving (Performance Optimisation, Troubleshooting, Creative Solutions)",
+    "Time Management (Multi-project Delivery, Sprint Commitments, Deadline Achievement)"
   ]
 }
