@@ -36,11 +36,26 @@ export const generateModernDOCX = async (cvData: CVData, fileName: string = 'Dyl
             },
           }),
 
-          // Contact Information
+          // Contact Information - Line 1
           new Paragraph({
             children: [
               new TextRun({
                 text: `${cvData.personalInfo.phone} • ${cvData.personalInfo.email} • ${cvData.personalInfo.location}`,
+                font: "Calibri",
+                size: 22, // 11pt
+              }),
+            ],
+            alignment: AlignmentType.CENTER,
+            spacing: {
+              after: 120, // 6pt spacing
+            },
+          }),
+
+          // Contact Information - Line 2 (Links)
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: `LinkedIn: ${cvData.personalInfo.linkedin || 'N/A'} • GitHub: ${cvData.personalInfo.github || 'N/A'} • Portfolio: ${cvData.personalInfo.portfolio || 'N/A'}`,
                 font: "Calibri",
                 size: 22, // 11pt
               }),

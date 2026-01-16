@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getSkills } from '../../fetchers/skill';
 import { underLineHeaders } from '../../utils/styles';
 import { Skill } from '../../utils/types';
+import { CV_DATA } from '../../utils/cvTypes';
 
 const SkillBarContainer = styled(Box)(({ theme }) => ({
   position: 'relative',

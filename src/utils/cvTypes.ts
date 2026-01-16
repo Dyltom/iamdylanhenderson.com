@@ -69,6 +69,7 @@ export const CV_DATA: CVData = {
       startDate: "2018",
       endDate: "Present",
       responsibilities: [
+        "E-commerce Platform: Co-built successful opal e-commerce platform handling product catalogue and transactions",
         "Headless WordPress: Built JAMstack e-commerce sites with Next.js frontend + WordPress API",
         "Portfolio Sites: Musician portfolio integrating Spotify API with headless WordPress CMS",
         "Continuous Learning: Explore emerging tech through client work and personal experiments"

@@ -25,6 +25,7 @@ Leadership: Hired/mentored developer; delivered virtual training sessions.
 Side Projects | Melbourne, VIC
 Independent Developer | 2018 - Present
 Tech: WordPress REST API, Next.js, Spotify API, Headless CMS, JAMstack
+E-commerce Platform: Co-built successful opal e-commerce platform handling product catalogue and transactions.
 Headless WordPress: Built JAMstack e-commerce sites with Next.js frontend + WordPress API.
 Portfolio Sites: Musician portfolio integrating Spotify API with headless WordPress CMS.
 Continuous Learning: Explore emerging tech through client work and personal experiments.
