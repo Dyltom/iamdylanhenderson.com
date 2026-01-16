@@ -12,27 +12,26 @@ Experience
 Bonza Clean | Melbourne, VIC
 Senior Software Engineer | 09/2024 - Present
 Tech: PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n, Playwright
-Platform & Infrastructure: Built Docker-based CI/CD reducing deploy time from 30min to <5min; set up staging/local dev environments.
 Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9hrs to 1-2hrs/week.
 Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4hrs to 1hr/week.
+AI Systems: Built AI assistant for Bonza Engine users - creates bookings/leads from chat, answers platform questions.
+Platform & Infrastructure: Built Docker-based CI/CD reducing deploy time from 30min to <5min; set up staging/local dev environments.
 APIs & Mobile: PHP REST APIs powering React Native app (iOS/Android, 1000+ users).
 Integrations: Stripe/PayPal payments, Xero accounting, ElevenLabs voice receptionist for lead capture.
-AI Systems: Built context-aware AI agent for creating appointments/leads/customers and platform assistance.
+Knowledge Systems: Moodle LMS + Scribe docs + training videos; reduced support tickets by standardising onboarding.
 Automation: n8n workflows for social media automation and AI agent orchestration.
-Knowledge Systems: Moodle LMS + Scribe docs + training videos; measurably reduced support tickets.
 Leadership: Hired/mentored developer; delivered virtual training sessions.
 
 Side Projects | Melbourne, VIC
 Independent Developer | 2018 - Present
 Tech: WordPress REST API, Next.js, Spotify API, Headless CMS, JAMstack
-E-commerce Platform: Co-built successful opal e-commerce platform handling product catalogue and transactions.
+E-commerce Platform: Co-built opal e-commerce platform (2020-present, $100k+ sales) handling product catalogue and transactions.
 Headless WordPress: Built JAMstack e-commerce sites with Next.js frontend + WordPress API.
-Portfolio Sites: Musician portfolio integrating Spotify API with headless WordPress CMS.
-Continuous Learning: Explore emerging tech through client work and personal experiments.
+Portfolio Sites: Musician portfolio + e-commerce site integrating Spotify API with headless WordPress CMS.
 
 Reebelo | Collingwood, VIC
 Full Stack Engineer | 03/2024 - 09/2024
-Tech: React, Node.js, Express, TypeScript, Jest, PostgreSQL, AWS (EC2, S3)
+Tech: React, Node.js, Express, TypeScript, Jest, PostgreSQL, Elasticsearch, AWS (EC2, S3)
 Built web applications for e-commerce platform using React/Node.js with TypeScript.
 Integrated customer data APIs and CRM systems for order management and analytics.
 Implemented comprehensive test coverage with Jest and integration testing.
@@ -48,11 +47,11 @@ Implemented secure coding practices for fintech data protection.
 
 Leidos Australia | Melbourne, VIC
 Software Engineer | 09/2021 - 03/2022
-Tech: Java, Spring Boot, JavaScript, React, PostgreSQL, GitLab CI, Linux
-Delivered enterprise web solutions for federal government (AGSVA NV1 clearance held 2021-2022).
-Built secure, high-reliability applications for mission-critical systems.
-Applied rigorous documentation and compliance standards.
-Collaborated across multi-disciplinary teams on complex integrations.
+Tech: Java, Spring Boot, React, PostgreSQL, Ansible, Elasticsearch, GitLab CI
+Delivered enterprise web applications using Java/Spring Boot and React (AGSVA NV1 clearance 2021-2022).
+Built secure APIs and services with PostgreSQL for mission-critical government systems.
+Applied security protocols and compliance standards for sensitive data handling.
+Integrated complex systems across multi-disciplinary teams using GitLab CI/CD.
 
 Virtech | Melbourne, VIC
 Software Developer | 02/2020 - 09/2021
@@ -77,16 +76,16 @@ Supported social media operations and automation workflows.
 Maintained scheduling tools and content management systems.
 
 Skills
-PHP: PHP 7/8, WordPress Plugin Development (hooks, REST API), CakePHP, Composer, PHPUnit
-Frontend: React, TypeScript, Vue.js, Next.js, HTML5, CSS3, JavaScript ES6+
-Backend: Node.js, Express, RESTful APIs, Microservices, Scala
-Database: MySQL, PostgreSQL, ScyllaDB, Query Optimisation, Schema Design
-Mobile: React Native (iOS/Android), Cross-platform Development
-DevOps: Docker, CI/CD (GitHub Actions), Playwright, Automated Testing
-Cloud/Infrastructure: AWS (EC2, S3), VPS Management, Coolify, Linux
-Integrations: Stripe, PayPal, Xero, OpenAI API, ElevenLabs, n8n
-Tools: Git, Agile/Scrum, JIRA, Technical Documentation
-Security: AGSVA NV1 Clearance (2021-2022), Secure Development Practices
+WordPress Development: Plugin development (hooks, REST API, custom post types), Payment integrations, WooCommerce
+PHP: PHP 7/8, CakePHP MVC, Laravel knowledge, Composer, PHPUnit, PSR standards
+API Design & Integration: RESTful APIs, Stripe, PayPal, Xero, OpenAI, Webhooks, Rate limiting
+Frontend: React, TypeScript, Vue.js, Next.js, React Native, HTML5, CSS3, JavaScript ES6+
+Backend: Node.js, Express.js, Microservices architecture, Scala, Java/Spring Boot
+CI/CD & Testing: GitHub Actions, Docker, PHPUnit, Jest, Playwright E2E, Automated deployments
+Database: MySQL, PostgreSQL, ScyllaDB, Query optimisation, Schema design, Migrations
+Infrastructure: Linux, VPS management, Nginx/Apache, Docker, Coolify, AWS (EC2, S3)
+Security & Compliance: Fintech security practices, Government compliance (NV1 2021-2022)
+Agile Delivery: Scrum, Sprint planning, JIRA, Technical documentation, Stakeholder communication
 
 Education
 Monash University
