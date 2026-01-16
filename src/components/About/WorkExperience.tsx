@@ -177,15 +177,75 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
                       ? company.attributes.endDate
                       : commonDateFormatter(company.attributes.endDate)}
                   </Typography>
-                  {company.attributes.points.map((point, idx) => (
-                    <Typography
-                      key={idx}
-                      variant="body2"
-                      sx={{ color: theme.palette.secondary.light }}
-                    >
-                      - {point}
-                    </Typography>
-                  ))}
+                  <Box sx={{ mt: 2 }}>
+                    {/* Show only first 2 points initially */}
+                    {company.attributes.points.slice(0, 2).map((point, idx) => (
+                      <Box
+                        key={idx}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          mb: 1.5,
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            color: theme.palette.secondary.main,
+                            mr: 1,
+                            fontSize: '1.2rem',
+                          }}
+                        >
+                          ▸
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: theme.palette.primary.contrastText,
+                            lineHeight: 1.6,
+                            flex: 1,
+                          }}
+                        >
+                          {point}
+                        </Typography>
+                      </Box>
+                    ))}
+
+                    {/* Show remaining as a summary */}
+                    {company.attributes.points.length > 2 && (
+                      <Box
+                        sx={{
+                          mt: 2,
+                          p: 2,
+                          backgroundColor: 'rgba(0, 255, 0, 0.05)',
+                          borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                          borderRadius: '0 4px 4px 0',
+                        }}
+                      >
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: theme.palette.secondary.main,
+                            fontWeight: 600,
+                            display: 'block',
+                            mb: 1,
+                          }}
+                        >
+                          Key Achievements:
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: theme.palette.primary.contrastText,
+                            fontStyle: 'italic',
+                            lineHeight: 1.6,
+                            fontSize: '0.9rem',
+                          }}
+                        >
+                          {company.attributes.points.slice(2).join(' • ')}
+                        </Typography>
+                      </Box>
+                    )}
+                  </Box>
                 </Box>
               )}
             </Box>

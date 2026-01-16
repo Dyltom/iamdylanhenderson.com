@@ -51,14 +51,16 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
       }}
     >
       <Typography
-        variant="h5"
+        variant={isVisible ? 'h4' : 'h5'}
         gutterBottom
         component="div"
         sx={{
           ...underLineHeaders(theme),
           textAlign: 'center',
-          mb: 4,
-          color: theme.palette.secondary.contrastText
+          mb: 6,
+          color: theme.palette.primary.main,
+          fontWeight: 600,
+          transition: 'all 0.5s ease',
         }}
       >
         {title}

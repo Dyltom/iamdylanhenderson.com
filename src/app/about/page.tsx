@@ -39,7 +39,7 @@ export default function AboutPage() {
   const SectionDivider = () => (
     <Box
       sx={{
-        height: '60px',
+        height: { xs: '80px', md: '120px' },
         backgroundColor: theme.palette.background.default,
         display: 'flex',
         alignItems: 'center',
@@ -51,27 +51,17 @@ export default function AboutPage() {
       <Box
         sx={{
           width: '100%',
-          maxWidth: '300px',
+          maxWidth: '200px',
           height: '1px',
           background: `linear-gradient(90deg,
             transparent 0%,
-            ${theme.palette.secondary.main}40 20%,
-            ${theme.palette.secondary.main} 50%,
-            ${theme.palette.secondary.main}40 80%,
+            ${theme.palette.secondary.main}20 20%,
+            ${theme.palette.secondary.main}40 50%,
+            ${theme.palette.secondary.main}20 80%,
             transparent 100%)`,
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          fontFamily: 'monospace',
-          fontSize: '0.8rem',
-          color: theme.palette.secondary.main,
           opacity: 0.5,
         }}
-      >
-        * * *
-      </Box>
+      />
     </Box>
   );
 

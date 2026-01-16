@@ -10,12 +10,14 @@ import {
 import Grid2 from '@mui/material/Grid';
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useRouter } from 'next/navigation';
 
 import { verifyCaptcha } from '../../../utils/ServerActions';
 import Fields from './Fields';
 import { STATIC_CONTACT_PAGE } from '../../../utils/staticPageContent';
 
 const ContactForm: React.FC = () => {
+  const router = useRouter();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -184,8 +186,7 @@ const ContactForm: React.FC = () => {
           <Button
             variant="contained"
             color="secondary"
-            href={STATIC_CONTACT_PAGE.attributes.resume.data.attributes.url}
-            download
+            onClick={() => router.push('/cv')}
             sx={{
               mt: 1,
               fontFamily: 'monospace',

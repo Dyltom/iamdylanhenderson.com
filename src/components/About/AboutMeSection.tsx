@@ -1,5 +1,5 @@
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { underLineHeaders } from '../../utils/styles';
 import { AboutPage } from '../../utils/types';
@@ -14,17 +14,7 @@ type AboutMeSectionProps = {
 const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
-  const [typedText, setTypedText] = useState('');
   const fullText = content.aboutContent || CV_DATA.summary;
-
-  useEffect(() => {
-    if (isVisible && typedText.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1));
-      }, 15);
-      return () => clearTimeout(timeout);
-    }
-  }, [isVisible, typedText, fullText]);
 
   return (
     <Box
@@ -34,51 +24,70 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
         backgroundColor: theme.palette.background.default,
         color: theme.palette.primary.contrastText,
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-        transition: 'all 0.6s ease-out',
+        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+        transition: 'all 0.8s ease-out',
       }}
     >
       <Box
         sx={{
-          maxWidth: '800px',
+          maxWidth: '900px',
           margin: '0 auto',
           textAlign: 'center',
         }}
       >
         <Typography
-          variant="h5"
-          sx={underLineHeaders(theme)}
+          variant="h4"
+          sx={{
+            ...underLineHeaders(theme),
+            mb: 4,
+            fontWeight: 600,
+            color: theme.palette.primary.main,
+            '&::before': {
+              content: '"$ "',
+              color: theme.palette.secondary.main,
+              opacity: 0.8,
+            }
+          }}
           gutterBottom
         >
           {content.aboutTitle || 'About Me'}
         </Typography>
-        <Typography
-          variant="body1"
+        <Box
           sx={{
-            fontFamily: 'monospace',
-            color: theme.palette.secondary.light,
-            lineHeight: 1.8,
-            textAlign: 'center',
-            mt: 3,
-            minHeight: '100px',
+            maxWidth: '700px',
+            margin: '0 auto',
+            p: 3,
+            background: 'rgba(0, 255, 0, 0.03)',
+            border: '1px solid',
+            borderColor: theme.palette.secondary.main,
+            borderRadius: 2,
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '4px',
+              height: '100%',
+              backgroundColor: theme.palette.secondary.main,
+            }
           }}
         >
-          {typedText}
-          {typedText.length < fullText.length && (
-            <Box
-              component="span"
-              sx={{
-                animation: 'blink 1s infinite',
-                '@keyframes blink': {
-                  '0%, 50%': { opacity: 1 },
-                  '51%, 100%': { opacity: 0 },
-                }
-              }}
-            >
-              █
-            </Box>
-          )}
-        </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              fontFamily: 'monospace',
+              color: theme.palette.primary.contrastText,
+              lineHeight: 1.8,
+              fontSize: '1.1rem',
+              '& strong': {
+                color: theme.palette.secondary.main,
+              }
+            }}
+          >
+            {fullText}
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
