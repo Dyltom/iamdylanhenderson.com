@@ -80,10 +80,11 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
           variant="h3"
           component="h1"
           sx={{
-            color: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
             fontWeight: 700,
             mb: 3,
             fontSize: { xs: '2rem', md: '3rem' },
+            fontFamily: 'monospace',
           }}
         >
           {article.title}
@@ -141,7 +142,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
             color: theme.palette.primary.contrastText,
           },
           '& h1, & h2, & h3, & h4, & h5, & h6': {
-            color: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
             fontWeight: 600,
             mt: 4,
             mb: 2,
