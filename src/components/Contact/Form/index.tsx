@@ -11,10 +11,7 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { getContactUsPage } from '../../../fetchers/pages';
 import { verifyCaptcha } from '../../../utils/ServerActions';
-import { convertContentToMarkdown } from '../../../utils/converters';
-import { ContactUs } from '../../../utils/types';
 import Fields from './Fields';
 
 const ContactForm: React.FC = () => {
@@ -31,53 +28,58 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [renderRecaptcha, setRenderRecaptcha] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [contactUsContent, setContactUsContent] = useState<
-    ContactUs | undefined
-  >(undefined);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
       setRenderRecaptcha(true);
     }
-    const fetchContactUsPageContent = async () => {
-      const fetchedContactUs = await getContactUsPage();
-      setContactUsContent(fetchedContactUs);
-    };
-    fetchContactUsPageContent();
   }, []);
 
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  // Static content
+  const contactUsContent = {
+    attributes: {
+      title: "Let's Connect",
+      content: [],
+      resumeCta: "Are you interested in grabbing my CV?",
+      resumeCtaButtonText: "Download CV",
+      resume: {
+        data: {
+          attributes: {
+            url: "/cv/dylan-henderson-cv.pdf"
+          }
+        }
+      }
+    }
+  };
 
-  if (!contactUsContent) {
-    return null;
-  }
-
-  const handleCaptchaVerification = (token: string | null) => {
-    if (!token && process.env.IS_RECAPTCHA_ENABLED) {
-      setSnackbarSeverity('error');
-      setSnackbarMessage('Captcha not completed. Please try again.');
-      setOpenSnackbar(true);
+  const handleCaptchaVerification = async (token: string | null) => {
+    if (!token) {
+      setIsVerified(false);
       return;
     }
 
-    setLoading(true);
-    verifyCaptcha(token)
-      .then(() => {
+    try {
+      const result = await verifyCaptcha(token);
+      if (result === 'success!') {
         setIsVerified(true);
-        setOpenSnackbar(false);
-      })
-      .catch(() => {
+      } else {
         setIsVerified(false);
         setSnackbarSeverity('error');
         setSnackbarMessage('Captcha verification failed. Please try again.');
         setOpenSnackbar(true);
-      })
-      .finally(() => setLoading(false));
+      }
+    } catch (error) {
+      setIsVerified(false);
+      setSnackbarSeverity('error');
+      setSnackbarMessage('Captcha verification failed. Please try again.');
+      setOpenSnackbar(true);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!isVerified && process.env.IS_RECAPTCHA_ENABLED) {
+    if (!isVerified && renderRecaptcha) {
       setSnackbarSeverity('error');
       setSnackbarMessage('Please complete the captcha verification.');
       setOpenSnackbar(true);
@@ -118,10 +120,6 @@ const ContactForm: React.FC = () => {
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
-
-  const markdownContent = convertContentToMarkdown(
-    contactUsContent.attributes.content
-  );
 
   return (
     <Grid container spacing={2}>

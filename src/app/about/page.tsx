@@ -17,11 +17,16 @@ export default function AboutPage() {
   >(undefined);
 
   useEffect(() => {
-    const fetchAboutPageContent = async () => {
-      const fetchedAboutPage = await getAboutPage();
-      setAboutPageContent(fetchedAboutPage);
-    };
-    fetchAboutPageContent();
+    // Mock the API response with static content
+    setAboutPageContent({
+      aboutTitle: 'About Me',
+      aboutContent: "Hello! I'm Dylan, and I thrive on solving challenges with technology. My coding journey began when I crafted my first Minecraft plugin back in 2014, igniting my passion for continuous learning. Over the years, I've had the privilege of working with four startups and a larger company, where I've tackled complex scenarios and worn many hats, gaining invaluable experience along the way.",
+      workExperienceTitle: 'Work Experience',
+      skillsTitle: 'My Technical Skills',
+      skillsChartText: 'Each marker represents 1 year of experience.',
+      testimonialsTitle: 'What People Say About Me',
+      interestingFactsTitle: 'A Little More About Me'
+    });
   }, []);
 
   if (!aboutPageContent) {

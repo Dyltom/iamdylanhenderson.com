@@ -36,7 +36,7 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
   const [, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
-  const sortedBlogPosts = sortPosts(blogPosts, 'mostRecent', true);
+  const sortedBlogPosts = blogPosts; // Temporarily skip sorting
 
   const numberOfDots = blogPosts.length - (itemsPerSlide - 1);
 

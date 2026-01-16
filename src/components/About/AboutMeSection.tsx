@@ -24,13 +24,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
         {content.aboutTitle || 'About Me'}
       </Typography>
       <Typography variant="subtitle1" align="left" sx={{ mb: 2 }}>
-        {CV_DATA.summary}
+        {content.aboutContent || CV_DATA.summary}
       </Typography>
-      {content.aboutContent && (
-        <Typography variant="subtitle1" align="left">
-          {content.aboutContent}
-        </Typography>
-      )}
     </Box>
   );
 };
