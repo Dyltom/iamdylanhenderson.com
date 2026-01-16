@@ -14,7 +14,8 @@ automate business processes. Available for immediate start and comfortable worki
 Experience
 Bonza Clean | Melbourne, VIC
 Senior Software Engineer | 09/2024 - Present
-Built complete CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit.
+Set up complete infrastructure on VPS using Coolify for Docker orchestration, automated deployments, and domain management.
+Built CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit.
 Developed Bonza Engine plugin and custom WordPress plugins: API gateway, booking extensions, payment processing, AI integrations.
 Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management.
 Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms.
@@ -25,24 +26,24 @@ Increased bookings and revenue while automating operations, serving 1000+ app us
 Reebelo | Collingwood, VIC
 Full Stack Engineer | 03/2024 - 09/2024
 Developed and delivered web applications using React, Node.js, and Express.js in Agile environment.
-Integrated third-party services and APIs to enhance e-commerce platform capabilities.
+Integrated customer data management APIs and CRM systems for enhanced e-commerce capabilities.
 Implemented automated testing strategies including unit and integration tests.
 Participated in daily standups, sprint planning, and retrospectives to ensure continuous delivery.
 
 etika | Melbourne, VIC
 Full Stack Developer | 03/2022 - 03/2024
-Developed web applications using TypeScript, React, and Node.js following Agile practices.
-Built automated workflows for lending applications with comprehensive test coverage.
-Enhanced web platform performance through monitoring and systematic troubleshooting.
-Collaborated with cross-functional teams to deliver features in two-week sprint cycles.
+Developed microservices architecture (10+ services) using TypeScript, React, Node.js, and Scala for database operations.
+Built federated UIs and automated workflows for lending applications with comprehensive test coverage.
+Implemented secure coding practices in fintech environment with focus on data protection and compliance.
+Enhanced platform performance through monitoring, systematic troubleshooting, and microservice optimisation.
 
 Leidos Australia | Melbourne, VIC
 Software Engineer | 09/2021 - 03/2022
-Delivered web solutions for federal government agency with active AGSVA NV1 clearance.
-Designed and developed secure web applications using Java/Spring and modern JavaScript frameworks.
-Applied Agile methodologies in government environment with focus on security and compliance.
-Produced technical documentation meeting government standards and security requirements.
-Collaborated with multi-disciplinary teams to deliver mission-critical web applications.
+Delivered enterprise-scale web solutions for federal government with active AGSVA NV1 clearance.
+Designed and developed secure, high-reliability applications using Java/Spring and modern JavaScript frameworks.
+Applied Agile methodologies with rigorous documentation standards for mission-critical systems.
+Implemented secure coding practices and compliance protocols for sensitive government data.
+Collaborated across large, multi-disciplinary teams on complex system integrations.
 
 Virtech | Melbourne, VIC
 Software Developer | 02/2020 - 09/2021
@@ -68,7 +69,8 @@ JavaScript ES6+, React, TypeScript), Database Management (MySQL, Schema Design, 
 API Development (RESTful API Design, API Integration, Third-party Services, Microservices), Version Control & CI/CD (Git,
 PHPUnit, Automated Testing, Jenkins, GitHub Actions), Mobile Development (React Native, iOS/Android Cross-platform
 Development), Agile Methodologies (Scrum, Sprint Planning, Daily Standups, Retrospectives), Full Stack Development
-(Node.js, Express.js, LAMP Stack), System Integration (Stripe, PayPal, Xero, OpenAI API, ElevenLabs API, Business
+(Node.js, Express.js, Scala, LAMP Stack, Microservices), DevOps & Infrastructure (Docker, Coolify, VPS Management,
+Automated Deployments, n8n), System Integration (Stripe, PayPal, Xero, OpenAI API, ElevenLabs API, Business
 Automation), Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering), Problem
 Solving (Performance Optimisation, Troubleshooting, Creative Solutions), Time Management (Multi-project Delivery, Sprint
 Commitments, Deadline Achievement)

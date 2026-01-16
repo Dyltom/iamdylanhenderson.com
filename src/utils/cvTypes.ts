@@ -49,7 +49,8 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Built complete CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
+        "Set up complete infrastructure on VPS using Coolify for Docker orchestration, automated deployments, and domain management",
+        "Built CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
         "Developed Bonza Engine plugin and custom WordPress plugins: API gateway, booking extensions, payment processing, AI integrations",
         "Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management",
         "Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
@@ -66,7 +67,7 @@ export const CV_DATA: CVData = {
       endDate: "09/2024",
       responsibilities: [
         "Developed and delivered web applications using React, Node.js, and Express.js in Agile environment",
-        "Integrated third-party services and APIs to enhance e-commerce platform capabilities",
+        "Integrated customer data management APIs and CRM systems for enhanced e-commerce capabilities",
         "Implemented automated testing strategies including unit and integration tests",
         "Participated in daily standups, sprint planning, and retrospectives to ensure continuous delivery"
       ]
@@ -78,10 +79,10 @@ export const CV_DATA: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Developed web applications using TypeScript, React, and Node.js following Agile practices",
-        "Built automated workflows for lending applications with comprehensive test coverage",
-        "Enhanced web platform performance through monitoring and systematic troubleshooting",
-        "Collaborated with cross-functional teams to deliver features in two-week sprint cycles"
+        "Developed microservices architecture (10+ services) using TypeScript, React, Node.js, and Scala for database operations",
+        "Built federated UIs and automated workflows for lending applications with comprehensive test coverage",
+        "Implemented secure coding practices in fintech environment with focus on data protection and compliance",
+        "Enhanced platform performance through monitoring, systematic troubleshooting, and microservice optimisation"
       ]
     },
     {
@@ -91,11 +92,11 @@ export const CV_DATA: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Delivered web solutions for federal government agency with active AGSVA NV1 clearance",
-        "Designed and developed secure web applications using Java/Spring and modern JavaScript frameworks",
-        "Applied Agile methodologies in government environment with focus on security and compliance",
-        "Produced technical documentation meeting government standards and security requirements",
-        "Collaborated with multi-disciplinary teams to deliver mission-critical web applications"
+        "Delivered enterprise-scale web solutions for federal government with active AGSVA NV1 clearance",
+        "Designed and developed secure, high-reliability applications using Java/Spring and modern JavaScript frameworks",
+        "Applied Agile methodologies with rigorous documentation standards for mission-critical systems",
+        "Implemented secure coding practices and compliance protocols for sensitive government data",
+        "Collaborated across large, multi-disciplinary teams on complex system integrations"
       ]
     },
     {
@@ -150,7 +151,8 @@ export const CV_DATA: CVData = {
     "Version Control & CI/CD (Git, PHPUnit, Automated Testing, Jenkins, GitHub Actions)",
     "Mobile Development (React Native, iOS/Android Cross-platform Development)",
     "Agile Methodologies (Scrum, Sprint Planning, Daily Standups, Retrospectives)",
-    "Full Stack Development (Node.js, Express.js, LAMP Stack)",
+    "Full Stack Development (Node.js, Express.js, Scala, LAMP Stack, Microservices)",
+    "DevOps & Infrastructure (Docker, Coolify, VPS Management, Automated Deployments, n8n)",
     "System Integration (Stripe, PayPal, Xero, OpenAI API, ElevenLabs API, Business Automation)",
     "Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering)",
     "Problem Solving (Performance Optimisation, Troubleshooting, Creative Solutions)",
