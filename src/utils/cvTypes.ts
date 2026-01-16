@@ -50,13 +50,14 @@ export const CV_DATA: CVData = {
       endDate: "Present",
       responsibilities: [
         "Set up complete infrastructure on VPS using Coolify for Docker orchestration, automated deployments, and domain management",
+        "Hired, trained and mentored junior developer from Philippines, providing technical guidance and career development",
         "Built CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
         "Developed Bonza Engine plugin and custom WordPress plugins: API gateway, booking extensions, payment processing, AI integrations",
         "Built customer portal with billing features, invoice generation, and payment method management",
         "Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management",
         "Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
         "Integrated multiple third-party services: Stripe/PayPal for payments, Xero for accounting, OpenAI/ElevenLabs for AI features",
-        "Transformed non-technical business problems into scalable PHP solutions, achieving 50%+ performance improvements",
+        "Transformed non-technical business problems into scalable PHP solutions, achieving significant performance improvements",
         "Increased bookings and revenue while automating operations, serving 1000+ app users with improved satisfaction"
       ]
     },
@@ -167,7 +168,7 @@ export const CV_DATA: CVData = {
     "Full Stack Development (Node.js, Express.js, Scala, LAMP Stack, Microservices)",
     "DevOps & Infrastructure (Docker, Coolify, VPS Management, Automated Deployments, n8n)",
     "System Integration (Stripe, PayPal, Xero, OpenAI API, ElevenLabs API, Business Automation)",
-    "Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering)",
+    "Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering, Mentoring)",
     "Problem Solving (Performance Optimisation, Troubleshooting, Creative Solutions)",
     "Time Management (Multi-project Delivery, Sprint Commitments, Deadline Achievement)"
   ]
