@@ -85,15 +85,6 @@ export const generateModernDOCX = async (cvData: CVData, fileName: string = 'Dyl
             },
           }),
 
-          // Core Competencies Header
-          createSectionHeader("CORE COMPETENCIES"),
-
-          // Competency bullets
-          createBullet("Full-stack web development with 6+ years commercial experience"),
-          createBullet("Content Management Systems (CMS) development including WordPress and custom solutions"),
-          createBullet("Government sector experience with AGSVA NV1 clearance (held 2021-2022)"),
-          createBullet("Strong technical documentation and stakeholder communication skills"),
-          createBullet("Agile development methodologies and collaborative team environments", 360),
 
           // Professional Experience Header
           createSectionHeader("PROFESSIONAL EXPERIENCE"),
@@ -147,10 +138,29 @@ export const generateModernDOCX = async (cvData: CVData, fileName: string = 'Dyl
                   }),
                 ],
                 spacing: {
-                  after: 120, // 6pt before bullets
+                  after: 60, // 3pt
                 },
               })
             );
+
+            // Tech Stack (if available)
+            if (exp.techStack) {
+              entries.push(
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: `Tech: ${exp.techStack}`,
+                      font: "Calibri",
+                      size: 22, // 11pt
+                      italics: true,
+                    }),
+                  ],
+                  spacing: {
+                    after: 120, // 6pt before bullets
+                  },
+                })
+              );
+            }
 
             // Responsibilities
             exp.responsibilities.forEach((resp, respIndex) => {
