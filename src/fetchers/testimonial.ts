@@ -7,7 +7,7 @@ export async function getTestimonials(): Promise<Testimonial[] | undefined> {
     );
     return (await response.json()).data;
   } catch (error) {
-    console.error('Error fetching testionials:', error);
+    console.error('Error fetching testimonials:', error);
     return;
   }
 }

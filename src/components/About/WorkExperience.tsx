@@ -13,6 +13,7 @@ import { getWorkExperience } from '../../fetchers/workExperience';
 import { commonDateFormatter } from '../../utils/date';
 import { underLineHeaders } from '../../utils/styles';
 import { WorkExperience as WorkExperienceType } from '../../utils/types';
+import { CV_DATA } from '../../utils/cvTypes';
 
 type WorkExperienceProps = {
   title: string;
@@ -29,7 +30,21 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   useEffect(() => {
     const fetchWorkExperience = async () => {
       const fetchedWorkExperience = await getWorkExperience();
-      setWorkExperience(fetchedWorkExperience);
+      if (fetchedWorkExperience && fetchedWorkExperience.length > 0) {
+        setWorkExperience(fetchedWorkExperience);
+      } else {
+        // Use CV data as fallback
+        const cvWorkExperience = CV_DATA.experience.map((exp) => ({
+          attributes: {
+            company: exp.company,
+            title: exp.title,
+            startDate: exp.startDate,
+            endDate: exp.endDate,
+            points: exp.responsibilities,
+          },
+        })) as WorkExperienceType[];
+        setWorkExperience(cvWorkExperience);
+      }
     };
     fetchWorkExperience();
   }, []);
@@ -140,8 +155,14 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
                     variant="body2"
                     sx={{ color: theme.palette.secondary.light }}
                   >
-                    {commonDateFormatter(company.attributes.startDate)} -{' '}
-                    {commonDateFormatter(company.attributes.endDate)}
+                    {company.attributes.startDate.includes('/')
+                      ? company.attributes.startDate
+                      : commonDateFormatter(company.attributes.startDate)} -{' '}
+                    {company.attributes.endDate === 'Present'
+                      ? company.attributes.endDate
+                      : company.attributes.endDate.includes('/')
+                      ? company.attributes.endDate
+                      : commonDateFormatter(company.attributes.endDate)}
                   </Typography>
                   {company.attributes.points.map((point, idx) => (
                     <Typography

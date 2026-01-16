@@ -6,6 +6,7 @@ import { getHeroContent } from '../../fetchers/pages';
 import { convertContentToMarkdown } from '../../utils/converters';
 import { HeroContent } from '../../utils/types';
 import theme from '../ThemeRegistry/theme';
+import GlitchText from '../GlitchText';
 
 const HeroSection: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -38,9 +39,15 @@ const HeroSection: React.FC = () => {
       <Typography variant="h5" align="center" gutterBottom>
         Hello, my name is
       </Typography>
-      <Typography variant="h3" align="center" color="secondary" gutterBottom>
-        Dylan Henderson
-      </Typography>
+      <GlitchText
+        text="Dylan Henderson"
+        variant="h3"
+        align="center"
+        color="secondary"
+        gutterBottom
+        glitchIntensity="medium"
+        glitchOnHover
+      />
       <ReactMarkdown children={markdownContent} />
     </Box>
   );

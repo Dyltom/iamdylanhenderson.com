@@ -17,8 +17,13 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
 
   useEffect(() => {
     const fetchTestimonials = async () => {
-      const fetchedSkills = await getTestimonials();
-      setTestimonials(fetchedSkills);
+      const fetchedTestimonials = await getTestimonials();
+      // Filter out testimonials that mention "Alex" as they're placeholder content
+      const validTestimonials = fetchedTestimonials?.filter(
+        (testimonial) =>
+          !testimonial.attributes.quote.toLowerCase().includes('alex')
+      );
+      setTestimonials(validTestimonials);
     };
     fetchTestimonials();
   }, []);

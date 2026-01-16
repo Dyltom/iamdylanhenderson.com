@@ -21,6 +21,7 @@ export interface CVExperience {
   startDate: string
   endDate: string
   responsibilities: string[]
+  techStack?: string
 }
 
 export interface CVEducation {
@@ -38,9 +39,9 @@ export const CV_DATA: CVData = {
     location: "Melbourne, VIC",
     linkedin: "https://www.linkedin.com/in/dylan-henderson-07",
     github: "https://github.com/Dyltom",
-    portfolio: "https://iamdylanhenderson.com"
+    portfolio: "https://www.iamdylanhenderson.com"
   },
-  summary: "Software Engineer with 6+ years specialising in PHP development and transforming business challenges into technical solutions. Extensive commercial PHP experience building custom WordPress plugins, RESTful APIs, and web applications using MVC frameworks including CakePHP. Proven expertise in full-stack development with React, React Native, Node.js, and creating end-to-end solutions across web and mobile platforms. Strong track record of API design and implementation, including mobile app backends and third-party integrations (Stripe, Xero, OpenAI). Leverages modern tools including AI assistants to accelerate development and solve complex problems. Experienced in automated testing with PHPUnit, CI/CD pipelines, and Agile methodologies. Skilled at collaborating with stakeholders to deliver innovative solutions that automate business processes. Available for immediate start and comfortable working remotely.",
+  summary: "Senior Software Engineer (PHP/WordPress + React/Node) with 6+ years building plugins, APIs, and internal platforms. Strong in productising messy business workflows into maintainable systems: bookings, payments, invoicing, integrations. Infrastructure + delivery: Docker, CI/CD, PHPUnit, automated deployments. Experience across fintech and government sectors. Available for immediate start.",
   experience: [
     {
       company: "Bonza Clean",
@@ -49,29 +50,30 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Set up complete infrastructure on VPS using Coolify for Docker orchestration, automated deployments, and domain management",
-        "Hired, trained and mentored junior developer from Philippines, providing technical guidance and career development",
-        "Built CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
-        "Developed Bonza Engine plugin and custom WordPress plugins: API gateway, booking extensions, payment processing, AI integrations",
-        "Built customer portal with billing features, invoice generation, and payment method management",
-        "Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management",
-        "Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
-        "Integrated multiple third-party services: Stripe/PayPal for payments, Xero for accounting, OpenAI/ElevenLabs for AI features",
-        "Transformed non-technical business problems into scalable PHP solutions, achieving significant performance improvements",
-        "Increased bookings and revenue while automating operations, serving 1000+ app users with improved satisfaction"
-      ]
+        "Platform & Infrastructure: Built Docker-based CI/CD reducing deploy time from 30min to <5min; set up staging/local dev environments",
+        "Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9hrs to 1-2hrs/week",
+        "Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4hrs to 1hr/week",
+        "APIs & Mobile: PHP REST APIs powering React Native app (iOS/Android, 1000+ users)",
+        "Integrations: Stripe/PayPal payments, Xero accounting, ElevenLabs voice receptionist for lead capture",
+        "AI Systems: Built context-aware AI agent for creating appointments/leads/customers and platform assistance",
+        "Automation: n8n workflows for social media automation and AI agent orchestration",
+        "Knowledge Systems: Moodle LMS + Scribe docs + training videos; measurably reduced support tickets",
+        "Leadership: Hired/mentored developer; delivered virtual training sessions"
+      ],
+      techStack: "PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n, Playwright"
     },
     {
-      company: "Personal Projects",
-      title: "Freelance Developer",
+      company: "Side Projects",
+      title: "Independent Developer",
       location: "Melbourne, VIC",
-      startDate: "Ongoing",
-      endDate: "Ongoing",
+      startDate: "2018",
+      endDate: "Present",
       responsibilities: [
-        "Developed headless WordPress solutions for e-commerce platforms using modern JAMstack architecture",
-        "Built portfolio website for professional musician integrating WordPress headless CMS with Spotify API",
-        "Continuously expand skills through side projects demonstrating initiative and passion for development"
-      ]
+        "Headless WordPress: Built JAMstack e-commerce sites with Next.js frontend + WordPress API",
+        "Portfolio Sites: Musician portfolio integrating Spotify API with headless WordPress CMS",
+        "Continuous Learning: Explore emerging tech through client work and personal experiments"
+      ],
+      techStack: "WordPress REST API, Next.js, Spotify API, Headless CMS, JAMstack"
     },
     {
       company: "Reebelo",
@@ -80,11 +82,12 @@ export const CV_DATA: CVData = {
       startDate: "03/2024",
       endDate: "09/2024",
       responsibilities: [
-        "Developed and delivered web applications using React, Node.js, and Express.js in Agile environment",
-        "Integrated customer data management APIs and CRM systems for enhanced e-commerce capabilities",
-        "Implemented automated testing strategies including unit and integration tests",
-        "Participated in daily standups, sprint planning, and retrospectives to ensure continuous delivery"
-      ]
+        "Built web applications for e-commerce platform using React/Node.js with TypeScript",
+        "Integrated customer data APIs and CRM systems for order management and analytics",
+        "Implemented comprehensive test coverage with Jest and integration testing",
+        "Delivered features in 2-week sprints using Agile methodologies"
+      ],
+      techStack: "React, Node.js, Express, TypeScript, Jest, PostgreSQL, AWS (EC2, S3)"
     },
     {
       company: "etika",
@@ -93,11 +96,12 @@ export const CV_DATA: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Developed microservices architecture (10+ services) using TypeScript, React, Node.js, and Scala for database operations",
-        "Built federated UIs and automated workflows for lending applications with comprehensive test coverage",
-        "Implemented secure coding practices in fintech environment with focus on data protection and compliance",
-        "Enhanced platform performance through monitoring, systematic troubleshooting, and microservice optimisation"
-      ]
+        "Built microservices architecture (10+ services) with federated UI approach",
+        "Developed lending workflows with automated testing and compliance checks",
+        "Optimised ScyllaDB queries and microservice performance for scale",
+        "Implemented secure coding practices for fintech data protection"
+      ],
+      techStack: "TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Jest, Docker"
     },
     {
       company: "Leidos Australia",
@@ -106,12 +110,12 @@ export const CV_DATA: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Delivered enterprise-scale web solutions for federal government with active AGSVA NV1 clearance",
-        "Designed and developed secure, high-reliability applications using Java/Spring and modern JavaScript frameworks",
-        "Applied Agile methodologies with rigorous documentation standards for mission-critical systems",
-        "Implemented secure coding practices and compliance protocols for sensitive government data",
-        "Collaborated across large, multi-disciplinary teams on complex system integrations"
-      ]
+        "Delivered enterprise web solutions for federal government (AGSVA NV1 clearance held 2021-2022)",
+        "Built secure, high-reliability applications for mission-critical systems",
+        "Applied rigorous documentation and compliance standards",
+        "Collaborated across multi-disciplinary teams on complex integrations"
+      ],
+      techStack: "Java, Spring Boot, JavaScript, React, PostgreSQL, GitLab CI, Linux"
     },
     {
       company: "Virtech",
@@ -120,11 +124,12 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Developed end-user experience monitoring dashboards using Vue.js and JavaScript for real-time system visibility",
-        "Created PowerShell scripts for self-healing automation and proactive issue resolution",
-        "Built performance monitoring and alert systems using Nexthink platform integration",
-        "Achieved Nexthink Master's Level Certification while improving IT service delivery metrics"
-      ]
+        "Built monitoring dashboards with Vue.js for real-time system visibility",
+        "Automated IT operations with PowerShell self-healing scripts",
+        "Integrated Nexthink platform for end-user experience monitoring",
+        "Achieved Nexthink Master's Level Certification"
+      ],
+      techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server, Active Directory"
     },
     {
       company: "Direct Speech",
@@ -133,11 +138,12 @@ export const CV_DATA: CVData = {
       startDate: "07/2019",
       endDate: "02/2020",
       responsibilities: [
-        "Developed commercial web applications using CakePHP MVC framework for business operations",
-        "Designed and implemented MySQL database schemas with query optimisation for performance",
-        "Built custom PHP features following MVC architecture patterns and coding standards",
-        "Created and consumed RESTful APIs for system integration and data exchange"
-      ]
+        "Built web applications with CakePHP MVC framework",
+        "Designed MySQL schemas with optimised queries",
+        "Implemented RESTful APIs for system integration",
+        "Followed MVC patterns and PSR coding standards"
+      ],
+      techStack: "PHP, CakePHP, MySQL, REST APIs, jQuery, Bootstrap"
     },
     {
       company: "Media8",
@@ -146,8 +152,10 @@ export const CV_DATA: CVData = {
       startDate: "02/2018",
       endDate: "01/2020",
       responsibilities: [
-        "Supported social media operations tooling and scheduling workflows"
-      ]
+        "Supported social media operations and automation workflows",
+        "Maintained scheduling tools and content management systems"
+      ],
+      techStack: "JavaScript, Social Media APIs, Content Management Tools"
     }
   ],
   education: [
@@ -158,18 +166,15 @@ export const CV_DATA: CVData = {
     }
   ],
   skills: [
-    "PHP Development (PHP 7/8, CakePHP MVC Framework, WordPress Plugin Development, OOP)",
-    "Web Technologies (HTML5, CSS3, JavaScript ES6+, React, TypeScript)",
-    "Database Management (MySQL, Schema Design, Query Optimisation, Performance Tuning)",
-    "API Development (RESTful API Design, API Integration, Third-party Services, Microservices)",
-    "Version Control & CI/CD (Git, Composer, PHPUnit, Playwright E2E Testing, GitHub Actions)",
-    "Mobile Development (React Native, iOS/Android Cross-platform Development)",
-    "Agile Methodologies (Scrum, Sprint Planning, Daily Standups, Retrospectives)",
-    "Full Stack Development (Node.js, Express.js, Scala, LAMP Stack, Microservices)",
-    "DevOps & Infrastructure (Docker, Coolify, VPS Management, Automated Deployments, n8n)",
-    "System Integration (Stripe, PayPal, Xero, OpenAI API, ElevenLabs API, Business Automation)",
-    "Communication Skills (Stakeholder Collaboration, Technical Documentation, Requirements Gathering, Mentoring)",
-    "Problem Solving (Performance Optimisation, Troubleshooting, Creative Solutions)",
-    "Time Management (Multi-project Delivery, Sprint Commitments, Deadline Achievement)"
+    "PHP: PHP 7/8, WordPress Plugin Development (hooks, REST API), CakePHP, Composer, PHPUnit",
+    "Frontend: React, TypeScript, Vue.js, Next.js, HTML5, CSS3, JavaScript ES6+",
+    "Backend: Node.js, Express, RESTful APIs, Microservices, Scala",
+    "Database: MySQL, PostgreSQL, ScyllaDB, Query Optimisation, Schema Design",
+    "Mobile: React Native (iOS/Android), Cross-platform Development",
+    "DevOps: Docker, CI/CD (GitHub Actions), Playwright, Automated Testing",
+    "Cloud/Infrastructure: AWS (EC2, S3), VPS Management, Coolify, Linux",
+    "Integrations: Stripe, PayPal, Xero, OpenAI API, ElevenLabs, n8n",
+    "Tools: Git, Agile/Scrum, JIRA, Technical Documentation",
+    "Security: AGSVA NV1 Clearance (2021-2022), Secure Development Practices"
   ]
 }
