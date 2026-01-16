@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import { underLineHeaders } from '../../utils/styles';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 type SkillsDisplayProps = {
   title: string;
@@ -11,6 +12,8 @@ type SkillsDisplayProps = {
 const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
   const theme = useTheme();
   const [showCursor, setShowCursor] = useState(true);
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
+  const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,13 +56,28 @@ echo "→ OpenAI integrations (AI assistants)"
 
 $ echo "Ready to ship 🚢"`;
 
+  useEffect(() => {
+    if (isVisible && displayedText.length < techStack.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(techStack.slice(0, displayedText.length + 3));
+      }, 10);
+      return () => clearTimeout(timeout);
+    }
+  }, [isVisible, displayedText, techStack]);
+
   return (
-    <Box sx={{
-      color: theme.palette.primary.contrastText,
-      padding: theme.spacing(4),
-      backgroundColor: theme.palette.background.default,
-      textAlign: 'center'
-    }}>
+    <Box
+      ref={ref}
+      sx={{
+        color: theme.palette.primary.contrastText,
+        padding: theme.spacing(4),
+        backgroundColor: theme.palette.background.default,
+        textAlign: 'center',
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+        transition: 'all 0.6s ease-out',
+      }}
+    >
       <Typography
         variant="h5"
         gutterBottom
@@ -159,8 +177,8 @@ $ echo "Ready to ship 🚢"`;
             }
           }}
         >
-          {techStack}
-          {showCursor && (
+          {displayedText}
+          {displayedText.length >= techStack.length && showCursor && (
             <Box
               component="span"
               sx={{

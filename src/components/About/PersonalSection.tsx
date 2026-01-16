@@ -7,6 +7,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import { Box, Typography, GlobalStyles } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { underLineHeaders } from '../../utils/styles';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 type PersonalSectionProps = {
   title: string;
@@ -14,6 +15,7 @@ type PersonalSectionProps = {
 
 const PersonalSection: React.FC<PersonalSectionProps> = ({ title }) => {
   const theme = useTheme();
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
 
   return (
     <>
@@ -49,11 +51,14 @@ const PersonalSection: React.FC<PersonalSectionProps> = ({ title }) => {
         }}
       />
       <Box
+        ref={ref}
         sx={{
           padding: theme.spacing(4),
           backgroundColor: theme.palette.background.default,
           color: theme.palette.primary.contrastText,
           textAlign: 'center',
+          opacity: isVisible ? 1 : 0,
+          transition: 'opacity 0.6s ease-out',
         }}
       >
       <Typography

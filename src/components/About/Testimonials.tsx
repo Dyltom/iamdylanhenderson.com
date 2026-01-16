@@ -3,6 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
 import { underLineHeaders } from '../../utils/styles';
 import { Testimonial } from '../../utils/types';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 type TestimonialsProps = {
   title: string;
@@ -13,6 +14,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
   const [testimonials, setTestimonials] = useState<Testimonial[] | undefined>(
     undefined
   );
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
 
   useEffect(() => {
     // Real testimonials from colleagues
@@ -41,10 +43,13 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
 
   return (
     <Box
+      ref={ref}
       sx={{
         padding: theme.spacing(4),
         backgroundColor: theme.palette.background.default,
         color: theme.palette.primary.contrastText,
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 0.8s ease-out',
       }}
     >
       <Typography
@@ -82,6 +87,9 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
               borderRadius: '4px',
               fontFamily: 'monospace',
               transition: 'all 0.3s ease',
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transitionDelay: isVisible ? `${index * 0.2}s` : '0s',
               '&:hover': {
                 transform: 'translateY(-4px)',
                 boxShadow: `0 4px 12px ${theme.palette.background.paper}`,

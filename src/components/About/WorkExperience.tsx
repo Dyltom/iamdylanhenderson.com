@@ -13,6 +13,7 @@ import { commonDateFormatter } from '../../utils/date';
 import { underLineHeaders } from '../../utils/styles';
 import { WorkExperience as WorkExperienceType } from '../../utils/types';
 import { CV_DATA } from '../../utils/cvTypes';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 type WorkExperienceProps = {
   title: string;
@@ -25,6 +26,7 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   const [workExperience, setWorkExperience] = useState<
     WorkExperienceType[] | undefined
   >([]);
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
 
   useEffect(() => {
     // Use CV data directly
@@ -65,10 +67,18 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   };
 
   return (
-    <Box sx={{
-      padding: theme.spacing(4),
-      backgroundColor: theme.palette.background.default
-    }}>
+    <Box
+      ref={ref}
+      sx={{
+        padding: theme.spacing(4),
+        backgroundColor: theme.palette.background.default,
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible
+          ? 'translateX(0)'
+          : isMobile ? 'translateX(-20px)' : 'translateX(-40px)',
+        transition: 'all 0.8s ease-out',
+      }}
+    >
       <Container maxWidth="lg">
         <Typography
           variant="h5"
