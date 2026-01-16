@@ -31,18 +31,24 @@ const MatrixRain: React.FC = () => {
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
 
     const draw = () => {
-      // Semi-transparent black for fade effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      // Semi-transparent background for fade effect (using actual background color)
+      ctx.fillStyle = 'rgba(15, 15, 15, 0.1)'; // Matches theme background
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Green text
-      ctx.fillStyle = theme.palette.secondary.main + '40'; // 25% opacity
+      // Green text with better visibility
+      ctx.fillStyle = theme.palette.secondary.main + '80'; // 50% opacity for better visibility
       ctx.font = `${fontSize}px monospace`;
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = theme.palette.secondary.main;
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
+
+        // Brighter text at the bottom
+        const brightness = Math.min(1, drops[i] / 10);
+        ctx.fillStyle = theme.palette.secondary.main + Math.floor(brightness * 255).toString(16).padStart(2, '0');
 
         ctx.fillText(text, x, y);
 
@@ -73,7 +79,7 @@ const MatrixRain: React.FC = () => {
         height: '100%',
         zIndex: -1,
         pointerEvents: 'none',
-        opacity: 0.15,
+        opacity: 0.3,
       }}
     >
       <canvas

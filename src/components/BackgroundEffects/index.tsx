@@ -83,11 +83,11 @@ export default function BackgroundEffects() {
               onClick={toggleCRT}
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                color: crtEnabled ? '#ff5f56' : theme.palette.primary.main,
-                border: `1px solid ${crtEnabled ? '#ff5f56' : theme.palette.primary.main}`,
+                color: crtEnabled ? '#ff5f56' : theme.palette.secondary.main,
+                border: `1px solid ${crtEnabled ? '#ff5f56' : theme.palette.secondary.main}`,
                 '&:hover': {
                   backgroundColor: crtEnabled ? 'rgba(255, 95, 86, 0.1)' : 'rgba(50, 205, 50, 0.1)',
-                  boxShadow: `0 0 10px ${crtEnabled ? '#ff5f56' : theme.palette.primary.main}`,
+                  boxShadow: `0 0 10px ${crtEnabled ? '#ff5f56' : theme.palette.secondary.main}`,
                 },
                 transition: 'all 0.3s ease',
               }}
@@ -102,11 +102,11 @@ export default function BackgroundEffects() {
               onClick={handleToggle}
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                color: theme.palette.primary.main,
-                border: `1px solid ${theme.palette.primary.main}`,
+                color: theme.palette.secondary.main,
+                border: `1px solid ${theme.palette.secondary.main}`,
                 '&:hover': {
                   backgroundColor: 'rgba(50, 205, 50, 0.1)',
-                  boxShadow: `0 0 10px ${theme.palette.primary.main}`,
+                  boxShadow: `0 0 10px ${theme.palette.secondary.main}`,
                 },
                 transition: 'all 0.3s ease',
               }}
