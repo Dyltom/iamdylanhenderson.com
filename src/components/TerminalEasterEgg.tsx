@@ -7,7 +7,7 @@ const TerminalEasterEgg: React.FC = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [showTerminal, setShowTerminal] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const commands: Record<string, string> = {
     'help': `Available commands:

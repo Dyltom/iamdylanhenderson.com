@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Container, Typography, useMediaQuery, Button, Grid } from '@mui/material';
+import { Box, Container, Typography, useMediaQuery, Button } from '@mui/material';
+import Grid2 from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 import { useRouter } from 'next/navigation';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -81,9 +82,9 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
         </Box>
 
         {/* Posts Grid */}
-        <Grid container spacing={isMobile ? 2 : 3}>
+        <Grid2 container spacing={isMobile ? 2 : 3}>
           {displayPosts.map((post, index) => (
-            <Grid item xs={12} sm={6} md={6} lg={3} key={post.id || index}>
+            <Grid2 size={{ xs: 12, sm: 6, md: 6, lg: 3 }} key={post.id || index}>
               <Box
                 sx={{
                   height: '100%',
@@ -104,9 +105,9 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
               >
                 <TerminalBlogCard post={post} index={index} />
               </Box>
-            </Grid>
+            </Grid2>
           ))}
-        </Grid>
+        </Grid2>
 
         {/* Terminal-style status line */}
         <Box

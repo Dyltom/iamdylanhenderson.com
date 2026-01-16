@@ -3,11 +3,11 @@ import {
   Alert,
   Box,
   Button,
-  Grid,
   Link,
   Snackbar,
   Typography,
 } from '@mui/material';
+import Grid2 from '@mui/material/Grid';
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -107,25 +107,46 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Grid container spacing={2}>
-      {/* Contact details, replace with your own content */}
-      <Grid
-        item
-        xs={12}
-        md={4}
+    <Grid2 container spacing={4}>
+      {/* Contact details */}
+      <Grid2
+        size={{ xs: 12, md: 4 }}
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'flex-start',
           color: 'primary.contrastText',
-          p: 2, // Added padding
+          p: 3,
+          background: 'rgba(0, 0, 0, 0.3)',
+          borderRadius: 2,
+          border: '1px solid',
+          borderColor: 'secondary.main',
+          fontFamily: 'monospace',
         }}
       >
-        <Typography variant="h6" color="primary.contrastText" gutterBottom>
-          {STATIC_CONTACT_PAGE.attributes.title}
+        <Typography
+          variant="h6"
+          sx={{
+            color: 'secondary.main',
+            fontFamily: 'monospace',
+            mb: 3,
+            '&::before': {
+              content: '"# "',
+              opacity: 0.7,
+            }
+          }}
+        >
+          Get in Touch
         </Typography>
-        <Typography variant="body1" color="primary.contrastText" gutterBottom>
+        <Typography
+          variant="body1"
+          sx={{
+            color: 'primary.contrastText',
+            fontFamily: 'monospace',
+            mb: 2,
+          }}
+        >
           Feel free to reach out to me here, on{' '}
           <Link
             href="https://www.linkedin.com/in/dylan-henderson-07/"
@@ -145,8 +166,19 @@ const ContactForm: React.FC = () => {
           .
         </Typography>
 
-        <Box mt={2}>
-          <Typography color="primary.contrastText">
+        <Box mt={4}>
+          <Typography
+            sx={{
+              color: 'primary.contrastText',
+              fontFamily: 'monospace',
+              mb: 2,
+              '&::before': {
+                content: '"$ "',
+                color: 'secondary.main',
+                mr: 1,
+              }
+            }}
+          >
             {STATIC_CONTACT_PAGE.attributes.resumeCta}
           </Typography>
           <Button
@@ -156,14 +188,46 @@ const ContactForm: React.FC = () => {
             download
             sx={{
               mt: 1,
+              fontFamily: 'monospace',
+              textTransform: 'lowercase',
+              '&:hover': {
+                backgroundColor: 'secondary.dark',
+                '&::before': {
+                  content: '">"',
+                  mr: 1,
+                }
+              }
             }}
           >
             {STATIC_CONTACT_PAGE.attributes.resumeCtaButtonText}
           </Button>
         </Box>
-      </Grid>
+      </Grid2>
       {/* Form section */}
-      <Grid item xs={12} md={8}>
+      <Grid2 size={{ xs: 12, md: 8 }}>
+        <Box
+          sx={{
+            background: 'rgba(0, 0, 0, 0.3)',
+            borderRadius: 2,
+            border: '1px solid',
+            borderColor: 'secondary.main',
+            p: 3,
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: 'secondary.main',
+              fontFamily: 'monospace',
+              mb: 3,
+              '&::before': {
+                content: '"// "',
+                opacity: 0.7,
+              }
+            }}
+          >
+            Send a message
+          </Typography>
         <form onSubmit={handleSubmit}>
           <Fields formState={formState} setFormState={setFormState} />
           {renderRecaptcha && (
@@ -181,11 +245,29 @@ const ContactForm: React.FC = () => {
             color="secondary"
             fullWidth
             disabled={loading || (renderRecaptcha && !isVerified)}
+            sx={{
+              mt: 2,
+              fontFamily: 'monospace',
+              fontSize: '1.1rem',
+              py: 1.5,
+              textTransform: 'lowercase',
+              '&::before': {
+                content: loading ? '"⟳ "' : '"$ "',
+                mr: 1,
+              },
+              '&:hover': {
+                backgroundColor: 'secondary.dark',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 4px 8px rgba(0, 255, 0, 0.3)',
+              },
+              transition: 'all 0.2s ease',
+            }}
           >
-            {loading ? 'Sending...' : 'Send'}
+            {loading ? 'sending...' : 'send message'}
           </Button>
         </form>
-      </Grid>
+        </Box>
+      </Grid2>
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
@@ -199,7 +281,7 @@ const ContactForm: React.FC = () => {
           {snackbarMessage}
         </Alert>
       </Snackbar>
-    </Grid>
+    </Grid2>
   );
 };
 

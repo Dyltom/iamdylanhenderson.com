@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 interface Command {
   command: string;
-  output: string | JSX.Element;
+  output: string | React.JSX.Element;
   delay?: number;
 }
 
@@ -14,7 +14,7 @@ const InteractiveTerminal: React.FC = () => {
   const router = useRouter();
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [currentCommand, setCurrentCommand] = useState('');
-  const [commandHistory, setCommandHistory] = useState<Array<{ command: string; output: string | JSX.Element }>>([]);
+  const [commandHistory, setCommandHistory] = useState<Array<{ command: string; output: string | React.JSX.Element }>>([]);
   const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
   const terminalRef = useRef<HTMLDivElement>(null);

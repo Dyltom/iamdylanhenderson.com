@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Grid, SelectChangeEvent } from '@mui/material';
+import { Box, SelectChangeEvent } from '@mui/material';
+import Grid2 from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import TerminalBlogCard from '../../components/Blog/TerminalBlogCard';
@@ -77,12 +78,12 @@ export default function BlogPage() {
           onChange={handleDateFilterChange}
         />
       </Box>
-      <Grid container spacing={2} sx={{ minHeight: '200px' }}>
+      <Grid2 container spacing={2} sx={{ minHeight: '200px' }}>
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
-            <Grid item key={index} xs={12} md={6}>
+            <Grid2 key={index} size={{ xs: 12, md: 6 }}>
               <TerminalBlogCard post={post} index={index} />
-            </Grid>
+            </Grid2>
           ))
         ) : (
           <Box
@@ -96,7 +97,7 @@ export default function BlogPage() {
             No posts found.
           </Box>
         )}
-      </Grid>
+      </Grid2>
     </Box>
   );
 }
