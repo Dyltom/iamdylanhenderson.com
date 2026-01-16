@@ -15,6 +15,17 @@ const ContactCTA: React.FC = () => {
       <Button variant="outlined" color="secondary" href="/contact">
         {STATIC_CTA.buttonText}
       </Button>
+      <Typography
+        sx={{
+          fontFamily: 'monospace',
+          color: 'secondary.light',
+          fontSize: '0.85rem',
+          mt: 4,
+          opacity: 0.6,
+        }}
+      >
+        Pro tip: Press {isMobile ? 'Ctrl' : 'Cmd'}+K to open command palette
+      </Typography>
     </Box>
   );
 };
