@@ -52,11 +52,24 @@ export const CV_DATA: CVData = {
         "Set up complete infrastructure on VPS using Coolify for Docker orchestration, automated deployments, and domain management",
         "Built CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
         "Developed Bonza Engine plugin and custom WordPress plugins: API gateway, booking extensions, payment processing, AI integrations",
+        "Built customer portal with billing features, invoice generation, and payment method management",
         "Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management",
         "Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
         "Integrated multiple third-party services: Stripe/PayPal for payments, Xero for accounting, OpenAI/ElevenLabs for AI features",
         "Transformed non-technical business problems into scalable PHP solutions, achieving 50%+ performance improvements",
         "Increased bookings and revenue while automating operations, serving 1000+ app users with improved satisfaction"
+      ]
+    },
+    {
+      company: "Personal Projects",
+      title: "Freelance Developer",
+      location: "Melbourne, VIC",
+      startDate: "Ongoing",
+      endDate: "Ongoing",
+      responsibilities: [
+        "Developed headless WordPress solutions for e-commerce platforms using modern JAMstack architecture",
+        "Built portfolio website for professional musician integrating WordPress headless CMS with Spotify API",
+        "Continuously expand skills through side projects demonstrating initiative and passion for development"
       ]
     },
     {
@@ -148,7 +161,7 @@ export const CV_DATA: CVData = {
     "Web Technologies (HTML5, CSS3, JavaScript ES6+, React, TypeScript)",
     "Database Management (MySQL, Schema Design, Query Optimisation, Performance Tuning)",
     "API Development (RESTful API Design, API Integration, Third-party Services, Microservices)",
-    "Version Control & CI/CD (Git, PHPUnit, Automated Testing, Jenkins, GitHub Actions)",
+    "Version Control & CI/CD (Git, Composer, PHPUnit, Playwright E2E Testing, GitHub Actions)",
     "Mobile Development (React Native, iOS/Android Cross-platform Development)",
     "Agile Methodologies (Scrum, Sprint Planning, Daily Standups, Retrospectives)",
     "Full Stack Development (Node.js, Express.js, Scala, LAMP Stack, Microservices)",
