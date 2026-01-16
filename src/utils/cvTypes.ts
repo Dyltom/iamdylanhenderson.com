@@ -40,7 +40,7 @@ export const CV_DATA: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },
-  summary: "Software Engineer with 6+ years specialising in PHP development and modern web technologies. Extensive commercial PHP experience building custom WordPress plugins, RESTful APIs, and web applications using MVC frameworks including CakePHP. Proven expertise in full-stack development with React, React Native, Node.js, and creating end-to-end solutions across web and mobile platforms. Strong track record of API design and implementation, including mobile app backends and third-party integrations (OpenAI, ElevenLabs, payment systems). Experienced in automated testing with PHPUnit, CI/CD pipelines, and Agile methodologies. Skilled at collaborating with stakeholders to deliver innovative solutions that automate business processes and enhance user experiences. Available for immediate start.",
+  summary: "Software Engineer with 6+ years specialising in PHP development and transforming business challenges into technical solutions. Extensive commercial PHP experience building custom WordPress plugins, RESTful APIs, and web applications using MVC frameworks including CakePHP. Proven expertise in full-stack development with React, React Native, Node.js, and creating end-to-end solutions across web and mobile platforms. Strong track record of API design and implementation, including mobile app backends and third-party integrations (Stripe, Xero, OpenAI). Leverages modern tools including AI assistants to accelerate development and solve complex problems. Experienced in automated testing with PHPUnit, CI/CD pipelines, and Agile methodologies. Skilled at collaborating with stakeholders to deliver innovative solutions that automate business processes. Available for immediate start and comfortable working remotely.",
   experience: [
     {
       company: "Bonza Clean",
@@ -54,7 +54,8 @@ export const CV_DATA: CVData = {
         "Created Bonza Success Hub from scratch and implemented Moodle LMS for training and knowledge management",
         "Built and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
         "Integrated multiple third-party services: Stripe/PayPal for payments, Xero for accounting, OpenAI/ElevenLabs for AI features",
-        "Delivered both technical performance improvements and business metrics through innovative PHP solutions"
+        "Transformed non-technical business problems into scalable PHP solutions, achieving 50%+ performance improvements",
+        "Increased bookings and revenue while automating operations, serving 1000+ app users with improved satisfaction"
       ]
     },
     {
