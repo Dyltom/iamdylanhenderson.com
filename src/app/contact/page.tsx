@@ -16,7 +16,7 @@ const ContactPage: React.FC = () => {
             mb: 6,
             fontWeight: 700,
             fontSize: { xs: '2rem', md: '3rem' },
-            color: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
             fontFamily: 'monospace',
             '&::before': {
               content: '"$ "',

@@ -41,7 +41,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
             ...underLineHeaders(theme),
             mb: 4,
             fontWeight: 600,
-            color: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
             '&::before': {
               content: '"$ "',
               color: theme.palette.secondary.main,

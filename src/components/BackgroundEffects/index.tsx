@@ -12,30 +12,50 @@ type BackgroundEffect = 'particles' | 'matrix' | 'none';
 
 export default function BackgroundEffects() {
   const theme = useTheme();
-  const [currentEffect, setCurrentEffect] = useState<BackgroundEffect>('particles');
-  const [crtEnabled, setCrtEnabled] = useState(false);
 
-  // Remember user preference
-  useEffect(() => {
-    const savedEffect = localStorage.getItem('backgroundEffect') as BackgroundEffect;
-    if (savedEffect) setCurrentEffect(savedEffect);
+  // Initialize from localStorage to avoid flashing
+  const [currentEffect, setCurrentEffect] = useState<BackgroundEffect>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('backgroundEffect') as BackgroundEffect;
+      return saved || 'particles';
+    }
+    return 'particles';
+  });
 
-    const savedCrt = localStorage.getItem('crtEffect');
-    if (savedCrt !== null) setCrtEnabled(savedCrt === 'true');
-  }, []);
+  const [crtEnabled, setCrtEnabled] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('crtEffect');
+      return saved === 'true';
+    }
+    return false;
+  });
 
   const handleToggle = () => {
-    const effects: BackgroundEffect[] = ['particles', 'matrix', 'none'];
-    const currentIndex = effects.indexOf(currentEffect);
-    const nextEffect = effects[(currentIndex + 1) % effects.length];
-    setCurrentEffect(nextEffect);
-    localStorage.setItem('backgroundEffect', nextEffect);
+    setCurrentEffect((prevEffect) => {
+      const effects: BackgroundEffect[] = ['particles', 'matrix', 'none'];
+      const currentIndex = effects.indexOf(prevEffect);
+      const nextEffect = effects[(currentIndex + 1) % effects.length];
+
+      // Save to localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('backgroundEffect', nextEffect);
+      }
+
+      return nextEffect;
+    });
   };
 
   const toggleCRT = () => {
-    const newValue = !crtEnabled;
-    setCrtEnabled(newValue);
-    localStorage.setItem('crtEffect', String(newValue));
+    setCrtEnabled((prevValue) => {
+      const newValue = !prevValue;
+
+      // Save to localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('crtEffect', String(newValue));
+      }
+
+      return newValue;
+    });
   };
 
   const getIcon = () => {
@@ -102,11 +122,13 @@ export default function BackgroundEffects() {
               onClick={handleToggle}
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                color: theme.palette.secondary.main,
-                border: `1px solid ${theme.palette.secondary.main}`,
+                color: currentEffect === 'none' ? theme.palette.primary.contrastText : theme.palette.secondary.main,
+                border: `1px solid ${currentEffect === 'none' ? theme.palette.primary.contrastText : theme.palette.secondary.main}`,
+                opacity: currentEffect === 'none' ? 0.5 : 1,
                 '&:hover': {
                   backgroundColor: 'rgba(50, 205, 50, 0.1)',
                   boxShadow: `0 0 10px ${theme.palette.secondary.main}`,
+                  opacity: 1,
                 },
                 transition: 'all 0.3s ease',
               }}

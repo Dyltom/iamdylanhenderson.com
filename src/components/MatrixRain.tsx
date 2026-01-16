@@ -66,6 +66,10 @@ const MatrixRain: React.FC = () => {
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', resizeCanvas);
+      // Clear the canvas when unmounting
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
     };
   }, [theme]);
 
