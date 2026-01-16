@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material';
+import { TextField, Box } from '@mui/material';
 import { textFieldSx } from '../../../utils/styles';
 import { EmailRequestType } from '../../../utils/types';
 
@@ -14,36 +14,42 @@ const Fields: React.FC<FieldsProps> = ({ formState, setFormState }) => {
 
   return (
     <>
-      <TextField
-        label="Name"
-        name="name"
-        value={formState.name}
-        onChange={handleChange}
-        required
-        fullWidth
-        sx={textFieldSx}
-      />
-      <TextField
-        label="Email"
-        name="email"
-        type="email"
-        value={formState.email}
-        onChange={handleChange}
-        required
-        fullWidth
-        sx={textFieldSx}
-      />
-      <TextField
-        label="Message"
-        name="message"
-        value={formState.message}
-        onChange={handleChange}
-        required
-        multiline
-        rows={4}
-        fullWidth
-        sx={textFieldSx}
-      />
+      <Box sx={{ mb: 2 }}>
+        <TextField
+          label="Name"
+          name="name"
+          value={formState.name}
+          onChange={handleChange}
+          required
+          fullWidth
+          sx={textFieldSx}
+        />
+      </Box>
+      <Box sx={{ mb: 2 }}>
+        <TextField
+          label="Email"
+          name="email"
+          type="email"
+          value={formState.email}
+          onChange={handleChange}
+          required
+          fullWidth
+          sx={textFieldSx}
+        />
+      </Box>
+      <Box sx={{ mb: 2 }}>
+        <TextField
+          label="Message"
+          name="message"
+          value={formState.message}
+          onChange={handleChange}
+          required
+          multiline
+          rows={4}
+          fullWidth
+          sx={textFieldSx}
+        />
+      </Box>
     </>
   );
 };
