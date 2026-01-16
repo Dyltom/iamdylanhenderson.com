@@ -2,10 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import { CVData } from '../../../utils/cvTypes'
 
-// Initialize OpenAI with latest model support
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// OpenAI client will be initialized in the request handler
+let openai: OpenAI | null = null
 
 // Model configuration - ready for GPT-5 when available
 // TODO: Update to "gpt-5" when OpenAI releases it
@@ -21,6 +19,13 @@ export async function POST(request: NextRequest) {
         { error: 'OpenAI API key not configured. Please add your API key to .env.local' },
         { status: 500 }
       )
+    }
+
+    // Initialize OpenAI client with API key
+    if (!openai) {
+      openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+      })
     }
 
     // Extract existing skills for validation
