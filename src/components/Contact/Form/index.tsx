@@ -13,6 +13,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 import { verifyCaptcha } from '../../../utils/ServerActions';
 import Fields from './Fields';
+import { STATIC_CONTACT_PAGE } from '../../../utils/staticPageContent';
 
 const ContactForm: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -35,23 +36,6 @@ const ContactForm: React.FC = () => {
       setRenderRecaptcha(true);
     }
   }, []);
-
-  // Static content
-  const contactUsContent = {
-    attributes: {
-      title: "Let's Connect",
-      content: [],
-      resumeCta: "Are you interested in grabbing my CV?",
-      resumeCtaButtonText: "Download CV",
-      resume: {
-        data: {
-          attributes: {
-            url: "/cv/dylan-henderson-cv.pdf"
-          }
-        }
-      }
-    }
-  };
 
   const handleCaptchaVerification = async (token: string | null) => {
     if (!token) {
@@ -136,7 +120,7 @@ const ContactForm: React.FC = () => {
         }}
       >
         <Typography variant="h6" color="primary.contrastText" gutterBottom>
-          {contactUsContent.attributes.title}
+          {STATIC_CONTACT_PAGE.attributes.title}
         </Typography>
         <Typography variant="body1" color="primary.contrastText" gutterBottom>
           Feel free to reach out to me here, on{' '}
@@ -160,21 +144,18 @@ const ContactForm: React.FC = () => {
 
         <Box mt={2}>
           <Typography color="primary.contrastText">
-            {contactUsContent.attributes.resumeCta}
+            {STATIC_CONTACT_PAGE.attributes.resumeCta}
           </Typography>
           <Button
             variant="contained"
             color="secondary"
-            href={`${
-              process.env.NEXT_PUBLIC_STRAPI_ADMIN_URL +
-              contactUsContent.attributes.resume.data.attributes.url
-            }`}
+            href={STATIC_CONTACT_PAGE.attributes.resume.data.attributes.url}
             download
             sx={{
               mt: 1,
             }}
           >
-            {contactUsContent.attributes.resumeCtaButtonText}
+            {STATIC_CONTACT_PAGE.attributes.resumeCtaButtonText}
           </Button>
         </Box>
       </Grid>

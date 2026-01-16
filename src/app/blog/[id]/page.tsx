@@ -12,26 +12,27 @@ import rehypeSlug from 'rehype-slug';
 import SocialMediaShare from '../../../components/Blog/BlogPage/SocialMediaShare';
 import TableOfContents from '../../../components/Blog/BlogPage/TableOfContents';
 
-import { getArticle } from '../../../fetchers/article';
 import { convertContentToMarkdown } from '../../../utils/converters';
 import { commonDateFormatter } from '../../../utils/date';
 import { formatReadTime } from '../../../utils/dateAndTime';
 import { Article } from '../../../utils/types';
+import { STATIC_BLOG_POSTS } from '../../../utils/staticBlogPosts';
 
 type BlogPostDetailProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
-  const { id: slug } = params;
   const [article, setArticle] = useState<Article | undefined>(undefined);
 
   useEffect(() => {
-    const fetchArticle = async () => {
-      const article = await getArticle(slug);
-      setArticle(article);
+    const loadArticle = async () => {
+      const { id: slug } = await params;
+      // Find article in static posts by slug
+      const foundArticle = STATIC_BLOG_POSTS.find(post => post.slug === slug);
+      setArticle(foundArticle);
     };
-    fetchArticle();
-  }, [slug]);
+    loadArticle();
+  }, [params]);
 
   if (!article) {
     return <Typography color="primary.contrastText">Loading...</Typography>;

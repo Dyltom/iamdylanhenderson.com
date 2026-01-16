@@ -3,7 +3,6 @@ import { Box, LinearProgress, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
-import { getSkills } from '../../fetchers/skill';
 import { underLineHeaders } from '../../utils/styles';
 import { Skill } from '../../utils/types';
 import { CV_DATA } from '../../utils/cvTypes';
@@ -45,11 +44,29 @@ const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
   const [skills, setSkills] = useState<Skill[] | undefined>(undefined);
 
   useEffect(() => {
-    const fetchSkills = async () => {
-      const fetchedSkills = await getSkills();
-      setSkills(fetchedSkills);
-    };
-    fetchSkills();
+    // Define static skills based on experience from CV
+    const staticSkills: Skill[] = [
+      { name: 'React', years: 5 },
+      { name: 'TypeScript', years: 4 },
+      { name: 'Node.js', years: 5 },
+      { name: 'PHP', years: 6 },
+      { name: 'WordPress', years: 6 },
+      { name: 'Docker', years: 3 },
+      { name: 'PostgreSQL', years: 4 },
+      { name: 'MySQL', years: 6 },
+      { name: 'Git', years: 6 },
+      { name: 'AWS', years: 2 }
+    ].map((skill, index) => ({
+      id: index.toString(),
+      attributes: {
+        name: skill.name,
+        experience: skill.years,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      }
+    }));
+    setSkills(staticSkills);
   }, []);
 
   if (!skills || skills.length === 0) {

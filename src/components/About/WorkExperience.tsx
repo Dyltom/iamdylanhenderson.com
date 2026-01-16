@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
-import { getWorkExperience } from '../../fetchers/workExperience';
 import { commonDateFormatter } from '../../utils/date';
 import { underLineHeaders } from '../../utils/styles';
 import { WorkExperience as WorkExperienceType } from '../../utils/types';
@@ -28,25 +27,21 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   >([]);
 
   useEffect(() => {
-    const fetchWorkExperience = async () => {
-      const fetchedWorkExperience = await getWorkExperience();
-      if (fetchedWorkExperience && fetchedWorkExperience.length > 0) {
-        setWorkExperience(fetchedWorkExperience);
-      } else {
-        // Use CV data as fallback
-        const cvWorkExperience = CV_DATA.experience.map((exp) => ({
-          attributes: {
-            company: exp.company,
-            title: exp.title,
-            startDate: exp.startDate,
-            endDate: exp.endDate,
-            points: exp.responsibilities,
-          },
-        })) as WorkExperienceType[];
-        setWorkExperience(cvWorkExperience);
-      }
-    };
-    fetchWorkExperience();
+    // Use CV data directly
+    const cvWorkExperience = CV_DATA.experience.map((exp, index) => ({
+      id: index.toString(),
+      attributes: {
+        company: exp.company,
+        title: exp.title,
+        startDate: exp.startDate,
+        endDate: exp.endDate,
+        points: exp.responsibilities,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      },
+    })) as WorkExperienceType[];
+    setWorkExperience(cvWorkExperience);
   }, []);
 
   if (!workExperience) {

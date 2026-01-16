@@ -8,10 +8,10 @@ import DateFilterSelect from '../../components/Blog/DateFilterSelect';
 import SearchBar from '../../components/Blog/Searchbar';
 import SortSelect from '../../components/Blog/SortSelect';
 
-import { getArticles } from '../../fetchers/article';
 import { filterPostsByDate } from '../../utils/filters';
 import { sortPosts } from '../../utils/sorts';
 import { Article } from '../../utils/types';
+import { STATIC_BLOG_POSTS } from '../../utils/staticBlogPosts';
 
 export default function BlogPage() {
   const theme = useTheme();
@@ -27,25 +27,9 @@ export default function BlogPage() {
   );
 
   useEffect(() => {
-    // Use static posts instead of API
-    const staticPosts: Article[] = [
-      {
-        id: '1',
-        title: 'From Setback to Success: My Career Transformation Story',
-        content: [],
-        shortDescription: 'How I turned a career setback into an opportunity for growth and landed my dream role in tech.',
-        publishedAt: '2023-11-16T00:00:00.000Z',
-        date: '2023-11-16T00:00:00.000Z',
-        readTime: 3,
-        views: 33,
-        slug: 'from-setback-to-success-career-transformation',
-        createdAt: new Date('2023-11-16'),
-        updatedAt: new Date('2023-11-16'),
-        categories: ['Career', 'Personal Growth']
-      }
-    ];
-    setPosts(staticPosts);
-    setFilteredPosts(staticPosts);
+    // Use static posts from shared file
+    setPosts(STATIC_BLOG_POSTS);
+    setFilteredPosts(STATIC_BLOG_POSTS);
   }, []);
 
   useEffect(() => {

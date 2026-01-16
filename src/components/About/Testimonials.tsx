@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
-import { getTestimonials } from '../../fetchers/testimonial';
 import { underLineHeaders } from '../../utils/styles';
 import { Testimonial } from '../../utils/types';
 
@@ -16,16 +15,17 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
   );
 
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      const fetchedTestimonials = await getTestimonials();
-      // Filter out testimonials that mention "Alex" as they're placeholder content
-      const validTestimonials = fetchedTestimonials?.filter(
-        (testimonial) =>
-          !testimonial.attributes.quote.toLowerCase().includes('alex')
-      );
-      setTestimonials(validTestimonials);
-    };
-    fetchTestimonials();
+    // Static testimonials - we can add real ones later
+    const staticTestimonials: Testimonial[] = [
+      {
+        attributes: {
+          author: 'Colleague',
+          quote: 'Dylan is a talented developer who brings creativity and technical expertise to every project.',
+          role: 'Senior Developer'
+        }
+      }
+    ];
+    setTestimonials(staticTestimonials);
   }, []);
 
   if (!testimonials || testimonials.length === 0) {

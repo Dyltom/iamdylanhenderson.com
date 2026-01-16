@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
-import { getArticle } from '../../../fetchers/article'
 import { pageMetadata } from '../../../config/metadata'
+import { STATIC_BLOG_POSTS } from '../../../utils/staticBlogPosts'
 
 export async function generateMetadata({
   params
@@ -8,7 +8,7 @@ export async function generateMetadata({
   params: { id: string }
 }): Promise<Metadata> {
   try {
-    const article = await getArticle(params.id)
+    const article = STATIC_BLOG_POSTS.find(post => post.slug === params.id)
 
     if (!article) {
       return pageMetadata.blog()

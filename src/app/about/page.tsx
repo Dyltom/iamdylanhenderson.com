@@ -2,7 +2,6 @@
 
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { getAboutPage } from '../../fetchers/pages';
 import type { AboutPage } from '../../utils/types';
 
 import AboutMeSection from '../../components/About/AboutMeSection';
