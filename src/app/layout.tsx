@@ -4,7 +4,6 @@ import React from 'react';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/NavigationBar';
 import BackgroundEffects from '../components/BackgroundEffects';
-import TerminalSidebar from '../components/TerminalSidebar';
 import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
 import { createMetadata } from '../config/metadata';
 import GoogleAnalytics from '../components/Analytics/GoogleAnalytics';
@@ -33,7 +32,6 @@ export default function RootLayout({
           >
             <BackgroundEffects />
             <NavigationBar />
-            <TerminalSidebar />
             <Box
               component="main"
               sx={{
@@ -44,8 +42,6 @@ export default function RootLayout({
                   sm: '80vw', // For medium screens (tablets)
                   md: '70vw', // For larger screens (desktops)
                 },
-                marginLeft: { xs: 'auto', md: '320px' }, // Offset for terminal sidebar on desktop
-                transition: 'margin-left 0.3s ease',
               }}
             >
               {children}
