@@ -11,22 +11,22 @@ sectors. Available for immediate start.
 Experience
 Bonza Clean | Melbourne, VIC
 Senior Software Engineer | 09/2024 - Present
-Tech: PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n, Playwright
-Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9hrs to 1-2hrs/week.
-Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4hrs to 1hr/week.
-AI Systems: Built AI assistant for Bonza Engine users - creates bookings/leads from chat, answers platform questions.
+Tech: PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n
+Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9 hours to 1-2 hours/week.
+Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4 hours to 1 hour/week.
 Platform & Infrastructure: Built Docker-based CI/CD reducing deploy time from 30min to <5min; set up staging/local dev environments.
 APIs & Mobile: PHP REST APIs powering React Native app (iOS/Android, 1000+ users).
 Integrations: Stripe/PayPal payments, Xero accounting, ElevenLabs voice receptionist for lead capture.
+AI Systems: Built AI assistant embedded in Bonza Engine - creates bookings/leads from chat, generates structured job details, answers platform questions using internal knowledge base.
 Knowledge Systems: Moodle LMS + Scribe docs + training videos; reduced support tickets by standardising onboarding.
 Automation: n8n workflows for social media automation and AI agent orchestration.
 Leadership: Hired/mentored developer; delivered virtual training sessions.
 
 Side Projects | Melbourne, VIC
 Independent Developer | 2018 - Present
-Tech: WordPress REST API, Next.js, Spotify API, Headless CMS, JAMstack
+Tech: WordPress REST API, Next.js, Spotify API, Headless CMS
 E-commerce Platform: Co-built opal e-commerce platform (2020-present, $100k+ sales) handling product catalogue and transactions.
-Headless WordPress: Built JAMstack e-commerce sites with Next.js frontend + WordPress API.
+Headless WordPress: Built e-commerce sites with Next.js frontend + WordPress API.
 Portfolio Sites: Musician portfolio + e-commerce site integrating Spotify API with headless WordPress CMS.
 
 Reebelo | Collingwood, VIC
@@ -39,7 +39,7 @@ Implemented comprehensive test coverage with Jest and integration testing.
 
 etika | Melbourne, VIC
 Full Stack Developer | 03/2022 - 03/2024
-Tech: TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Jest, Docker
+Tech: TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Docker
 Built microservices architecture (10+ services) with federated UI approach.
 Developed lending workflows with automated testing and compliance checks.
 Optimised ScyllaDB queries and microservice performance for scale.
@@ -48,14 +48,14 @@ Implemented secure coding practices for fintech data protection.
 Leidos Australia | Melbourne, VIC
 Software Engineer | 09/2021 - 03/2022
 Tech: Java, Spring Boot, React, PostgreSQL, Ansible, Elasticsearch, GitLab CI
-Delivered enterprise web applications using Java/Spring Boot and React (AGSVA NV1 clearance 2021-2022).
+Delivered enterprise web applications using Java/Spring Boot and React.
 Built secure APIs and services with PostgreSQL for mission-critical government systems.
 Applied security protocols and compliance standards for sensitive data handling.
 Integrated complex systems across multi-disciplinary teams using GitLab CI/CD.
 
 Virtech | Melbourne, VIC
 Software Developer | 02/2020 - 09/2021
-Tech: Vue.js, JavaScript, PowerShell, Nexthink, Windows Server, Active Directory
+Tech: Vue.js, JavaScript, PowerShell, Nexthink, Windows Server
 Built monitoring dashboards with Vue.js for real-time system visibility.
 Automated IT operations with PowerShell self-healing scripts.
 Integrated Nexthink platform for end-user experience monitoring.
@@ -63,7 +63,7 @@ Achieved Nexthink Master's Level Certification.
 
 Direct Speech | Melbourne, VIC
 Developer | 07/2019 - 02/2020
-Tech: PHP, CakePHP, MySQL, REST APIs, jQuery, Bootstrap
+Tech: PHP, CakePHP, MySQL, REST APIs, jQuery
 Built web applications with CakePHP MVC framework.
 Designed MySQL schemas with optimised queries.
 Implemented RESTful APIs for system integration.
@@ -71,22 +71,14 @@ Followed MVC patterns and PSR coding standards.
 
 Media8 | Melbourne, VIC
 Technical Consultant | 02/2018 - 01/2020
-Tech: JavaScript, Social Media APIs, Content Management Tools
+Tech: JavaScript, Social Media APIs
 Supported social media operations and automation workflows.
 Maintained scheduling tools and content management systems.
-
-Skills
-WordPress Development: Plugin development (hooks, REST API, custom post types), Payment integrations, WooCommerce
-PHP: PHP 7/8, CakePHP MVC, Laravel knowledge, Composer, PHPUnit, PSR standards
-API Design & Integration: RESTful APIs, Stripe, PayPal, Xero, OpenAI, Webhooks, Rate limiting
-Frontend: React, TypeScript, Vue.js, Next.js, React Native, HTML5, CSS3, JavaScript ES6+
-Backend: Node.js, Express.js, Microservices architecture, Scala, Java/Spring Boot
-CI/CD & Testing: GitHub Actions, Docker, PHPUnit, Jest, Playwright E2E, Automated deployments
-Database: MySQL, PostgreSQL, ScyllaDB, Query optimisation, Schema design, Migrations
-Infrastructure: Linux, VPS management, Nginx/Apache, Docker, Coolify, AWS (EC2, S3, Lambda)
-Security & Compliance: Fintech security practices, Government compliance (NV1 2021-2022)
-Agile Delivery: Scrum, Sprint planning, JIRA, Technical documentation, Stakeholder communication
 
 Education
 Monash University
 Information Technology (Computers, Networks and Security) | 02/2020
+
+Professional Development
+• Nexthink Master's Level Certification
+• AGSVA Negative Vetting Level 1 Security Clearance (2021-2022)

@@ -50,17 +50,17 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9hrs to 1-2hrs/week",
-        "Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4hrs to 1hr/week",
-        "AI Systems: Built AI assistant for Bonza Engine users - creates bookings/leads from chat, answers platform questions",
+        "Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9 hours to 1-2 hours/week",
+        "Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4 hours to 1 hour/week",
         "Platform & Infrastructure: Built Docker-based CI/CD reducing deploy time from 30min to <5min; set up staging/local dev environments",
         "APIs & Mobile: PHP REST APIs powering React Native app (iOS/Android, 1000+ users)",
         "Integrations: Stripe/PayPal payments, Xero accounting, ElevenLabs voice receptionist for lead capture",
+        "AI Systems: Built AI assistant embedded in Bonza Engine - creates bookings/leads from chat, generates structured job details, answers platform questions using internal knowledge base",
         "Knowledge Systems: Moodle LMS + Scribe docs + training videos; reduced support tickets by standardising onboarding",
         "Automation: n8n workflows for social media automation and AI agent orchestration",
         "Leadership: Hired/mentored developer; delivered virtual training sessions"
       ],
-      techStack: "PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n, Playwright"
+      techStack: "PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n"
     },
     {
       company: "Side Projects",
@@ -70,10 +70,10 @@ export const CV_DATA: CVData = {
       endDate: "Present",
       responsibilities: [
         "E-commerce Platform: Co-built opal e-commerce platform (2020-present, $100k+ sales) handling product catalogue and transactions",
-        "Headless WordPress: Built JAMstack e-commerce sites with Next.js frontend + WordPress API",
+        "Headless WordPress: Built e-commerce sites with Next.js frontend + WordPress API",
         "Portfolio Sites: Musician portfolio + e-commerce site integrating Spotify API with headless WordPress CMS"
       ],
-      techStack: "WordPress REST API, Next.js, Spotify API, Headless CMS, JAMstack"
+      techStack: "WordPress REST API, Next.js, Spotify API, Headless CMS"
     },
     {
       company: "Reebelo",
@@ -101,7 +101,7 @@ export const CV_DATA: CVData = {
         "Optimised ScyllaDB queries and microservice performance for scale",
         "Implemented secure coding practices for fintech data protection"
       ],
-      techStack: "TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Jest, Docker"
+      techStack: "TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Docker"
     },
     {
       company: "Leidos Australia",
@@ -110,7 +110,7 @@ export const CV_DATA: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Delivered enterprise web applications using Java/Spring Boot and React (AGSVA NV1 clearance 2021-2022)",
+        "Delivered enterprise web applications using Java/Spring Boot and React",
         "Built secure APIs and services with PostgreSQL for mission-critical government systems",
         "Applied security protocols and compliance standards for sensitive data handling",
         "Integrated complex systems across multi-disciplinary teams using GitLab CI/CD"
@@ -129,7 +129,7 @@ export const CV_DATA: CVData = {
         "Integrated Nexthink platform for end-user experience monitoring",
         "Achieved Nexthink Master's Level Certification"
       ],
-      techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server, Active Directory"
+      techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server"
     },
     {
       company: "Direct Speech",
@@ -143,7 +143,7 @@ export const CV_DATA: CVData = {
         "Implemented RESTful APIs for system integration",
         "Followed MVC patterns and PSR coding standards"
       ],
-      techStack: "PHP, CakePHP, MySQL, REST APIs, jQuery, Bootstrap"
+      techStack: "PHP, CakePHP, MySQL, REST APIs, jQuery"
     },
     {
       company: "Media8",
@@ -155,7 +155,7 @@ export const CV_DATA: CVData = {
         "Supported social media operations and automation workflows",
         "Maintained scheduling tools and content management systems"
       ],
-      techStack: "JavaScript, Social Media APIs, Content Management Tools"
+      techStack: "JavaScript, Social Media APIs"
     }
   ],
   education: [
@@ -165,16 +165,5 @@ export const CV_DATA: CVData = {
       completionDate: "02/2020"
     }
   ],
-  skills: [
-    "WordPress Development: Plugin development (hooks, REST API, custom post types), Payment integrations, WooCommerce",
-    "PHP: PHP 7/8, CakePHP MVC, Laravel knowledge, Composer, PHPUnit, PSR standards",
-    "API Design & Integration: RESTful APIs, Stripe, PayPal, Xero, OpenAI, Webhooks, Rate limiting",
-    "Frontend: React, TypeScript, Vue.js, Next.js, React Native, HTML5, CSS3, JavaScript ES6+",
-    "Backend: Node.js, Express.js, Microservices architecture, Scala, Java/Spring Boot",
-    "CI/CD & Testing: GitHub Actions, Docker, PHPUnit, Jest, Playwright E2E, Automated deployments",
-    "Database: MySQL, PostgreSQL, ScyllaDB, Query optimisation, Schema design, Migrations",
-    "Infrastructure: Linux, VPS management, Nginx/Apache, Docker, Coolify, AWS (EC2, S3, Lambda)",
-    "Security & Compliance: Fintech security practices, Government compliance (NV1 2021-2022)",
-    "Agile Delivery: Scrum, Sprint planning, JIRA, Technical documentation, Stakeholder communication"
-  ]
+  skills: []
 }

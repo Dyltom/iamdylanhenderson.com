@@ -215,68 +215,6 @@ export const generateModernDOCX = async (cvData: CVData, fileName: string = 'Dyl
             }),
           ]),
 
-          // Technical Skills Header
-          createSectionHeader("TECHNICAL SKILLS"),
-
-          // Programming Languages & Frameworks
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Programming Languages & Frameworks",
-                font: "Calibri",
-                size: 23, // 11.5pt
-                bold: true,
-              }),
-            ],
-            spacing: {
-              after: 60, // 3pt
-            },
-          }),
-          createBullet("PHP (WordPress, CakePHP, custom CMS development)"),
-          createBullet("JavaScript/TypeScript (React, Next.js, Node.js, Express.js)"),
-          createBullet("Java (Spring Framework, microservices)"),
-          createBullet("HTML5/CSS3, responsive design", 180),
-
-          // Database & Infrastructure
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Database & Infrastructure",
-                font: "Calibri",
-                size: 23, // 11.5pt
-                bold: true,
-              }),
-            ],
-            spacing: {
-              before: 180, // 9pt before new category
-              after: 60, // 3pt
-            },
-          }),
-          createBullet("MySQL, SQL Server, NoSQL (ScyllaDB)"),
-          createBullet("Linux/VPS infrastructure, Apache web server"),
-          createBullet("Git version control, CI/CD pipelines"),
-          createBullet("AWS cloud services", 180),
-
-          // Content Management & Web Development
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Content Management & Web Development",
-                font: "Calibri",
-                size: 23, // 11.5pt
-                bold: true,
-              }),
-            ],
-            spacing: {
-              before: 180, // 9pt before new category
-              after: 60, // 3pt
-            },
-          }),
-          createBullet("WordPress custom theme and plugin development"),
-          createBullet("Headless CMS architecture"),
-          createBullet("RESTful API design and implementation"),
-          createBullet("Microservices and event-driven architecture", 360),
-
           // Professional Development Header
           createSectionHeader("PROFESSIONAL DEVELOPMENT"),
 
