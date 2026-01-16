@@ -54,7 +54,8 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
         sx={{
           ...underLineHeaders(theme),
           textAlign: 'center',
-          mb: 4
+          mb: 4,
+          color: theme.palette.secondary.contrastText
         }}
       >
         {title}

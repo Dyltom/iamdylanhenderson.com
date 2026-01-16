@@ -65,15 +65,23 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ my: 4 }}>
-      <Typography
-        variant="h5"
-        color="secondary.contrastText"
-        gutterBottom
-        sx={underLineHeaders(theme)}
-      >
-        {title}
-      </Typography>
+    <Box sx={{
+      padding: theme.spacing(4),
+      backgroundColor: theme.palette.background.default
+    }}>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h5"
+          color="secondary.contrastText"
+          gutterBottom
+          sx={{
+            ...underLineHeaders(theme),
+            textAlign: 'center',
+            mb: 4
+          }}
+        >
+          {title}
+        </Typography>
 
       <Box
         sx={{
@@ -174,7 +182,8 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
           ))}
         </Paper>
       </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 

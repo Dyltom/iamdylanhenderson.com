@@ -15,17 +15,38 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
   return (
     <Box
       sx={{
-        textAlign: 'center',
-        marginTop: isMobile ? 2 : 4,
-        color: 'primary.contrastText',
+        padding: theme.spacing(4),
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.primary.contrastText,
       }}
     >
-      <Typography variant="h5" sx={underLineHeaders(theme)}>
-        {content.aboutTitle || 'About Me'}
-      </Typography>
-      <Typography variant="subtitle1" align="left" sx={{ mb: 2 }}>
-        {content.aboutContent || CV_DATA.summary}
-      </Typography>
+      <Box
+        sx={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          textAlign: 'center',
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={underLineHeaders(theme)}
+          gutterBottom
+        >
+          {content.aboutTitle || 'About Me'}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            fontFamily: 'monospace',
+            color: theme.palette.secondary.light,
+            lineHeight: 1.8,
+            textAlign: 'center',
+            mt: 3
+          }}
+        >
+          {content.aboutContent || CV_DATA.summary}
+        </Typography>
+      </Box>
     </Box>
   );
 };

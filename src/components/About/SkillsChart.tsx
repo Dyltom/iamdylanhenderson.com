@@ -54,7 +54,12 @@ echo "→ OpenAI integrations (AI assistants)"
 $ echo "Ready to ship 🚢"`;
 
   return (
-    <Box sx={{ color: theme.palette.primary.contrastText, padding: '1rem' }}>
+    <Box sx={{
+      color: theme.palette.primary.contrastText,
+      padding: theme.spacing(4),
+      backgroundColor: theme.palette.background.default,
+      textAlign: 'center'
+    }}>
       <Typography
         variant="h5"
         gutterBottom

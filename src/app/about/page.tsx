@@ -1,6 +1,7 @@
 'use client';
 
-import { Box } from '@mui/material';
+import { Box, Divider } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import type { AboutPage } from '../../utils/types';
 
@@ -11,6 +12,7 @@ import Testimonials from '../../components/About/Testimonials';
 import WorkExperience from '../../components/About/WorkExperience';
 
 export default function AboutPage() {
+  const theme = useTheme();
   const [aboutPageContent, setAboutPageContent] = useState<
     AboutPage | undefined
   >(undefined);
@@ -32,15 +34,58 @@ export default function AboutPage() {
     return null;
   }
 
+  const SectionDivider = () => (
+    <Box
+      sx={{
+        height: '60px',
+        backgroundColor: theme.palette.background.default,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: '300px',
+          height: '1px',
+          background: `linear-gradient(90deg,
+            transparent 0%,
+            ${theme.palette.secondary.main}40 20%,
+            ${theme.palette.secondary.main} 50%,
+            ${theme.palette.secondary.main}40 80%,
+            transparent 100%)`,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          fontFamily: 'monospace',
+          fontSize: '0.8rem',
+          color: theme.palette.secondary.main,
+          opacity: 0.5,
+        }}
+      >
+        * * *
+      </Box>
+    </Box>
+  );
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <AboutMeSection content={aboutPageContent} />
+      <SectionDivider />
       <WorkExperience title={aboutPageContent.workExperienceTitle} />
+      <SectionDivider />
       <SkillsChart
         title={aboutPageContent.skillsTitle}
         keyText={aboutPageContent.skillsChartText}
       />
+      <SectionDivider />
       <Testimonials title={aboutPageContent.testimonialsTitle} />
+      <SectionDivider />
       <PersonalSection title={aboutPageContent.interestingFactsTitle} />
     </Box>
   );
