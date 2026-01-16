@@ -49,12 +49,12 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Develop custom WordPress plugins using PHP for booking systems (Booknetic), payment integration, and business automation",
-        "Build and maintain RESTful APIs in PHP to power React Native mobile applications for iOS and Android platforms",
-        "Integrate third-party services including OpenAI and ElevenLabs APIs for AI services and voice receptionist features",
-        "Implement automated testing with PHPUnit and maintain CI/CD pipelines for continuous deployment",
-        "Collaborate with stakeholders in Agile sprints to deliver innovative solutions that automate business processes",
-        "Write clean, maintainable PHP code following MVC patterns and modern development best practices"
+        "Built complete CI/CD pipeline from scratch using GitHub Actions, Docker, and automated testing with PHPUnit",
+        "Developed custom WordPress plugins in PHP: API gateway for mobile app, booking extensions, payment processing, and AI integrations",
+        "Created and maintained RESTful APIs in PHP powering multi-purpose React Native app for iOS/Android platforms",
+        "Integrated OpenAI and ElevenLabs APIs for AI services and voice receptionist, achieving measurable business improvements",
+        "Heavily customised Booknetic plugin and built suite of interconnected WordPress plugins for business automation",
+        "Delivered both technical performance improvements and business metrics through innovative PHP solutions"
       ]
     },
     {
@@ -104,10 +104,10 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Built custom WordPress themes and plugins using PHP, implementing business logic and API integrations",
-        "Developed PHP-based content management solutions with MySQL database design and query optimisation",
-        "Created responsive web interfaces using HTML5, CSS3, and JavaScript for optimal user experience",
-        "Configured LAMP stack environments and implemented version control workflows using Git"
+        "Developed end-user experience monitoring dashboards using Vue.js and JavaScript for real-time system visibility",
+        "Created PowerShell scripts for self-healing automation and proactive issue resolution",
+        "Built performance monitoring and alert systems using Nexthink platform integration",
+        "Achieved Nexthink Master's Level Certification while improving IT service delivery metrics"
       ]
     },
     {
