@@ -3,18 +3,14 @@ import {
   Alert,
   Box,
   Button,
-  Grid,
   Link,
   Snackbar,
   Typography,
 } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-
-import { getContactUsPage } from '../../../fetchers/pages';
+import { CV_DATA } from '../../../utils/cvTypes';
 import { verifyCaptcha } from '../../../utils/ServerActions';
-import { convertContentToMarkdown } from '../../../utils/converters';
-import { ContactUs } from '../../../utils/types';
 import Fields from './Fields';
 
 const ContactForm: React.FC = () => {
@@ -31,59 +27,63 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [renderRecaptcha, setRenderRecaptcha] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [contactUsContent, setContactUsContent] = useState<
-    ContactUs | undefined
-  >(undefined);
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
       setRenderRecaptcha(true);
     }
-    const fetchContactUsPageContent = async () => {
-      const fetchedContactUs = await getContactUsPage();
-      setContactUsContent(fetchedContactUs);
-    };
-    fetchContactUsPageContent();
   }, []);
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  if (!contactUsContent) {
-    return null;
-  }
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
-  const handleCaptchaVerification = (token: string | null) => {
-    if (!token && process.env.IS_RECAPTCHA_ENABLED) {
-      setSnackbarSeverity('error');
-      setSnackbarMessage('Captcha not completed. Please try again.');
-      setOpenSnackbar(true);
+  const handleCaptchaSubmission = async (token: string | null) => {
+    if (!token) {
+      setIsVerified(false);
       return;
     }
+    const result = await verifyCaptcha(token);
+    if (result === 'success!') {
+      setIsVerified(true);
+    } else {
+      setIsVerified(false);
+      showSnackbar('Captcha verification failed', 'error');
+    }
+  };
 
-    setLoading(true);
-    verifyCaptcha(token)
-      .then(() => {
-        setIsVerified(true);
-        setOpenSnackbar(false);
-      })
-      .catch(() => {
-        setIsVerified(false);
-        setSnackbarSeverity('error');
-        setSnackbarMessage('Captcha verification failed. Please try again.');
-        setOpenSnackbar(true);
-      })
-      .finally(() => setLoading(false));
+  const hasValidCaptcha = () => {
+    return !renderRecaptcha || (renderRecaptcha && isVerified);
+  };
+
+  const showSnackbar = (message: string, severity: 'success' | 'error') => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!isVerified && process.env.IS_RECAPTCHA_ENABLED) {
-      setSnackbarSeverity('error');
-      setSnackbarMessage('Please complete the captcha verification.');
-      setOpenSnackbar(true);
+
+    if (!hasValidCaptcha()) {
+      showSnackbar('Please complete the captcha', 'error');
       return;
     }
+
     setLoading(true);
+
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -93,117 +93,87 @@ const ContactForm: React.FC = () => {
         body: JSON.stringify(formState),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send email.');
-      }
-
       const data = await response.json();
-      setFormState({ name: '', email: '', message: '' });
 
-      setSnackbarSeverity('success');
-      setSnackbarMessage('Email sent successfully!');
-    } catch (error) {
-      let errorMessage = 'Failed to send email. Please try again later.';
-      if (error instanceof Error) {
-        errorMessage = error.message;
+      if (response.ok) {
+        showSnackbar('Email sent successfully!', 'success');
+        setFormState({ name: '', email: '', message: '' });
+        setIsVerified(false);
+        recaptchaRef.current?.reset();
+      } else {
+        showSnackbar(data.message || 'Failed to send email', 'error');
       }
-      setSnackbarSeverity('error');
-      setSnackbarMessage(errorMessage);
+    } catch (error) {
+      showSnackbar('An error occurred. Please try again.', 'error');
     } finally {
       setLoading(false);
-      setOpenSnackbar(true);
     }
   };
 
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
-  };
-
-  const markdownContent = convertContentToMarkdown(
-    contactUsContent.attributes.content
-  );
-
   return (
-    <Grid container spacing={2}>
-      {/* Contact details, replace with your own content */}
-      <Grid
-        size={{ xs: 12, md: 4 }}
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          color: 'primary.contrastText',
-          p: 2, // Added padding
-        }}
-      >
-        <Typography variant="h6" color="primary.contrastText" gutterBottom>
-          {contactUsContent.attributes.title}
-        </Typography>
-        <Typography variant="body1" color="primary.contrastText" gutterBottom>
-          Feel free to reach out to me here, on{' '}
-          <Link
-            href="https://www.linkedin.com/in/dylan-henderson-07/"
-            target="_blank"
-            color="secondary"
-          >
-            LinkedIn
-          </Link>{' '}
-          or check out my projects on{' '}
-          <Link
-            href="https://github.com/Dyltom"
-            target="_blank"
-            color="secondary"
-          >
-            GitHub
-          </Link>
-          .
-        </Typography>
+    <Box sx={{ width: '100%', maxWidth: 600, margin: 'auto' }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        Contact Me
+      </Typography>
 
-        <Box mt={2}>
-          <Typography color="primary.contrastText">
-            {contactUsContent.attributes.resumeCta}
-          </Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            href={`${
-              process.env.NEXT_PUBLIC_STRAPI_ADMIN_URL +
-              contactUsContent.attributes.resume.data.attributes.url
-            }`}
-            download
-            sx={{
-              mt: 1,
-            }}
-          >
-            {contactUsContent.attributes.resumeCtaButtonText}
-          </Button>
-        </Box>
-      </Grid>
-      {/* Form section */}
-      <Grid size={{ xs: 12, md: 8 }}>
-        <form onSubmit={handleSubmit}>
+      <Typography variant="body1" align="center" paragraph>
+        I'm always interested in new opportunities and collaborations.
+        Feel free to reach out to discuss projects or just to connect!
+      </Typography>
+
+      <Box sx={{ mb: 4, textAlign: 'center' }}>
+        <Link
+          href={CV_DATA.personalInfo.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ mx: 2 }}
+        >
+          LinkedIn
+        </Link>
+        <Link
+          href={CV_DATA.personalInfo.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ mx: 2 }}
+        >
+          GitHub
+        </Link>
+        <Link
+          href={`mailto:${CV_DATA.personalInfo.email}`}
+          sx={{ mx: 2 }}
+        >
+          Email
+        </Link>
+      </Box>
+
+      <form onSubmit={handleSubmit}>
+        <Box>
           <Fields formState={formState} setFormState={setFormState} />
+
           {renderRecaptcha && (
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-              ref={recaptchaRef}
-              onChange={handleCaptchaVerification}
-              size="normal"
-              className="my-recaptcha"
-            />
+            <Box sx={{ mb: 2 }}>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                ref={recaptchaRef}
+                onChange={handleCaptchaSubmission}
+              />
+            </Box>
           )}
-          <Button
-            type="submit"
-            variant="contained"
-            color="secondary"
-            fullWidth
-            disabled={loading || (renderRecaptcha && !isVerified)}
-          >
-            {loading ? 'Sending...' : 'Send'}
-          </Button>
-        </form>
-      </Grid>
+
+          <Box>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={loading || !hasValidCaptcha()}
+            >
+              {loading ? 'Sending...' : 'Send Message'}
+            </Button>
+          </Box>
+        </Box>
+      </form>
+
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
@@ -217,7 +187,7 @@ const ContactForm: React.FC = () => {
           {snackbarMessage}
         </Alert>
       </Snackbar>
-    </Grid>
+    </Box>
   );
 };
 

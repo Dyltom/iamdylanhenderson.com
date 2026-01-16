@@ -1,33 +1,12 @@
-import { Box, Typography, useMediaQuery } from '@mui/material';
+'use client';
 
-import { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { getHeroContent } from '../../fetchers/pages';
-import { convertContentToMarkdown } from '../../utils/converters';
-import { HeroContent } from '../../utils/types';
+import { Box, Typography, useMediaQuery } from '@mui/material';
+import { CV_DATA } from '../../utils/cvTypes';
 import theme from '../ThemeRegistry/theme';
 import GlitchText from '../GlitchText';
 
 const HeroSection: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [heroContent, setHeroContent] = useState<HeroContent | undefined>(
-    undefined
-  );
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const content = await getHeroContent();
-
-      setHeroContent(content);
-    };
-    fetchArticles();
-  }, []);
-
-  if (!heroContent) {
-    return null;
-  }
-
-  const markdownContent = convertContentToMarkdown(heroContent.content);
 
   return (
     <Box
@@ -48,7 +27,12 @@ const HeroSection: React.FC = () => {
         glitchIntensity="medium"
         glitchOnHover
       />
-      <ReactMarkdown children={markdownContent} />
+      <Typography variant="h6" align="center" sx={{ mt: 3, mb: 2 }}>
+        {CV_DATA.experience[0].title} | {CV_DATA.personalInfo.location}
+      </Typography>
+      <Typography variant="body1" align="center" sx={{ maxWidth: 800, mx: 'auto', px: 2 }}>
+        {CV_DATA.summary}
+      </Typography>
     </Box>
   );
 };

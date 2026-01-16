@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';

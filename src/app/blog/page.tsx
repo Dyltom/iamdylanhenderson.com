@@ -7,16 +7,14 @@ import BlogPostCard from '../../components/Blog/BlogPostCard';
 import DateFilterSelect from '../../components/Blog/DateFilterSelect';
 import SearchBar from '../../components/Blog/Searchbar';
 import SortSelect from '../../components/Blog/SortSelect';
-
-import { getArticles } from '../../fetchers/article';
+import { STATIC_BLOG_POSTS } from '../../utils/staticBlogPosts';
 import { filterPostsByDate } from '../../utils/filters';
 import { sortPosts } from '../../utils/sorts';
 import { Article } from '../../utils/types';
 
 export default function BlogPage() {
   const theme = useTheme();
-  const [posts, setPosts] = useState<Article[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<Article[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<Article[]>(STATIC_BLOG_POSTS);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortType, setSortType] = useState<
     'mostRecent' | 'mostViews' | 'longReadTime'
@@ -27,16 +25,7 @@ export default function BlogPage() {
   );
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      const articles = await getArticles();
-      setPosts(articles);
-      setFilteredPosts(articles);
-    };
-    fetchArticles();
-  }, []);
-
-  useEffect(() => {
-    let processedPosts = sortPosts(posts, sortType, sortDescending);
+    let processedPosts = sortPosts(STATIC_BLOG_POSTS, sortType, sortDescending);
     processedPosts = filterPostsByDate(processedPosts, dateFilter);
 
     if (searchTerm) {
@@ -49,7 +38,7 @@ export default function BlogPage() {
     }
 
     setFilteredPosts(processedPosts);
-  }, [searchTerm, sortType, sortDescending, dateFilter, posts]);
+  }, [searchTerm, sortType, sortDescending, dateFilter]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
