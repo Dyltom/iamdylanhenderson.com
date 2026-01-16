@@ -11,7 +11,7 @@ interface MatrixRainProps {
 export default function MatrixRain({ active = true }: MatrixRainProps) {
   const theme = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (!active) return;

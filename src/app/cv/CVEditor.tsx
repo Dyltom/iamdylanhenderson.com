@@ -36,7 +36,7 @@ import {
   CheckCircle,
   Warning,
 } from '@mui/icons-material'
-import { CVData } from '@/utils/cvTypes'
+import { CVData } from '../../utils/cvTypes'
 
 interface CVEditorProps {
   cvData: CVData
