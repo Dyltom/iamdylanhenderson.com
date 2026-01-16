@@ -83,11 +83,11 @@ export const CV_DATA: CVData = {
       endDate: "09/2024",
       responsibilities: [
         "Built web applications for e-commerce platform using React/Node.js with TypeScript",
-        "Integrated customer data APIs and CRM systems for order management and analytics",
-        "Implemented comprehensive test coverage with Jest and integration testing",
-        "Delivered features in 2-week sprints using Agile methodologies"
+        "Led migration from monolithic architecture to microservices using AWS Lambda",
+        "Integrated Shopify APIs for product sync and order management across platforms",
+        "Implemented comprehensive test coverage with Jest and integration testing"
       ],
-      techStack: "React, Node.js, Express, TypeScript, Jest, PostgreSQL, Elasticsearch, AWS (EC2, S3)"
+      techStack: "React, Node.js, TypeScript, AWS Lambda, Shopify API, PostgreSQL, Elasticsearch"
     },
     {
       company: "etika",
@@ -173,7 +173,7 @@ export const CV_DATA: CVData = {
     "Backend: Node.js, Express.js, Microservices architecture, Scala, Java/Spring Boot",
     "CI/CD & Testing: GitHub Actions, Docker, PHPUnit, Jest, Playwright E2E, Automated deployments",
     "Database: MySQL, PostgreSQL, ScyllaDB, Query optimisation, Schema design, Migrations",
-    "Infrastructure: Linux, VPS management, Nginx/Apache, Docker, Coolify, AWS (EC2, S3)",
+    "Infrastructure: Linux, VPS management, Nginx/Apache, Docker, Coolify, AWS (EC2, S3, Lambda)",
     "Security & Compliance: Fintech security practices, Government compliance (NV1 2021-2022)",
     "Agile Delivery: Scrum, Sprint planning, JIRA, Technical documentation, Stakeholder communication"
   ]
