@@ -40,8 +40,7 @@ export const generateCoverLetterDOCX = async (
         }),
 
         new Paragraph({
-          text: cvData.personalInfo.email,
-          size: 20, // 10pt
+          children: [new TextRun({ text: cvData.personalInfo.email, size: 20 })],
           spacing: { after: 60 },
         }),
 

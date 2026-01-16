@@ -31,6 +31,13 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/utils/coverLetterGenerator.ts",
+    "src/utils/coverLetterGeneratorFixed.ts",
+    "src/utils/docxCleanGenerator.ts",
+    "src/utils/docxMinimalGenerator.ts",
+    "src/utils/docxModernGenerator.ts",
+    "src/utils/docxProfessionalGenerator.ts",
+    "src/utils/docxStandardGenerator.ts"
   ]
 }

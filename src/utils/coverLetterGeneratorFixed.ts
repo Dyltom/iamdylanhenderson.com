@@ -196,7 +196,7 @@ export const generateCoverLetterDOCX = async (
 
         // Body paragraphs - properly handle bullets and formatting
         ...coverLetterData.bodyParagraphs.flatMap(paragraph => {
-          const sections = []
+          const sections: any[] = []
 
           // Split by double newlines first
           const parts = paragraph.split('\n\n')
@@ -220,6 +220,8 @@ export const generateCoverLetterDOCX = async (
                       alignment: AlignmentType.LEFT,
                       spacing: {
                         after: lineIndex === lines.length - 1 ? 240 : 120,
+                      },
+                      indent: {
                         left: 360, // Indent bullets
                       },
                     })
@@ -331,7 +333,8 @@ export const generateCoverLetterDOCX = async (
 
   // Generate and save
   const buffer = await Packer.toBuffer(doc);
-  const blob = new Blob([buffer], {
+  const uint8Array = new Uint8Array(buffer);
+  const blob = new Blob([uint8Array], {
     type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   });
   saveAs(blob, fileName);
