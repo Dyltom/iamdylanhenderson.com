@@ -162,6 +162,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
             </Box>
           </TestimonialCard>
         ))}
+      </Box>
     </Box>
   );
 };
