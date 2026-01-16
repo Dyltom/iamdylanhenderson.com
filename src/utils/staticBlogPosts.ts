@@ -3,7 +3,7 @@ import { Article } from './types';
 export const STATIC_BLOG_POSTS: Article[] = [
   {
     id: '1',
-    title: 'The Unexpected Twist at "FirstPort"',
+    title: 'From Setback to Success: My Career Transformation Story',
     content: [
       {
         type: 'paragraph',

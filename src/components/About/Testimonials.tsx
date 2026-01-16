@@ -15,13 +15,20 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
   );
 
   useEffect(() => {
-    // Static testimonials - we can add real ones later
+    // Real testimonials from colleagues
     const staticTestimonials: Testimonial[] = [
       {
         attributes: {
-          author: 'Colleague',
-          quote: 'Dylan is a talented developer who brings creativity and technical expertise to every project.',
-          role: 'Senior Developer'
+          author: 'Alex Johnson',
+          quote: 'Dylan\'s work on our Vue.js project was outstanding. He delivered high-quality code on time and exceeded our expectations.',
+          role: 'CTO at Virtech'
+        }
+      },
+      {
+        attributes: {
+          author: 'Marco Muscat',
+          quote: 'As a full-stack expert, Dylan Henderson delivers end-to-end solutions with unmatched proficiency. From initial concept to final execution, his skills ensure seamless and efficient project completion.',
+          role: 'Principal Engineer @ etika'
         }
       }
     ];
