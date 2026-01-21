@@ -53,8 +53,8 @@ export const CV_DATA: CVData = {
         "Architected and implemented end-to-end security architecture including AES-256 encryption at rest, TLS 1.3 in transit, and automated key rotation",
         "Developed secure customer portal with role-based access control (RBAC), comprehensive audit logging, and OWASP Top 10 compliance",
         "Established GitOps CI/CD pipeline with SAST/DAST integration, container vulnerability scanning, and automated dependency checks",
-        "Built RESTful APIs implementing OAuth 2.0 authorization code flow with PKCE, JWT token lifecycle management, and rate limiting",
-        "Integrated PCI-DSS compliant payment processing with tokenization, secure vault storage, and transaction monitoring",
+        "Built RESTful APIs implementing OAuth 2.0 authorisation code flow with PKCE, JWT token lifecycle management, and rate limiting",
+        "Integrated PCI-DSS compliant payment processing with tokenisation, secure vault storage, and transaction monitoring",
         "Developed AI automation features using OpenAI GPT-4 API with prompt injection protection and PII filtering mechanisms",
         "Created comprehensive technical documentation including API specifications, security runbooks, and disaster recovery procedures",
         "Implemented event-driven workflow automation using n8n with webhook security, HMAC validation, and idempotency controls",
@@ -177,6 +177,8 @@ export const CV_DATA: CVData = {
     "Infrastructure: Nginx configuration, Linux administration, fail2ban, ModSecurity WAF, SSL/TLS certificate management",
     "Testing: PHPUnit, Jest with coverage reports, React Testing Library, Cypress E2E, SAST/DAST integration",
     "Monitoring: Sentry error tracking, Datadog APM, CloudWatch metrics, structured logging (Winston/Monolog)",
-    "Standards: OWASP ASVS, SOLID principles, 12-factor apps, PSR standards, Git flow, semantic versioning"
+    "Development Principles: SOLID, DRY, KISS, YAGNI, clean code practices, design patterns (Factory, Observer, Repository)",
+    "Methodologies: Agile/Scrum, TDD/BDD, trunk-based development, continuous integration, code review best practices",
+    "Standards: OWASP ASVS, 12-factor apps, PSR standards, Git flow, semantic versioning, conventional commits"
   ]
 }

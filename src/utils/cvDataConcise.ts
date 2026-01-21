@@ -100,6 +100,7 @@ export const CV_DATA_CONCISE: CVData = {
     "Security Capabilities: Data encryption, access controls, OAuth 2.0/JWT, OWASP compliance, audit trails",
     "Modern Stack: React, Node.js, TypeScript, RESTful APIs, microservices architecture",
     "Cloud & DevOps: AWS, Docker, CI/CD pipelines, automated security scanning, GitLab",
+    "Development Practices: SOLID principles, DRY, clean code, design patterns, TDD, code review standards",
     "Process Automation: OpenAI integration, workflow optimisation, operational efficiency improvements",
     "CMS Expertise: WordPress, custom CMS development, headless architectures",
     "Databases: MySQL, PostgreSQL, MongoDB, ScyllaDB, secure data handling"
