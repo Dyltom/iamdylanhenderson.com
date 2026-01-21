@@ -2,6 +2,17 @@ import { Document, Paragraph, TextRun, HeadingLevel, AlignmentType, Tab, TabStop
 import { saveAs } from 'file-saver'
 import { CVData } from './cvTypes'
 
+// Helper function for bullet points
+function createBulletPoints(items: string[]) {
+  return items.map(item =>
+    new Paragraph({
+      text: item,
+      bullet: { level: 0 },
+      spacing: { after: 100 },
+    })
+  )
+}
+
 // Clean DOCX generator for Australian Government applications
 export const generateCleanDOCX = async (cvData: CVData, fileName: string = 'Dylan_Henderson_Resume.docx') => {
   try {
@@ -246,17 +257,6 @@ export const generateCleanDOCX = async (cvData: CVData, fileName: string = 'Dyla
         ],
       },
     })
-
-    // Helper function for bullet points
-    function createBulletPoints(items: string[]) {
-      return items.map(item =>
-        new Paragraph({
-          text: item,
-          bullet: { level: 0 },
-          spacing: { after: 100 },
-        })
-      )
-    }
 
     // Generate and save
     const buffer = await Packer.toBuffer(doc)
