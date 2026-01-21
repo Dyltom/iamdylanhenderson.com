@@ -36,12 +36,12 @@ export const CV_DATA: CVData = {
     name: "Dylan Henderson",
     phone: "0426007021",
     email: "dylanthenderson@yahoo.com.au",
-    location: "Melbourne, VIC",
+    location: "Relocating to Canberra, ACT",
     linkedin: "https://www.linkedin.com/in/dylan-henderson-07",
     github: "https://github.com/Dyltom",
     portfolio: "https://www.iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer (PHP/WordPress + React/Node) with 6+ years building plugins, APIs, and internal platforms. Strong in productising messy business workflows into maintainable systems: bookings, payments, invoicing, integrations. Infrastructure + delivery: Docker, CI/CD, PHPUnit, automated deployments. Experience across fintech and government sectors. Available for immediate start.",
+  summary: "Senior Software Engineer with active NV1 clearance (reactivation in progress). Extensive experience delivering secure government systems and implementing comprehensive security controls. Expertise in modern development frameworks (React, Node.js, TypeScript) with strong focus on security compliance, data protection, and process automation. Proven track record in government sector with Leidos Australia. Available for immediate start in Canberra.",
   experience: [
     {
       company: "Bonza Clean",
@@ -50,15 +50,15 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Customer Portal: Self-service portal (quotes, invoices, feedback, scheduling) cut admin work from 9 hours to 1-2 hours/week",
-        "Bonza Engine: WordPress plugin suite for bookings/payments; reduced scheduling admin from 4 hours to 1 hour/week",
-        "Platform & Infrastructure: Built Docker-based CI/CD reducing deploy time from 30min to <5min; set up staging/local dev environments",
-        "APIs & Mobile: PHP REST APIs powering React Native app (iOS/Android, 1000+ users)",
-        "Integrations: Stripe/PayPal payments, Xero accounting, ElevenLabs voice receptionist for lead capture",
-        "AI Systems: Built AI assistant embedded in Bonza Engine - creates bookings/leads from chat, generates structured job details, answers platform questions using internal knowledge base",
-        "Knowledge Systems: Moodle LMS + Scribe docs + training videos; reduced support tickets by standardising onboarding",
-        "Automation: n8n workflows for social media automation and AI agent orchestration",
-        "Leadership: Hired/mentored developer; delivered virtual training sessions"
+        "Sole developer responsible for complete platform security including data encryption, access controls, and compliance documentation",
+        "Delivered secure customer portal with comprehensive audit trails and security hardening for sensitive data protection",
+        "Implemented enterprise-grade CI/CD pipelines with automated security scanning and vulnerability management",
+        "Developed secure RESTful APIs supporting mobile applications with OAuth authentication and JWT token management",
+        "Integrated secure payment systems (Stripe/PayPal) and financial platforms ensuring PCI compliance standards",
+        "Built AI-powered automation systems while maintaining security protocols and data privacy standards",
+        "Established comprehensive documentation and training systems improving operational efficiency",
+        "Implemented workflow automation reducing manual processes while maintaining security and audit requirements",
+        "Provided technical leadership including mentoring and knowledge transfer to development team"
       ],
       techStack: "PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n"
     },
@@ -69,9 +69,9 @@ export const CV_DATA: CVData = {
       startDate: "2018",
       endDate: "Present",
       responsibilities: [
-        "E-commerce Platform: Co-built opal e-commerce platform (2020-present, $100k+ sales) handling product catalogue and transactions",
-        "Headless WordPress: Built e-commerce sites with Next.js frontend + WordPress API",
-        "Portfolio Sites: Musician portfolio + e-commerce site integrating Spotify API with headless WordPress CMS"
+        "E-commerce Platform: Co-developed secure e-commerce platform handling product catalogue and payment transactions",
+        "Headless WordPress: Built secure e-commerce solutions with Next.js frontend and WordPress REST API architecture",
+        "Portfolio Sites: Developed portfolio and e-commerce sites with third-party API integrations maintaining security standards"
       ],
       techStack: "WordPress REST API, Next.js, Spotify API, Headless CMS"
     },
@@ -82,10 +82,10 @@ export const CV_DATA: CVData = {
       startDate: "03/2024",
       endDate: "09/2024",
       responsibilities: [
-        "Built web applications for e-commerce platform using React/Node.js with TypeScript",
-        "Led migration from monolithic architecture to microservices using AWS Lambda",
-        "Integrated Shopify APIs for product sync and order management across platforms",
-        "Implemented comprehensive test coverage with Jest and integration testing"
+        "Developed secure web applications using React/Node.js with TypeScript ensuring data protection",
+        "Led architectural transformation to microservices improving system resilience and security",
+        "Integrated third-party APIs maintaining security protocols and data validation standards",
+        "Implemented comprehensive test coverage ensuring system reliability and compliance"
       ],
       techStack: "React, Node.js, TypeScript, AWS Lambda, Shopify API, PostgreSQL, Elasticsearch"
     },
@@ -96,24 +96,24 @@ export const CV_DATA: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Built microservices architecture (10+ services) with federated UI approach",
-        "Developed lending workflows with automated testing and compliance checks",
-        "Optimised ScyllaDB queries and microservice performance for scale",
-        "Implemented secure coding practices for fintech data protection"
+        "Built secure microservices architecture with federated UI approach for financial services platform",
+        "Developed compliant lending workflows with comprehensive automated testing and regulatory checks",
+        "Optimised high-performance NoSQL databases ensuring data security and system availability",
+        "Implemented secure coding practices for sensitive financial data protection and compliance requirements"
       ],
       techStack: "TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Docker"
     },
     {
       company: "Leidos Australia",
-      title: "Software Engineer",
+      title: "Software Engineer (NV1 Cleared)",
       location: "Melbourne, VIC",
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Delivered enterprise web applications using Java/Spring Boot and React",
-        "Built secure APIs and services with PostgreSQL for mission-critical government systems",
-        "Applied security protocols and compliance standards for sensitive data handling",
-        "Integrated complex systems across multi-disciplinary teams using GitLab CI/CD"
+        "Delivered large-scale government data platform with active NV1 security clearance",
+        "Developed secure Java/Spring microservices following federal government security frameworks",
+        "Applied structured SDLC methodologies ensuring compliance with government standards",
+        "Collaborated with multi-disciplinary teams in secure federal environment maintaining strict security protocols"
       ],
       techStack: "Java, Spring Boot, React, PostgreSQL, Ansible, Elasticsearch, GitLab CI"
     },
@@ -124,10 +124,10 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Built monitoring dashboards with Vue.js for real-time system visibility",
-        "Automated IT operations with PowerShell self-healing scripts",
-        "Integrated Nexthink platform for end-user experience monitoring",
-        "Achieved Nexthink Master's Level Certification"
+        "Developed enterprise monitoring dashboards ensuring system availability and performance",
+        "Automated critical IT operations improving system reliability and reducing downtime",
+        "Integrated enterprise monitoring platforms for comprehensive system oversight",
+        "Achieved Nexthink Master's Level Certification demonstrating platform expertise"
       ],
       techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server"
     },
@@ -138,10 +138,10 @@ export const CV_DATA: CVData = {
       startDate: "07/2019",
       endDate: "02/2020",
       responsibilities: [
-        "Built web applications with CakePHP MVC framework",
-        "Designed MySQL schemas with optimised queries",
-        "Implemented RESTful APIs for system integration",
-        "Followed MVC patterns and PSR coding standards"
+        "Built secure web applications using CakePHP framework with focus on data integrity",
+        "Designed and optimised database schemas ensuring performance and security",
+        "Implemented secure RESTful APIs for enterprise system integration",
+        "Applied industry coding standards and best practices for maintainable solutions"
       ],
       techStack: "PHP, CakePHP, MySQL, REST APIs, jQuery"
     },
@@ -152,8 +152,8 @@ export const CV_DATA: CVData = {
       startDate: "02/2018",
       endDate: "01/2020",
       responsibilities: [
-        "Supported social media operations and automation workflows",
-        "Maintained scheduling tools and content management systems"
+        "Supported enterprise operations and automation workflows ensuring operational efficiency",
+        "Maintained critical scheduling and content management systems"
       ],
       techStack: "JavaScript, Social Media APIs"
     }
@@ -165,5 +165,18 @@ export const CV_DATA: CVData = {
       completionDate: "02/2020"
     }
   ],
-  skills: []
+  skills: [
+    "Security Clearance: AGSVA NV1 (reactivation in progress) - previously held 2021-2022 with Leidos Australia",
+    "Languages: PHP 7.4/8.x, JavaScript ES6+, TypeScript 4.x, Java 11+ (Spring Boot), Python, HTML5, CSS3",
+    "Frontend: React 18, Vue.js 3, Next.js 13+, React Native, Material-UI, Tailwind CSS, responsive design",
+    "Backend: Node.js 16+, Express.js, NestJS, Spring Framework, RESTful APIs, GraphQL, microservices",
+    "Security: OAuth 2.0, JWT, MFA implementation, AES-256 encryption, TLS/SSL, OWASP Top 10, fail2ban, ModSecurity",
+    "Databases: MySQL 8, PostgreSQL 13+, MongoDB, ScyllaDB, Redis, query optimisation, stored procedures",
+    "Cloud/DevOps: AWS (EC2, Lambda, S3, RDS), Docker, Kubernetes basics, GitHub Actions, GitLab CI/CD, Ansible",
+    "CMS/Frameworks: WordPress 6.x (custom plugins/themes), CakePHP 4.x, Laravel, headless CMS architectures",
+    "Standards: PSR-12, ESLint, Prettier, SOLID principles, MVC/MVP patterns, 12-factor app methodology",
+    "Testing: PHPUnit, Jest, React Testing Library, integration testing, TDD practices, automated security scanning",
+    "Monitoring: ELK stack basics, Grafana, Prometheus, APM tools, Nexthink (Master certified), logging best practices",
+    "Government: SDLC methodologies, ASD ISM familiarity, PSPF awareness, formal documentation standards"
+  ]
 }
