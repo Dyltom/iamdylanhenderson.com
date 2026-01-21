@@ -11,7 +11,7 @@ export const CV_DATA_CONCISE: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer with active NV1 clearance (reactivation in progress). Proven track record delivering secure government systems and process automation that transforms operational efficiency. Experienced in modern tech stack (React, Node.js, TypeScript) with strong security focus including data encryption, access controls, and compliance documentation. Available for immediate start in Canberra.",
+  summary: "Senior Software Engineer with active NV1 clearance (reactivation in progress). Government exposure through federal project delivery at Leidos Australia. Experienced in modern tech stack (React, Node.js, TypeScript) with strong security focus including data encryption, access controls, and compliance documentation. Available for immediate start in Canberra.",
   experience: [
     {
       company: "Bonza Clean",
@@ -96,13 +96,13 @@ export const CV_DATA_CONCISE: CVData = {
   ],
   skills: [
     "Security Clearance: NV1 (reactivation in progress) - held 2021-2022 with Leidos",
-    "Government Experience: Large-scale federal data platforms, secure SDLC, compliance frameworks",
-    "Security Capabilities: Data encryption, access controls, security hardening, OWASP standards, audit trails",
+    "Government Experience: Federal data platforms, secure SDLC, formal documentation standards",
+    "Security Capabilities: Data encryption, access controls, OAuth 2.0/JWT, OWASP compliance, audit trails",
     "Modern Stack: React, Node.js, TypeScript, RESTful APIs, microservices architecture",
     "Cloud & DevOps: AWS, Docker, CI/CD pipelines, automated security scanning, GitLab",
-    "Process Automation: AI/ML integration, workflow optimisation, significant operational efficiency gains",
+    "Process Automation: OpenAI integration, workflow optimisation, operational efficiency improvements",
     "CMS Expertise: WordPress, custom CMS development, headless architectures",
-    "Databases: MySQL, PostgreSQL, NoSQL, performance optimisation, secure data handling"
+    "Databases: MySQL, PostgreSQL, MongoDB, ScyllaDB, secure data handling"
   ]
 }
 
