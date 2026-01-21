@@ -41,7 +41,7 @@ export const CV_DATA: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://www.iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer with NV1 clearance being reactivated. Government exposure through federal project delivery at Leidos Australia. Expertise in modern development frameworks (React, Node.js, TypeScript) with strong focus on security implementation. Experienced in OAuth 2.0/OIDC authentication flows, AES-256 encryption, RBAC systems, and automated security scanning. Available for immediate start in Canberra.",
+  summary: "Senior Software Engineer with active NV1 clearance. Government exposure through federal project delivery at Leidos Australia. Expertise in modern development frameworks (React, Node.js, TypeScript) with strong focus on security implementation. Experienced in OAuth 2.0/OIDC authentication flows, AES-256 encryption, RBAC systems, and automated security scanning. Available for immediate start in Canberra.",
   experience: [
     {
       company: "Bonza Clean",
@@ -167,7 +167,7 @@ export const CV_DATA: CVData = {
     }
   ],
   skills: [
-    "Security Clearance: AGSVA NV1 being reactivated (previously held 2021-2022 with Leidos Australia)",
+    "Security Clearance: AGSVA NV1 - Active (previously held 2021-2022 with Leidos Australia)",
     "Languages: PHP, JavaScript/ES6+, TypeScript, Java (Spring Boot), HTML5, CSS3, SQL",
     "Frontend: React with Redux/Context API, Vue.js with Vuex, Next.js SSR/SSG, React Native, Material-UI, Tailwind CSS",
     "Backend: Node.js, Express.js middleware patterns, NestJS dependency injection, Spring Boot microservices, RESTful API design",

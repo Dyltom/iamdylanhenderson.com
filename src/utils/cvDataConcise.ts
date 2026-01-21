@@ -11,7 +11,7 @@ export const CV_DATA_CONCISE: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer with NV1 clearance being reactivated. Government exposure through federal project delivery at Leidos Australia. Experienced in modern tech stack (React, Node.js, TypeScript) with strong security implementation including OAuth 2.0 authentication, AES-256 encryption, and RBAC systems. Available for immediate start in Canberra.",
+  summary: "Senior Software Engineer with active NV1 clearance. Government exposure through federal project delivery at Leidos Australia. Experienced in modern tech stack (React, Node.js, TypeScript) with strong security implementation including OAuth 2.0 authentication, AES-256 encryption, and RBAC systems. Available for immediate start in Canberra.",
   experience: [
     {
       company: "Bonza Clean",
@@ -95,7 +95,7 @@ export const CV_DATA_CONCISE: CVData = {
     }
   ],
   skills: [
-    "Security Clearance: NV1 being reactivated (previously held 2021-2022 with Leidos)",
+    "Security Clearance: NV1 - Active (previously held 2021-2022 with Leidos)",
     "Government Experience: Federal data platforms, secure SDLC, formal documentation standards",
     "Security Capabilities: Data encryption, access controls, OAuth 2.0/JWT, OWASP compliance, audit trails",
     "Modern Stack: React, Node.js, TypeScript, RESTful APIs, microservices architecture",
@@ -109,7 +109,7 @@ export const CV_DATA_CONCISE: CVData = {
 
 // Additional CV data for professional context
 export const ADDITIONAL_INFO = {
-  clearanceStatus: "NV1 clearance (reactivation in progress)",
+  clearanceStatus: "NV1 clearance - Active",
   availability: "Immediate start",
   contractPreference: "Long-term contracts (12+ months)",
   location: "Relocating to Canberra - available for onsite/hybrid work"
