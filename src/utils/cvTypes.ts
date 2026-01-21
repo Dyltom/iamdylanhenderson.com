@@ -82,10 +82,11 @@ export const CV_DATA: CVData = {
       startDate: "03/2024",
       endDate: "09/2024",
       responsibilities: [
-        "Developed secure web applications using React/Node.js with TypeScript ensuring data protection",
-        "Contributed to architectural transformation to microservices improving system resilience and security",
-        "Integrated third-party APIs maintaining security protocols and data validation standards",
-        "Implemented comprehensive test coverage ensuring system reliability and compliance"
+        "Developed features for e-commerce platform tightly integrated with Shopify APIs handling product sync and order management",
+        "Contributed to decoupling monolithic architecture into microservices to reduce Shopify API dependencies and improve performance",
+        "Enhanced financial dashboard features including revenue tracking, refund processing, and payment reconciliation",
+        "Worked on inventory management system including stock levels, buybox algorithms, and automated reordering logic",
+        "Implemented comprehensive test coverage with Jest ensuring reliability of financial calculations and API integrations"
       ],
       techStack: "React, Node.js, TypeScript, AWS Lambda, Shopify API, PostgreSQL, Elasticsearch"
     },
@@ -96,12 +97,15 @@ export const CV_DATA: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Built secure microservices architecture with federated UI approach for financial services platform",
-        "Developed lending workflows with automated testing and regulatory compliance features",
-        "Worked with NoSQL databases (ScyllaDB) ensuring data security and system availability",
-        "Implemented secure coding practices for PII and sensitive financial data protection"
+        "Developed 10+ TypeScript/Koa microservices with federated UI architecture for lending platform",
+        "Built document generation service using React-based PDF generation for contracts and statements with S3 storage and versioning",
+        "Implemented PII data masking for names, addresses, and phone numbers across multiple services ensuring GDPR compliance",
+        "Contributed to lending workflows including application processing, financial calculations, and third-party integration features",
+        "Maintained extensive logging and monitoring across microservices with canary deployment support for safe releases",
+        "Applied TDD methodology achieving high test coverage across all services with comprehensive unit and integration tests",
+        "Onboarded new developers as technical buddy, created documentation, and conducted regular code reviews throughout 2-year tenure"
       ],
-      techStack: "TypeScript, React, Node.js, Scala, ScyllaDB, Microservices, Docker"
+      techStack: "TypeScript, Koa, React, ScyllaDB, Federated UI, REST APIs, Docker, S3"
     },
     {
       company: "Leidos Australia",
@@ -124,10 +128,12 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Developed enterprise monitoring dashboards ensuring system availability and performance",
-        "Automated critical IT operations improving system reliability and reducing downtime",
-        "Integrated enterprise monitoring platforms for comprehensive system oversight",
-        "Achieved Nexthink Master's Level Certification demonstrating platform expertise"
+        "Developed Vue.js monitoring dashboards tracking end-user experience metrics for enterprise clients including Queensland Rail and Maurice Blackburn",
+        "Implemented Nexthink platform monitoring system performance, application crashes, BSOD incidents, and resource utilisation across thousands of endpoints",
+        "Created PowerShell automation scripts for incident remediation and data collection, reducing manual intervention by automating common fixes",
+        "Built internal web portal using Vue.js for centralised monitoring and reporting across multiple client environments",
+        "Achieved Nexthink Master's Level Certification, becoming platform SME and training team members on advanced monitoring capabilities",
+        "Analysed performance trends and provided actionable insights to improve system stability for enterprise clients"
       ],
       techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server"
     },
@@ -145,18 +151,6 @@ export const CV_DATA: CVData = {
       ],
       techStack: "PHP, CakePHP, MySQL, REST APIs, jQuery"
     },
-    {
-      company: "Media8",
-      title: "Technical Consultant",
-      location: "Melbourne, VIC",
-      startDate: "02/2018",
-      endDate: "01/2020",
-      responsibilities: [
-        "Supported enterprise operations and automation workflows ensuring operational efficiency",
-        "Maintained critical scheduling and content management systems"
-      ],
-      techStack: "JavaScript, Social Media APIs"
-    }
   ],
   education: [
     {

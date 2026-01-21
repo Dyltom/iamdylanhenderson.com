@@ -45,9 +45,9 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Built secure microservices handling sensitive financial data with compliance requirements",
-        "Implemented document generation systems with access controls and audit capabilities",
-        "Optimised high-performance NoSQL databases ensuring data security and availability"
+        "Developed 10+ secure microservices handling PII data masking and GDPR compliance for lending platform",
+        "Built document generation service with React-based PDF generation, S3 storage, and comprehensive audit trails",
+        "Applied TDD methodology with extensive test coverage and conducted regular code reviews"
       ]
     },
     {
@@ -70,9 +70,9 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Developed secure WordPress solutions for enterprise clients",
-        "Managed critical infrastructure ensuring system availability and performance",
-        "Achieved Nexthink Master's Level Certification for system monitoring"
+        "Built Vue.js monitoring dashboards for enterprise clients including Queensland Rail and Maurice Blackburn",
+        "Implemented Nexthink platform monitoring thousands of endpoints for performance and security incidents",
+        "Achieved Nexthink Master's Level Certification and created PowerShell automation scripts"
       ]
     },
     {
