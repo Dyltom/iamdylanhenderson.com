@@ -60,7 +60,8 @@ export const CV_DATA: CVData = {
         "Managed security incident response when credentials were compromised, investigated breach using AI tools, implemented access controls, and documented findings",
         "Proactively monitored security advisories and patched critical vulnerabilities including Next.js security updates",
         "Implemented event-driven workflow automation using n8n with webhook security, HMAC validation, and idempotency controls",
-        "Led technical initiatives including developer recruitment, code review processes, and knowledge transfer sessions"
+        "Applied SOLID principles and clean code practices, established coding standards with ESLint/Prettier, and automated quality checks",
+        "Led technical initiatives including developer recruitment, structured code review processes, and knowledge transfer sessions"
       ],
       techStack: "PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n"
     },
@@ -88,7 +89,8 @@ export const CV_DATA: CVData = {
         "Contributed to decoupling monolithic architecture into microservices to reduce Shopify API dependencies and improve performance",
         "Enhanced financial dashboard features including revenue tracking, refund processing, and payment reconciliation",
         "Worked on inventory management system including stock levels, buybox algorithms, and automated reordering logic",
-        "Implemented comprehensive test coverage with Jest ensuring reliability of financial calculations and API integrations"
+        "Implemented comprehensive test coverage with Jest ensuring reliability of financial calculations and API integrations",
+        "Followed Agile/Scrum methodology with sprint planning, daily standups, and retrospectives for continuous improvement"
       ],
       techStack: "React, Node.js, TypeScript, AWS Lambda, Shopify API, PostgreSQL, Elasticsearch"
     },
@@ -119,7 +121,8 @@ export const CV_DATA: CVData = {
       responsibilities: [
         "Delivered secure microservice components for federal government data platform with active NV1 clearance",
         "Developed Java/Spring Boot REST APIs implementing Defence security controls and audit requirements",
-        "Applied Agile SDLC methodologies with formal change management and security gate reviews",
+        "Applied Agile SDLC with formal change management, peer code reviews, and security gate reviews",
+        "Followed strict coding standards, maintained comprehensive unit tests, and participated in architectural design reviews",
         "Collaborated in classified environment using air-gapped development systems and secure communication protocols"
       ],
       techStack: "Java, Spring Boot, React, PostgreSQL, Ansible, Elasticsearch, GitLab CI"
@@ -134,9 +137,10 @@ export const CV_DATA: CVData = {
         "Monitored enterprise client systems across government and legal sectors using Nexthink platform",
         "Tracked system performance, application crashes, BSOD incidents, and resource utilisation across thousands of endpoints",
         "Created PowerShell automation scripts for incident remediation and data collection, reducing manual intervention",
-        "Built internal company website using Vue.js for Virtech's client-facing web presence",
+        "Built internal company website using Vue.js with component-based architecture and responsive design",
         "Achieved Nexthink Master's Level Certification, becoming platform SME and training team members",
-        "Analysed performance trends and provided actionable insights to improve system stability for enterprise clients"
+        "Analysed performance trends and provided actionable insights to improve system stability for enterprise clients",
+        "Maintained version control with Git, participated in code reviews, and followed established development workflows"
       ],
       techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server"
     },
