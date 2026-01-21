@@ -21,9 +21,9 @@ export const CV_DATA_CONCISE: CVData = {
       endDate: "Present",
       responsibilities: [
         "Sole developer responsible for complete platform security including data protection, access controls, and compliance documentation",
+        "Managed security incident response when credentials were compromised, investigated and contained breach, documented findings",
         "Delivered secure customer portal and payment systems with comprehensive audit trails and security hardening",
-        "Implemented AI-powered automation reducing operational workload while maintaining security standards",
-        "Established secure CI/CD pipelines with automated security scanning and vulnerability management"
+        "Created OpenAPI 3.0 documentation and established CI/CD pipelines with automated security scanning"
       ]
     },
     {
@@ -70,9 +70,9 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Built Vue.js monitoring dashboards for enterprise clients including Queensland Rail and Maurice Blackburn",
-        "Implemented Nexthink platform monitoring thousands of endpoints for performance and security incidents",
-        "Achieved Nexthink Master's Level Certification and created PowerShell automation scripts"
+        "Monitored enterprise systems across government and legal sectors using Nexthink platform",
+        "Built company website using Vue.js and created PowerShell automation scripts for incident remediation",
+        "Achieved Nexthink Master's Level Certification tracking performance across thousands of endpoints"
       ]
     },
     {

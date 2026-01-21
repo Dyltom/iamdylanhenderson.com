@@ -56,7 +56,9 @@ export const CV_DATA: CVData = {
         "Built RESTful APIs implementing OAuth 2.0 authorisation code flow with PKCE, JWT token lifecycle management, and rate limiting",
         "Integrated PCI-DSS compliant payment processing with tokenisation, secure vault storage, and transaction monitoring",
         "Developed AI automation features using OpenAI GPT-4 API with prompt injection protection and PII filtering mechanisms",
-        "Created comprehensive technical documentation including API specifications, security runbooks, and disaster recovery procedures",
+        "Created comprehensive technical documentation including OpenAPI 3.0 specifications, security runbooks, and incident response procedures",
+        "Managed security incident response when credentials were compromised, investigated breach using AI tools, implemented access controls, and documented findings",
+        "Proactively monitored security advisories and patched critical vulnerabilities including Next.js security updates",
         "Implemented event-driven workflow automation using n8n with webhook security, HMAC validation, and idempotency controls",
         "Led technical initiatives including developer recruitment, code review processes, and knowledge transfer sessions"
       ],
@@ -99,8 +101,9 @@ export const CV_DATA: CVData = {
       responsibilities: [
         "Developed 10+ TypeScript/Koa microservices with federated UI architecture for lending platform",
         "Built document generation service using React-based PDF generation for contracts and statements with S3 storage and versioning",
-        "Implemented PII data masking for names, addresses, and phone numbers across multiple services ensuring GDPR compliance",
+        "Implemented PII data masking and GDPR compliance features including right to be forgotten, data retention policies, and consent management",
         "Contributed to lending workflows including application processing, financial calculations, and third-party integration features",
+        "Created OpenAPI 3.0 documentation for all microservices ensuring clear API contracts and integration guidelines",
         "Maintained extensive logging and monitoring across microservices with canary deployment support for safe releases",
         "Applied TDD methodology achieving high test coverage across all services with comprehensive unit and integration tests",
         "Onboarded new developers as technical buddy, created documentation, and conducted regular code reviews throughout 2-year tenure"
@@ -128,11 +131,11 @@ export const CV_DATA: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "Developed Vue.js monitoring dashboards tracking end-user experience metrics for enterprise clients including Queensland Rail and Maurice Blackburn",
-        "Implemented Nexthink platform monitoring system performance, application crashes, BSOD incidents, and resource utilisation across thousands of endpoints",
-        "Created PowerShell automation scripts for incident remediation and data collection, reducing manual intervention by automating common fixes",
-        "Built internal web portal using Vue.js for centralised monitoring and reporting across multiple client environments",
-        "Achieved Nexthink Master's Level Certification, becoming platform SME and training team members on advanced monitoring capabilities",
+        "Monitored enterprise client systems across government and legal sectors using Nexthink platform",
+        "Tracked system performance, application crashes, BSOD incidents, and resource utilisation across thousands of endpoints",
+        "Created PowerShell automation scripts for incident remediation and data collection, reducing manual intervention",
+        "Built internal company website using Vue.js for Virtech's client-facing web presence",
+        "Achieved Nexthink Master's Level Certification, becoming platform SME and training team members",
         "Analysed performance trends and provided actionable insights to improve system stability for enterprise clients"
       ],
       techStack: "Vue.js, JavaScript, PowerShell, Nexthink, Windows Server"
@@ -165,14 +168,20 @@ export const CV_DATA: CVData = {
     "Frontend: React with Redux/Context API, Vue.js with Vuex, Next.js SSR/SSG, React Native, Material-UI, Tailwind CSS",
     "Backend: Node.js, Express.js middleware patterns, NestJS dependency injection, Spring Boot microservices, RESTful API design",
     "Security: OAuth 2.0/OIDC flows, JWT with refresh tokens, MFA (TOTP/SMS), AES-256-GCM, bcrypt, TLS 1.3, CORS policies",
-    "API Design: RESTful principles, OpenAPI 3.0 specifications, JSON Schema validation, webhook implementations, rate limiting",
+    "API Security: Rate limiting, API key management, request validation, HMAC signatures, IP whitelisting, DDoS protection",
+    "Infrastructure Security: Firewall configuration (iptables/ufw), VPN setup, SSL/TLS certificates, server hardening, SSH key management",
+    "API Design: RESTful principles, OpenAPI 3.0 specifications, JSON Schema validation, webhook implementations, versioning strategies",
     "Databases: MySQL query optimisation, PostgreSQL indexing strategies, MongoDB document modeling, Redis caching patterns",
-    "Cloud/DevOps: AWS services (EC2, Lambda, S3, RDS, CloudWatch), Docker multi-stage builds, GitHub Actions, GitLab CI/CD",
+    "Cloud/DevOps: AWS services (EC2, Lambda, S3, RDS, CloudWatch), Docker multi-stage builds, GitHub Actions, GitLab CI/CD, CDN configuration",
     "Infrastructure: Nginx configuration, Linux administration, fail2ban, ModSecurity WAF, SSL/TLS certificate management",
     "Testing: PHPUnit, Jest with coverage reports, React Testing Library, Cypress E2E, SAST/DAST integration",
-    "Monitoring: Sentry error tracking, Datadog APM, CloudWatch metrics, structured logging (Winston/Monolog)",
+    "Monitoring: Sentry error tracking, Datadog APM, CloudWatch metrics, structured logging (Winston/Monolog), uptime monitoring",
+    "Development Practices: Git flow, feature branching, pull request workflows, code review processes, pair programming",
+    "Code Quality: ESLint, Prettier, SonarQube, PHPStan, pre-commit hooks, automated code analysis, coding standards enforcement",
+    "Deployment: Blue-green deployments, canary releases, rollback procedures, health checks, zero-downtime deployments",
+    "Collaboration: Jira, Confluence, Slack integrations, architectural decision records (ADRs), technical documentation",
     "Development Principles: SOLID, DRY, KISS, YAGNI, clean code practices, design patterns (Factory, Observer, Repository)",
-    "Methodologies: Agile/Scrum, TDD/BDD, trunk-based development, continuous integration, code review best practices",
-    "Standards: OWASP ASVS, 12-factor apps, PSR standards, Git flow, semantic versioning, conventional commits"
+    "Methodologies: Agile/Scrum, TDD/BDD, trunk-based development, continuous integration, sprint planning, retrospectives",
+    "Standards: OWASP ASVS, 12-factor apps, PSR standards, semantic versioning, conventional commits, ISO 27001 awareness"
   ]
 }
