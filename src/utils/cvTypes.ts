@@ -41,7 +41,7 @@ export const CV_DATA: CVData = {
     github: "https://github.com/Dyltom",
     portfolio: "https://www.iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer with active NV1 clearance (reactivation in progress). Government exposure through federal project delivery at Leidos Australia. Expertise in modern development frameworks (React, Node.js, TypeScript) with strong focus on security implementation, particularly in recent roles. Experienced in data protection, authentication systems, and process automation. Available for immediate start in Canberra.",
+  summary: "Senior Software Engineer with NV1 clearance being reactivated. Government exposure through federal project delivery at Leidos Australia. Expertise in modern development frameworks (React, Node.js, TypeScript) with strong focus on security implementation. Experienced in OAuth 2.0/OIDC authentication flows, AES-256 encryption, RBAC systems, and automated security scanning. Available for immediate start in Canberra.",
   experience: [
     {
       company: "Bonza Clean",
@@ -50,15 +50,15 @@ export const CV_DATA: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Sole developer responsible for complete platform security including data encryption, access controls, and compliance documentation",
-        "Delivered secure customer portal with comprehensive audit trails and security hardening for sensitive data protection",
-        "Implemented robust CI/CD pipelines with automated security scanning and vulnerability management",
-        "Developed secure RESTful APIs supporting mobile applications with OAuth authentication and JWT token management",
-        "Integrated secure payment systems (Stripe/PayPal) and financial platforms ensuring PCI compliance standards",
-        "Built AI-powered automation using OpenAI APIs while maintaining security protocols and data privacy standards",
-        "Established comprehensive documentation and training systems improving operational efficiency",
-        "Implemented workflow automation reducing manual processes while maintaining security and audit requirements",
-        "Hired and mentored junior developer, providing knowledge transfer and technical guidance"
+        "Architected and implemented end-to-end security architecture including AES-256 encryption at rest, TLS 1.3 in transit, and automated key rotation",
+        "Developed secure customer portal with role-based access control (RBAC), comprehensive audit logging, and OWASP Top 10 compliance",
+        "Established GitOps CI/CD pipeline with SAST/DAST integration, container vulnerability scanning, and automated dependency checks",
+        "Built RESTful APIs implementing OAuth 2.0 authorization code flow with PKCE, JWT token lifecycle management, and rate limiting",
+        "Integrated PCI-DSS compliant payment processing with tokenization, secure vault storage, and transaction monitoring",
+        "Developed AI automation features using OpenAI GPT-4 API with prompt injection protection and PII filtering mechanisms",
+        "Created comprehensive technical documentation including API specifications, security runbooks, and disaster recovery procedures",
+        "Implemented event-driven workflow automation using n8n with webhook security, HMAC validation, and idempotency controls",
+        "Led technical initiatives including developer recruitment, code review processes, and knowledge transfer sessions"
       ],
       techStack: "PHP, WordPress, React Native, Docker, GitHub Actions, Stripe, Xero, OpenAI, n8n"
     },
@@ -110,10 +110,10 @@ export const CV_DATA: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Delivered large-scale government data platform with active NV1 security clearance",
-        "Developed secure Java/Spring microservices following federal government security frameworks",
-        "Applied structured SDLC methodologies ensuring compliance with government standards",
-        "Collaborated with multi-disciplinary teams in secure federal environment maintaining strict security protocols"
+        "Delivered secure microservice components for federal government data platform with active NV1 clearance",
+        "Developed Java/Spring Boot REST APIs implementing Defence security controls and audit requirements",
+        "Applied Agile SDLC methodologies with formal change management and security gate reviews",
+        "Collaborated in classified environment using air-gapped development systems and secure communication protocols"
       ],
       techStack: "Java, Spring Boot, React, PostgreSQL, Ansible, Elasticsearch, GitLab CI"
     },
@@ -166,17 +166,17 @@ export const CV_DATA: CVData = {
     }
   ],
   skills: [
-    "Security Clearance: AGSVA NV1 (reactivation in progress) - previously held 2021-2022 with Leidos Australia",
-    "Languages: PHP, JavaScript/ES6+, TypeScript, Java (Spring Boot), HTML5, CSS3",
-    "Frontend: React, Vue.js, Next.js, React Native, Material-UI, Tailwind CSS, responsive design",
-    "Backend: Node.js, Express.js, NestJS, Spring Framework, RESTful APIs, microservices architecture",
-    "Security: OAuth 2.0, JWT, MFA implementation, AES-256 encryption, TLS/SSL, OWASP compliance, fail2ban",
-    "Databases: MySQL, PostgreSQL, MongoDB, ScyllaDB, Redis, query optimisation",
-    "Cloud/DevOps: AWS (EC2, Lambda, S3, RDS), Docker, GitHub Actions, GitLab CI/CD, Ansible",
-    "CMS/Frameworks: WordPress (custom plugins/themes), CakePHP, headless CMS architectures",
-    "Standards: PSR-12, ESLint, Prettier, SOLID principles, MVC/MVP patterns",
-    "Testing: PHPUnit, Jest, React Testing Library, integration testing, TDD practices",
-    "Monitoring: Sentry, Datadog, Nexthink (Master certified), basic experience with ELK stack, Grafana",
-    "Professional: Agile methodologies, technical documentation, stakeholder communication"
+    "Security Clearance: AGSVA NV1 being reactivated (previously held 2021-2022 with Leidos Australia)",
+    "Languages: PHP, JavaScript/ES6+, TypeScript, Java (Spring Boot), HTML5, CSS3, SQL",
+    "Frontend: React with Redux/Context API, Vue.js with Vuex, Next.js SSR/SSG, React Native, Material-UI, Tailwind CSS",
+    "Backend: Node.js, Express.js middleware patterns, NestJS dependency injection, Spring Boot microservices, RESTful API design",
+    "Security: OAuth 2.0/OIDC flows, JWT with refresh tokens, MFA (TOTP/SMS), AES-256-GCM, bcrypt, TLS 1.3, CORS policies",
+    "API Design: RESTful principles, OpenAPI 3.0 specifications, JSON Schema validation, webhook implementations, rate limiting",
+    "Databases: MySQL query optimisation, PostgreSQL indexing strategies, MongoDB document modeling, Redis caching patterns",
+    "Cloud/DevOps: AWS services (EC2, Lambda, S3, RDS, CloudWatch), Docker multi-stage builds, GitHub Actions, GitLab CI/CD",
+    "Infrastructure: Nginx configuration, Linux administration, fail2ban, ModSecurity WAF, SSL/TLS certificate management",
+    "Testing: PHPUnit, Jest with coverage reports, React Testing Library, Cypress E2E, SAST/DAST integration",
+    "Monitoring: Sentry error tracking, Datadog APM, CloudWatch metrics, structured logging (Winston/Monolog)",
+    "Standards: OWASP ASVS, SOLID principles, 12-factor apps, PSR standards, Git flow, semantic versioning"
   ]
 }

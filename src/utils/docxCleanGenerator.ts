@@ -49,21 +49,6 @@ export const generateCleanDOCX = async (cvData: CVData, fileName: string = 'Dyla
             spacing: { after: 400 },
           }),
 
-          // Core Competencies
-          new Paragraph({
-            text: "CORE COMPETENCIES",
-            heading: HeadingLevel.HEADING_1,
-            spacing: { before: 200, after: 200 },
-          }),
-
-          ...createBulletPoints([
-            "Full-stack web development with 6+ years commercial experience",
-            "Content Management Systems (CMS) development including WordPress and custom solutions",
-            "Government sector experience with AGSVA NV1 clearance (held 2021-2022)",
-            "Strong technical documentation and stakeholder communication skills",
-            "Agile development methodologies and collaborative team environments",
-          ]),
-
           // Professional Experience
           new Paragraph({
             text: "PROFESSIONAL EXPERIENCE",
