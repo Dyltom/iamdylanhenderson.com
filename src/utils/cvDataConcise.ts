@@ -6,12 +6,12 @@ export const CV_DATA_CONCISE: CVData = {
     name: "Dylan Henderson",
     phone: "0426 007 021",
     email: "dylanthenderson@yahoo.com.au",
-    location: "Relocating to Cowra, NSW",
+    location: "Relocating to Canberra, ACT",
     linkedin: "https://www.linkedin.com/in/dylan-henderson-07",
     github: "https://github.com/Dyltom",
     portfolio: "https://iamdylanhenderson.com"
   },
-  summary: "Senior Software Engineer (6+ years) relocating to Cowra for family reasons. Strong fit: • PHP & CMS expertise (WordPress/Custom) - can handle workload autonomously from Day 1 • Government ready - previously held NV1 clearance (2021-2022) with Leidos • Seeking stable, long-term engagement in regional NSW • Available for immediate start",
+  summary: "Senior Software Engineer with active NV1 clearance (reactivation in progress). Proven track record delivering secure government systems and process automation that transforms operational efficiency. Experienced in modern tech stack (React, Node.js, TypeScript) with strong security focus including data encryption, access controls, and compliance documentation. Available for immediate start in Canberra.",
   experience: [
     {
       company: "Bonza Clean",
@@ -20,9 +20,10 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "09/2024",
       endDate: "Present",
       responsibilities: [
-        "Custom CMS development (PHP, WordPress, React)",
-        "RESTful API implementation and MySQL optimisation",
-        "Automated CI/CD workflows"
+        "Sole developer responsible for complete platform security including data protection, access controls, and compliance documentation",
+        "Delivered secure customer portal and payment systems with comprehensive audit trails and security hardening",
+        "Implemented AI-powered automation reducing operational workload while maintaining security standards",
+        "Established secure CI/CD pipelines with automated security scanning and vulnerability management"
       ]
     },
     {
@@ -32,9 +33,9 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "03/2024",
       endDate: "09/2024",
       responsibilities: [
-        "Full-stack product features (Node.js/Express.js)",
-        "Headless CMS architecture",
-        "E-commerce platform development"
+        "Developed secure e-commerce platform features using Node.js/Express.js with comprehensive testing",
+        "Architected headless CMS solution ensuring data integrity and system resilience",
+        "Integrated third-party APIs maintaining security protocols and data validation"
       ]
     },
     {
@@ -44,9 +45,9 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "03/2022",
       endDate: "03/2024",
       responsibilities: [
-        "Microservices architecture (TypeScript, React, AWS)",
-        "Document generation systems",
-        "NoSQL database implementation (ScyllaDB)"
+        "Built secure microservices handling sensitive financial data with compliance requirements",
+        "Implemented document generation systems with access controls and audit capabilities",
+        "Optimised high-performance NoSQL databases ensuring data security and availability"
       ]
     },
     {
@@ -56,9 +57,10 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "09/2021",
       endDate: "03/2022",
       responsibilities: [
-        "Federal government client delivery with active NV1 clearance",
-        "Java/Spring microservices in secure environments",
-        "Structured government development methodologies"
+        "Delivered large-scale government data platform with active NV1 clearance",
+        "Developed secure Java/Spring microservices following government security frameworks",
+        "Applied structured SDLC methodologies ensuring compliance with government standards",
+        "Collaborated with multi-disciplinary teams in secure federal environment"
       ]
     },
     {
@@ -68,9 +70,9 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "02/2020",
       endDate: "09/2021",
       responsibilities: [
-        "WordPress custom themes/plugins (PHP, JavaScript)",
-        "Apache/MySQL infrastructure",
-        "Nexthink Master's Level Certification achieved"
+        "Developed secure WordPress solutions for enterprise clients",
+        "Managed critical infrastructure ensuring system availability and performance",
+        "Achieved Nexthink Master's Level Certification for system monitoring"
       ]
     },
     {
@@ -80,8 +82,8 @@ export const CV_DATA_CONCISE: CVData = {
       startDate: "07/2019",
       endDate: "02/2020",
       responsibilities: [
-        "CakePHP framework development",
-        "Custom CMS features"
+        "Built secure web applications using CakePHP framework",
+        "Developed custom CMS features with focus on data integrity and user access controls"
       ]
     }
   ],
@@ -93,21 +95,21 @@ export const CV_DATA_CONCISE: CVData = {
     }
   ],
   skills: [
-    "PHP/CMS Expert: WordPress, CakePHP, Custom CMS architectures",
-    "Full-Stack: JavaScript/TypeScript, React, Node.js, Java/Spring",
-    "Database: MySQL, SQL Server, NoSQL (ScyllaDB)",
-    "Infrastructure: Linux, Apache, Git, CI/CD, AWS",
-    "Security: AGSVA NV1 (2021-2022), Secure coding standards",
-    "Government Ready: Federal experience, compliance understanding",
-    "Indigenous Australian: Supporting diversity targets"
+    "Security Clearance: NV1 (reactivation in progress) - held 2021-2022 with Leidos",
+    "Government Experience: Large-scale federal data platforms, secure SDLC, compliance frameworks",
+    "Security Capabilities: Data encryption, access controls, security hardening, OWASP standards, audit trails",
+    "Modern Stack: React, Node.js, TypeScript, RESTful APIs, microservices architecture",
+    "Cloud & DevOps: AWS, Docker, CI/CD pipelines, automated security scanning, GitLab",
+    "Process Automation: AI/ML integration, workflow optimisation, significant operational efficiency gains",
+    "CMS Expertise: WordPress, custom CMS development, headless architectures",
+    "Databases: MySQL, PostgreSQL, NoSQL, performance optimisation, secure data handling"
   ]
 }
 
 // Additional CV data for professional context
 export const ADDITIONAL_INFO = {
-  clearanceStatus: "Previously NV1 (2021-2022) - Ready for reactivation or Baseline",
-  indigenousStatus: "Aboriginal - Supporting diversity initiatives",
-  relocationStatus: "Confirmed move to Cowra, NSW - Seeking regional stability",
+  clearanceStatus: "NV1 clearance (reactivation in progress)",
   availability: "Immediate start",
-  contractPreference: "Long-term engagement preferred"
+  contractPreference: "Long-term contracts (12+ months)",
+  location: "Relocating to Canberra - available for onsite/hybrid work"
 }
