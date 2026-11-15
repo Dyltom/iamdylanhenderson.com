@@ -1,3 +1,5 @@
+import { CVData } from './cvTypes';
+
 // ATS keyword optimization utilities
 
 export interface KeywordAnalysis {
@@ -235,15 +237,15 @@ const isTechnicalKeyword = (keyword: string): boolean => {
 };
 
 // Format CV text for analysis
-export const formatCVForAnalysis = (cvData: any): string => {
+export const formatCVForAnalysis = (cvData: CVData): string => {
   const sections = [
     cvData.summary,
     cvData.skills.join(', '),
-    ...cvData.experience.flatMap((exp: any) => [
+    ...cvData.experience.flatMap((exp) => [
       `${exp.title} ${exp.company}`,
       ...exp.responsibilities,
     ]),
-    ...cvData.education.map((edu: any) => `${edu.degree} ${edu.institution}`),
+    ...cvData.education.map((edu) => `${edu.degree} ${edu.institution}`),
   ];
 
   return sections.join('\n');

@@ -57,6 +57,11 @@ interface AISuggestions {
   optimisedSummary: string;
 }
 
+type AppliedSuggestion =
+  | { type: 'summary'; value: string }
+  | { type: 'skill'; value: string }
+  | { type: 'experience'; value: AISuggestions['experienceUpdates'][number] };
+
 export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
   const [jobDescription, setJobDescription] = useState('');
   const [loading, setLoading] = useState(false);
@@ -127,20 +132,21 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
     }
   };
 
-  const applySuggestion = (type: string, value: any) => {
+  const applySuggestion = (suggestion: AppliedSuggestion) => {
     const newCV = { ...editingCV };
-    const suggestionId = `${type}-${JSON.stringify(value)}`;
+    const suggestionId = `${suggestion.type}-${JSON.stringify(suggestion.value)}`;
 
-    switch (type) {
+    switch (suggestion.type) {
       case 'summary':
-        newCV.summary = value;
+        newCV.summary = suggestion.value;
         break;
       case 'skill':
-        if (!newCV.skills.includes(value)) {
-          newCV.skills.unshift(value);
+        if (!newCV.skills.includes(suggestion.value)) {
+          newCV.skills.unshift(suggestion.value);
         }
         break;
-      case 'experience':
+      case 'experience': {
+        const { value } = suggestion;
         const expIndex = newCV.experience.findIndex(
           (exp) => exp.company === value.company
         );
@@ -154,6 +160,7 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
           }
         }
         break;
+      }
     }
 
     setEditingCV(newCV);
@@ -292,7 +299,10 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                     color="success"
                     startIcon={<CheckCircle />}
                     onClick={() =>
-                      applySuggestion('summary', suggestions.optimisedSummary)
+                      applySuggestion({
+                        type: 'summary',
+                        value: suggestions.optimisedSummary,
+                      })
                     }
                     disabled={appliedSuggestions.has(
                       `summary-${JSON.stringify(suggestions.optimisedSummary)}`
@@ -320,7 +330,9 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                           ? 'success'
                           : 'default'
                       }
-                      onClick={() => applySuggestion('skill', keyword)}
+                      onClick={() =>
+                        applySuggestion({ type: 'skill', value: keyword })
+                      }
                       disabled={editingCV.skills.includes(keyword)}
                     />
                   ))}
@@ -372,7 +384,9 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                         size="small"
                         variant="outlined"
                         color="success"
-                        onClick={() => applySuggestion('experience', update)}
+                        onClick={() =>
+                          applySuggestion({ type: 'experience', value: update })
+                        }
                         sx={{ mt: 1 }}
                         disabled={appliedSuggestions.has(
                           `experience-${JSON.stringify(update)}`

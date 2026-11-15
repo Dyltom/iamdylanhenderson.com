@@ -79,7 +79,7 @@ export const generatePDF = (cvData: CVData): jsPDF => {
 
   // Split summary into lines
   const summaryLines = doc.splitTextToSize(cvData.summary, contentWidth);
-  summaryLines.forEach((line: any) => {
+  summaryLines.forEach((line: string) => {
     checkPageBreak();
     doc.text(line, leftMargin, y);
     y += 5;
@@ -146,7 +146,7 @@ export const generatePDF = (cvData: CVData): jsPDF => {
 
       // Add responsibility text
       const respLines = doc.splitTextToSize(resp, contentWidth - 8);
-      respLines.forEach((line: any, lineIndex: number) => {
+      respLines.forEach((line: string, lineIndex: number) => {
         if (lineIndex > 0) {
           y += 5;
           checkPageBreak();
@@ -312,7 +312,7 @@ export const generatePDF = (cvData: CVData): jsPDF => {
         // Split long skills if needed
         const skillLines = doc.splitTextToSize(skill, columnWidth - 8);
 
-        skillLines.forEach((line: any, lineIndex: number) => {
+        skillLines.forEach((line: string, lineIndex: number) => {
           if (lineIndex === 0) {
             doc.text('•', bulletX, columnY);
           }

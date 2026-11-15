@@ -10,6 +10,13 @@ interface TerminalBlogCardProps {
   index: number;
 }
 
+const commitSuffix = (seed: string): string =>
+  Array.from(seed)
+    .reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 7)
+    .toString(36)
+    .padStart(5, '0')
+    .slice(-5);
+
 const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
   const theme = useTheme();
   const router = useRouter();
@@ -83,8 +90,7 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
             color: '#ffbd2e',
           }}
         >
-          commit {String(index + 1).padStart(7, '0')}a
-          {Math.random().toString(36).substr(2, 5)}
+          commit {String(index + 1).padStart(7, '0')}a{commitSuffix(post.slug)}
         </Typography>
         <Typography
           sx={{

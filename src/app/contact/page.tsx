@@ -25,7 +25,7 @@ const ContactPage: React.FC = () => {
             },
           }}
         >
-          Let's Connect
+          Let&apos;s Connect
         </Typography>
         <ContactForm />
       </Box>

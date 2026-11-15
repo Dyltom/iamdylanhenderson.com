@@ -32,7 +32,7 @@ const ContactCTA: React.FC = () => {
           opacity: 0.8,
         }}
       >
-        dylan@portfolio:~$ echo "Let's work together!"
+        dylan@portfolio:~$ echo &quot;Let&apos;s work together!&quot;
       </Typography>
 
       <Typography

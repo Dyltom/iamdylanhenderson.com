@@ -255,10 +255,9 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
           },
         }}
       >
-        <ReactMarkdown
-          children={markdownContent}
-          rehypePlugins={[rehypeSlug]}
-        />
+        <ReactMarkdown rehypePlugins={[rehypeSlug]}>
+          {markdownContent}
+        </ReactMarkdown>
       </Box>
 
       <Divider

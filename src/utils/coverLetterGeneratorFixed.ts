@@ -205,7 +205,7 @@ export const generateCoverLetterDOCX = async (
 
           // Body paragraphs - properly handle bullets and formatting
           ...coverLetterData.bodyParagraphs.flatMap((paragraph) => {
-            const sections: any[] = [];
+            const sections: Paragraph[] = [];
 
             // Split by double newlines first
             const parts = paragraph.split('\n\n');

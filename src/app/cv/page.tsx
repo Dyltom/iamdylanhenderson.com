@@ -59,6 +59,7 @@ import { generateCVSchema, generateResumeSchema } from '../../utils/cvSchema';
 import {
   analyzeCVAgainstJob,
   formatCVForAnalysis,
+  KeywordAnalysis,
 } from '../../utils/keywordOptimizer';
 import CVEditor from './CVEditor';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
@@ -70,7 +71,9 @@ export default function CVPage() {
   const [downloadMessage, setDownloadMessage] = useState('');
   const [copiedSection, setCopiedSection] = useState<string | null>(null);
   const [jobDescription, setJobDescription] = useState('');
-  const [keywordAnalysis, setKeywordAnalysis] = useState<any>(null);
+  const [keywordAnalysis, setKeywordAnalysis] = useState<
+    (KeywordAnalysis & { error?: never }) | { error: string } | null
+  >(null);
   const [showOptimizer, setShowOptimizer] = useState(false);
   const [pdfLoading, setPdfLoading] = useState(false);
   const [showAIEditor, setShowAIEditor] = useState(false);
@@ -583,7 +586,7 @@ export default function CVPage() {
                   Analyze Keywords
                 </Button>
 
-                {keywordAnalysis && !keywordAnalysis.error && (
+                {keywordAnalysis && 'score' in keywordAnalysis && (
                   <Box>
                     {/* ATS Score */}
                     <Box sx={{ mb: 3 }}>
@@ -1171,7 +1174,7 @@ export default function CVPage() {
                 rate)
               </li>
               <li>
-                Customize the job title field to match the position you're
+                Customise the job title field to match the position you&apos;re
                 applying for
               </li>
               <li>

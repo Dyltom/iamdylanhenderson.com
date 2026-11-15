@@ -263,7 +263,7 @@ const TerminalContactForm: React.FC = () => {
                   lineHeight: 1.8,
                 }}
               >
-                $ echo "Let's connect!"
+                $ echo &quot;Let&apos;s connect!&quot;
                 <br />
                 $ Available via:
                 <br />

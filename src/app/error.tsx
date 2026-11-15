@@ -60,8 +60,9 @@ export default function Error({
           maxWidth: '500px',
         }}
       >
-        We encountered an unexpected error. Don't worry, it's not your fault.
-        Try refreshing the page, and if the problem persists, please contact us.
+        We encountered an unexpected error. Don&apos;t worry, it&apos;s not your
+        fault. Try refreshing the page, and if the problem persists, please
+        contact us.
       </Typography>
 
       {/* Error details in dev mode */}

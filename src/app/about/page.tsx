@@ -36,7 +36,7 @@ export default function AboutPage() {
     return null;
   }
 
-  const SectionDivider = () => (
+  const sectionDivider = (
     <Box
       sx={{
         height: { xs: '80px', md: '120px' },
@@ -71,16 +71,16 @@ export default function AboutPage() {
     >
       <TerminalEasterEgg />
       <AboutMeSection content={aboutPageContent} />
-      <SectionDivider />
+      {sectionDivider}
       <WorkExperience title={aboutPageContent.workExperienceTitle} />
-      <SectionDivider />
+      {sectionDivider}
       <SkillsChart
         title={aboutPageContent.skillsTitle}
         keyText={aboutPageContent.skillsChartText}
       />
-      <SectionDivider />
+      {sectionDivider}
       <Testimonials title={aboutPageContent.testimonialsTitle} />
-      <SectionDivider />
+      {sectionDivider}
       <PersonalSection title={aboutPageContent.interestingFactsTitle} />
     </Box>
   );

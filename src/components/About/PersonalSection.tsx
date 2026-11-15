@@ -274,7 +274,7 @@ const PersonalSection: React.FC<PersonalSectionProps> = ({ title }) => {
               }}
             >
               Avid supporter of the Newcastle Knights, through thick and
-              thin(there's been lots of thin).
+              thin(there&apos;s been lots of thin).
             </Typography>
           </Box>
           <Box
@@ -314,7 +314,7 @@ const PersonalSection: React.FC<PersonalSectionProps> = ({ title }) => {
               }}
             >
               3D printing enthusiast, exploring creations with an Ender 3, and
-              now transitioning to a Bambu Lab's P1S.
+              now transitioning to a Bambu Lab&apos;s P1S.
             </Typography>
           </Box>
         </Box>

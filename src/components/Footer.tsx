@@ -264,7 +264,7 @@ const Footer: React.FC = () => {
             opacity: 0.5,
           }}
         >
-          // Built with React, TypeScript, and lots of coffee
+          {'// Built with React, TypeScript, and lots of coffee'}
         </Typography>
       </Container>
     </Box>
