@@ -27,8 +27,10 @@ const Footer: React.FC = () => {
 
   const commands: { [key: string]: string } = {
     help: 'Available commands: help, about, skills, contact, clear',
-    about: 'Senior Fullstack Developer passionate about creating elegant solutions to complex problems.',
-    skills: 'TypeScript, React, Node.js, PHP, WordPress, Vue.js, Next.js, and more...',
+    about:
+      'Senior Fullstack Developer passionate about creating elegant solutions to complex problems.',
+    skills:
+      'TypeScript, React, Node.js, PHP, WordPress, Vue.js, Next.js, and more...',
     contact: 'Email: dylan@example.com | LinkedIn: /in/dylan-henderson-07',
     clear: '',
   };
@@ -43,7 +45,9 @@ const Footer: React.FC = () => {
           setOutput(commands[cmd]);
         }
       } else {
-        setOutput(`Command not found: ${command}. Type 'help' for available commands.`);
+        setOutput(
+          `Command not found: ${command}. Type 'help' for available commands.`
+        );
       }
       setCommand('');
     }
@@ -114,7 +118,8 @@ const Footer: React.FC = () => {
                 mb: 1,
               }}
             >
-              dylan@footer:~$ <input
+              dylan@footer:~${' '}
+              <input
                 type="text"
                 onKeyPress={handleKeyPress}
                 style={{
@@ -228,7 +233,10 @@ const Footer: React.FC = () => {
             fontSize: '0.85rem',
           }}
         >
-          <Box component="span" sx={{ opacity: 0.7 }}>&gt;</Box> Dylan Henderson © {currentYear}
+          <Box component="span" sx={{ opacity: 0.7 }}>
+            &gt;
+          </Box>{' '}
+          Dylan Henderson © {currentYear}
           <Box
             component="span"
             sx={{
@@ -256,7 +264,7 @@ const Footer: React.FC = () => {
             opacity: 0.5,
           }}
         >
-          // Built with React, TypeScript, and lots of coffee
+          {'// Built with React, TypeScript, and lots of coffee'}
         </Typography>
       </Container>
     </Box>

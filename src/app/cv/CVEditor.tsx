@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -25,7 +25,7 @@ import {
   Switch,
   FormControlLabel,
   Divider,
-} from '@mui/material'
+} from '@mui/material';
 import {
   AutoFixHigh,
   Psychology,
@@ -35,45 +35,52 @@ import {
   ExpandMore,
   CheckCircle,
   Warning,
-} from '@mui/icons-material'
-import { CVData } from '../../utils/cvTypes'
+} from '@mui/icons-material';
+import { CVData } from '../../utils/cvTypes';
 
 interface CVEditorProps {
-  cvData: CVData
-  onUpdateCV: (updatedCV: CVData) => void
+  cvData: CVData;
+  onUpdateCV: (updatedCV: CVData) => void;
 }
 
 interface AISuggestions {
-  summary: string
-  keywordSuggestions: string[]
-  skillsToHighlight: string[]
+  summary: string;
+  keywordSuggestions: string[];
+  skillsToHighlight: string[];
   experienceUpdates: Array<{
-    company: string
-    originalBullet: string
-    suggestedBullet: string
-    reason: string
-  }>
-  additionalRecommendations: string[]
-  optimisedSummary: string
+    company: string;
+    originalBullet: string;
+    suggestedBullet: string;
+    reason: string;
+  }>;
+  additionalRecommendations: string[];
+  optimisedSummary: string;
 }
 
+type AppliedSuggestion =
+  | { type: 'summary'; value: string }
+  | { type: 'skill'; value: string }
+  | { type: 'experience'; value: AISuggestions['experienceUpdates'][number] };
+
 export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
-  const [jobDescription, setJobDescription] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [suggestions, setSuggestions] = useState<AISuggestions | null>(null)
-  const [editingCV, setEditingCV] = useState<CVData>(cvData)
-  const [isEditing, setIsEditing] = useState(false)
-  const [appliedSuggestions, setAppliedSuggestions] = useState<Set<string>>(new Set())
+  const [jobDescription, setJobDescription] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<AISuggestions | null>(null);
+  const [editingCV, setEditingCV] = useState<CVData>(cvData);
+  const [isEditing, setIsEditing] = useState(false);
+  const [appliedSuggestions, setAppliedSuggestions] = useState<Set<string>>(
+    new Set()
+  );
 
   const handleOptimize = async () => {
     if (!jobDescription.trim()) {
-      setError('Please enter a job description')
-      return
+      setError('Please enter a job description');
+      return;
     }
 
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
 
     try {
       const response = await fetch('/api/cv-optimizer', {
@@ -85,80 +92,100 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
           jobDescription,
           currentCV: editingCV,
         }),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to optimise CV')
+        throw new Error(data.error || 'Failed to optimise CV');
       }
 
       // Filter suggestions to ensure no fake skills
       const filteredSuggestions = {
         ...data.suggestions,
-        keywordSuggestions: data.suggestions.keywordSuggestions.filter((keyword: string) =>
-          editingCV.skills.some(skill => skill.toLowerCase().includes(keyword.toLowerCase())) ||
-          editingCV.summary.toLowerCase().includes(keyword.toLowerCase()) ||
-          editingCV.experience.some(exp =>
-            exp.responsibilities.some(resp => resp.toLowerCase().includes(keyword.toLowerCase()))
-          )
+        keywordSuggestions: data.suggestions.keywordSuggestions.filter(
+          (keyword: string) =>
+            editingCV.skills.some((skill) =>
+              skill.toLowerCase().includes(keyword.toLowerCase())
+            ) ||
+            editingCV.summary.toLowerCase().includes(keyword.toLowerCase()) ||
+            editingCV.experience.some((exp) =>
+              exp.responsibilities.some((resp) =>
+                resp.toLowerCase().includes(keyword.toLowerCase())
+              )
+            )
         ),
-        skillsToHighlight: data.suggestions.skillsToHighlight.filter((skill: string) =>
-          editingCV.skills.some(existingSkill => existingSkill.toLowerCase() === skill.toLowerCase())
-        )
-      }
+        skillsToHighlight: data.suggestions.skillsToHighlight.filter(
+          (skill: string) =>
+            editingCV.skills.some(
+              (existingSkill) =>
+                existingSkill.toLowerCase() === skill.toLowerCase()
+            )
+        ),
+      };
 
-      setSuggestions(filteredSuggestions)
+      setSuggestions(filteredSuggestions);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const applySuggestion = (type: string, value: any) => {
-    const newCV = { ...editingCV }
-    const suggestionId = `${type}-${JSON.stringify(value)}`
+  const applySuggestion = (suggestion: AppliedSuggestion) => {
+    const newCV = { ...editingCV };
+    const suggestionId = `${suggestion.type}-${JSON.stringify(suggestion.value)}`;
 
-    switch (type) {
+    switch (suggestion.type) {
       case 'summary':
-        newCV.summary = value
-        break
+        newCV.summary = suggestion.value;
+        break;
       case 'skill':
-        if (!newCV.skills.includes(value)) {
-          newCV.skills.unshift(value)
+        if (!newCV.skills.includes(suggestion.value)) {
+          newCV.skills.unshift(suggestion.value);
         }
-        break
-      case 'experience':
-        const expIndex = newCV.experience.findIndex(exp => exp.company === value.company)
+        break;
+      case 'experience': {
+        const { value } = suggestion;
+        const expIndex = newCV.experience.findIndex(
+          (exp) => exp.company === value.company
+        );
         if (expIndex !== -1) {
-          const bulletIndex = newCV.experience[expIndex].responsibilities.indexOf(value.originalBullet)
+          const bulletIndex = newCV.experience[
+            expIndex
+          ].responsibilities.indexOf(value.originalBullet);
           if (bulletIndex !== -1) {
-            newCV.experience[expIndex].responsibilities[bulletIndex] = value.suggestedBullet
+            newCV.experience[expIndex].responsibilities[bulletIndex] =
+              value.suggestedBullet;
           }
         }
-        break
+        break;
+      }
     }
 
-    setEditingCV(newCV)
-    setAppliedSuggestions(prev => new Set(prev).add(suggestionId))
-  }
+    setEditingCV(newCV);
+    setAppliedSuggestions((prev) => new Set(prev).add(suggestionId));
+  };
 
   const saveChanges = () => {
-    onUpdateCV(editingCV)
-    setIsEditing(false)
-  }
+    onUpdateCV(editingCV);
+    setIsEditing(false);
+  };
 
   const cancelChanges = () => {
-    setEditingCV(cvData)
-    setIsEditing(false)
-    setAppliedSuggestions(new Set())
-  }
+    setEditingCV(cvData);
+    setIsEditing(false);
+    setAppliedSuggestions(new Set());
+  };
 
   return (
     <Box>
       <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+        >
           <Psychology /> AI-Powered CV Optimisation
         </Typography>
 
@@ -179,7 +206,9 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
             variant="contained"
             onClick={handleOptimize}
             disabled={loading || !jobDescription.trim()}
-            startIcon={loading ? <CircularProgress size={20} /> : <AutoFixHigh />}
+            startIcon={
+              loading ? <CircularProgress size={20} /> : <AutoFixHigh />
+            }
             sx={{
               background: 'linear-gradient(45deg, #32CD32 30%, #228B22 90%)',
               color: 'white',
@@ -246,7 +275,11 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
               </AccordionSummary>
               <AccordionDetails>
                 <Box>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    gutterBottom
+                  >
                     Current:
                   </Typography>
                   <Typography variant="body2" paragraph>
@@ -265,8 +298,15 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                     variant="contained"
                     color="success"
                     startIcon={<CheckCircle />}
-                    onClick={() => applySuggestion('summary', suggestions.optimisedSummary)}
-                    disabled={appliedSuggestions.has(`summary-${JSON.stringify(suggestions.optimisedSummary)}`)}
+                    onClick={() =>
+                      applySuggestion({
+                        type: 'summary',
+                        value: suggestions.optimisedSummary,
+                      })
+                    }
+                    disabled={appliedSuggestions.has(
+                      `summary-${JSON.stringify(suggestions.optimisedSummary)}`
+                    )}
                   >
                     Apply
                   </Button>
@@ -285,8 +325,14 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                     <Chip
                       key={index}
                       label={keyword}
-                      color={editingCV.skills.includes(keyword) ? "success" : "default"}
-                      onClick={() => applySuggestion('skill', keyword)}
+                      color={
+                        editingCV.skills.includes(keyword)
+                          ? 'success'
+                          : 'default'
+                      }
+                      onClick={() =>
+                        applySuggestion({ type: 'skill', value: keyword })
+                      }
                       disabled={editingCV.skills.includes(keyword)}
                     />
                   ))}
@@ -297,31 +343,54 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
             {/* Experience Updates */}
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography>Experience Improvements ({suggestions.experienceUpdates.length})</Typography>
+                <Typography>
+                  Experience Improvements (
+                  {suggestions.experienceUpdates.length})
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <List>
                   {suggestions.experienceUpdates.map((update, index) => (
-                    <ListItem key={index} divider sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <ListItem
+                      key={index}
+                      divider
+                      sx={{ flexDirection: 'column', alignItems: 'flex-start' }}
+                    >
                       <Typography variant="subtitle2" gutterBottom>
                         {update.company}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary" gutterBottom>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        gutterBottom
+                      >
                         Original: {update.originalBullet}
                       </Typography>
-                      <Typography variant="body2" color="success.main" gutterBottom>
+                      <Typography
+                        variant="body2"
+                        color="success.main"
+                        gutterBottom
+                      >
                         Suggested: {update.suggestedBullet}
                       </Typography>
-                      <Typography variant="caption" color="info.main" gutterBottom>
+                      <Typography
+                        variant="caption"
+                        color="info.main"
+                        gutterBottom
+                      >
                         {update.reason}
                       </Typography>
                       <Button
                         size="small"
                         variant="outlined"
                         color="success"
-                        onClick={() => applySuggestion('experience', update)}
+                        onClick={() =>
+                          applySuggestion({ type: 'experience', value: update })
+                        }
                         sx={{ mt: 1 }}
-                        disabled={appliedSuggestions.has(`experience-${JSON.stringify(update)}`)}
+                        disabled={appliedSuggestions.has(
+                          `experience-${JSON.stringify(update)}`
+                        )}
                       >
                         Apply Change
                       </Button>
@@ -351,5 +420,5 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
         </Paper>
       )}
     </Box>
-  )
+  );
 }

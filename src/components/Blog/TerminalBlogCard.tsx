@@ -10,6 +10,13 @@ interface TerminalBlogCardProps {
   index: number;
 }
 
+const commitSuffix = (seed: string): string =>
+  Array.from(seed)
+    .reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 7)
+    .toString(36)
+    .padStart(5, '0')
+    .slice(-5);
+
 const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
   const theme = useTheme();
   const router = useRouter();
@@ -43,7 +50,7 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
           },
           '&::before': {
             transform: 'translateX(0)',
-          }
+          },
         },
         '&::before': {
           content: '""',
@@ -55,7 +62,7 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
           background: `linear-gradient(90deg, transparent, ${theme.palette.secondary.main}, transparent)`,
           transform: 'translateX(-100%)',
           transition: 'transform 0.6s ease',
-        }
+        },
       }}
     >
       {/* Terminal header */}
@@ -83,7 +90,7 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
             color: '#ffbd2e',
           }}
         >
-          commit {String(index + 1).padStart(7, '0')}a{Math.random().toString(36).substr(2, 5)}
+          commit {String(index + 1).padStart(7, '0')}a{commitSuffix(post.slug)}
         </Typography>
         <Typography
           sx={{
@@ -93,7 +100,8 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
             opacity: 0.7,
           }}
         >
-          Date: {formattedDate} | {post.readTime} min read | {post.views || 0} views
+          Date: {formattedDate} | {post.readTime} min read | {post.views || 0}{' '}
+          views
         </Typography>
       </Box>
 
@@ -128,7 +136,7 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
           '&::before': {
             content: '"// "',
             color: theme.palette.secondary.dark,
-          }
+          },
         }}
       >
         {post.shortDescription}
@@ -183,7 +191,7 @@ const TerminalBlogCard: React.FC<TerminalBlogCardProps> = ({ post, index }) => {
             '@keyframes blink': {
               '0%, 50%': { opacity: 1 },
               '51%, 100%': { opacity: 0 },
-            }
+            },
           }}
         >
           <Typography

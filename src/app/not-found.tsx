@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { Box, Button, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import Link from 'next/link'
-import HomeIcon from '@mui/icons-material/Home'
-import SearchIcon from '@mui/icons-material/Search'
+import { Box, Button, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import Link from 'next/link';
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function NotFound() {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Box
@@ -53,10 +53,18 @@ export default function NotFound() {
           maxWidth: '500px',
         }}
       >
-        Looks like you've ventured into uncharted territory. The page you're looking for doesn't exist or has been moved.
+        Looks like you&apos;ve ventured into uncharted territory. The page
+        you&apos;re looking for doesn&apos;t exist or has been moved.
       </Typography>
 
-      <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 2,
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         <Button
           component={Link}
           href="/"
@@ -108,7 +116,7 @@ export default function NotFound() {
           display: { xs: 'none', sm: 'block' },
         }}
       >
-{`
+        {`
  _  _    ___  _  _
 | || |  / _ \\| || |
 | || |_| | | | || |_
@@ -118,5 +126,5 @@ export default function NotFound() {
 `}
       </Box>
     </Box>
-  )
+  );
 }

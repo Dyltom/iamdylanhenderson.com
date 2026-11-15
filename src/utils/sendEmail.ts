@@ -1,13 +1,8 @@
 // src/utils/sendEmail.ts
 import { Resend } from 'resend';
+import { ContactMessage, escapeHtml } from './apiValidation';
 
-interface EmailRequestBody {
-  name: string;
-  email: string;
-  message: string;
-}
-
-export default async (body: EmailRequestBody) => {
+export default async (body: ContactMessage) => {
   // Check for required environment variable
   if (!process.env.RESEND_API_KEY) {
     throw new Error(
@@ -27,10 +22,10 @@ export default async (body: EmailRequestBody) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">New Contact Form Message</h2>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 10px 0;"><strong>Name:</strong> ${name}</p>
-            <p style="margin: 10px 0;"><strong>Email:</strong> ${email}</p>
+            <p style="margin: 10px 0;"><strong>Name:</strong> ${escapeHtml(name)}</p>
+            <p style="margin: 10px 0;"><strong>Email:</strong> ${escapeHtml(email)}</p>
             <p style="margin: 10px 0;"><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap; margin: 10px 0;">${message}</p>
+            <p style="white-space: pre-wrap; margin: 10px 0;">${escapeHtml(message)}</p>
           </div>
           <p style="color: #666; font-size: 12px; margin-top: 20px;">
             This email was sent from your website's contact form.

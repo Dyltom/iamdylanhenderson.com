@@ -10,61 +10,64 @@ const ParticleBackground: React.FC = memo(() => {
     await loadFull(engine);
   }, []);
 
-  const options: ISourceOptions = useMemo(() => ({
-    fullScreen: {
-      enable: true,
-      zIndex: -1, // Put particles behind everything
-    },
-    fpsLimit: 30, // Reduced from 60 for better performance
-    particles: {
-      number: {
-        value: 3, // Reduced from 5
-        density: {
+  const options: ISourceOptions = useMemo(
+    () => ({
+      fullScreen: {
+        enable: true,
+        zIndex: -1, // Put particles behind everything
+      },
+      fpsLimit: 30, // Reduced from 60 for better performance
+      particles: {
+        number: {
+          value: 3, // Reduced from 5
+          density: {
+            enable: true,
+            area: 1200, // Limit particle density
+          },
+        },
+        color: {
+          value: '#32CD32',
+        },
+        links: {
           enable: true,
-          area: 1200, // Limit particle density
+          color: '#32CD32',
+          distance: 150,
+          opacity: 0.5,
+        },
+        move: {
+          enable: true,
+          speed: 0.8, // Reduced from 1.5
+          direction: 'none',
+          random: false,
+          straight: false,
+          outModes: {
+            default: 'out',
+          },
+        },
+        size: {
+          value: 3,
+        },
+        opacity: {
+          value: 0.5,
         },
       },
-      color: {
-        value: '#32CD32',
-      },
-      links: {
-        enable: true,
-        color: '#32CD32',
-        distance: 150,
-        opacity: 0.5,
-      },
-      move: {
-        enable: true,
-        speed: 0.8, // Reduced from 1.5
-        direction: 'none',
-        random: false,
-        straight: false,
-        outModes: {
-          default: 'out',
+      interactivity: {
+        events: {
+          onHover: {
+            enable: false, // Disabled for performance
+          },
+          onClick: {
+            enable: false, // Disabled for performance
+          },
+          resize: true,
         },
       },
-      size: {
-        value: 3,
-      },
-      opacity: {
-        value: 0.5,
-      },
-    },
-    interactivity: {
-      events: {
-        onHover: {
-          enable: false, // Disabled for performance
-        },
-        onClick: {
-          enable: false, // Disabled for performance
-        },
-        resize: true,
-      },
-    },
-    detectRetina: false, // Disable retina detection for performance
-    pauseOnBlur: true, // Pause when tab is not active
-    pauseOnOutsideViewport: true, // Pause when not visible
-  }), []);
+      detectRetina: false, // Disable retina detection for performance
+      pauseOnBlur: true, // Pause when tab is not active
+      pauseOnOutsideViewport: true, // Pause when not visible
+    }),
+    []
+  );
 
   return (
     <Particles

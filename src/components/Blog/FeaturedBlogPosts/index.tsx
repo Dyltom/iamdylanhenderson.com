@@ -1,7 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Container, Typography, useMediaQuery, Button } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  useMediaQuery,
+  Button,
+} from '@mui/material';
 import Grid2 from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 import { useRouter } from 'next/navigation';
@@ -84,7 +90,10 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
         {/* Posts Grid */}
         <Grid2 container spacing={isMobile ? 2 : 3}>
           {displayPosts.map((post, index) => (
-            <Grid2 size={{ xs: 12, sm: 6, md: 6, lg: 3 }} key={post.id || index}>
+            <Grid2
+              size={{ xs: 12, sm: 6, md: 6, lg: 3 }}
+              key={post.id || index}
+            >
               <Box
                 sx={{
                   height: '100%',

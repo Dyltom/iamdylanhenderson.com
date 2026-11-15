@@ -61,259 +61,264 @@ const PersonalSection: React.FC<PersonalSectionProps> = ({ title }) => {
           transition: 'opacity 0.6s ease-out',
         }}
       >
-      <Typography
-        variant="h5"
-        gutterBottom
-        color="secondary"
-        sx={underLineHeaders(theme)}
-      >
-        {title}
-      </Typography>
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: theme.spacing(3),
-          justifyContent: 'center',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
+        <Typography
+          variant="h5"
+          gutterBottom
+          color="secondary"
+          sx={underLineHeaders(theme)}
+        >
+          {title}
+        </Typography>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: theme.spacing(3),
-            backgroundColor: theme.palette.primary.main,
-            border: `1px solid ${theme.palette.primary.light}`,
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              borderColor: theme.palette.secondary.main,
-              '& .walk-icon': {
-                animation: 'walk 0.5s ease-in-out infinite'
-              }
-            }
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: theme.spacing(3),
+            justifyContent: 'center',
+            maxWidth: '1200px',
+            margin: '0 auto',
           }}
         >
-          <DirectionsWalkIcon
-            className="walk-icon"
+          <Box
             sx={{
-              color: theme.palette.secondary.main,
-              fontSize: '2.5rem',
-              mb: 2,
-              transition: 'transform 0.3s ease'
-            }} />
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: 'monospace',
-              textAlign: 'center',
-              color: theme.palette.secondary.light
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: theme.spacing(3),
+              backgroundColor: theme.palette.primary.main,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderRadius: '4px',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                borderColor: theme.palette.secondary.main,
+                '& .walk-icon': {
+                  animation: 'walk 0.5s ease-in-out infinite',
+                },
+              },
             }}
           >
-            Ambition in motion: once walked an epic 70,000 steps in a day.
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: theme.spacing(3),
-            backgroundColor: theme.palette.primary.main,
-            border: `1px solid ${theme.palette.primary.light}`,
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              borderColor: theme.palette.secondary.main,
-              '& .work-icon': {
-                animation: 'type 0.4s ease-in-out infinite'
-              }
-            }
-          }}
-        >
-          <WorkIcon
-            className="work-icon"
+            <DirectionsWalkIcon
+              className="walk-icon"
+              sx={{
+                color: theme.palette.secondary.main,
+                fontSize: '2.5rem',
+                mb: 2,
+                transition: 'transform 0.3s ease',
+              }}
+            />
+            <Typography
+              variant="body1"
+              sx={{
+                fontFamily: 'monospace',
+                textAlign: 'center',
+                color: theme.palette.secondary.light,
+              }}
+            >
+              Ambition in motion: once walked an epic 70,000 steps in a day.
+            </Typography>
+          </Box>
+          <Box
             sx={{
-              color: theme.palette.secondary.main,
-              fontSize: '2.5rem',
-              mb: 2,
-              transition: 'transform 0.3s ease'
-            }} />
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: 'monospace',
-              textAlign: 'center',
-              color: theme.palette.secondary.light
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: theme.spacing(3),
+              backgroundColor: theme.palette.primary.main,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderRadius: '4px',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                borderColor: theme.palette.secondary.main,
+                '& .work-icon': {
+                  animation: 'type 0.4s ease-in-out infinite',
+                },
+              },
             }}
           >
-            Blended work with wanderlust, spending two months coding from
-            Thailand.
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: theme.spacing(3),
-            backgroundColor: theme.palette.primary.main,
-            border: `1px solid ${theme.palette.primary.light}`,
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              borderColor: theme.palette.secondary.main,
-              '& .game-icon': {
-                animation: 'bounce 0.5s ease-in-out infinite'
-              }
-            }
-          }}
-        >
-          <SportsEsportsIcon
-            className="game-icon"
+            <WorkIcon
+              className="work-icon"
+              sx={{
+                color: theme.palette.secondary.main,
+                fontSize: '2.5rem',
+                mb: 2,
+                transition: 'transform 0.3s ease',
+              }}
+            />
+            <Typography
+              variant="body1"
+              sx={{
+                fontFamily: 'monospace',
+                textAlign: 'center',
+                color: theme.palette.secondary.light,
+              }}
+            >
+              Blended work with wanderlust, spending two months coding from
+              Thailand.
+            </Typography>
+          </Box>
+          <Box
             sx={{
-              color: theme.palette.secondary.main,
-              fontSize: '2.5rem',
-              mb: 2,
-              transition: 'transform 0.3s ease'
-            }} />
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: 'monospace',
-              textAlign: 'center',
-              color: theme.palette.secondary.light
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: theme.spacing(3),
+              backgroundColor: theme.palette.primary.main,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderRadius: '4px',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                borderColor: theme.palette.secondary.main,
+                '& .game-icon': {
+                  animation: 'bounce 0.5s ease-in-out infinite',
+                },
+              },
             }}
           >
-            From gamer to creator: ran EagleEconomy, a Minecraft server, as a
-            teen.
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: theme.spacing(3),
-            backgroundColor: theme.palette.primary.main,
-            border: `1px solid ${theme.palette.primary.light}`,
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              borderColor: theme.palette.secondary.main,
-              '& .car-icon': {
-                animation: 'drive 1s ease-in-out infinite'
-              }
-            }
-          }}
-        >
-          <DirectionsCarFilledIcon
-            className="car-icon"
+            <SportsEsportsIcon
+              className="game-icon"
+              sx={{
+                color: theme.palette.secondary.main,
+                fontSize: '2.5rem',
+                mb: 2,
+                transition: 'transform 0.3s ease',
+              }}
+            />
+            <Typography
+              variant="body1"
+              sx={{
+                fontFamily: 'monospace',
+                textAlign: 'center',
+                color: theme.palette.secondary.light,
+              }}
+            >
+              From gamer to creator: ran EagleEconomy, a Minecraft server, as a
+              teen.
+            </Typography>
+          </Box>
+          <Box
             sx={{
-              color: theme.palette.secondary.main,
-              fontSize: '2.5rem',
-              mb: 2,
-              transition: 'transform 0.3s ease'
-            }}
-          />
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: 'monospace',
-              textAlign: 'center',
-              color: theme.palette.secondary.light
-            }}
-          >
-            A proud owner and enthusiast of the Toyota 86, a driving passion.
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: theme.spacing(3),
-            backgroundColor: theme.palette.primary.main,
-            border: `1px solid ${theme.palette.primary.light}`,
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              borderColor: theme.palette.secondary.main,
-              '& .rugby-icon': {
-                animation: 'spin 1s linear infinite'
-              }
-            }
-          }}
-        >
-          <SportsRugbyIcon
-            className="rugby-icon"
-            sx={{
-              color: theme.palette.secondary.main,
-              fontSize: '2.5rem',
-              mb: 2,
-              transition: 'transform 0.3s ease'
-            }} />
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: 'monospace',
-              textAlign: 'center',
-              color: theme.palette.secondary.light
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: theme.spacing(3),
+              backgroundColor: theme.palette.primary.main,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderRadius: '4px',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                borderColor: theme.palette.secondary.main,
+                '& .car-icon': {
+                  animation: 'drive 1s ease-in-out infinite',
+                },
+              },
             }}
           >
-            Avid supporter of the Newcastle Knights, through thick and
-            thin(there's been lots of thin).
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: theme.spacing(3),
-            backgroundColor: theme.palette.primary.main,
-            border: `1px solid ${theme.palette.primary.light}`,
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              borderColor: theme.palette.secondary.main,
-              '& .print-icon': {
-                animation: 'print 0.5s ease-in-out infinite'
-              }
-            }
-          }}
-        >
-          <PrintIcon
-            className="print-icon"
+            <DirectionsCarFilledIcon
+              className="car-icon"
+              sx={{
+                color: theme.palette.secondary.main,
+                fontSize: '2.5rem',
+                mb: 2,
+                transition: 'transform 0.3s ease',
+              }}
+            />
+            <Typography
+              variant="body1"
+              sx={{
+                fontFamily: 'monospace',
+                textAlign: 'center',
+                color: theme.palette.secondary.light,
+              }}
+            >
+              A proud owner and enthusiast of the Toyota 86, a driving passion.
+            </Typography>
+          </Box>
+          <Box
             sx={{
-              color: theme.palette.secondary.main,
-              fontSize: '2.5rem',
-              mb: 2,
-              transition: 'transform 0.3s ease'
-            }} />
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: 'monospace',
-              textAlign: 'center',
-              color: theme.palette.secondary.light
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: theme.spacing(3),
+              backgroundColor: theme.palette.primary.main,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderRadius: '4px',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                borderColor: theme.palette.secondary.main,
+                '& .rugby-icon': {
+                  animation: 'spin 1s linear infinite',
+                },
+              },
             }}
           >
-            3D printing enthusiast, exploring creations with an Ender 3, and now
-            transitioning to a Bambu Lab's P1S.
-          </Typography>
+            <SportsRugbyIcon
+              className="rugby-icon"
+              sx={{
+                color: theme.palette.secondary.main,
+                fontSize: '2.5rem',
+                mb: 2,
+                transition: 'transform 0.3s ease',
+              }}
+            />
+            <Typography
+              variant="body1"
+              sx={{
+                fontFamily: 'monospace',
+                textAlign: 'center',
+                color: theme.palette.secondary.light,
+              }}
+            >
+              Avid supporter of the Newcastle Knights, through thick and
+              thin(there&apos;s been lots of thin).
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: theme.spacing(3),
+              backgroundColor: theme.palette.primary.main,
+              border: `1px solid ${theme.palette.primary.light}`,
+              borderRadius: '4px',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                borderColor: theme.palette.secondary.main,
+                '& .print-icon': {
+                  animation: 'print 0.5s ease-in-out infinite',
+                },
+              },
+            }}
+          >
+            <PrintIcon
+              className="print-icon"
+              sx={{
+                color: theme.palette.secondary.main,
+                fontSize: '2.5rem',
+                mb: 2,
+                transition: 'transform 0.3s ease',
+              }}
+            />
+            <Typography
+              variant="body1"
+              sx={{
+                fontFamily: 'monospace',
+                textAlign: 'center',
+                color: theme.palette.secondary.light,
+              }}
+            >
+              3D printing enthusiast, exploring creations with an Ender 3, and
+              now transitioning to a Bambu Lab&apos;s P1S.
+            </Typography>
+          </Box>
         </Box>
       </Box>
-    </Box>
     </>
   );
 };

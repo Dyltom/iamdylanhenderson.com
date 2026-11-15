@@ -22,7 +22,7 @@ const Fields: React.FC<FieldsProps> = ({ formState, setFormState }) => {
       '&::before': {
         content: '"→ "',
         color: theme.palette.secondary.main,
-      }
+      },
     },
     '& .MuiOutlinedInput-root': {
       ...textFieldSx['& .MuiOutlinedInput-root'],

@@ -1,13 +1,13 @@
-import { MetadataRoute } from 'next'
-import { siteConfig } from '../config/metadata'
+import { MetadataRoute } from 'next';
+import { siteConfig } from '../config/metadata';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = siteConfig.url
+  const baseUrl = siteConfig.url;
 
   // TODO: Get all blog posts from Strapi when available
   // const articles = await getArticles()
 
-  const blogPosts: MetadataRoute.Sitemap = []
+  const blogPosts: MetadataRoute.Sitemap = [];
   // const blogPosts = articles?.map((article) => ({
   //   url: `${baseUrl}/blog/${article.attributes.slug}`,
   //   lastModified: new Date(article.attributes.updatedAt || article.attributes.publishedAt),
@@ -53,7 +53,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
-  ]
+  ];
 
-  return [...routes, ...blogPosts]
+  return [...routes, ...blogPosts];
 }

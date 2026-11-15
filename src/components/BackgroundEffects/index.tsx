@@ -37,7 +37,11 @@ export default function BackgroundEffects() {
   useEffect(() => {
     const syncFromStorage = () => {
       const savedEffect = localStorage.getItem('backgroundEffect');
-      if (savedEffect === 'particles' || savedEffect === 'matrix' || savedEffect === 'none') {
+      if (
+        savedEffect === 'particles' ||
+        savedEffect === 'matrix' ||
+        savedEffect === 'none'
+      ) {
         setCurrentEffect(savedEffect);
       }
 
@@ -124,7 +128,11 @@ export default function BackgroundEffects() {
       >
         <Stack direction="column" spacing={1}>
           {/* CRT Effect Toggle */}
-          <Tooltip title={crtEnabled ? 'Disable CRT Effect' : 'Enable CRT Effect'} arrow placement="left">
+          <Tooltip
+            title={crtEnabled ? 'Disable CRT Effect' : 'Enable CRT Effect'}
+            arrow
+            placement="left"
+          >
             <IconButton
               onClick={toggleCRT}
               sx={{
@@ -132,7 +140,9 @@ export default function BackgroundEffects() {
                 color: crtEnabled ? '#ff5f56' : theme.palette.secondary.main,
                 border: `1px solid ${crtEnabled ? '#ff5f56' : theme.palette.secondary.main}`,
                 '&:hover': {
-                  backgroundColor: crtEnabled ? 'rgba(255, 95, 86, 0.1)' : 'rgba(50, 205, 50, 0.1)',
+                  backgroundColor: crtEnabled
+                    ? 'rgba(255, 95, 86, 0.1)'
+                    : 'rgba(50, 205, 50, 0.1)',
                   boxShadow: `0 0 10px ${crtEnabled ? '#ff5f56' : theme.palette.secondary.main}`,
                 },
                 transition: 'all 0.3s ease',
@@ -148,7 +158,10 @@ export default function BackgroundEffects() {
               onClick={handleToggle}
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                color: currentEffect === 'none' ? theme.palette.primary.contrastText : theme.palette.secondary.main,
+                color:
+                  currentEffect === 'none'
+                    ? theme.palette.primary.contrastText
+                    : theme.palette.secondary.main,
                 border: `1px solid ${currentEffect === 'none' ? theme.palette.primary.contrastText : theme.palette.secondary.main}`,
                 opacity: currentEffect === 'none' ? 0.5 : 1,
                 '&:hover': {

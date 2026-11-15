@@ -118,12 +118,12 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
     },
   ];
 
-  const filteredCommands = commands.filter(command => {
+  const filteredCommands = commands.filter((command) => {
     const query = searchQuery.toLowerCase();
     return (
       command.title.toLowerCase().includes(query) ||
       command.description.toLowerCase().includes(query) ||
-      command.keywords?.some(keyword => keyword.toLowerCase().includes(query))
+      command.keywords?.some((keyword) => keyword.toLowerCase().includes(query))
     );
   });
 
@@ -145,13 +145,13 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
-        setSelectedIndex(prev =>
+        setSelectedIndex((prev) =>
           prev < filteredCommands.length - 1 ? prev + 1 : prev
         );
         break;
       case 'ArrowUp':
         e.preventDefault();
-        setSelectedIndex(prev => (prev > 0 ? prev - 1 : prev));
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : prev));
         break;
       case 'Enter':
         e.preventDefault();
@@ -211,7 +211,10 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
             }}
           />
 
-          <List ref={listRef} sx={{ maxHeight: '400px', overflow: 'auto', p: 1 }}>
+          <List
+            ref={listRef}
+            sx={{ maxHeight: '400px', overflow: 'auto', p: 1 }}
+          >
             {filteredCommands.length === 0 ? (
               <ListItem>
                 <ListItemText

@@ -1,18 +1,18 @@
 # iamdylan.dev
 
-Welcome to `iamdylan.dev`, a dynamic and professional portfolio website. Crafted using Next.js 13 and TypeScript, this site features a sleek design powered by Material-UI (MUI). It's not just a showcase of skills and projects but also includes a blog, contact forms with Google reCAPTCHA for spam protection, rate limiting for enhanced security, and emailing functionality.
+Welcome to `iamdylan.dev`, a dynamic and professional portfolio website. Built with Next.js 16 (App Router), React 19 and TypeScript, this site features a sleek design powered by Material-UI (MUI). It's not just a showcase of skills and projects but also includes a blog, contact forms with Google reCAPTCHA for spam protection, rate limiting for enhanced security, and emailing functionality.
 
 This project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Features
 
-- **Next.js 13**: Utilizing the latest capabilities of Next.js for fast, server-side rendered React applications.
+- **Next.js 16**: App Router with server-rendered and static pages.
 - **TypeScript**: Ensuring code reliability and maintainability with strong typing.
 - **Material-UI (MUI)**: A modern UI framework providing a suite of components for a great user interface.
 - **Google reCAPTCHA**: Integrated into forms for spam protection.
 - **Rate Limiting**: Implemented to prevent abuse and ensure service availability.
-- **Emailing**: Using Nodemailer to manage communication directly through the site.
-- **Blog**: A feature for sharing thoughts, insights, and updates integrated with strapi.
+- **Emailing**: Contact form email via Resend (see `EMAIL_SETUP.md`).
+- **Blog**: Posts stored as static content in `src/utils/staticBlogPosts.ts`.
 
 ## Getting Started
 
@@ -44,20 +44,21 @@ Deploy with the [Vercel Platform](https://vercel.com/new?utm_medium=default-temp
 
 ## Development Scripts
 
-In the project directory, you can run:
+Requires Node 24 (see `.nvmrc`).
 
-- `npm run dev` or equivalent: Starts the development server.
+- `npm run dev`: Starts the development server.
 - `npm run build`: Builds the app for production.
 - `npm start`: Runs the built app in production mode.
-- `npm run format:check`: Checks the format of files.
-- `npm run format:write`: Formats files.
-- `npm run types:check`: Checks TypeScript types.
-- `npm run dep:check`: Checks for unused dependencies, missing dependencies and dependencies that require updates
-- `npm run dep:update`: Updates outdated dependencies
+- `npm run lint`: Runs ESLint.
+- `npm run typecheck`: Checks TypeScript types.
+- `npm test`: Runs the Vitest suite.
+- `npm run format:check` / `npm run format:write`: Checks or applies Prettier formatting.
+
+CI (`.github/workflows/ci.yml`) runs format check, lint, typecheck, tests and build on every pull request.
 
 ## Dependencies
 
-This project includes a variety of dependencies for functionality and development, including MUI components, Axios for HTTP requests, Nodemailer for email functionality, rate limiting, React and Next.js libraries, and many others for optimal development experience.
+This project includes a variety of dependencies for functionality and development, including MUI components, Axios for HTTP requests, Resend for email, rate limiting, React and Next.js libraries, and many others for optimal development experience.
 
 ---
 

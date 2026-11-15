@@ -22,12 +22,13 @@ export default function AboutPage() {
     // Mock the API response with static content
     setAboutPageContent({
       aboutTitle: 'About Me',
-      aboutContent: "Hello! I'm Dylan, and I thrive on solving challenges with technology. My coding journey began when I crafted my first Minecraft plugin back in 2014, igniting my passion for continuous learning. Over the years, I've had the privilege of working with four startups and a larger company, where I've tackled complex scenarios and worn many hats, gaining invaluable experience along the way.",
+      aboutContent:
+        "Hello! I'm Dylan, and I thrive on solving challenges with technology. My coding journey began when I crafted my first Minecraft plugin back in 2014, igniting my passion for continuous learning. Over the years, I've had the privilege of working with four startups and a larger company, where I've tackled complex scenarios and worn many hats, gaining invaluable experience along the way.",
       workExperienceTitle: 'Work Experience',
       skillsTitle: 'My Technical Stack',
       skillsChartText: 'Languages, frameworks, and tools I work with daily',
       testimonialsTitle: 'What People Say About Me',
-      interestingFactsTitle: 'A Little More About Me'
+      interestingFactsTitle: 'A Little More About Me',
     });
   }, []);
 
@@ -35,7 +36,7 @@ export default function AboutPage() {
     return null;
   }
 
-  const SectionDivider = () => (
+  const sectionDivider = (
     <Box
       sx={{
         height: { xs: '80px', md: '120px' },
@@ -65,19 +66,21 @@ export default function AboutPage() {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', position: 'relative' }}
+    >
       <TerminalEasterEgg />
       <AboutMeSection content={aboutPageContent} />
-      <SectionDivider />
+      {sectionDivider}
       <WorkExperience title={aboutPageContent.workExperienceTitle} />
-      <SectionDivider />
+      {sectionDivider}
       <SkillsChart
         title={aboutPageContent.skillsTitle}
         keyText={aboutPageContent.skillsChartText}
       />
-      <SectionDivider />
+      {sectionDivider}
       <Testimonials title={aboutPageContent.testimonialsTitle} />
-      <SectionDivider />
+      {sectionDivider}
       <PersonalSection title={aboutPageContent.interestingFactsTitle} />
     </Box>
   );

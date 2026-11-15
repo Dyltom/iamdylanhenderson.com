@@ -1,19 +1,22 @@
-import { Box, Skeleton, Card, CardContent } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Skeleton, Card, CardContent } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 // Interface segregation - separate interfaces for different skeleton types
 interface SkeletonBaseProps {
-  width?: string | number
-  height?: string | number
+  width?: string | number;
+  height?: string | number;
 }
 
 interface BlogCardSkeletonProps extends SkeletonBaseProps {
-  showImage?: boolean
+  showImage?: boolean;
 }
 
 // Single Responsibility - Each component has one job
-export const TextSkeleton = ({ width = '100%', height = 20 }: SkeletonBaseProps) => {
-  const theme = useTheme()
+export const TextSkeleton = ({
+  width = '100%',
+  height = 20,
+}: SkeletonBaseProps) => {
+  const theme = useTheme();
   return (
     <Skeleton
       variant="text"
@@ -26,11 +29,13 @@ export const TextSkeleton = ({ width = '100%', height = 20 }: SkeletonBaseProps)
         },
       }}
     />
-  )
-}
+  );
+};
 
-export const BlogCardSkeleton = ({ showImage = true }: BlogCardSkeletonProps) => {
-  const theme = useTheme()
+export const BlogCardSkeleton = ({
+  showImage = true,
+}: BlogCardSkeletonProps) => {
+  const theme = useTheme();
 
   return (
     <Card
@@ -67,11 +72,11 @@ export const BlogCardSkeleton = ({ showImage = true }: BlogCardSkeletonProps) =>
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 export const WorkExperienceSkeleton = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Box sx={{ display: 'flex', gap: 2, height: 400 }}>
@@ -104,11 +109,11 @@ export const WorkExperienceSkeleton = () => {
         ))}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export const SkillsChartSkeleton = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Box>
@@ -126,11 +131,11 @@ export const SkillsChartSkeleton = () => {
         ))}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export const TestimonialSkeleton = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Card
@@ -158,8 +163,8 @@ export const TestimonialSkeleton = () => {
         </Box>
       </Box>
     </Card>
-  )
-}
+  );
+};
 
 // Composite skeleton for entire page sections
 export const AboutPageSkeleton = () => {
@@ -188,8 +193,8 @@ export const AboutPageSkeleton = () => {
         <SkillsChartSkeleton />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export const BlogListSkeleton = () => {
   return (
@@ -198,5 +203,5 @@ export const BlogListSkeleton = () => {
         <BlogCardSkeleton key={i} showImage={false} />
       ))}
     </Box>
-  )
-}
+  );
+};

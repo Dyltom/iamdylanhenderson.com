@@ -89,47 +89,73 @@ const glitchAnimation2 = keyframes`
 `;
 
 const StyledGlitchText = styled(Typography, {
-  shouldForwardProp: (prop) => !['glitchIntensity', 'glitchOnHover', 'isGlitching'].includes(prop as string),
-})<{ glitchIntensity: string; glitchOnHover: boolean; isGlitching: boolean }>(
-  ({ theme, glitchIntensity, glitchOnHover, isGlitching }) => {
-    const animationDuration = glitchIntensity === 'high' ? '0.5s' : glitchIntensity === 'medium' ? '1s' : '2s';
+  shouldForwardProp: (prop) =>
+    !['glitchIntensity', 'glitchOnHover', 'isGlitching'].includes(
+      prop as string
+    ),
+})<{ glitchIntensity: string; glitchOnHover: boolean; isGlitching: boolean }>(({
+  theme,
+  glitchIntensity,
+  glitchOnHover,
+  isGlitching,
+}) => {
+  const animationDuration =
+    glitchIntensity === 'high'
+      ? '0.5s'
+      : glitchIntensity === 'medium'
+        ? '1s'
+        : '2s';
 
-    return {
-      position: 'relative',
-      display: 'inline-block',
-      fontFamily: '"Fira Code", monospace',
-      animation: isGlitching && !glitchOnHover ? `${glitchAnimation1} ${animationDuration} infinite` : 'none',
-      '&:hover': glitchOnHover ? {
-        animation: `${glitchAnimation1} 0.3s infinite`,
-      } : {},
-      '&::before, &::after': {
-        content: 'attr(data-text)',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        background: theme.palette.background.default,
-      },
-      '&::before': {
-        animation: isGlitching && !glitchOnHover ? `${glitchAnimation2} ${animationDuration} infinite` : 'none',
-        color: theme.palette.primary.main,
-        zIndex: -1,
-        '&:hover': glitchOnHover ? {
-          animation: `${glitchAnimation2} 0.3s infinite`,
-        } : {},
-      },
-      '&::after': {
-        animation: isGlitching && !glitchOnHover ? `${glitchAnimation2} ${animationDuration} infinite reverse` : 'none',
-        color: '#ff00de',
-        zIndex: -2,
-        '&:hover': glitchOnHover ? {
-          animation: `${glitchAnimation2} 0.3s infinite reverse`,
-        } : {},
-      },
-    };
-  }
-);
+  return {
+    position: 'relative',
+    display: 'inline-block',
+    fontFamily: '"Fira Code", monospace',
+    animation:
+      isGlitching && !glitchOnHover
+        ? `${glitchAnimation1} ${animationDuration} infinite`
+        : 'none',
+    '&:hover': glitchOnHover
+      ? {
+          animation: `${glitchAnimation1} 0.3s infinite`,
+        }
+      : {},
+    '&::before, &::after': {
+      content: 'attr(data-text)',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: theme.palette.background.default,
+    },
+    '&::before': {
+      animation:
+        isGlitching && !glitchOnHover
+          ? `${glitchAnimation2} ${animationDuration} infinite`
+          : 'none',
+      color: theme.palette.primary.main,
+      zIndex: -1,
+      '&:hover': glitchOnHover
+        ? {
+            animation: `${glitchAnimation2} 0.3s infinite`,
+          }
+        : {},
+    },
+    '&::after': {
+      animation:
+        isGlitching && !glitchOnHover
+          ? `${glitchAnimation2} ${animationDuration} infinite reverse`
+          : 'none',
+      color: '#ff00de',
+      zIndex: -2,
+      '&:hover': glitchOnHover
+        ? {
+            animation: `${glitchAnimation2} 0.3s infinite reverse`,
+          }
+        : {},
+    },
+  };
+});
 
 export default function GlitchText({
   text,
@@ -144,17 +170,23 @@ export default function GlitchText({
 
     // Random glitch effect
     if (glitchIntensity === 'high') {
-      const interval = setInterval(() => {
-        setIsGlitching(true);
-        setTimeout(() => setIsGlitching(false), 500);
-      }, 3000 + Math.random() * 2000);
+      const interval = setInterval(
+        () => {
+          setIsGlitching(true);
+          setTimeout(() => setIsGlitching(false), 500);
+        },
+        3000 + Math.random() * 2000
+      );
 
       return () => clearInterval(interval);
     } else if (glitchIntensity === 'medium') {
-      const interval = setInterval(() => {
-        setIsGlitching(true);
-        setTimeout(() => setIsGlitching(false), 300);
-      }, 5000 + Math.random() * 3000);
+      const interval = setInterval(
+        () => {
+          setIsGlitching(true);
+          setTimeout(() => setIsGlitching(false), 300);
+        },
+        5000 + Math.random() * 3000
+      );
 
       return () => clearInterval(interval);
     }

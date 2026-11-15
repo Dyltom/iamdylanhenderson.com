@@ -1,41 +1,56 @@
-import { NextRequest, NextResponse } from 'next/server'
-import OpenAI from 'openai'
-import { CVData } from '../../../utils/cvTypes'
+import { NextRequest, NextResponse } from 'next/server';
+import OpenAI from 'openai';
+import {
+  parseCvOptimiserRequest,
+  readJsonBody,
+} from '../../../utils/apiValidation';
 
 // OpenAI client will be initialized in the request handler
-let openai: OpenAI | null = null
+let openai: OpenAI | null = null;
 
 // Model configuration - ready for GPT-5 when available
 // TODO: Update to "gpt-5" when OpenAI releases it
 // For now using the most advanced available model
-const AI_MODEL = "gpt-4-turbo-preview"
+const AI_MODEL = 'gpt-4-turbo-preview';
 
 export async function POST(request: NextRequest) {
-  try {
-    const { jobDescription, currentCV }: { jobDescription: string; currentCV: CVData } = await request.json()
+  const parsed = parseCvOptimiserRequest(await readJsonBody(request));
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.error }, { status: 400 });
+  }
+  const { jobDescription, currentCV } = parsed.data;
 
-    if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'your-api-key-here') {
+  try {
+    if (
+      !process.env.OPENAI_API_KEY ||
+      process.env.OPENAI_API_KEY === 'your-api-key-here'
+    ) {
       return NextResponse.json(
-        { error: 'OpenAI API key not configured. Please add your API key to .env.local' },
+        {
+          error:
+            'OpenAI API key not configured. Please add your API key to .env.local',
+        },
         { status: 500 }
-      )
+      );
     }
 
     // Initialize OpenAI client with API key
     if (!openai) {
       openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
-      })
+      });
     }
 
     // Extract existing skills for validation
-    const existingSkills = new Set(currentCV.skills.map(s => s.toLowerCase()))
+    const existingSkills = new Set(
+      currentCV.skills.map((s) => s.toLowerCase())
+    );
 
     const completion = await openai.chat.completions.create({
       model: AI_MODEL,
       messages: [
         {
-          role: "system",
+          role: 'system',
           content: `You are an expert resume consultant. Analyse the job description and the current CV, then provide specific suggestions to optimise the CV for this role.
 
 CRITICAL RULES:
@@ -68,25 +83,27 @@ Return your response as a JSON object with this structure:
   ],
   "additionalRecommendations": ["recommendations for presentation/formatting only"],
   "optimisedSummary": "Rewritten summary using only existing qualifications and experiences"
-}`
+}`,
         },
         {
-          role: "user",
-          content: `Job Description:\n${jobDescription}\n\nCurrent CV:\n${JSON.stringify(currentCV, null, 2)}`
-        }
+          role: 'user',
+          content: `Job Description:\n${jobDescription}\n\nCurrent CV:\n${JSON.stringify(currentCV, null, 2)}`,
+        },
       ],
       temperature: 0.7,
-      response_format: { type: "json_object" }
-    })
+      response_format: { type: 'json_object' },
+    });
 
-    const suggestions = JSON.parse(completion.choices[0].message.content || '{}')
+    const suggestions = JSON.parse(
+      completion.choices[0].message.content || '{}'
+    );
 
-    return NextResponse.json({ suggestions })
+    return NextResponse.json({ suggestions });
   } catch (error) {
-    console.error('Error optimising CV:', error)
+    console.error('Error optimising CV:', error);
     return NextResponse.json(
       { error: 'Failed to optimise CV. Please try again.' },
       { status: 500 }
-    )
+    );
   }
 }

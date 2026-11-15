@@ -4,7 +4,14 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box, Divider, Stack, Typography, Container, Button } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Stack,
+  Typography,
+  Container,
+  Button,
+} from '@mui/material';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -33,7 +40,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
     const loadArticle = async () => {
       const { id: slug } = await params;
       // Find article in static posts by slug
-      const foundArticle = STATIC_BLOG_POSTS.find(post => post.slug === slug);
+      const foundArticle = STATIC_BLOG_POSTS.find((post) => post.slug === slug);
       setArticle(foundArticle);
     };
     loadArticle();
@@ -42,7 +49,9 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
   if (!article) {
     return (
       <Container maxWidth="lg">
-        <Typography color="primary.contrastText" sx={{ mt: 4 }}>Loading...</Typography>
+        <Typography color="primary.contrastText" sx={{ mt: 4 }}>
+          Loading...
+        </Typography>
       </Container>
     );
   }
@@ -68,7 +77,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
           fontFamily: 'monospace',
           '&:hover': {
             backgroundColor: 'rgba(0, 255, 0, 0.1)',
-          }
+          },
         }}
       >
         back to blog
@@ -98,30 +107,52 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
           spacing={2}
           sx={{ mb: 3 }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+              flexWrap: 'wrap',
+            }}
+          >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-              <EventIcon sx={{ color: theme.palette.secondary.main, fontSize: '1.2rem' }} />
+              <EventIcon
+                sx={{ color: theme.palette.secondary.main, fontSize: '1.2rem' }}
+              />
               <Typography
                 variant="body2"
-                sx={{ color: theme.palette.primary.contrastText, fontFamily: 'monospace' }}
+                sx={{
+                  color: theme.palette.primary.contrastText,
+                  fontFamily: 'monospace',
+                }}
               >
                 {formattedDate}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-              <AccessTimeIcon sx={{ color: theme.palette.secondary.main, fontSize: '1.2rem' }} />
+              <AccessTimeIcon
+                sx={{ color: theme.palette.secondary.main, fontSize: '1.2rem' }}
+              />
               <Typography
                 variant="body2"
-                sx={{ color: theme.palette.primary.contrastText, fontFamily: 'monospace' }}
+                sx={{
+                  color: theme.palette.primary.contrastText,
+                  fontFamily: 'monospace',
+                }}
               >
                 {formattedReadTime}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-              <VisibilityIcon sx={{ color: theme.palette.secondary.main, fontSize: '1.2rem' }} />
+              <VisibilityIcon
+                sx={{ color: theme.palette.secondary.main, fontSize: '1.2rem' }}
+              />
               <Typography
                 variant="body2"
-                sx={{ color: theme.palette.primary.contrastText, fontFamily: 'monospace' }}
+                sx={{
+                  color: theme.palette.primary.contrastText,
+                  fontFamily: 'monospace',
+                }}
               >
                 {article.views} views
               </Typography>
@@ -133,7 +164,9 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
         <TableOfContents article={article} />
       </Box>
 
-      <Divider sx={{ borderColor: theme.palette.secondary.main, opacity: 0.3, mb: 4 }} />
+      <Divider
+        sx={{ borderColor: theme.palette.secondary.main, opacity: 0.3, mb: 4 }}
+      />
 
       {/* Article content with styled markdown */}
       <Box
@@ -182,7 +215,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
               backgroundColor: 'transparent',
               padding: 0,
               fontSize: '0.9rem',
-            }
+            },
           },
           '& blockquote': {
             borderLeft: `4px solid ${theme.palette.secondary.main}`,
@@ -199,15 +232,15 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
               mb: 1,
               '&::marker': {
                 color: theme.palette.secondary.main,
-              }
-            }
+              },
+            },
           },
           '& a': {
             color: theme.palette.secondary.main,
             textDecoration: 'none',
             '&:hover': {
               textDecoration: 'underline',
-            }
+            },
           },
           '& img': {
             maxWidth: '100%',
@@ -219,13 +252,17 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
             borderColor: theme.palette.secondary.main,
             opacity: 0.3,
             my: 4,
-          }
+          },
         }}
       >
-        <ReactMarkdown children={markdownContent} rehypePlugins={[rehypeSlug]} />
+        <ReactMarkdown rehypePlugins={[rehypeSlug]}>
+          {markdownContent}
+        </ReactMarkdown>
       </Box>
 
-      <Divider sx={{ borderColor: theme.palette.secondary.main, opacity: 0.3, my: 4 }} />
+      <Divider
+        sx={{ borderColor: theme.palette.secondary.main, opacity: 0.3, my: 4 }}
+      />
 
       {/* Footer */}
       <Typography

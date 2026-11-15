@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
-import { Box, Button, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import RefreshIcon from '@mui/icons-material/Refresh'
-import BugReportIcon from '@mui/icons-material/BugReport'
+import { useEffect } from 'react';
+import { Box, Button, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import BugReportIcon from '@mui/icons-material/BugReport';
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
-  const theme = useTheme()
+  const theme = useTheme();
 
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error('Application error:', error)
-  }, [error])
+    console.error('Application error:', error);
+  }, [error]);
 
   return (
     <Box
@@ -60,8 +60,9 @@ export default function Error({
           maxWidth: '500px',
         }}
       >
-        We encountered an unexpected error. Don't worry, it's not your fault.
-        Try refreshing the page, and if the problem persists, please contact us.
+        We encountered an unexpected error. Don&apos;t worry, it&apos;s not your
+        fault. Try refreshing the page, and if the problem persists, please
+        contact us.
       </Typography>
 
       {/* Error details in dev mode */}
@@ -112,5 +113,5 @@ export default function Error({
         Try Again
       </Button>
     </Box>
-  )
+  );
 }

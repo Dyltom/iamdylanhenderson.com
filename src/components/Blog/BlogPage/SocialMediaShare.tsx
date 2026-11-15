@@ -68,7 +68,7 @@ const SocialMediaShare: React.FC = () => {
               color: theme.palette.secondary.main,
               '&:hover': {
                 backgroundColor: 'rgba(0, 255, 0, 0.1)',
-              }
+              },
             }}
           >
             <FacebookIcon fontSize="small" />
@@ -84,7 +84,7 @@ const SocialMediaShare: React.FC = () => {
               color: theme.palette.secondary.main,
               '&:hover': {
                 backgroundColor: 'rgba(0, 255, 0, 0.1)',
-              }
+              },
             }}
           >
             <TwitterIcon fontSize="small" />
@@ -100,7 +100,7 @@ const SocialMediaShare: React.FC = () => {
               color: theme.palette.secondary.main,
               '&:hover': {
                 backgroundColor: 'rgba(0, 255, 0, 0.1)',
-              }
+              },
             }}
           >
             <LinkedInIcon fontSize="small" />
@@ -116,7 +116,7 @@ const SocialMediaShare: React.FC = () => {
               color: theme.palette.secondary.main,
               '&:hover': {
                 backgroundColor: 'rgba(0, 255, 0, 0.1)',
-              }
+              },
             }}
           >
             <RedditIcon fontSize="small" />
@@ -132,7 +132,7 @@ const SocialMediaShare: React.FC = () => {
               color: theme.palette.secondary.main,
               '&:hover': {
                 backgroundColor: 'rgba(0, 255, 0, 0.1)',
-              }
+              },
             }}
           >
             <EmailIcon fontSize="small" />

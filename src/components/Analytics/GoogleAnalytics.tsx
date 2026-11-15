@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Script from 'next/script'
+import Script from 'next/script';
 
 interface GoogleAnalyticsProps {
-  gaId: string
+  gaId: string;
 }
 
 const GoogleAnalytics = ({ gaId }: GoogleAnalyticsProps) => {
@@ -24,7 +24,7 @@ const GoogleAnalytics = ({ gaId }: GoogleAnalyticsProps) => {
         `}
       </Script>
     </>
-  )
-}
+  );
+};
 
-export default GoogleAnalytics
+export default GoogleAnalytics;

@@ -57,7 +57,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ article }) => {
             fontWeight: 600,
           }}
         >
-          // Table of Contents
+          {'// Table of Contents'}
         </Typography>
         <IconButton
           size="small"

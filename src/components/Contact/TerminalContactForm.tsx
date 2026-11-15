@@ -12,7 +12,14 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React, { useEffect, useRef, useState } from 'react';
-import { Terminal, Send, Download, LinkedIn, GitHub, Close } from '@mui/icons-material';
+import {
+  Terminal,
+  Send,
+  Download,
+  LinkedIn,
+  GitHub,
+  Close,
+} from '@mui/icons-material';
 import { STATIC_CONTACT_PAGE } from '../../utils/staticPageContent';
 import { useTypingEffect } from '../../hooks/useTypingEffect';
 
@@ -26,7 +33,9 @@ const TerminalContactForm: React.FC = () => {
   });
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
-  const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('success');
+  const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>(
+    'success'
+  );
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
@@ -38,16 +47,19 @@ const TerminalContactForm: React.FC = () => {
   useEffect(() => {
     // Start terminal animation
     const timer = setTimeout(() => {
-      setTerminalOutput(['Initializing secure connection...', 'Loading contact interface...', '']);
+      setTerminalOutput([
+        'Initializing secure connection...',
+        'Loading contact interface...',
+        '',
+      ]);
       setTimeout(() => setShowForm(true), 1000);
     }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
 
-
   const addTerminalOutput = (message: string) => {
-    setTerminalOutput(prev => [...prev, message]);
+    setTerminalOutput((prev) => [...prev, message]);
     setTimeout(() => {
       if (terminalRef.current) {
         terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
@@ -59,7 +71,9 @@ const TerminalContactForm: React.FC = () => {
     e.preventDefault();
 
     setLoading(true);
-    addTerminalOutput(`$ sendmail --from="${formState.name}" --email="${formState.email}"`);
+    addTerminalOutput(
+      `$ sendmail --from="${formState.name}" --email="${formState.email}"`
+    );
     addTerminalOutput('Establishing SMTP connection...');
 
     try {
@@ -184,7 +198,11 @@ const TerminalContactForm: React.FC = () => {
               key={index}
               sx={{
                 fontFamily: 'monospace',
-                color: line.includes('✓') ? 'success.main' : line.includes('✗') ? 'error.main' : 'secondary.main',
+                color: line.includes('✓')
+                  ? 'success.main'
+                  : line.includes('✗')
+                    ? 'error.main'
+                    : 'secondary.main',
                 fontSize: '0.875rem',
                 mb: 0.5,
               }}
@@ -245,7 +263,7 @@ const TerminalContactForm: React.FC = () => {
                   lineHeight: 1.8,
                 }}
               >
-                $ echo "Let's connect!"
+                $ echo &quot;Let&apos;s connect!&quot;
                 <br />
                 $ Available via:
                 <br />
@@ -293,7 +311,9 @@ const TerminalContactForm: React.FC = () => {
                   variant="outlined"
                   color="secondary"
                   startIcon={<Download />}
-                  href={STATIC_CONTACT_PAGE.attributes.resume.data.attributes.url}
+                  href={
+                    STATIC_CONTACT_PAGE.attributes.resume.data.attributes.url
+                  }
                   download
                   fullWidth
                   sx={{
@@ -339,7 +359,9 @@ const TerminalContactForm: React.FC = () => {
                   type="text"
                   name="name"
                   value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormState({ ...formState, name: e.target.value })
+                  }
                   required
                   placeholder="Enter your name"
                   style={{
@@ -381,7 +403,9 @@ const TerminalContactForm: React.FC = () => {
                   type="email"
                   name="email"
                   value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormState({ ...formState, email: e.target.value })
+                  }
                   required
                   placeholder="your@email.com"
                   style={{
@@ -422,7 +446,9 @@ const TerminalContactForm: React.FC = () => {
                 <textarea
                   name="message"
                   value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormState({ ...formState, message: e.target.value })
+                  }
                   required
                   rows={6}
                   placeholder="Type your message here..."
@@ -473,7 +499,8 @@ const TerminalContactForm: React.FC = () => {
                     left: '-100%',
                     width: '100%',
                     height: '100%',
-                    background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+                    background:
+                      'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
                     transition: 'left 0.5s',
                   },
                   '&:hover::before': {
@@ -500,10 +527,12 @@ const TerminalContactForm: React.FC = () => {
           sx={{
             width: '100%',
             bgcolor: 'background.paper',
-            color: snackbarSeverity === 'success' ? 'success.main' : 'error.main',
+            color:
+              snackbarSeverity === 'success' ? 'success.main' : 'error.main',
             fontFamily: 'monospace',
             '& .MuiAlert-icon': {
-              color: snackbarSeverity === 'success' ? 'success.main' : 'error.main',
+              color:
+                snackbarSeverity === 'success' ? 'success.main' : 'error.main',
             },
           }}
           action={
