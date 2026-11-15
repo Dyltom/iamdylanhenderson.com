@@ -1,38 +1,21 @@
-# Claude Rules for iamdylanhenderson.com
+# iamdylanhenderson.com
 
-## Language and Spelling
+## Commands
 
-- **Always use Australian English** for all text, comments, and user-facing content
-- Key spelling differences to remember:
-  - Use -ise endings: optimise, analyse, realise, specialise (not -ize)
-  - Use -our endings: colour, favour, behaviour (not -or)
-  - Use -re endings: centre, theatre (not -er)
-  - Use "programme" for computer programs
-  - Use "organisation" not "organization"
+- `bun install`, then `bun run lint`, `bun run typecheck`, `bun run test` (Vitest) and `bun run build`. CI runs all of these plus `bun run format:check` and, on pull requests, `bun scripts/no-comments.ts`.
+- The app runs on Node 24 (`.nvmrc`); Bun is only the package manager.
+- `scripts/no-comments.ts` is a verbatim copy of a shared tool. Re-sync it rather than editing it.
 
-## Code Style
+## Writing
 
-- Use TypeScript with strict typing (avoid `any` types)
-- Follow SOLID principles in all code
-- Use meaningful variable and function names
-- Prefer functional components and hooks in React
+- Use Australian English in all text and user-facing content: -ise (optimise, organisation), -our (colour, behaviour), -re (centre), "programme" for computer programs.
 
-## Git Commits
+## CV
 
-- Use descriptive commit messages
-- Run `git smart-commit` after completing tasks
-- Keep commits focused and atomic
+- `cv.txt` and `cv_backup_*.txt` are the owner's source CV text. Do not edit them.
+- CV exports (PDF/DOCX) must stay ATS-compatible: plain structure, white background.
+- Dates on the CV use the Australian DD/MM/YYYY format.
 
-## CV/Resume Specific
+## Git
 
-- Maintain ATS (Applicant Tracking System) compatibility
-- Use clean, professional formatting for exports (PDF/DOCX)
-- Ensure all dates use DD/MM/YYYY format (Australian standard)
-- Keep exports with white backgrounds for professionalism
-
-## Project Structure
-
-- Follow Next.js 14+ conventions
-- Use App Router structure
-- Keep components modular and reusable
-- Use Material-UI (MUI) for consistent styling
+- Commit with `git smart-commit` after completing a task.
