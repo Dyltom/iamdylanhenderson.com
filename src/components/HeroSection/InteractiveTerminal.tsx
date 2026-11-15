@@ -14,7 +14,9 @@ const InteractiveTerminal: React.FC = () => {
   const router = useRouter();
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [currentCommand, setCurrentCommand] = useState('');
-  const [commandHistory, setCommandHistory] = useState<Array<{ command: string; output: string | React.JSX.Element }>>([]);
+  const [commandHistory, setCommandHistory] = useState<
+    Array<{ command: string; output: string | React.JSX.Element }>
+  >([]);
   const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -23,43 +25,44 @@ const InteractiveTerminal: React.FC = () => {
     {
       command: 'whoami',
       output: 'Dylan Henderson - Senior Fullstack Developer 🚀',
-      delay: 500
+      delay: 500,
     },
     {
       command: 'pwd',
       output: '/home/dylan/melbourne',
-      delay: 300
+      delay: 300,
     },
     {
       command: 'ls -la skills/',
       output: (
         <Box sx={{ fontFamily: 'monospace' }}>
           <Typography sx={{ color: theme.palette.secondary.main }}>
-            drwxr-xr-x  10 dylan  staff   320 Jan 16 09:00 .
+            drwxr-xr-x 10 dylan staff 320 Jan 16 09:00 .
           </Typography>
           <Typography sx={{ color: theme.palette.secondary.light }}>
-            -rw-r--r--   1 dylan  staff  6840 Jan 16 09:00 React.js
+            -rw-r--r-- 1 dylan staff 6840 Jan 16 09:00 React.js
           </Typography>
           <Typography sx={{ color: theme.palette.secondary.light }}>
-            -rw-r--r--   1 dylan  staff  5432 Jan 16 09:00 TypeScript
+            -rw-r--r-- 1 dylan staff 5432 Jan 16 09:00 TypeScript
           </Typography>
           <Typography sx={{ color: theme.palette.secondary.light }}>
-            -rw-r--r--   1 dylan  staff  4096 Jan 16 09:00 Node.js
+            -rw-r--r-- 1 dylan staff 4096 Jan 16 09:00 Node.js
           </Typography>
           <Typography sx={{ color: theme.palette.secondary.light }}>
-            -rw-r--r--   1 dylan  staff  7890 Jan 16 09:00 PHP
+            -rw-r--r-- 1 dylan staff 7890 Jan 16 09:00 PHP
           </Typography>
           <Typography sx={{ color: theme.palette.secondary.light }}>
-            -rw-r--r--   1 dylan  staff  3456 Jan 16 09:00 Docker
+            -rw-r--r-- 1 dylan staff 3456 Jan 16 09:00 Docker
           </Typography>
         </Box>
       ),
-      delay: 800
+      delay: 800,
     },
     {
       command: 'cat current_role.txt',
-      output: '📍 Senior Software Engineer @ Bonza Clean\n🔧 Building AI-powered booking systems\n🚀 Reduced admin work from 9hrs to 1hr/week',
-      delay: 600
+      output:
+        '📍 Senior Software Engineer @ Bonza Clean\n🔧 Building AI-powered booking systems\n🚀 Reduced admin work from 9hrs to 1hr/week',
+      delay: 600,
     },
     {
       command: 'git log --oneline -n 3',
@@ -76,19 +79,19 @@ const InteractiveTerminal: React.FC = () => {
           </Typography>
         </Box>
       ),
-      delay: 700
+      delay: 700,
     },
     {
       command: 'echo "Ready to build something awesome?"',
       output: 'Ready to build something awesome? 💻✨',
-      delay: 500
-    }
+      delay: 500,
+    },
   ];
 
   // Cursor blink effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 530);
     return () => clearInterval(interval);
   }, []);
@@ -111,12 +114,15 @@ const InteractiveTerminal: React.FC = () => {
       } else {
         // Command fully typed, show output after delay
         setTimeout(() => {
-          setCommandHistory(prev => [...prev, {
-            command: currentCmd.command,
-            output: currentCmd.output
-          }]);
+          setCommandHistory((prev) => [
+            ...prev,
+            {
+              command: currentCmd.command,
+              output: currentCmd.output,
+            },
+          ]);
           setCurrentCommand('');
-          setCurrentCommandIndex(prev => prev + 1);
+          setCurrentCommandIndex((prev) => prev + 1);
         }, currentCmd.delay || 500);
       }
     };
@@ -173,15 +179,23 @@ const InteractiveTerminal: React.FC = () => {
           height: '30px',
           background: `linear-gradient(180deg, ${theme.palette.secondary.main}20 0%, transparent 100%)`,
           pointerEvents: 'none',
-        }
+        },
       }}
     >
       {/* Terminal header */}
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ color: theme.palette.secondary.main, fontSize: '0.9rem' }}>
+        <Typography
+          sx={{ color: theme.palette.secondary.main, fontSize: '0.9rem' }}
+        >
           dylan@portfolio:~$ ./introduce.sh
         </Typography>
-        <Typography sx={{ color: theme.palette.secondary.light, fontSize: '0.8rem', mb: 2 }}>
+        <Typography
+          sx={{
+            color: theme.palette.secondary.light,
+            fontSize: '0.8rem',
+            mb: 2,
+          }}
+        >
           ═══════════════════════════════════════
         </Typography>
       </Box>
@@ -193,13 +207,11 @@ const InteractiveTerminal: React.FC = () => {
             $ {item.command}
           </Typography>
           <Box sx={{ color: theme.palette.secondary.light, mt: 0.5 }}>
-            {typeof item.output === 'string' ? (
-              item.output.split('\n').map((line, i) => (
-                <Typography key={i}>{line}</Typography>
-              ))
-            ) : (
-              item.output
-            )}
+            {typeof item.output === 'string'
+              ? item.output
+                  .split('\n')
+                  .map((line, i) => <Typography key={i}>{line}</Typography>)
+              : item.output}
           </Box>
         </Box>
       ))}
@@ -207,11 +219,16 @@ const InteractiveTerminal: React.FC = () => {
       {/* Current command being typed */}
       {isTyping && (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography sx={{ color: theme.palette.secondary.main }}>$ </Typography>
+          <Typography sx={{ color: theme.palette.secondary.main }}>
+            ${' '}
+          </Typography>
           <Typography sx={{ color: theme.palette.secondary.light }}>
             {currentCommand}
             {showCursor && (
-              <Box component="span" sx={{ color: theme.palette.secondary.main }}>
+              <Box
+                component="span"
+                sx={{ color: theme.palette.secondary.main }}
+              >
                 █
               </Box>
             )}
@@ -230,7 +247,7 @@ const InteractiveTerminal: React.FC = () => {
               '@keyframes pulse': {
                 '0%, 100%': { opacity: 0.6 },
                 '50%': { opacity: 1 },
-              }
+              },
             }}
           >
             [ Click anywhere to get in touch ]

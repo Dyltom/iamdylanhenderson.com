@@ -28,7 +28,8 @@ const MatrixRain: React.FC = () => {
     const drops: number[] = new Array(columns).fill(1);
 
     // Characters to use
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const chars =
+      '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
 
     const draw = () => {
       // Semi-transparent background for fade effect (using actual background color)
@@ -48,7 +49,11 @@ const MatrixRain: React.FC = () => {
 
         // Brighter text at the bottom
         const brightness = Math.min(1, drops[i] / 10);
-        ctx.fillStyle = theme.palette.secondary.main + Math.floor(brightness * 255).toString(16).padStart(2, '0');
+        ctx.fillStyle =
+          theme.palette.secondary.main +
+          Math.floor(brightness * 255)
+            .toString(16)
+            .padStart(2, '0');
 
         ctx.fillText(text, x, y);
 

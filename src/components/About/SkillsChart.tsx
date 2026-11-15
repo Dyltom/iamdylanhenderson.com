@@ -17,7 +17,7 @@ const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 530);
     return () => clearInterval(interval);
   }, []);
@@ -74,7 +74,9 @@ $ echo "Ready to ship 🚢"`;
         backgroundColor: theme.palette.background.default,
         textAlign: 'center',
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+        transform: isVisible
+          ? 'translateY(0) scale(1)'
+          : 'translateY(30px) scale(0.95)',
         transition: 'all 0.6s ease-out',
       }}
     >
@@ -95,7 +97,7 @@ $ echo "Ready to ship 🚢"`;
           textAlign: 'center',
           marginTop: '1rem',
           marginBottom: '2rem',
-          color: theme.palette.secondary.light
+          color: theme.palette.secondary.light,
         }}
       >
         {keyText}
@@ -120,7 +122,7 @@ $ echo "Ready to ship 🚢"`;
             height: '28px',
             backgroundColor: theme.palette.primary.dark,
             borderBottom: `1px solid ${theme.palette.primary.light}`,
-          }
+          },
         }}
       >
         {/* Terminal header bar */}
@@ -174,7 +176,7 @@ $ echo "Ready to ship 🚢"`;
             wordBreak: 'break-word',
             '& span': {
               color: theme.palette.secondary.main,
-            }
+            },
           }}
         >
           {displayedText}

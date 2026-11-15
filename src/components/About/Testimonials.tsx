@@ -22,17 +22,19 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
       {
         attributes: {
           author: 'Alex Johnson',
-          quote: 'Dylan\'s work on our Vue.js project was outstanding. He delivered high-quality code on time and exceeded our expectations.',
-          role: 'CTO at Virtech'
-        }
+          quote:
+            "Dylan's work on our Vue.js project was outstanding. He delivered high-quality code on time and exceeded our expectations.",
+          role: 'CTO at Virtech',
+        },
       },
       {
         attributes: {
           author: 'Marco Muscat',
-          quote: 'As a full-stack expert, Dylan Henderson delivers end-to-end solutions with unmatched proficiency. From initial concept to final execution, his skills ensure seamless and efficient project completion.',
-          role: 'Principal Engineer @ etika'
-        }
-      }
+          quote:
+            'As a full-stack expert, Dylan Henderson delivers end-to-end solutions with unmatched proficiency. From initial concept to final execution, his skills ensure seamless and efficient project completion.',
+          role: 'Principal Engineer @ etika',
+        },
+      },
     ];
     setTestimonials(staticTestimonials);
   }, []);
@@ -101,7 +103,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
                 color: theme.palette.secondary.dark,
                 opacity: 0.3,
                 fontFamily: 'serif',
-              }
+              },
             }}
           >
             <Typography
@@ -110,7 +112,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
                 mb: 2,
                 color: theme.palette.secondary.light,
                 lineHeight: 1.6,
-                fontStyle: 'italic'
+                fontStyle: 'italic',
               }}
             >
               {testimonial.attributes.quote}
@@ -121,7 +123,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
                 sx={{
                   fontWeight: 'bold',
                   color: theme.palette.secondary.main,
-                  mb: 0.5
+                  mb: 0.5,
                 }}
               >
                 — {testimonial.attributes.author}
@@ -130,7 +132,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
                 variant="caption"
                 sx={{
                   color: theme.palette.primary.contrastText,
-                  opacity: 0.8
+                  opacity: 0.8,
                 }}
               >
                 {testimonial.attributes.role}

@@ -1,12 +1,5 @@
 'use client';
-import {
-  Alert,
-  Box,
-  Button,
-  Link,
-  Snackbar,
-  Typography,
-} from '@mui/material';
+import { Alert, Box, Button, Link, Snackbar, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Grid';
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -136,7 +129,7 @@ const ContactForm: React.FC = () => {
             '&::before': {
               content: '"# "',
               opacity: 0.7,
-            }
+            },
           }}
         >
           Get in Touch
@@ -178,7 +171,7 @@ const ContactForm: React.FC = () => {
                 content: '"$ "',
                 color: 'secondary.main',
                 mr: 1,
-              }
+              },
             }}
           >
             {STATIC_CONTACT_PAGE.attributes.resumeCta}
@@ -196,8 +189,8 @@ const ContactForm: React.FC = () => {
                 '&::before': {
                   content: '">"',
                   mr: 1,
-                }
-              }
+                },
+              },
             }}
           >
             {STATIC_CONTACT_PAGE.attributes.resumeCtaButtonText}
@@ -224,49 +217,49 @@ const ContactForm: React.FC = () => {
               '&::before': {
                 content: '"// "',
                 opacity: 0.7,
-              }
+              },
             }}
           >
             Send a message
           </Typography>
-        <form onSubmit={handleSubmit}>
-          <Fields formState={formState} setFormState={setFormState} />
-          {renderRecaptcha && (
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-              ref={recaptchaRef}
-              onChange={handleCaptchaVerification}
-              size="normal"
-              className="my-recaptcha"
-            />
-          )}
-          <Button
-            type="submit"
-            variant="contained"
-            color="secondary"
-            fullWidth
-            disabled={loading || (renderRecaptcha && !isVerified)}
-            sx={{
-              mt: 2,
-              fontFamily: 'monospace',
-              fontSize: '1.1rem',
-              py: 1.5,
-              textTransform: 'lowercase',
-              '&::before': {
-                content: loading ? '"⟳ "' : '"$ "',
-                mr: 1,
-              },
-              '&:hover': {
-                backgroundColor: 'secondary.dark',
-                transform: 'translateY(-1px)',
-                boxShadow: '0 4px 8px rgba(0, 255, 0, 0.3)',
-              },
-              transition: 'all 0.2s ease',
-            }}
-          >
-            {loading ? 'sending...' : 'send message'}
-          </Button>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <Fields formState={formState} setFormState={setFormState} />
+            {renderRecaptcha && (
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                ref={recaptchaRef}
+                onChange={handleCaptchaVerification}
+                size="normal"
+                className="my-recaptcha"
+              />
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              fullWidth
+              disabled={loading || (renderRecaptcha && !isVerified)}
+              sx={{
+                mt: 2,
+                fontFamily: 'monospace',
+                fontSize: '1.1rem',
+                py: 1.5,
+                textTransform: 'lowercase',
+                '&::before': {
+                  content: loading ? '"⟳ "' : '"$ "',
+                  mr: 1,
+                },
+                '&:hover': {
+                  backgroundColor: 'secondary.dark',
+                  transform: 'translateY(-1px)',
+                  boxShadow: '0 4px 8px rgba(0, 255, 0, 0.3)',
+                },
+                transition: 'all 0.2s ease',
+              }}
+            >
+              {loading ? 'sending...' : 'send message'}
+            </Button>
+          </form>
         </Box>
       </Grid2>
       <Snackbar

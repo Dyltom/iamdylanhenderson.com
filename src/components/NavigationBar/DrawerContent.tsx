@@ -20,7 +20,6 @@ interface DrawerContentProps {
 }
 
 const DrawerContent: React.FC<DrawerContentProps> = memo(({ toggleDrawer }) => {
-
   return (
     <Box
       sx={{

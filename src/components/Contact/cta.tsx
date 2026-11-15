@@ -10,7 +10,7 @@ const ContactCTA: React.FC = () => {
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => setShowCursor(prev => !prev), 600);
+    const interval = setInterval(() => setShowCursor((prev) => !prev), 600);
     return () => clearInterval(interval);
   }, []);
 
@@ -81,7 +81,8 @@ const ContactCTA: React.FC = () => {
                 left: '-100%',
                 width: '100%',
                 height: '100%',
-                background: 'linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent)',
+                background:
+                  'linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent)',
                 animation: 'sweep 0.5s forwards',
               },
             },

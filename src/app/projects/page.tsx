@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Box,
   Container,
@@ -8,21 +8,23 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Fade,
-} from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import ViewModuleIcon from '@mui/icons-material/ViewModule'
-import AppsIcon from '@mui/icons-material/Apps'
-import AllInclusiveIcon from '@mui/icons-material/AllInclusive'
-import ProjectCard, { Project } from '../../components/Projects/ProjectCard'
-import { underLineHeaders } from '../../utils/styles'
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import AppsIcon from '@mui/icons-material/Apps';
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
+import ProjectCard, { Project } from '../../components/Projects/ProjectCard';
+import { underLineHeaders } from '../../utils/styles';
 
 // Mock data - Replace with actual data from Strapi
 const mockProjects: Project[] = [
   {
     id: '1',
     title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with real-time inventory management',
-    longDescription: 'Built a comprehensive e-commerce platform featuring user authentication, product catalog, shopping cart, payment integration with Stripe, and admin dashboard for inventory management.',
+    description:
+      'Full-stack e-commerce solution with real-time inventory management',
+    longDescription:
+      'Built a comprehensive e-commerce platform featuring user authentication, product catalog, shopping cart, payment integration with Stripe, and admin dashboard for inventory management.',
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Redux'],
     githubUrl: 'https://github.com/yourusername/ecommerce',
     liveUrl: 'https://example-ecommerce.com',
@@ -32,7 +34,8 @@ const mockProjects: Project[] = [
   {
     id: '2',
     title: 'Task Management API',
-    description: 'RESTful API for task management with team collaboration features',
+    description:
+      'RESTful API for task management with team collaboration features',
     technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Socket.io'],
     githubUrl: 'https://github.com/yourusername/task-api',
     category: 'backend',
@@ -48,26 +51,27 @@ const mockProjects: Project[] = [
     category: 'frontend',
   },
   // Add more projects...
-]
+];
 
 export default function ProjectsPage() {
-  const theme = useTheme()
-  const [filter, setFilter] = useState<string>('all')
+  const theme = useTheme();
+  const [filter, setFilter] = useState<string>('all');
 
   const handleFilterChange = (
     event: React.MouseEvent<HTMLElement>,
     newFilter: string | null
   ) => {
     if (newFilter !== null) {
-      setFilter(newFilter)
+      setFilter(newFilter);
     }
-  }
+  };
 
-  const filteredProjects = filter === 'all'
-    ? mockProjects
-    : mockProjects.filter(project =>
-        filter === 'featured' ? project.featured : project.category === filter
-      )
+  const filteredProjects =
+    filter === 'all'
+      ? mockProjects
+      : mockProjects.filter((project) =>
+          filter === 'featured' ? project.featured : project.category === filter
+        );
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -91,9 +95,9 @@ export default function ProjectsPage() {
             maxWidth: '800px',
           }}
         >
-          A collection of my recent work, ranging from full-stack applications to
-          experimental projects. Each project represents a unique challenge and
-          learning opportunity.
+          A collection of my recent work, ranging from full-stack applications
+          to experimental projects. Each project represents a unique challenge
+          and learning opportunity.
         </Typography>
       </Box>
 
@@ -140,9 +144,9 @@ export default function ProjectsPage() {
           gridTemplateColumns: {
             xs: 'repeat(1, 1fr)',
             md: 'repeat(2, 1fr)',
-            lg: 'repeat(3, 1fr)'
+            lg: 'repeat(3, 1fr)',
           },
-          gap: 4
+          gap: 4,
         }}
       >
         {filteredProjects.map((project, index) => (
@@ -166,14 +170,11 @@ export default function ProjectsPage() {
             py: 8,
           }}
         >
-          <Typography
-            variant="h6"
-            sx={{ color: theme.palette.text.secondary }}
-          >
+          <Typography variant="h6" sx={{ color: theme.palette.text.secondary }}>
             No projects found in this category.
           </Typography>
         </Box>
       )}
     </Container>
-  )
+  );
 }

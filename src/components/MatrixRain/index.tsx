@@ -31,7 +31,8 @@ export default function MatrixRain({ active = true }: MatrixRainProps) {
     window.addEventListener('resize', resizeCanvas);
 
     // Matrix characters (mix of Japanese, numbers, and symbols)
-    const matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789@#$%^&*(){}[]<>?/\\|+-=_';
+    const matrixChars =
+      'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789@#$%^&*(){}[]<>?/\\|+-=_';
     const fontSize = 14;
     const columns = canvas.width / fontSize;
 
@@ -54,7 +55,8 @@ export default function MatrixRain({ active = true }: MatrixRainProps) {
       // Draw characters
       for (let i = 0; i < drops.length; i++) {
         // Random character
-        const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        const text =
+          matrixChars[Math.floor(Math.random() * matrixChars.length)];
 
         // Draw character
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);

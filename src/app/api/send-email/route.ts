@@ -12,10 +12,7 @@ export async function POST(req: NextRequest) {
     const ip = req.headers.get('x-forwarded-for') || '';
     await rateLimiter.consume(ip);
   } catch (rateLimiterError) {
-    return NextResponse.json(
-      { error: 'Too many requests' },
-      { status: 429 }
-    );
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
   }
 
   try {
@@ -27,11 +24,12 @@ export async function POST(req: NextRequest) {
     );
   } catch (error) {
     console.error('Email sending error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
       {
         message: 'Error sending email',
-        error: errorMessage
+        error: errorMessage,
       },
       { status: 500 }
     );

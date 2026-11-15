@@ -1,12 +1,12 @@
-import { Metadata } from 'next'
-import { pageMetadata } from '../../config/metadata'
+import { Metadata } from 'next';
+import { pageMetadata } from '../../config/metadata';
 
-export const metadata: Metadata = pageMetadata.blog()
+export const metadata: Metadata = pageMetadata.blog();
 
 export default function BlogLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return children
+  return children;
 }

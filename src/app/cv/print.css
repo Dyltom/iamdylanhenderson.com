@@ -21,7 +21,7 @@
   .MuiTextField-root,
   .MuiAlert-root,
   .MuiCollapse-root,
-  svg[data-testid*="Icon"] {
+  svg[data-testid*='Icon'] {
     display: none !important;
   }
 
@@ -61,7 +61,12 @@
   }
 
   /* Typography */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #000 !important;
     page-break-after: avoid;
     margin-bottom: 8pt !important;
@@ -116,11 +121,11 @@
   }
 
   .MuiChip-root::after {
-    content: ", ";
+    content: ', ';
   }
 
   .MuiChip-root:last-child::after {
-    content: "";
+    content: '';
   }
 
   /* Work experience formatting */
@@ -150,8 +155,8 @@
   }
 
   /* Hide copy buttons and other interactive elements */
-  [class*="IconButton"],
-  [class*="Tooltip"] {
+  [class*='IconButton'],
+  [class*='Tooltip'] {
     display: none !important;
   }
 

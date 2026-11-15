@@ -8,32 +8,32 @@ import {
   Box,
   IconButton,
   CardMedia,
-} from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LaunchIcon from '@mui/icons-material/Launch'
-import CodeIcon from '@mui/icons-material/Code'
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LaunchIcon from '@mui/icons-material/Launch';
+import CodeIcon from '@mui/icons-material/Code';
 
 export interface Project {
-  id: string
-  title: string
-  description: string
-  longDescription?: string
-  image?: string
-  technologies: string[]
-  githubUrl?: string
-  liveUrl?: string
-  featured?: boolean
-  category: 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'other'
+  id: string;
+  title: string;
+  description: string;
+  longDescription?: string;
+  image?: string;
+  technologies: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  featured?: boolean;
+  category: 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'other';
 }
 
 interface ProjectCardProps {
-  project: Project
-  detailed?: boolean
+  project: Project;
+  detailed?: boolean;
 }
 
 const ProjectCard = ({ project, detailed = false }: ProjectCardProps) => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const getCategoryColor = (category: Project['category']) => {
     const colors = {
@@ -42,9 +42,9 @@ const ProjectCard = ({ project, detailed = false }: ProjectCardProps) => {
       fullstack: theme.palette.secondary.main,
       mobile: theme.palette.primary.main,
       other: theme.palette.grey[500],
-    }
-    return colors[category]
-  }
+    };
+    return colors[category];
+  };
 
   return (
     <Card
@@ -77,7 +77,9 @@ const ProjectCard = ({ project, detailed = false }: ProjectCardProps) => {
 
       <CardContent sx={{ flexGrow: 1 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-          <CodeIcon sx={{ color: getCategoryColor(project.category), fontSize: 20 }} />
+          <CodeIcon
+            sx={{ color: getCategoryColor(project.category), fontSize: 20 }}
+          />
           <Typography
             gutterBottom
             variant="h5"
@@ -100,11 +102,7 @@ const ProjectCard = ({ project, detailed = false }: ProjectCardProps) => {
           />
         )}
 
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ mb: 2 }}
-        >
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           {detailed && project.longDescription
             ? project.longDescription
             : project.description}
@@ -164,7 +162,7 @@ const ProjectCard = ({ project, detailed = false }: ProjectCardProps) => {
         )}
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default ProjectCard
+export default ProjectCard;

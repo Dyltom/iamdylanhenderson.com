@@ -10,7 +10,7 @@ const TerminalEasterEgg: React.FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const commands: Record<string, string> = {
-    'help': `Available commands:
+    help: `Available commands:
   help     - Show this help message
   whoami   - Display current user
   sudo     - Nice try :)
@@ -18,28 +18,31 @@ const TerminalEasterEgg: React.FC = () => {
   ls       - List directory contents
   cat      - Display file contents
   exit     - Close terminal`,
-    'whoami': 'dylan@melbourne:~$ Guest user visiting portfolio',
-    'sudo': 'dylan is not in the sudoers file. This incident will be reported.',
+    whoami: 'dylan@melbourne:~$ Guest user visiting portfolio',
+    sudo: 'dylan is not in the sudoers file. This incident will be reported.',
     'sudo su': 'Nice try! But this is just a portfolio site 😄',
-    'ls': `README.md
+    ls: `README.md
 about.html
 projects/
 skills/
 contact.html
 secrets.txt`,
     'cat secrets.txt': 'The secret is... I actually enjoy debugging CSS! 🤫',
-    'pwd': '/home/dylan/portfolio',
+    pwd: '/home/dylan/portfolio',
     'cd ..': 'Permission denied: You shall not pass!',
-    'vim': 'Error: No way to exit vim detected. Aborting for your safety.',
-    'emacs': 'Error: Not enough RAM to run emacs',
-    'clear': '',
-    'exit': '',
+    vim: 'Error: No way to exit vim detected. Aborting for your safety.',
+    emacs: 'Error: Not enough RAM to run emacs',
+    clear: '',
+    exit: '',
   };
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       // Don't capture input if user is typing in an actual input field
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
         return;
       }
 
@@ -58,14 +61,15 @@ secrets.txt`,
             setInput('');
             setOutput('');
           } else {
-            const response = commands[command] || `Command not found: ${command}`;
+            const response =
+              commands[command] || `Command not found: ${command}`;
             setOutput(response);
           }
           setInput('');
         } else if (e.key === 'Backspace') {
-          setInput(prev => prev.slice(0, -1));
+          setInput((prev) => prev.slice(0, -1));
         } else if (e.key.length === 1) {
-          setInput(prev => prev + e.key);
+          setInput((prev) => prev + e.key);
         }
       }
     };

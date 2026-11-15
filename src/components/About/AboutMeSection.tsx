@@ -46,7 +46,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
               content: '"$ "',
               color: theme.palette.secondary.main,
               opacity: 0.8,
-            }
+            },
           }}
           gutterBottom
         >
@@ -70,7 +70,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
               width: '4px',
               height: '100%',
               backgroundColor: theme.palette.secondary.main,
-            }
+            },
           }}
         >
           <Typography
@@ -82,7 +82,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ content }) => {
               fontSize: '1.1rem',
               '& strong': {
                 color: theme.palette.secondary.main,
-              }
+              },
             }}
           >
             {fullText}

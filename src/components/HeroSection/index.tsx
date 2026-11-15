@@ -35,10 +35,11 @@ const HeroSection: React.FC = () => {
             sx={{
               color: 'secondary.light',
               fontFamily: 'monospace',
-              mt: 2
+              mt: 2,
             }}
           >
-            &gt; Senior Fullstack Developer | Problem Solver | Terminal Enthusiast
+            &gt; Senior Fullstack Developer | Problem Solver | Terminal
+            Enthusiast
           </Typography>
         </Box>
 
