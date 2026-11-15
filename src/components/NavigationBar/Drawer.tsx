@@ -28,7 +28,7 @@ const DrawerComponent: React.FC = () => {
         onClose={toggleDrawer(false)}
         slotProps={{
           paper: {
-            sx: { bgcolor: 'primary.main' }, // Set the background color
+            sx: { bgcolor: 'primary.main' },
           },
         }}
       >
