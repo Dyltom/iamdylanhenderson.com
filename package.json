@@ -27,6 +27,7 @@
     "docx": "^9.15.4",
     "file-saver": "^2.0.5",
     "jspdf": "^4.2.1",
+    "lodash": "4.17.20",
     "next": "^16.4.6",
     "openai": "^7.57.0",
     "rate-limiter-flexible": "^11.4.1",
