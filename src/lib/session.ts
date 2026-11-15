@@ -1,1 +1,1 @@
-export const sessionTtlSeconds = 3600;
+export const sessionTtlSeconds = 7200;
