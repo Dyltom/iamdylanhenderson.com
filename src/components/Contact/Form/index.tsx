@@ -161,7 +161,11 @@ const ContactForm: React.FC = () => {
           .
         </Typography>
 
-        <Box mt={4}>
+        <Box
+          sx={{
+            mt: 4,
+          }}
+        >
           <Typography
             sx={{
               color: 'primary.contrastText',

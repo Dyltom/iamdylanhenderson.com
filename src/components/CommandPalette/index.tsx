@@ -172,15 +172,20 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
       onClose={onClose}
       maxWidth="sm"
       fullWidth
-      TransitionComponent={Fade}
-      TransitionProps={{ timeout: 200 }}
-      PaperProps={{
-        sx: {
-          backgroundColor: 'rgba(15, 15, 15, 0.98)',
-          border: `1px solid ${theme.palette.secondary.main}`,
-          borderRadius: '12px',
-          boxShadow: `0 0 40px ${theme.palette.secondary.main}40`,
-          mt: '10vh',
+      slots={{
+        transition: Fade,
+      }}
+      slotProps={{
+        transition: { timeout: 200 },
+
+        paper: {
+          sx: {
+            backgroundColor: 'rgba(15, 15, 15, 0.98)',
+            border: `1px solid ${theme.palette.secondary.main}`,
+            borderRadius: '12px',
+            boxShadow: `0 0 40px ${theme.palette.secondary.main}40`,
+            mt: '10vh',
+          },
         },
       }}
     >
@@ -194,19 +199,21 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
             onKeyDown={handleKeyDown}
             placeholder="Type a command or search..."
             variant="standard"
-            InputProps={{
-              disableUnderline: true,
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon sx={{ color: theme.palette.secondary.main }} />
-                </InputAdornment>
-              ),
-              sx: {
-                fontFamily: 'monospace',
-                fontSize: '1.1rem',
-                color: theme.palette.secondary.light,
-                p: 2,
-                borderBottom: `1px solid ${theme.palette.secondary.main}30`,
+            slotProps={{
+              input: {
+                disableUnderline: true,
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon sx={{ color: theme.palette.secondary.main }} />
+                  </InputAdornment>
+                ),
+                sx: {
+                  fontFamily: 'monospace',
+                  fontSize: '1.1rem',
+                  color: theme.palette.secondary.light,
+                  p: 2,
+                  borderBottom: `1px solid ${theme.palette.secondary.main}30`,
+                },
               },
             }}
           />
@@ -219,11 +226,13 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
               <ListItem>
                 <ListItemText
                   primary="No commands found"
-                  primaryTypographyProps={{
-                    sx: {
-                      fontFamily: 'monospace',
-                      color: theme.palette.secondary.light,
-                      textAlign: 'center',
+                  slotProps={{
+                    primary: {
+                      sx: {
+                        fontFamily: 'monospace',
+                        color: theme.palette.secondary.light,
+                        textAlign: 'center',
+                      },
                     },
                   }}
                 />

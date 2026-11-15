@@ -19,14 +19,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onChange }) => {
       value={searchTerm}
       onChange={onChange}
       sx={textFieldSx}
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton>
-              <SearchIcon style={{ color: theme.palette.secondary.main }} />
-            </IconButton>
-          </InputAdornment>
-        ),
+      slotProps={{
+        input: {
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton>
+                <SearchIcon style={{ color: theme.palette.secondary.main }} />
+              </IconButton>
+            </InputAdornment>
+          ),
+        },
       }}
     />
   );
