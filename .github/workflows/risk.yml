@@ -1,0 +1,50 @@
+name: Risk
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: risk-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  risk:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - name: Label
+        id: label
+        run: |
+          label="$(bun .guardrails/risk.js --base "origin/${{ github.base_ref }}")"
+          other="$([ "$label" = risk:high ] && echo risk:low || echo risk:high)"
+          gh label create risk:high --color B60205 --force >/dev/null
+          gh label create risk:low --color 0E8A16 --force >/dev/null
+          gh label create owner-approved --color 5319E7 --description "Owner approved this head commit" --force >/dev/null
+          gh pr edit "$PR" --add-label "$label" --remove-label "$other" >/dev/null
+          echo "label=$label" >> "$GITHUB_OUTPUT"
+      - name: New commits clear owner approval
+        if: github.event.action == 'synchronize'
+        run: gh pr edit "$PR" --remove-label owner-approved >/dev/null
+      - name: risk:high needs owner-approved
+        if: steps.label.outputs.label == 'risk:high'
+        run: |
+          if gh pr view "$PR" --json labels -q '.labels[].name' | grep -qx owner-approved; then
+            echo "risk:high, approved by the owner label"
+          else
+            echo "::error::risk:high (reasons above). The owner reviews this PR and adds the owner-approved label to pass; any new push removes it."
+            exit 1
+          fi

@@ -5,6 +5,7 @@
     "no-comments",
     "tamper",
     "lockfile",
+    "risk",
     "verify",
     "promises",
     "lint"
@@ -15,6 +16,8 @@
     ".guardrails/tamper.js": "92792e61607c632cd55cba564488444a1551a2f750140eefd0e03331eccc6f58",
     ".guardrails/lockfile.js": "7215423ffe237994cced3afe04f5c698cb5f9d474687723bb75c7b112476ea80",
     ".github/workflows/dependency-audit.yml": "bc0c1e36b6c83559a26eec876254b194aa2fda537b4f4f9d0b4afdfa3e15a6c1",
+    ".guardrails/risk.js": "a1fa582e0a85420e70d521e2b58f4a919431a29d49590f8a93fc4cff6fb25063",
+    ".github/workflows/risk.yml": "4899b36032f0fde16322e622ff3af4f17dda1573c00388638d28863eb8ee05c0",
     ".guardrails/verify.js": "7a9c44eb8544d545de1e15031d340e30dae7c0b2211bf3f9f8c89abdae019f30",
     ".guardrails/promises.js": "df50e6635b42d8b02b9e2cb10aa6de11a0cbe7e77f00174990ce05e41ed519f2",
     ".guardrails/ratchet.js": "07c8d9d7b529b88b3102ff4ec880ecf8df168e5a446fdbe8d9250902fb88e058",
