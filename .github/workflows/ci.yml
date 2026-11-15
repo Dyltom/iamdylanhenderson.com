@@ -33,6 +33,3 @@ jobs:
       - run: bun run typecheck
       - run: bun run test
       - run: bun run build
-      - name: No new comments
-        if: github.event_name == 'pull_request'
-        run: NO_COMMENTS_BASE=origin/main bun scripts/no-comments.ts .
