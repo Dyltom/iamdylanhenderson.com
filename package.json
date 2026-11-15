@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "format:check": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:write": "prettier --write .",
+    "verify": "bun .guardrails/verify.js"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",

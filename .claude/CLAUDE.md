@@ -2,7 +2,7 @@
 
 ## Commands
 
-- `bun install`, then `bun run lint`, `bun run typecheck`, `bun run test` (Vitest) and `bun run build`. CI runs all of these plus `bun run format:check`; the Guardrails workflow runs the checks in `.guardrails/`.
+- `bun install`, then `bun run verify` (lint, typecheck, Vitest, build; summary line last). CI runs it plus `bun run format:check`; the Guardrails workflow runs the checks in `.guardrails/`.
 - The app runs on Node 24 (`.nvmrc`); Bun is only the package manager.
 - `.guardrails/` and `.harness-version` are installed from `Dyltom/home` (`tools/guardrails/install.sh`). Change them there, not here.
 
