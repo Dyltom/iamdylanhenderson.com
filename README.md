@@ -16,16 +16,11 @@ This project is bootstrapped with [`create-next-app`](https://github.com/vercel/
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies and run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the site in your browser. You can start editing by modifying `app/page.tsx`. The page auto-updates as you edit the file.
@@ -44,15 +39,15 @@ Deploy with the [Vercel Platform](https://vercel.com/new?utm_medium=default-temp
 
 ## Development Scripts
 
-Requires Node 24 (see `.nvmrc`).
+Dependencies are managed with [Bun](https://bun.sh) (`bun.lock`); the app itself runs on Node 24 (see `.nvmrc`).
 
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the app for production.
-- `npm start`: Runs the built app in production mode.
-- `npm run lint`: Runs ESLint.
-- `npm run typecheck`: Checks TypeScript types.
-- `npm test`: Runs the Vitest suite.
-- `npm run format:check` / `npm run format:write`: Checks or applies Prettier formatting.
+- `bun run dev`: Starts the development server.
+- `bun run build`: Builds the app for production.
+- `bun run start`: Runs the built app in production mode.
+- `bun run lint`: Runs ESLint.
+- `bun run typecheck`: Checks TypeScript types.
+- `bun run test`: Runs the Vitest suite.
+- `bun run format:check` / `bun run format:write`: Checks or applies Prettier formatting.
 
 CI (`.github/workflows/ci.yml`) runs format check, lint, typecheck, tests and build on every pull request.
 
