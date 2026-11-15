@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import { CVData } from '../../../utils/cvTypes';
+import {
+  parseCvOptimiserRequest,
+  readJsonBody,
+} from '../../../utils/apiValidation';
 
 // OpenAI client will be initialized in the request handler
 let openai: OpenAI | null = null;
@@ -11,12 +14,13 @@ let openai: OpenAI | null = null;
 const AI_MODEL = 'gpt-4-turbo-preview';
 
 export async function POST(request: NextRequest) {
-  try {
-    const {
-      jobDescription,
-      currentCV,
-    }: { jobDescription: string; currentCV: CVData } = await request.json();
+  const parsed = parseCvOptimiserRequest(await readJsonBody(request));
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.error }, { status: 400 });
+  }
+  const { jobDescription, currentCV } = parsed.data;
 
+  try {
     if (
       !process.env.OPENAI_API_KEY ||
       process.env.OPENAI_API_KEY === 'your-api-key-here'

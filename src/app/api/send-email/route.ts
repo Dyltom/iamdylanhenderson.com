@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
 import sendEmail from '../../../utils/sendEmail';
+import {
+  parseContactMessage,
+  readJsonBody,
+} from '../../../utils/apiValidation';
 
 const rateLimiter = new RateLimiterMemory({
   points: 5, // Number of requests
@@ -15,9 +19,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
   }
 
+  const parsed = parseContactMessage(await readJsonBody(req));
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.error }, { status: 400 });
+  }
+
   try {
-    const body = await req.json();
-    await sendEmail(body);
+    await sendEmail(parsed.data);
     return NextResponse.json(
       { message: 'Email sent successfully' },
       { status: 200 }
