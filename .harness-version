@@ -1,0 +1,12 @@
+{
+  "home": "b89304c83c5eb8562cd5fcecb2df8146e735cdf0",
+  "components": [
+    "harness",
+    "no-comments"
+  ],
+  "files": {
+    ".guardrails/harness.js": "dadec7deefc48a8caea8366c2308843122e20363a1f91704ca2bc868f53fb580",
+    ".guardrails/no-comments.js": "b03ab2ded7bd2b91a3465a8baeb91db611ed739f2f0eaf544538bf88b5d3e9c5",
+    ".github/workflows/guardrails.yml": "ce420a654c3368aa6ab1761a13b358cf6cdc0e1152384270233db5bf05ba21a0"
+  }
+}
