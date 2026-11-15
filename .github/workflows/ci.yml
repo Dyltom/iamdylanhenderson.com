@@ -19,6 +19,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: 1
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
@@ -31,3 +33,6 @@ jobs:
       - run: bun run typecheck
       - run: bun run test
       - run: bun run build
+      - name: No new comments
+        if: github.event_name == 'pull_request'
+        run: NO_COMMENTS_BASE=origin/main bun scripts/no-comments.ts .
