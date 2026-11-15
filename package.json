@@ -11,7 +11,8 @@
     "test": "vitest run",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "verify": "bun .guardrails/verify.js"
+    "verify": "bun .guardrails/verify.js",
+    "prepare": "git config core.hooksPath .guardrails/hooks || true"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
