@@ -1,0 +1,10 @@
+{
+  "build": {
+    "command": "bun run build",
+    "maxSeconds": 30
+  },
+  "bundle": {
+    "glob": ".next/static/**/*.js",
+    "maxKb": 2850
+  }
+}

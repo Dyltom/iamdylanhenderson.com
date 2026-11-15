@@ -1,0 +1,4 @@
+// @bun
+/* eslint-disable */
+import{existsSync as a,readFileSync as u}from"fs";import{join as r}from"path";var i=["lint","typecheck","test","build"];function m(t,e=i){let s=a(r(t,"package.json"))?JSON.parse(u(r(t,"package.json"),"utf8")):{};return e.map((n)=>{if(!s.scripts?.[n])return{step:n,status:"missing",seconds:0,code:1};let c=performance.now(),{exitCode:o}=Bun.spawnSync(["bun","run",n],{cwd:t,stdio:["inherit","inherit","inherit"]}),p=Math.round((performance.now()-c)/100)/10;return{step:n,status:o===0?"ok":"failed",seconds:p,code:o??1}})}function d(t){return`verify: ${t.map((s)=>s.status==="ok"?`${s.step} ok (${s.seconds}s)`:s.status==="missing"?`${s.step} MISSING (add a "${s.step}" script)`:`${s.step} FAILED (exit ${s.code})`).join(" | ")}`}if(import.meta.main){let t=m(process.cwd(),process.argv.length>2?process.argv.slice(2):i);console.log(`
+${d(t)}`),process.exit(t.every((e)=>e.status==="ok")?0:1)}export{i as STEPS,d as summary,m as verify};
