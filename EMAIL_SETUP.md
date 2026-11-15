@@ -1,62 +1,30 @@
 # Email Setup Guide
 
-The contact form on this website uses Gmail with Nodemailer to send emails. Here's how to set it up:
+The contact form sends email through [Resend](https://resend.com) from `src/utils/sendEmail.ts`.
 
 ## Required Environment Variables
 
-You need to set these in your `.env.local` file:
+Set these in `.env.local` (see `.env.local.example`):
 
 ```env
-GMAIL_EMAIL=your-email@gmail.com
-GMAIL_APP_PASSWORD=your-app-password
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxx
+TO_EMAIL=your-email@example.com
 ```
 
-## How to Get a Gmail App Password
+Without `TO_EMAIL`, messages go to Resend's `delivered@resend.dev` test inbox. Mail is sent from `onboarding@resend.dev` until a domain is verified in Resend.
 
-1. **Enable 2-Factor Authentication**
-   - Go to your [Google Account settings](https://myaccount.google.com/)
-   - Navigate to Security
-   - Enable 2-Step Verification if not already enabled
+## Optional: reCAPTCHA
 
-2. **Generate App Password**
-   - In Security settings, go to "2-Step Verification"
-   - Scroll down and click on "App passwords"
-   - Select "Mail" from the dropdown
-   - Select your device
-   - Click "Generate"
-   - Copy the 16-character password
+The contact form supports Google reCAPTCHA v2:
 
-3. **Add to .env.local**
-   - Create a `.env.local` file if it doesn't exist
-   - Add your Gmail email and the app password
-   - Example:
+1. Register a site at [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin) (add localhost for development)
+2. Add the keys to `.env.local`:
    ```env
-   GMAIL_EMAIL=dylan@example.com
-   GMAIL_APP_PASSWORD=abcd efgh ijkl mnop
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
+   RECAPTCHA_SECRET_KEY=your-secret-key
    ```
 
-## Optional: ReCAPTCHA Setup
+## Behaviour
 
-The contact form also supports Google ReCAPTCHA to prevent spam. To enable it:
-
-1. Go to [Google ReCAPTCHA Admin](https://www.google.com/recaptcha/admin)
-2. Register a new site (choose reCAPTCHA v2)
-3. Add your domain (and localhost for development)
-4. Copy the Site Key
-5. Add to `.env.local`:
-   ```env
-   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key-here
-   ```
-
-## Testing
-
-1. Make sure your dev server is running: `npm run dev`
-2. Navigate to `/contact`
-3. Fill out the form and submit
-4. Check your Gmail inbox for the test email
-
-## Troubleshooting
-
-- **"Error sending email"**: Check that your environment variables are set correctly
-- **Rate limiting**: The API allows 5 emails per 24 hours per IP address
-- **Gmail blocking**: Make sure "Less secure app access" is not needed (app passwords bypass this)
+- Requests are validated: `name`, `email` and `message` are required, the email must look valid, and the message is limited to 5000 characters. Invalid requests get a 400 with an `error` message.
+- The API allows 5 emails per 24 hours per IP address (in memory, so per server instance).
