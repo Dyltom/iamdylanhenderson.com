@@ -1,1 +1,3 @@
 .guardrails/
+.github/workflows/dependency-audit.yml
+.github/workflows/guardrails.yml

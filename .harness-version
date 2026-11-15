@@ -1,12 +1,17 @@
 {
-  "home": "b89304c83c5eb8562cd5fcecb2df8146e735cdf0",
+  "home": "db21d5408a82d50bcabb43b91287409cbe744992",
   "components": [
     "harness",
-    "no-comments"
+    "no-comments",
+    "tamper",
+    "lockfile"
   ],
   "files": {
     ".guardrails/harness.js": "dadec7deefc48a8caea8366c2308843122e20363a1f91704ca2bc868f53fb580",
     ".guardrails/no-comments.js": "b03ab2ded7bd2b91a3465a8baeb91db611ed739f2f0eaf544538bf88b5d3e9c5",
-    ".github/workflows/guardrails.yml": "ce420a654c3368aa6ab1761a13b358cf6cdc0e1152384270233db5bf05ba21a0"
+    ".guardrails/tamper.js": "92792e61607c632cd55cba564488444a1551a2f750140eefd0e03331eccc6f58",
+    ".guardrails/lockfile.js": "7215423ffe237994cced3afe04f5c698cb5f9d474687723bb75c7b112476ea80",
+    ".github/workflows/dependency-audit.yml": "bc0c1e36b6c83559a26eec876254b194aa2fda537b4f4f9d0b4afdfa3e15a6c1",
+    ".github/workflows/guardrails.yml": "c580580174a2ec904431d05eb06fe1c2a4a5fdf6a52da7536aa562ef72397a92"
   }
 }
