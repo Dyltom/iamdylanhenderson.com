@@ -1,5 +1,5 @@
 {
-  "home": "5355e2cca1ce059871476ebdcedbbf775c51b03c",
+  "home": "a379460ad13bdd9fe58277235594e5b4e5daf001",
   "components": [
     "harness",
     "no-comments",
@@ -8,20 +8,24 @@
     "risk",
     "verify",
     "promises",
-    "lint"
+    "lint",
+    "pre-push"
   ],
   "files": {
-    ".guardrails/harness.js": "dadec7deefc48a8caea8366c2308843122e20363a1f91704ca2bc868f53fb580",
+    ".guardrails/harness.js": "cb4214d67ff59bf8ef34a1a3595e31716ac39e79c5e7bf5f1c141b8a95a1c775",
     ".guardrails/no-comments.js": "b03ab2ded7bd2b91a3465a8baeb91db611ed739f2f0eaf544538bf88b5d3e9c5",
-    ".guardrails/tamper.js": "92792e61607c632cd55cba564488444a1551a2f750140eefd0e03331eccc6f58",
+    ".guardrails/tamper.js": "b9546300193c6628eebee02012f5b9e82a01a03ccde6082c61e87d0f1d443441",
     ".guardrails/lockfile.js": "7215423ffe237994cced3afe04f5c698cb5f9d474687723bb75c7b112476ea80",
     ".github/workflows/dependency-audit.yml": "bc0c1e36b6c83559a26eec876254b194aa2fda537b4f4f9d0b4afdfa3e15a6c1",
-    ".guardrails/risk.js": "a1fa582e0a85420e70d521e2b58f4a919431a29d49590f8a93fc4cff6fb25063",
-    ".github/workflows/risk.yml": "4899b36032f0fde16322e622ff3af4f17dda1573c00388638d28863eb8ee05c0",
-    ".guardrails/verify.js": "7a9c44eb8544d545de1e15031d340e30dae7c0b2211bf3f9f8c89abdae019f30",
+    ".guardrails/risk.js": "8f2d7652dca4db5d32fbd33f372696b0d6d1bc17ff135bc55153a15c10e06ce9",
+    ".guardrails/risk-gate.js": "aab09165dc4082a2d7b648cd05e7d1b081a88c7cab3c1070e4229096ad22ecb4",
+    ".github/workflows/risk.yml": "2dad11f9a05507f0efc4430ca28e05b6021f5292711a2e2d133cfc4f7fb05c24",
+    ".guardrails/verify.js": "111d7a4546176c4bfd1a573431ed3f072d3ade414e9ef4616f484e000dafbfa6",
     ".guardrails/promises.js": "df50e6635b42d8b02b9e2cb10aa6de11a0cbe7e77f00174990ce05e41ed519f2",
-    ".guardrails/ratchet.js": "07c8d9d7b529b88b3102ff4ec880ecf8df168e5a446fdbe8d9250902fb88e058",
-    ".guardrails/eslint-bans.mjs": "2f237fbef50dae217a5ff34f9289e758890edf520ad42a356c26c5eda7d5c56b",
+    ".guardrails/ratchet.js": "14d6742affd7c77388cbc1d8564ffa8fe0e2ee9c0b385b6ff2e7ec16f5bb8c57",
+    ".guardrails/eslint-bans.mjs": "6db670ecea10fb9c5f7c8c93054c464dc0495918bbe09569a1554d7f0ba28b74",
+    ".guardrails/eslint-bans.d.mts": "ca19256d9c39fe1de6e62beaae9ba691328ea4116da0971399397b859d5ae142",
+    ".guardrails/hooks/pre-push": "cab8f64a901877b7f6c66dae30bf3e1b3c476c69713e704c1d9fcad2cc7cdb14",
     ".github/workflows/guardrails.yml": "374dcc8983bc6482d083cee6c174add5ce3f871d4725643d4a724e0e82d8dbb7"
   }
 }

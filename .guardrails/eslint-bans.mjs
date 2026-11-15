@@ -20,6 +20,9 @@ export const MESSAGES = {
   "no-process-env":
     "process.env is read only in the env module, so every variable is validated and typed in one place. Import the value from the env module instead. " +
     ALLOWLIST,
+  "no-restricted-imports":
+    "{{name}} is a third-party SDK imported outside its adapter, so tests end up mocking the vendor and a vendor change touches every caller. Instead import the thin adapter in the lib folder that wraps it, or add one there. " +
+    ALLOWLIST,
   "client-server-boundary":
     'A "use client" file imports server-only code (server-only, node builtins, or a server/ or db/ module), which leaks secrets or breaks the bundle. Instead pass the data in as props from a server component, or call a server action. ' +
     ALLOWLIST,
@@ -48,6 +51,26 @@ export const plugin = {
         },
       }),
     },
+    "no-restricted-imports": {
+      meta: {
+        type: "problem",
+        messages: { banned: MESSAGES["no-restricted-imports"] },
+        schema: [{ type: "object", properties: { names: { type: "array", items: { type: "string" } } }, additionalProperties: false }],
+      },
+      create: (context) => {
+        const names = context.options[0]?.names ?? [];
+        const check = (node, source) => {
+          const name = typeof source?.value === "string" ? names.find((n) => source.value === n || source.value.startsWith(`${n}/`)) : undefined;
+          if (name) context.report({ node, messageId: "banned", data: { name } });
+        };
+        return {
+          ImportDeclaration: (node) => check(node, node.source),
+          ExportNamedDeclaration: (node) => check(node, node.source),
+          ExportAllDeclaration: (node) => check(node, node.source),
+          ImportExpression: (node) => check(node, node.source),
+        };
+      },
+    },
     "client-server-boundary": {
       meta: { type: "problem", messages: { banned: MESSAGES["client-server-boundary"] }, schema: [] },
       create: (context) => {
@@ -71,8 +94,13 @@ export function guardrailBans({
   hooks = ["**/hooks/**"],
   timers = ["**/app/**", "**/components/**"],
   env = ["**/env.{ts,mjs,js}", "**/*.config.{ts,mjs,js,cjs}", "scripts/**"],
+  vendors = [],
+  adapters = ["**/lib/**"],
   severity = "warn",
 } = {}) {
+  const vendorBan = vendors.length
+    ? [{ files: CODE, ignores: adapters, plugins: { guardrails: plugin }, rules: { "guardrails/no-restricted-imports": [severity, { names: vendors }] } }]
+    : [];
   return [
     { ignores: [".guardrails/**"] },
     {
@@ -87,5 +115,6 @@ export function guardrailBans({
     { files: CODE, ignores: hooks, plugins: { guardrails: plugin }, rules: { "guardrails/no-use-effect": severity } },
     { files: timers, ignores: hooks, plugins: { guardrails: plugin }, rules: { "guardrails/no-timer-fix": severity } },
     { files: CODE, ignores: env, plugins: { guardrails: plugin }, rules: { "guardrails/no-process-env": severity } },
+    ...vendorBan,
   ];
 }

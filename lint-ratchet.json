@@ -3,7 +3,7 @@
   "guardrails/no-timer-fix": 19,
   "guardrails/no-use-effect": 35,
   "knip/dependencies": 1,
-  "knip/exports": 12,
+  "knip/exports": 10,
   "knip/files": 8,
   "knip/types": 7
 }
