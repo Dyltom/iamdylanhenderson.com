@@ -1,10 +1,11 @@
 {
-  "home": "db21d5408a82d50bcabb43b91287409cbe744992",
+  "home": "5355e2cca1ce059871476ebdcedbbf775c51b03c",
   "components": [
     "harness",
     "no-comments",
     "tamper",
-    "lockfile"
+    "lockfile",
+    "lint"
   ],
   "files": {
     ".guardrails/harness.js": "dadec7deefc48a8caea8366c2308843122e20363a1f91704ca2bc868f53fb580",
@@ -12,6 +13,8 @@
     ".guardrails/tamper.js": "92792e61607c632cd55cba564488444a1551a2f750140eefd0e03331eccc6f58",
     ".guardrails/lockfile.js": "7215423ffe237994cced3afe04f5c698cb5f9d474687723bb75c7b112476ea80",
     ".github/workflows/dependency-audit.yml": "bc0c1e36b6c83559a26eec876254b194aa2fda537b4f4f9d0b4afdfa3e15a6c1",
-    ".github/workflows/guardrails.yml": "c580580174a2ec904431d05eb06fe1c2a4a5fdf6a52da7536aa562ef72397a92"
+    ".guardrails/ratchet.js": "07c8d9d7b529b88b3102ff4ec880ecf8df168e5a446fdbe8d9250902fb88e058",
+    ".guardrails/eslint-bans.mjs": "2f237fbef50dae217a5ff34f9289e758890edf520ad42a356c26c5eda7d5c56b",
+    ".github/workflows/guardrails.yml": "18b2d99c1c64ebb7515e5722a59ab8cfbc0566730b495b3b0d5c06fc2a04a677"
   }
 }
