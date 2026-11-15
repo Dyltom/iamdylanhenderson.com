@@ -265,7 +265,14 @@ export default function CVPage() {
               </Grid>
 
               {/* Social Links */}
-              <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
+              <Stack
+                direction="row"
+                spacing={2}
+                useFlexGap
+                sx={{
+                  flexWrap: 'wrap',
+                }}
+              >
                 {cvData.personalInfo.portfolio && (
                   <Chip
                     icon={<LanguageIcon />}
@@ -625,8 +632,10 @@ export default function CVPage() {
                         <Stack
                           direction="row"
                           spacing={1}
-                          flexWrap="wrap"
                           useFlexGap
+                          sx={{
+                            flexWrap: 'wrap',
+                          }}
                         >
                           {keywordAnalysis.presentKeywords.map(
                             (keyword: string, index: number) => (
@@ -656,8 +665,10 @@ export default function CVPage() {
                         <Stack
                           direction="row"
                           spacing={1}
-                          flexWrap="wrap"
                           useFlexGap
+                          sx={{
+                            flexWrap: 'wrap',
+                          }}
                         >
                           {keywordAnalysis.missingKeywords.map(
                             (keyword: string, index: number) => (
@@ -687,8 +698,10 @@ export default function CVPage() {
                                 <ListItem key={index} sx={{ pl: 0 }}>
                                   <ListItemText
                                     primary={`• ${suggestion}`}
-                                    primaryTypographyProps={{
-                                      variant: 'body2',
+                                    slotProps={{
+                                      primary: {
+                                        variant: 'body2',
+                                      },
                                     }}
                                   />
                                 </ListItem>

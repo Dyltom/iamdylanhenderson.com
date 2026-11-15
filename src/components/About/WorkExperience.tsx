@@ -84,7 +84,6 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
       <Container maxWidth="lg">
         <Typography
           variant="h5"
-          color="secondary.contrastText"
           gutterBottom
           sx={{
             ...underLineHeaders(theme),

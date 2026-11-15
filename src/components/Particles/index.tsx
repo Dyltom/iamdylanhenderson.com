@@ -1,79 +1,65 @@
 'use client';
 
-import { memo, useCallback, useMemo } from 'react';
-import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
-import { Engine, ISourceOptions } from 'tsparticles-engine';
+import { memo } from 'react';
+import Particles, { ParticlesProvider } from '@tsparticles/react';
+import type { Engine, ISourceOptions } from '@tsparticles/engine';
+import { loadSlim } from '@tsparticles/slim';
 
-const ParticleBackground: React.FC = memo(() => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-  }, []);
+const loadParticlePlugins = async (engine: Engine): Promise<void> => {
+  await loadSlim(engine);
+};
 
-  const options: ISourceOptions = useMemo(
-    () => ({
-      fullScreen: {
+const PARTICLE_OPTIONS: ISourceOptions = {
+  fullScreen: {
+    enable: true,
+    zIndex: -1,
+  },
+  fpsLimit: 30,
+  particles: {
+    number: {
+      value: 3,
+      density: {
         enable: true,
-        zIndex: -1, // Put particles behind everything
+        width: 1200,
+        height: 1000,
       },
-      fpsLimit: 30, // Reduced from 60 for better performance
-      particles: {
-        number: {
-          value: 3, // Reduced from 5
-          density: {
-            enable: true,
-            area: 1200, // Limit particle density
-          },
-        },
-        color: {
-          value: '#32CD32',
-        },
-        links: {
-          enable: true,
-          color: '#32CD32',
-          distance: 150,
-          opacity: 0.5,
-        },
-        move: {
-          enable: true,
-          speed: 0.8, // Reduced from 1.5
-          direction: 'none',
-          random: false,
-          straight: false,
-          outModes: {
-            default: 'out',
-          },
-        },
-        size: {
-          value: 3,
-        },
-        opacity: {
-          value: 0.5,
-        },
+    },
+    color: {
+      value: '#32CD32',
+    },
+    links: {
+      enable: true,
+      color: '#32CD32',
+      distance: 150,
+      opacity: 0.5,
+    },
+    move: {
+      enable: true,
+      speed: 0.8,
+      direction: 'none',
+      random: false,
+      straight: false,
+      outModes: {
+        default: 'out',
       },
-      interactivity: {
-        events: {
-          onHover: {
-            enable: false, // Disabled for performance
-          },
-          onClick: {
-            enable: false, // Disabled for performance
-          },
-          resize: true,
-        },
-      },
-      detectRetina: false, // Disable retina detection for performance
-      pauseOnBlur: true, // Pause when tab is not active
-      pauseOnOutsideViewport: true, // Pause when not visible
-    }),
-    []
-  );
+    },
+    size: {
+      value: 3,
+    },
+    opacity: {
+      value: 0.5,
+    },
+  },
+  detectRetina: false,
+  pauseOnBlur: true,
+  pauseOnOutsideViewport: true,
+};
 
-  return (
+const ParticleBackground: React.FC = memo(() => (
+  <ParticlesProvider init={loadParticlePlugins}>
     <Particles
       id="tsparticles"
-      init={particlesInit}
-      options={options}
+      options={PARTICLE_OPTIONS}
       style={{
         position: 'fixed',
         top: 0,
@@ -83,8 +69,8 @@ const ParticleBackground: React.FC = memo(() => {
         zIndex: -1,
       }}
     />
-  );
-});
+  </ParticlesProvider>
+));
 
 ParticleBackground.displayName = 'ParticleBackground';
 

@@ -90,9 +90,9 @@ $ echo "Ready to ship 🚢"`;
       </Typography>
       <Typography
         variant="caption"
-        display="block"
         gutterBottom
         sx={{
+          display: 'block',
           fontFamily: 'monospace',
           textAlign: 'center',
           marginTop: '1rem',

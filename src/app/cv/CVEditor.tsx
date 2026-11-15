@@ -201,7 +201,13 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
           sx={{ mb: 2 }}
         />
 
-        <Stack direction="row" spacing={2} alignItems="center">
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: 'center',
+          }}
+        >
           <Button
             variant="contained"
             onClick={handleOptimize}
@@ -277,19 +283,37 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                 <Box>
                   <Typography
                     variant="body2"
-                    color="text.secondary"
                     gutterBottom
+                    sx={{
+                      color: 'text.secondary',
+                    }}
                   >
                     Current:
                   </Typography>
-                  <Typography variant="body2" paragraph>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      marginBottom: '16px',
+                    }}
+                  >
                     {editingCV.summary}
                   </Typography>
 
-                  <Typography variant="body2" color="success.main" gutterBottom>
+                  <Typography
+                    variant="body2"
+                    gutterBottom
+                    sx={{
+                      color: 'success.main',
+                    }}
+                  >
                     Suggested:
                   </Typography>
-                  <Typography variant="body2" paragraph>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      marginBottom: '16px',
+                    }}
+                  >
                     {suggestions.optimisedSummary}
                   </Typography>
 
@@ -320,7 +344,13 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                 <Typography>Keywords to Add</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Stack direction="row" flexWrap="wrap" gap={1}>
+                <Stack
+                  direction="row"
+                  sx={{
+                    flexWrap: 'wrap',
+                    gap: 1,
+                  }}
+                >
                   {suggestions.keywordSuggestions.map((keyword, index) => (
                     <Chip
                       key={index}
@@ -361,22 +391,28 @@ export default function CVEditor({ cvData, onUpdateCV }: CVEditorProps) {
                       </Typography>
                       <Typography
                         variant="body2"
-                        color="text.secondary"
                         gutterBottom
+                        sx={{
+                          color: 'text.secondary',
+                        }}
                       >
                         Original: {update.originalBullet}
                       </Typography>
                       <Typography
                         variant="body2"
-                        color="success.main"
                         gutterBottom
+                        sx={{
+                          color: 'success.main',
+                        }}
                       >
                         Suggested: {update.suggestedBullet}
                       </Typography>
                       <Typography
                         variant="caption"
-                        color="info.main"
                         gutterBottom
+                        sx={{
+                          color: 'info.main',
+                        }}
                       >
                         {update.reason}
                       </Typography>

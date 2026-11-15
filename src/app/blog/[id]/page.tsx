@@ -49,7 +49,12 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
   if (!article) {
     return (
       <Container maxWidth="lg">
-        <Typography color="primary.contrastText" sx={{ mt: 4 }}>
+        <Typography
+          sx={{
+            color: 'primary.contrastText',
+            mt: 4,
+          }}
+        >
           Loading...
         </Typography>
       </Container>
@@ -102,10 +107,12 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
         {/* Article metadata */}
         <Stack
           direction={{ xs: 'column', md: 'row' }}
-          justifyContent="space-between"
-          alignItems={{ xs: 'flex-start', md: 'center' }}
           spacing={2}
-          sx={{ mb: 3 }}
+          sx={{
+            justifyContent: 'space-between',
+            alignItems: { xs: 'flex-start', md: 'center' },
+            mb: 3,
+          }}
         >
           <Box
             sx={{
