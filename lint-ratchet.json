@@ -1,0 +1,9 @@
+{
+  "guardrails/no-process-env": 13,
+  "guardrails/no-timer-fix": 19,
+  "guardrails/no-use-effect": 35,
+  "knip/dependencies": 1,
+  "knip/exports": 12,
+  "knip/files": 8,
+  "knip/types": 7
+}
