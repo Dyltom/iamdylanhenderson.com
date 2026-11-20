@@ -29,7 +29,7 @@ check "no-comments" . bun .guardrails/no-comments.js .
 check "tamper" . bun .guardrails/tamper.js
 check "lockfile" . bun .guardrails/lockfile.js
 check "lint-ratchet" . bun .guardrails/ratchet.js
-check "lint, typecheck, unit tests" . bun .guardrails/verify.js --skip-missing lint typecheck test
+check "lint, typecheck, unit tests" . bun .guardrails/verify.js --skip-missing --related lint typecheck test
 if [ -n "$failed" ]; then
   echo "pre-push blocked; these checks fail locally and would fail in CI:$failed" >&2
   exit 1
