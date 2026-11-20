@@ -1,7 +1,7 @@
 {
   "build": {
     "command": "bun run build",
-    "maxSeconds": 30
+    "maxCpuSeconds": 75
   },
   "bundle": {
     "glob": ".next/static/**/*.js",
