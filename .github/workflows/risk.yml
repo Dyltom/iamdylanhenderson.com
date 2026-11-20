@@ -13,12 +13,11 @@ permissions:
   checks: read
   statuses: write
 
-concurrency:
-  group: risk-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
 jobs:
   evaluate:
+    if: (github.event.action != 'labeled' && github.event.action != 'unlabeled') || github.event.label.name == 'owner-approved' || startsWith(github.event.label.name, 'risk:')
+    concurrency:
+      group: risk-${{ github.event.pull_request.number }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
