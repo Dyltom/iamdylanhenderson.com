@@ -14,13 +14,13 @@ export interface CvOptimiserRequest {
   currentCV: CVData;
 }
 
-export const CONTACT_LIMITS = {
+const CONTACT_LIMITS = {
   name: 100,
   email: 254,
   message: 5000,
 } as const;
 
-export const JOB_DESCRIPTION_LIMIT = 20000;
+const JOB_DESCRIPTION_LIMIT = 20000;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

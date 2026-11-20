@@ -107,11 +107,3 @@ export const CV_DATA_CONCISE: CVData = {
     'Databases: MySQL, PostgreSQL, MongoDB, ScyllaDB, secure data handling',
   ],
 };
-
-// Additional CV data for professional context
-export const ADDITIONAL_INFO = {
-  clearanceStatus: 'NV1 clearance - Active',
-  availability: 'Immediate start',
-  contractPreference: 'Long-term contracts (12+ months)',
-  location: 'Relocating to Canberra - available for onsite/hybrid work',
-};
