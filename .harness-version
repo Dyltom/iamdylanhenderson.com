@@ -1,5 +1,5 @@
 {
-  "home": "77be28a0ab26930284d6f3011dc57d82141ad003",
+  "home": "074c2212a461d4cbba9bd287192a80dbb769f73c",
   "components": [
     "harness",
     "no-comments",
@@ -26,6 +26,6 @@
     ".guardrails/eslint-bans.mjs": "6db670ecea10fb9c5f7c8c93054c464dc0495918bbe09569a1554d7f0ba28b74",
     ".guardrails/eslint-bans.d.mts": "ca19256d9c39fe1de6e62beaae9ba691328ea4116da0971399397b859d5ae142",
     ".guardrails/hooks/pre-push": "cab8f64a901877b7f6c66dae30bf3e1b3c476c69713e704c1d9fcad2cc7cdb14",
-    ".github/workflows/guardrails.yml": "374dcc8983bc6482d083cee6c174add5ce3f871d4725643d4a724e0e82d8dbb7"
+    ".github/workflows/guardrails.yml": "dea1391a22045011028e9f0ceb3f3b6c7e50bb95330f257873cb3626e0fa704f"
   }
 }
