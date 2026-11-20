@@ -56,7 +56,7 @@ const KEYWORD_VARIATIONS: Record<string, string[]> = {
 };
 
 // Extract keywords from text
-export const extractKeywords = (text: string): string[] => {
+const extractKeywords = (text: string): string[] => {
   // Convert to lowercase for comparison
   const lowerText = text.toLowerCase();
 

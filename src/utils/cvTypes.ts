@@ -14,7 +14,7 @@ export interface CVData {
   skills: string[];
 }
 
-export interface CVExperience {
+interface CVExperience {
   company: string;
   title: string;
   location: string;
@@ -24,7 +24,7 @@ export interface CVExperience {
   techStack?: string;
 }
 
-export interface CVEducation {
+interface CVEducation {
   institution: string;
   degree: string;
   completionDate: string;

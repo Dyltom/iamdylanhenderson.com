@@ -1,6 +1,6 @@
 import { Paragraph, ParagraphChild } from './types';
 
-export const convertChildToMarkdown = (child: ParagraphChild): string => {
+const convertChildToMarkdown = (child: ParagraphChild): string => {
   if (child.bold) return `**${child.text}**`;
   if (child.italic) return `*${child.text}*`;
   if (child.strikethrough) return `~~${child.text}~~`;

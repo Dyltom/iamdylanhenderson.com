@@ -286,19 +286,3 @@ export const generateCleanDOCX = async (
     throw error;
   }
 };
-
-// Government-optimised filename
-export const generateGovernmentFilename = (
-  name: string,
-  department?: string
-): string => {
-  const cleanName = name.replace(/\s+/g, '_');
-  const date = new Date().toISOString().split('T')[0];
-
-  if (department) {
-    const cleanDept = department.replace(/[^a-zA-Z0-9]/g, '').substring(0, 20);
-    return `${cleanName}_${cleanDept}_Resume_${date}.docx`;
-  }
-
-  return `${cleanName}_Resume_${date}.docx`;
-};

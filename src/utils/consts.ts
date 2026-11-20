@@ -9,6 +9,3 @@ export const links = [
   { text: 'Blog', href: '/blog', icon: BookIcon },
   { text: 'Contact', href: '/contact', icon: DashboardIcon },
 ];
-
-export const MAX_BLOG_POSTS_DESKTOP = 3;
-export const MAX_BLOG_POSTS_MOBILE = 1;

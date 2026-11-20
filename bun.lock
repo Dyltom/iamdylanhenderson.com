@@ -10,7 +10,6 @@
         "@emotion/styled": "^11.14.1",
         "@mui/icons-material": "^9.5.0",
         "@mui/material": "^9.5.0",
-        "@mui/system": "^9.5.0",
         "@tsparticles/engine": "4.6.0",
         "@tsparticles/react": "4.6.0",
         "@tsparticles/slim": "4.6.0",
