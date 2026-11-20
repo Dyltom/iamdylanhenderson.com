@@ -47,12 +47,12 @@ export type AboutPage = {
   interestingFactsTitle: string;
 };
 
-export type CallToAction = {
+type CallToAction = {
   text: string;
   buttonText: string;
 };
 
-export type ContactUs = {
+type ContactUs = {
   attributes: {
     resume: {
       data: {
@@ -68,11 +68,11 @@ export type ContactUs = {
   };
 };
 
-export type HeroContent = {
+type HeroContent = {
   content: Paragraph[];
 };
 
-export type Skill = {
+type Skill = {
   attributes: {
     name: string;
     experience: number;
@@ -87,7 +87,7 @@ export type Testimonial = {
   };
 };
 
-export type Fact = {
+type Fact = {
   content: string;
 };
 
