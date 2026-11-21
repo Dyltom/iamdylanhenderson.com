@@ -49,7 +49,7 @@ Dependencies are managed with [Bun](https://bun.sh) (`bun.lock`); the app itself
 - `bun run test`: Runs the Vitest suite.
 - `bun run format:check` / `bun run format:write`: Checks or applies Prettier formatting.
 
-CI (`.github/workflows/ci.yml`) runs format check, lint, typecheck, tests and build on every pull request.
+CI runs on this machine: after pushing a branch, run `bun .guardrails/signoff.js`. It runs `bun run ci` (format check, lint, typecheck, tests, build) and promises, then posts the `signoff` status the PR needs to merge. `.github/workflows/ci.yml` runs the same suite once per push to main.
 
 ## Dependencies
 

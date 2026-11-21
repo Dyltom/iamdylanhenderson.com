@@ -13,6 +13,7 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "verify": "bun .guardrails/verify.js",
+    "ci": "bun run format:check && bun run verify",
     "prepare": "git config core.hooksPath .guardrails/hooks || true"
   },
   "dependencies": {
