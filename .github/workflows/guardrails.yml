@@ -45,25 +45,3 @@ jobs:
       - name: lint-ratchet
         if: ${{ !cancelled() }}
         run: bun .guardrails/ratchet.js
-
-  promises:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      - id: scope
-        run: |
-          if [ -n "$(git diff --name-only "$GUARDRAILS_BASE"...HEAD -- . | grep -vE '(^\.github/|\.md$)')" ]; then echo app=true >> "$GITHUB_OUTPUT"; else echo "only docs or workflows changed; skipping the build"; fi
-      - if: steps.scope.outputs.app
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.4.4
-      - if: steps.scope.outputs.app
-        uses: actions/setup-node@v5
-        with:
-          node-version-file: .nvmrc
-      - if: steps.scope.outputs.app
-        run: bun install --frozen-lockfile
-      - if: steps.scope.outputs.app
-        run: bun .guardrails/promises.js

@@ -1,5 +1,5 @@
 {
-  "home": "c293eab6dcbaa486b49210b1543cf39680655686",
+  "home": "b789de560f5805b449627e8d15e96d0eb2324545",
   "components": [
     "harness",
     "no-comments",
@@ -8,6 +8,7 @@
     "risk",
     "verify",
     "promises",
+    "signoff",
     "lint",
     "pre-push"
   ],
@@ -17,15 +18,16 @@
     ".guardrails/tamper.js": "141deeba815408b36914cb96ea354484256a8c8db5b9027516a7575794653723",
     ".guardrails/lockfile.js": "7215423ffe237994cced3afe04f5c698cb5f9d474687723bb75c7b112476ea80",
     ".github/workflows/dependency-audit.yml": "bc0c1e36b6c83559a26eec876254b194aa2fda537b4f4f9d0b4afdfa3e15a6c1",
-    ".guardrails/risk.js": "75ce6d5f9c8da145c8b35afe3bd21800352cce93c505c099bca01604bc9bc922",
-    ".guardrails/risk-gate.js": "74c13b5f0a0d3d16d2dfc35fddb6abb9202dd6f05cecc3f4ef3500068c832953",
+    ".guardrails/risk.js": "39dd1eb09a130bba7cc93abe6eeebbe43555c0ded74d69bff4563a04009e8f8f",
+    ".guardrails/risk-gate.js": "607ee0397b47d00103cb21abf486e3a86757fef4e68580242291cbe75401b9e8",
     ".github/workflows/risk.yml": "5da8a1ec08844f0abea3df02d81bc63a481ea883e180e61ec1e43601a7ae73b3",
     ".guardrails/verify.js": "ecd32079f74aadf3bb35046a90ad119448c6a5168b5f64f9cc4f101084babdf1",
     ".guardrails/promises.js": "2585efc817cd6fc90d6ceae781d05df32af68d2cad8c266930b7bb5aae10f27d",
+    ".guardrails/signoff.js": "06f4d53801c6c72fa09e82be9ada983439913e831c810df12d04e0f3a3efdecb",
     ".guardrails/ratchet.js": "7950c0abcfd07939f9ef199d49d31eb61df8a79b568fbf6e718dafb9b5381bba",
     ".guardrails/eslint-bans.mjs": "6db670ecea10fb9c5f7c8c93054c464dc0495918bbe09569a1554d7f0ba28b74",
     ".guardrails/eslint-bans.d.mts": "ca19256d9c39fe1de6e62beaae9ba691328ea4116da0971399397b859d5ae142",
-    ".guardrails/hooks/pre-push": "29887763294c23801c63b0bed89c924cfb4cf19df9ef5dd94261fdd182094a84",
-    ".github/workflows/guardrails.yml": "dea1391a22045011028e9f0ceb3f3b6c7e50bb95330f257873cb3626e0fa704f"
+    ".guardrails/hooks/pre-push": "644304c946493f3e5fa2dbf6e5edc61f08520591cff020be82f61640b9e545fc",
+    ".github/workflows/guardrails.yml": "6428e104e8a09a3c80287d93b769460da756ee78ff42f3c724c36f7853c47408"
   }
 }
